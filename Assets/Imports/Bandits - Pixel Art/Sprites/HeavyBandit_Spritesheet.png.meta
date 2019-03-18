@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: 7a7c2502c80fce548b38b940ccd74462
-timeCreated: 1513292546
-licenseType: Store
+guid: b2cbe89bd6cd2e441a2d30dad69f72f4
 TextureImporter:
   fileIDToRecycleName:
     21300000: HeavyBandit_Spritesheet_0
@@ -43,14 +41,17 @@ TextureImporter:
     21300072: HeavyBandit_Spritesheet_36
     21300074: HeavyBandit_Spritesheet_37
     21300076: HeavyBandit_Spritesheet_38
-  serializedVersion: 2
+  externalObjects: {}
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -59,37 +60,59 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: HeavyBandit_Spritesheet_0
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -99,16 +122,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 9, y: 42}
-        - {x: -3, y: 42}
-        - {x: -10, y: 32}
-        - {x: -10, y: 0}
-        - {x: 12, y: 0}
-        - {x: 20, y: 14}
-        - {x: 20, y: 29}
-        - {x: 12, y: 41}
-    - name: HeavyBandit_Spritesheet_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12dc1d94eb387a341af60c3cab4c4db3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_1
       rect:
         serializedVersion: 2
         x: 48
@@ -118,16 +142,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 4, y: 42}
-        - {x: -3, y: 42}
-        - {x: -10, y: 28}
-        - {x: -10, y: 0}
-        - {x: 14, y: 0}
-        - {x: 20, y: 13}
-        - {x: 20, y: 29}
-        - {x: 10, y: 39}
-    - name: HeavyBandit_Spritesheet_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc04a01cd1e0a8745bb7001badfe359b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_2
       rect:
         serializedVersion: 2
         x: 96
@@ -137,16 +162,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 4, y: 41}
-        - {x: -4, y: 41}
-        - {x: -10, y: 34}
-        - {x: -10, y: 0}
-        - {x: 14, y: 0}
-        - {x: 20, y: 13}
-        - {x: 20, y: 28}
-        - {x: 10, y: 38}
-    - name: HeavyBandit_Spritesheet_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ccf4b60a61b1964e8f5d6b5c4475b65
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_3
       rect:
         serializedVersion: 2
         x: 144
@@ -156,15 +182,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4, y: 41}
-        - {x: -10, y: 34}
-        - {x: -10, y: 0}
-        - {x: 12, y: 0}
-        - {x: 20, y: 13}
-        - {x: 20, y: 29}
-        - {x: 12, y: 41}
-    - name: HeavyBandit_Spritesheet_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a230bd9612d7dc4ebac40ea80a65d98
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_4
       rect:
         serializedVersion: 2
         x: 192
@@ -174,17 +202,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 19, y: 15}
-        - {x: 15, y: 29}
-        - {x: 7, y: 40}
-        - {x: -1, y: 40}
-        - {x: -18, y: 33}
-        - {x: -18, y: 30}
-        - {x: -12, y: 4}
-        - {x: -8, y: 0}
-        - {x: 19, y: 0}
-    - name: HeavyBandit_Spritesheet_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfa49a7a5cb219842990dd533144b2ee
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_5
       rect:
         serializedVersion: 2
         x: 240
@@ -194,16 +222,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: 40}
-        - {x: -3, y: 40}
-        - {x: -18, y: 36}
-        - {x: -18, y: 8}
-        - {x: -17, y: 0}
-        - {x: 19, y: 0}
-        - {x: 19, y: 13}
-        - {x: 14, y: 30}
-    - name: HeavyBandit_Spritesheet_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4024b0531419fa499c857b355e7162a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_6
       rect:
         serializedVersion: 2
         x: 288
@@ -213,15 +242,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: 39}
-        - {x: -2, y: 39}
-        - {x: -18, y: 34}
-        - {x: -18, y: 0}
-        - {x: 19, y: 0}
-        - {x: 19, y: 14}
-        - {x: 15, y: 29}
-    - name: HeavyBandit_Spritesheet_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19b818fe172ea7b43905b70b1b07436f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_7
       rect:
         serializedVersion: 2
         x: 336
@@ -231,14 +262,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -8, y: 39}
-        - {x: -18, y: 35}
-        - {x: -18, y: 0}
-        - {x: 19, y: 0}
-        - {x: 19, y: 17}
-        - {x: 9, y: 39}
-    - name: HeavyBandit_Spritesheet_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f63542edd75d7d4689d6b1f2fe310ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_8
       rect:
         serializedVersion: 2
         x: 0
@@ -248,17 +282,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4, y: 38}
-        - {x: -6, y: 34}
-        - {x: -10, y: 23}
-        - {x: -10, y: 15}
-        - {x: -4, y: 0}
-        - {x: 16, y: 0}
-        - {x: 19, y: 5}
-        - {x: 19, y: 33}
-        - {x: 13, y: 38}
-    - name: HeavyBandit_Spritesheet_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a0e60981f3582e42b482c639b9214e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_9
       rect:
         serializedVersion: 2
         x: 48
@@ -268,17 +302,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -6, y: 39}
-        - {x: -14, y: 29}
-        - {x: -14, y: 17}
-        - {x: -7, y: 3}
-        - {x: -2, y: 1}
-        - {x: 14, y: 1}
-        - {x: 19, y: 2}
-        - {x: 19, y: 35}
-        - {x: 16, y: 39}
-    - name: HeavyBandit_Spritesheet_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c69ab8b5b1ccdb46990fb04173cede2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_10
       rect:
         serializedVersion: 2
         x: 96
@@ -288,17 +322,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: 40}
-        - {x: -4, y: 40}
-        - {x: -15, y: 33}
-        - {x: -15, y: 0}
-        - {x: 6, y: 0}
-        - {x: 16, y: 2}
-        - {x: 20, y: 9}
-        - {x: 20, y: 29}
-        - {x: 19, y: 34}
-    - name: HeavyBandit_Spritesheet_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beadd6f35df47764880eeae2ccbfc847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_11
       rect:
         serializedVersion: 2
         x: 144
@@ -308,16 +342,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 9, y: 39}
-        - {x: -5, y: 39}
-        - {x: -10, y: 35}
-        - {x: -10, y: 0}
-        - {x: 8, y: 0}
-        - {x: 15, y: 5}
-        - {x: 19, y: 15}
-        - {x: 19, y: 30}
-    - name: HeavyBandit_Spritesheet_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21e2f8a2cc717cb45bb2be098a4b23b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_12
       rect:
         serializedVersion: 2
         x: 192
@@ -327,14 +362,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -8, y: 38}
-        - {x: -8, y: 0}
-        - {x: 14, y: 0}
-        - {x: 17, y: 2}
-        - {x: 17, y: 28}
-        - {x: 7, y: 38}
-    - name: HeavyBandit_Spritesheet_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704c65b2c3e3c14488b78b773d8024d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_13
       rect:
         serializedVersion: 2
         x: 240
@@ -344,18 +382,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 3, y: 39}
-        - {x: -4, y: 39}
-        - {x: -9, y: 37}
-        - {x: -17, y: 19}
-        - {x: -16, y: 16}
-        - {x: -3, y: 2}
-        - {x: 16, y: 2}
-        - {x: 18, y: 9}
-        - {x: 18, y: 21}
-        - {x: 16, y: 24}
-    - name: HeavyBandit_Spritesheet_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42b98cd3655d1ea4e90a1471d8c63c25
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_14
       rect:
         serializedVersion: 2
         x: 288
@@ -365,16 +402,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -9, y: 40}
-        - {x: -18, y: 19}
-        - {x: -17, y: 16}
-        - {x: -13, y: 0}
-        - {x: 4, y: 0}
-        - {x: 17, y: 4}
-        - {x: 17, y: 29}
-        - {x: 3, y: 40}
-    - name: HeavyBandit_Spritesheet_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c91b2e8b1d7b844294729c802d98a63
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_15
       rect:
         serializedVersion: 2
         x: 336
@@ -384,16 +422,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -7, y: 40}
-        - {x: -17, y: 20}
-        - {x: -14, y: 8}
-        - {x: -7, y: 0}
-        - {x: 13, y: 0}
-        - {x: 18, y: 7}
-        - {x: 18, y: 27}
-        - {x: 9, y: 40}
-    - name: HeavyBandit_Spritesheet_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3262e7b20f741d144889539dd10eecd8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_16
       rect:
         serializedVersion: 2
         x: 0
@@ -403,14 +442,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -8, y: 48}
-        - {x: -12, y: 19}
-        - {x: -12, y: 0}
-        - {x: 16, y: 0}
-        - {x: 16, y: 32}
-        - {x: 0, y: 48}
-    - name: HeavyBandit_Spritesheet_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c096cb27894f8f444a41778bd4583c6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_17
       rect:
         serializedVersion: 2
         x: 48
@@ -420,15 +462,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 16, y: 33}
-        - {x: -1, y: 48}
-        - {x: -10, y: 48}
-        - {x: -13, y: 26}
-        - {x: -13, y: 2}
-        - {x: -12, y: 0}
-        - {x: 16, y: 0}
-    - name: HeavyBandit_Spritesheet_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4218791b546a35041ae5caa8b6230537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_18
       rect:
         serializedVersion: 2
         x: 96
@@ -438,14 +482,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -9, y: 48}
-        - {x: -13, y: 37}
-        - {x: -13, y: 0}
-        - {x: 16, y: 0}
-        - {x: 16, y: 41}
-        - {x: 2, y: 48}
-    - name: HeavyBandit_Spritesheet_19
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a035c078d85c6d4488374458e20388a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_19
       rect:
         serializedVersion: 2
         x: 144
@@ -455,13 +502,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13, y: 48}
-        - {x: -13, y: 0}
-        - {x: 15, y: 0}
-        - {x: 15, y: 32}
-        - {x: 2, y: 48}
-    - name: HeavyBandit_Spritesheet_20
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe2e2f7488493f4dafdb102f7fc6b62
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_20
       rect:
         serializedVersion: 2
         x: 192
@@ -471,17 +522,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -1, y: 48}
-        - {x: -20, y: 45}
-        - {x: -24, y: 36}
-        - {x: -24, y: 18}
-        - {x: -11, y: 1}
-        - {x: -9, y: 0}
-        - {x: 18, y: 0}
-        - {x: 18, y: 36}
-        - {x: 13, y: 48}
-    - name: HeavyBandit_Spritesheet_21
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2abbaa5b088c9641b8a1ebaaf45f418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_21
       rect:
         serializedVersion: 2
         x: 240
@@ -491,14 +542,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 18, y: 48}
-        - {x: -13, y: 48}
-        - {x: -22, y: 40}
-        - {x: -22, y: 10}
-        - {x: -12, y: 0}
-        - {x: 18, y: 0}
-    - name: HeavyBandit_Spritesheet_22
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e2c36c84e1165048b778225d86a654e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_22
       rect:
         serializedVersion: 2
         x: 288
@@ -508,15 +562,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -19, y: 31}
-        - {x: -19, y: 4}
-        - {x: -15, y: 0}
-        - {x: 18, y: 0}
-        - {x: 18, y: 48}
-        - {x: -12, y: 48}
-        - {x: -16, y: 47}
-    - name: HeavyBandit_Spritesheet_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac98749e32198d478e8bef28843c1d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_23
       rect:
         serializedVersion: 2
         x: 336
@@ -526,13 +582,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: 48}
-        - {x: -10, y: 29}
-        - {x: -10, y: 0}
-        - {x: 18, y: 0}
-        - {x: 18, y: 48}
-    - name: HeavyBandit_Spritesheet_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44075696dd6e3a64789df39c2039bd3f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_24
       rect:
         serializedVersion: 2
         x: 0
@@ -542,14 +602,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -11, y: 17}
-        - {x: -19, y: 11}
-        - {x: -19, y: 0}
-        - {x: 24, y: 0}
-        - {x: 24, y: 9}
-        - {x: 12, y: 17}
-    - name: HeavyBandit_Spritesheet_25
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 118989e3cd5bd3e478816130e4dc9e72
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_25
       rect:
         serializedVersion: 2
         x: 48
@@ -559,15 +622,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 9, y: 26}
-        - {x: -14, y: 17}
-        - {x: -17, y: 11}
-        - {x: -17, y: 0}
-        - {x: 24, y: 0}
-        - {x: 24, y: 7}
-        - {x: 15, y: 26}
-    - name: HeavyBandit_Spritesheet_26
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a11bc368ca23d284ba94898dd85f5871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_26
       rect:
         serializedVersion: 2
         x: 96
@@ -577,15 +642,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 4, y: 35}
-        - {x: -10, y: 25}
-        - {x: -13, y: 16}
-        - {x: -13, y: 0}
-        - {x: 18, y: 0}
-        - {x: 18, y: 26}
-        - {x: 15, y: 35}
-    - name: HeavyBandit_Spritesheet_27
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e395f06f693b6f64ab9014b13494a5c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_27
       rect:
         serializedVersion: 2
         x: 144
@@ -595,16 +662,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 11, y: 35}
-        - {x: 7, y: 35}
-        - {x: -5, y: 31}
-        - {x: -12, y: 22}
-        - {x: -12, y: 0}
-        - {x: 18, y: 0}
-        - {x: 18, y: 18}
-        - {x: 16, y: 33}
-    - name: HeavyBandit_Spritesheet_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9051f174314dde4f80351e441320c2a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_28
       rect:
         serializedVersion: 2
         x: 192
@@ -614,16 +682,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 11, y: 35}
-        - {x: 3, y: 35}
-        - {x: -8, y: 34}
-        - {x: -12, y: 22}
-        - {x: -12, y: 0}
-        - {x: 18, y: 0}
-        - {x: 18, y: 18}
-        - {x: 16, y: 33}
-    - name: HeavyBandit_Spritesheet_29
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ede281fecb6ac4997fe6fa04bf0f1b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_29
       rect:
         serializedVersion: 2
         x: 240
@@ -633,17 +702,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 15, y: 35}
-        - {x: 3, y: 35}
-        - {x: -12, y: 24}
-        - {x: -12, y: 1}
-        - {x: -10, y: 0}
-        - {x: 16, y: 0}
-        - {x: 18, y: 3}
-        - {x: 18, y: 21}
-        - {x: 16, y: 34}
-    - name: HeavyBandit_Spritesheet_30
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51f5f8816056bc8429350d95cb2e4d6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_30
       rect:
         serializedVersion: 2
         x: 288
@@ -653,17 +722,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 11, y: 35}
-        - {x: 8, y: 35}
-        - {x: -5, y: 29}
-        - {x: -12, y: 19}
-        - {x: -12, y: 0}
-        - {x: 17, y: 0}
-        - {x: 18, y: 2}
-        - {x: 18, y: 18}
-        - {x: 16, y: 33}
-    - name: HeavyBandit_Spritesheet_31
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16549b03bc8c9ac459e7d8153e6354e5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_31
       rect:
         serializedVersion: 2
         x: 336
@@ -673,15 +742,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -5, y: 38}
-        - {x: -9, y: 27}
-        - {x: -10, y: 16}
-        - {x: -10, y: 0}
-        - {x: 17, y: 0}
-        - {x: 17, y: 34}
-        - {x: 6, y: 38}
-    - name: HeavyBandit_Spritesheet_32
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 698d62510650aaa47bc12a4e6ef86acf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_32
       rect:
         serializedVersion: 2
         x: 0
@@ -691,18 +762,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 14, y: 36}
-        - {x: 9, y: 39}
-        - {x: 2, y: 39}
-        - {x: -6, y: 30}
-        - {x: -12, y: 22}
-        - {x: -12, y: 0}
-        - {x: 8, y: 0}
-        - {x: 12, y: 2}
-        - {x: 18, y: 17}
-        - {x: 18, y: 27}
-    - name: HeavyBandit_Spritesheet_33
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e23faf2bef66cb744850cc36f47ffffd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_33
       rect:
         serializedVersion: 2
         x: 48
@@ -712,16 +782,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 9, y: 41}
-        - {x: 0, y: 41}
-        - {x: -7, y: 34}
-        - {x: -7, y: 0}
-        - {x: 10, y: 0}
-        - {x: 13, y: 4}
-        - {x: 17, y: 14}
-        - {x: 17, y: 29}
-    - name: HeavyBandit_Spritesheet_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1d1d9759f656d545b6769ce987c029d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_34
       rect:
         serializedVersion: 2
         x: 96
@@ -731,19 +802,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 4, y: 41}
-        - {x: 2, y: 39}
-        - {x: -2, y: 41}
-        - {x: -5, y: 41}
-        - {x: -7, y: 39}
-        - {x: -7, y: 8}
-        - {x: -4, y: 0}
-        - {x: 7, y: 0}
-        - {x: 17, y: 7}
-        - {x: 17, y: 28}
-        - {x: 11, y: 41}
-    - name: HeavyBandit_Spritesheet_35
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 984e99fc1ac882c44b908f2574963f94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_35
       rect:
         serializedVersion: 2
         x: 144
@@ -753,14 +822,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 22}
-        - {x: -20, y: 0}
-        - {x: 19, y: 0}
-        - {x: 21, y: 4}
-        - {x: 21, y: 19}
-        - {x: 16, y: 22}
-    - name: HeavyBandit_Spritesheet_36
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01327cb83825468498a81c3794248915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_36
       rect:
         serializedVersion: 2
         x: 192
@@ -770,17 +842,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -7, y: 22}
-        - {x: -20, y: 16}
-        - {x: -20, y: 9}
-        - {x: -18, y: 7}
-        - {x: -20, y: 3}
-        - {x: -20, y: 0}
-        - {x: 21, y: 0}
-        - {x: 21, y: 14}
-        - {x: 11, y: 22}
-    - name: HeavyBandit_Spritesheet_37
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bee92c167fbf42c4c8c33018fb406edb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_37
       rect:
         serializedVersion: 2
         x: 240
@@ -790,18 +862,17 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 4, y: 42}
-        - {x: -3, y: 42}
-        - {x: -10, y: 27}
-        - {x: -10, y: 17}
-        - {x: -6, y: 3}
-        - {x: 1, y: 0}
-        - {x: 12, y: 0}
-        - {x: 15, y: 8}
-        - {x: 18, y: 22}
-        - {x: 18, y: 35}
-    - name: HeavyBandit_Spritesheet_38
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 543d3f2252ae7ec4ba710d37eb8691c7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyBandit_Spritesheet_38
       rect:
         serializedVersion: 2
         x: 288
@@ -811,17 +882,26 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: 13}
-        - {x: -11, y: 13}
-        - {x: -23, y: 5}
-        - {x: -23, y: 1}
-        - {x: -22, y: 0}
-        - {x: 24, y: 0}
-        - {x: 24, y: 7}
-        - {x: 22, y: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc62d30d5fb0dea4dba86d26352a46d9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

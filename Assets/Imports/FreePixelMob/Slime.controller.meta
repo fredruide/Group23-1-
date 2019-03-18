@@ -1,7 +1,11 @@
 fileFormatVersion: 2
-guid: 996654c6a076ab842b4f6f1b426cafea
+guid: 89026d866d45886469e40e77bdd3e219
 labels:
 - Mob
 - Animation
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
