@@ -16,6 +16,7 @@ public class BottomTriggerScript : MonoBehaviour
         ps = GetComponentInParent<PlayerScript>();
     }
 
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -29,6 +30,7 @@ public class BottomTriggerScript : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         ps.bottomTrigger = collision;
+        print(collision);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

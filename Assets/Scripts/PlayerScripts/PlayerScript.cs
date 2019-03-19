@@ -37,7 +37,7 @@ public class PlayerScript : MonoBehaviour
     {
         grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
-        ani.SetBool("Grounded", grounded);
+        //ani.SetBool("Grounded", grounded);
 
         HorizontalMovement();
         Jump();
@@ -45,6 +45,8 @@ public class PlayerScript : MonoBehaviour
         //print("grounded: " + grounded);
         //print("hasBeen: " + hasBeenGrounded);
         //print("input: " + Input.GetButtonDown("Vertical"));
+        //print("Player: " + rb.transform.position);
+        //print("Camera: " + GameObject.Find("Main Camera").transform.position);
     }
 
     void HorizontalMovement()
@@ -67,9 +69,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (grounded && Input.GetButtonDown("Vertical"))
         {
-            print("jump");
             rb.velocity = new Vector2(rb.velocity.x, jump);
-            ani.SetBool("Jumping", true);
+            //ani.SetBool("Jumping", true);
         }
     }
 }
