@@ -25,29 +25,46 @@ public class MainCameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerVelocity = player.GetComponent<Rigidbody2D>().velocity;       
+        //playerVelocity = player.GetComponent<Rigidbody2D>().velocity;       
         Move();
         RestTime();
         RestPoint();
+        
+        //print("player" + player.name);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
         if (collision.gameObject == player && playerVelocity == Vector2.zero)
         {
             move = false;
             restTime = true;            
-        }
+        }*/
+        print("Enter");
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        /*
+        if (collision.gameObject == player && playerVelocity == Vector2.zero)
+        {
+            move = false;
+            restTime = true;            
+        }*/
+        //print("Stay");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        /*
         if (collision.gameObject == player)
         {
             move = true;
             restTime = false;
             restPoint = false;
-        }
+        }*/
+        //print("Exit");
     }
 
     void Move()

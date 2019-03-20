@@ -42,11 +42,18 @@ public class PlayerScript : MonoBehaviour
         HorizontalMovement();
         Jump();
 
+        
         //print("grounded: " + grounded);
         //print("hasBeen: " + hasBeenGrounded);
         //print("input: " + Input.GetButtonDown("Vertical"));
         //print("Player: " + rb.transform.position);
         //print("Camera: " + GameObject.Find("Main Camera").transform.position);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        //if(collision.gameObject.name != "Player")
+            //print(collision.gameObject.name);
     }
 
     void HorizontalMovement()
