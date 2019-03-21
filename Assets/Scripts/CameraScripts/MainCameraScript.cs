@@ -11,7 +11,9 @@ public class MainCameraScript : MonoBehaviour
     bool inBox;
 
     float moveTS = 0f;
+    float outBoxMoveTS = 0f;
     public float moveCD;
+    public float outBoxMoveCD;
 
     public float cameraSpeed;
     public float restingCameraSpeed;
@@ -80,6 +82,11 @@ public class MainCameraScript : MonoBehaviour
         if (rb.position == playerRB.position)
         {
             moveTS = 0f;
+        }
+
+        if (outBoxMoveTS >= outBoxMoveCD)
+        {
+
         }
 
         if (moveTS >= moveCD && inBox)
