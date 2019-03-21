@@ -6,14 +6,15 @@ public class MainCameraScript : MonoBehaviour
 {
     Rigidbody2D rb;
     GameObject player;
+    Rigidbody2D playerRB;
     Vector2 playerVelocity;
     bool inBox;
-    bool restPoint;
-    bool restTime;
-    public float restPointCD;
-    float restPointTS;
+
+    float moveTS = 0f;
+    public float moveCD;
 
     public float cameraSpeed;
+    public float restingCameraSpeed;
 
     Vector3 velocity = Vector3.zero;
     Vector3 endPosistion;
@@ -22,23 +23,23 @@ public class MainCameraScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+        playerRB = player.GetComponent<Rigidbody2D>();
+        playerVelocity = player.GetComponent<Rigidbody2D>().velocity;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //playerVelocity = player.GetComponent<Rigidbody2D>().velocity;       
+        moveTS += Time.deltaTime;
+
+        endPosistion = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 3);
         Move();
-        //RestTime();
-        //RestPoint();
-        
-        //print("player" + player.name);
+        print("TS: " + moveTS + " x: " + rb.position.x + " y: " + rb.position.y + " z: " + transform.position.z);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (collision.gameObject == player && playerVelocity == Vector2.zero)
+    { 
+        if (collision.gameObject == player)
         {
             inBox = true;            
         }
@@ -46,9 +47,8 @@ public class MainCameraScript : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D collision)
-    {
-        
-        if (collision.gameObject == player && playerVelocity == Vector2.zero)
+    { 
+        if (collision.gameObject == player)
         {
             inBox = true;           
         }
@@ -57,10 +57,10 @@ public class MainCameraScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
         if (collision.gameObject == player)
         {
             inBox = false;
+            moveTS = 0f;
         }
         //print("Exit");
     }
@@ -69,21 +69,22 @@ public class MainCameraScript : MonoBehaviour
     {
         if (!inBox)
         {
-            endPosistion = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 3);
             rb.transform.position = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, cameraSpeed);
             //rb.velocity = playerVelocity;
         }   
-    }
+        else if (inBox && playerVelocity != Vector2.zero)
+        {
+            moveTS = 0f;
+        }
 
-    void RestPoint()
-    {
-        endPosistion = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 3);
-        rb.transform.position = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, 1f);
-    }
+        if (rb.position == playerRB.position)
+        {
+            moveTS = 0f;
+        }
 
-    void RestTime()
-    {
-        if(restTime)
-            restPointTS = Time.time + restPointCD;
+        if (moveTS >= moveCD && inBox)
+        {
+            rb.transform.position = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, restingCameraSpeed);
+        }
     }
 }
