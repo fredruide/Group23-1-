@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b66e1a27c9634fe9a4746c47eeda7cc
+guid: 73a68b9497843c945b28c0ac87fe5c96
 TextureImporter:
   fileIDToRecycleName:
     21300000: tileset_0
@@ -131,7 +131,7 @@ TextureImporter:
     21300252: tileset_126
     21300254: tileset_127
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
