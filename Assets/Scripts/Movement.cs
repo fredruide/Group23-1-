@@ -141,7 +141,7 @@ public class Movement : PhysicsObject
     {
         if (Input.GetKey(KeyCode.D))
         {
-            transform.localScale = new Vector3(6f, 5f, 2f);
+            transform.localScale = new Vector3(3.3575f, 3.564228f, 2f);
             targetVelocity.x = maxSpeed;
             direction = true;
         }
@@ -152,7 +152,7 @@ public class Movement : PhysicsObject
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.localScale = new Vector3(-6f, 5f, 2f);
+            transform.localScale = new Vector3(-3.3575f, 3.564228f, 2f);
             targetVelocity.x = maxSpeed * -1;
             direction = false;
         }
