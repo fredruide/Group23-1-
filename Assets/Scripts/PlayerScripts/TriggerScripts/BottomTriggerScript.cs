@@ -25,15 +25,18 @@ public class BottomTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ps.bottomTrigger = collision;
+        if(collision.gameObject.tag == "Ground")
+            ps._grounded = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        ps.bottomTrigger = collision;
+        if (collision.gameObject.tag == "Ground")
+            ps._grounded = true;
         //print("BottomScript hitr: " + collision);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ps.bottomTrigger = collision;
+        if (collision.gameObject.tag == "Ground")
+            ps._grounded = false;
     }
 }

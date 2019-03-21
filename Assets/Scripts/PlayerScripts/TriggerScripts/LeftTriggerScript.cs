@@ -22,14 +22,14 @@ public class LeftTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ps.leftTrigger = collision;
+        //ps.leftTrigger = collision;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        ps.leftTrigger = collision;
+        //ps.leftTrigger = collision;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ps.leftTrigger = collision;
+        //ps.leftTrigger = collision;
     }
 }

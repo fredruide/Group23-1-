@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator ani;
-
+    /*
     [HideInInspector]
     Collider2D _leftTrigger;
     public Collider2D leftTrigger { get { return _leftTrigger; } set { _leftTrigger = value; } }
@@ -33,9 +33,14 @@ public class PlayerScript : MonoBehaviour
         }
     }
     //[HideInInspector]
-    //public Collider2D topTrigger { get; set; }
+    //public Collider2D topTrigger { get; set; }*/
 
     bool grounded;
+    public bool _grounded
+    {
+        get { return grounded; }
+        set { grounded = value; }
+    }
     bool hasBeenGrounded;
 
     #region IDEvariabler
@@ -90,7 +95,7 @@ public class PlayerScript : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
-            print("Jump: " + rb.velocity.y);
+            //print("Jump: " + rb.velocity.y);
         }
     }
 }
