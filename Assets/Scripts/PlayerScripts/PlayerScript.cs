@@ -9,13 +9,31 @@ public class PlayerScript : MonoBehaviour
     Animator ani;
 
     [HideInInspector]
-    public Collider2D leftTrigger;
+    Collider2D _leftTrigger;
+    public Collider2D leftTrigger { get { return _leftTrigger; } set { _leftTrigger = value; } }
     [HideInInspector]
-    public Collider2D rightTrigger;
+    Collider2D _rightTrigger;
+    public Collider2D rightTrigger { get { return _rightTrigger; } set { _rightTrigger = value; } }
     [HideInInspector]
-    public Collider2D bottomTrigger;
-    [HideInInspector]
-    public Collider2D topTrigger;
+    Collider2D _bottomTrigger;
+    public Collider2D bottomTrigger
+    {
+        get { return _bottomTrigger; }
+        set
+        {
+            _bottomTrigger = value;
+            if (_bottomTrigger.gameObject.tag == "Ground")
+            {
+                grounded = true;
+            }
+            else
+            {
+                grounded = false;
+            }
+        }
+    }
+    //[HideInInspector]
+    //public Collider2D topTrigger { get; set; }
 
     bool grounded;
     bool hasBeenGrounded;
@@ -35,7 +53,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
+        //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
         //ani.SetBool("Grounded", grounded);
 
@@ -48,12 +66,6 @@ public class PlayerScript : MonoBehaviour
         //print("input: " + Input.GetButtonDown("Vertical"));
         //print("Player: " + rb.transform.position);
         //print("Camera: " + GameObject.Find("Main Camera").transform.position);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        //if(collision.gameObject.name != "Player")
-            //print(collision.gameObject.name);
     }
 
     void HorizontalMovement()
@@ -78,6 +90,7 @@ public class PlayerScript : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
+            print("Jump: " + rb.velocity.y);
         }
     }
 }

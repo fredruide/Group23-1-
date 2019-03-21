@@ -30,7 +30,7 @@ public class BottomTriggerScript : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         ps.bottomTrigger = collision;
-        print("BottomScript hitr: " + collision);
+        //print("BottomScript hitr: " + collision);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
