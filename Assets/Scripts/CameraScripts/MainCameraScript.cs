@@ -18,6 +18,9 @@ public class MainCameraScript : MonoBehaviour
     public float cameraSpeed;
     public float restingCameraSpeed;
 
+    public float moveCameraX;
+    public float moveCameraY;
+
     Vector3 velocity = Vector3.zero;
     Vector3 endPosistion;
     // Start is called before the first frame update
@@ -35,10 +38,16 @@ public class MainCameraScript : MonoBehaviour
         moveTS += Time.deltaTime;
 
         endPosistion = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 3);
+        //if(Input.GetAxisRaw("CamHorizontal") != 0 || Input.GetAxisRaw("CamVertical") != 0)
+          //  JoyStickMove();
+        //else
         Move();
-        print("TS: " + moveTS + " x: " + rb.position.x + " y: " + rb.position.y + " z: " + transform.position.z);
-    }
 
+        print("inbox: " + inBox);
+        //print("TS: " + moveTS + " x: " + rb.position.x + " y: " + rb.position.y + " z: " + transform.position.z);
+        print("AxisX: " + Input.GetAxisRaw("CamHorizontal") + " AxisY: " + Input.GetAxisRaw("CamVertical"));
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     { 
         if (collision.gameObject == player)
@@ -67,17 +76,66 @@ public class MainCameraScript : MonoBehaviour
         //print("Exit");
     }
 
+
     void Move()
     {
         if (!inBox)
         {
+            moveTS = 0f;
             rb.transform.position = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, cameraSpeed);
+            //rb.velocity = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, cameraSpeed);
             //rb.velocity = playerVelocity;
+            
+            print("Óut of box move");
         }   
         else if (inBox && playerVelocity != Vector2.zero)
         {
             moveTS = 0f;
         }
+        else if (moveTS >= moveCD && inBox)
+        {
+            rb.transform.position = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, restingCameraSpeed);
+            //rb.velocity = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, restingCameraSpeed);
+
+            print("Resting move");
+        }
+        else if (inBox)
+        {
+            print("Camera Stick move");
+
+            moveTS = 0f;
+
+            float x = Mathf.Round(Input.GetAxisRaw("CamHorizontal"));
+            float y = Mathf.Round(Input.GetAxisRaw("CamVertical"));
+
+            rb.velocity = new Vector2(x * moveCameraX, y * moveCameraY);
+        }
+        /*else if ((Input.GetAxisRaw("CamHorizontal") != 0 || Input.GetAxisRaw("CamVertical") != 0) && inBox)
+        {
+            print("Camera Stick move");
+
+            moveTS = 0f;
+
+            //float x = Mathf.Round(Input.GetAxisRaw("CamHorizontal"));
+            //float y = Mathf.Round(Input.GetAxisRaw("CamVertical"));
+            float x;
+            if (Input.GetAxis("CamHorizontal") > 0)
+                x = 1;
+            else if (Input.GetAxis("CamHorizontal") < 0)
+                x = -1;
+            else
+                x = 0;
+            float y;
+            if (Input.GetAxis("CamVertical") > 0)
+                y = 1;
+            else if (Input.GetAxis("CamVertical") < 0)
+                y = -1;
+            else
+                y = 0;
+
+
+            rb.velocity = new Vector2(x * moveCameraX, y * moveCameraY);
+        }*/
 
         if (rb.position == playerRB.position)
         {
@@ -88,10 +146,10 @@ public class MainCameraScript : MonoBehaviour
         {
 
         }
+    }
 
-        if (moveTS >= moveCD && inBox)
-        {
-            rb.transform.position = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, restingCameraSpeed);
-        }
+    void JoyStickMove()
+    {
+
     }
 }

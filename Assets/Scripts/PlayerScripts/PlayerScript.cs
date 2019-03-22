@@ -65,7 +65,6 @@ public class PlayerScript : MonoBehaviour
         HorizontalMovement();
         Jump();
 
-        
         //print("grounded: " + grounded);
         //print("hasBeen: " + hasBeenGrounded);
         //print("input: " + Input.GetButtonDown("Vertical"));
@@ -91,7 +90,8 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        if (grounded && Input.GetButtonDown("Vertical"))
+        //print(Input.GetButtonDown("Vertical"));
+        if (grounded == true && Input.GetButtonDown("Vertical"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
