@@ -78,7 +78,7 @@ public class Movement : PhysicsObject
     {
         cd = cd - Time.smoothDeltaTime;
         dashTrue = detect.dashTrue;
-        if (Input.GetKeyDown(KeyCode.R) && dashTrue)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTrue)
         {
             if (cd <= 0)
             {
@@ -122,12 +122,12 @@ public class Movement : PhysicsObject
     {
         jumpTrue = detect.JumpTest();
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpTrue)
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && jumpTrue)
         {
             animator.SetBool("isJumping", true);
             velocity.y = jumpTakeOffSpeed;
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
         {
 
             if (velocity.y > 0)
