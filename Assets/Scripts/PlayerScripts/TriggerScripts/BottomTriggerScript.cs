@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BottomTriggerScript : MonoBehaviour
 {
-    //Rigidbody2D rb;
+    Rigidbody2D rb;
     PlayerScript ps;
 
     //bool and float for coyote time.
@@ -12,7 +12,7 @@ public class BottomTriggerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         ps = GetComponentInParent<PlayerScript>();
     }
 
@@ -25,15 +25,27 @@ public class BottomTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ps.bottomTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._grounded = true;
+        }
+        //print("BottomScript Enter hit: " + collision.gameObject.tag);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        ps.bottomTrigger = collision;
-        print(collision);
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._grounded = true;
+        }
+        //print("BottomScript Stay hit: " + collision.gameObject.tag);
     }
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ps.bottomTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._grounded = false;
+        }   
+        //print("BottomScript Exit hit: " + collision.gameObject.tag);
     }
 }

@@ -22,14 +22,14 @@ public class RightTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ps.rightTrigger = collision;
+        //ps.rightTrigger = collision;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        ps.rightTrigger = collision;
+        //ps.rightTrigger = collision;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ps.rightTrigger = collision;
+        //ps.rightTrigger = collision;
     }
 }
