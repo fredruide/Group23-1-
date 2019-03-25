@@ -8,15 +8,13 @@ public class EnemyTest : MonoBehaviour
     public float speed;
     private float dazedTime;
     public float startDazedTime;
-
-    private Animator anim;
     public GameObject bloodEffect;
 
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        anim.SetBool("isRunning", true);
-    }
+    //void Start()
+    //{
+    //    anim = GetComponent<Animator>();
+    //    anim.SetBool("isRunning", true);
+    //}
 
     void Update()
     {
@@ -42,6 +40,6 @@ public class EnemyTest : MonoBehaviour
     {
         dazedTime = startDazedTime;
         hp -= dmg;
-        Debug.Log("Damage taken");
+        Debug.Log("Damage taken " + dmg);
     }
 }
