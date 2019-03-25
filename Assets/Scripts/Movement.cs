@@ -122,7 +122,7 @@ public class Movement : PhysicsObject
     {
         jumpTrue = detect.JumpTest();
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && jumpTrue)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && jumpTrue)
         {
             animator.SetBool("isJumping", true);
             velocity.y = jumpTakeOffSpeed;
@@ -155,6 +155,8 @@ public class Movement : PhysicsObject
             transform.localScale = new Vector3(-3.3575f, 3.564228f, 2f);
             targetVelocity.x = maxSpeed * -1;
             direction = false;
+
+
         }
         else if (!dashing && Input.GetKeyUp(KeyCode.A))
         {            
