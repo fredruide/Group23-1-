@@ -15,8 +15,6 @@ public class TriggerScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D wall)
     {
-        print(rb.gameObject.name + ": Trigger Enter" );
-
         if (wall.gameObject.tag == "Wall")
         {
             GoombaScript.terrainTrigger = wall;
@@ -24,9 +22,7 @@ public class TriggerScript : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D drop)
-    {
-        print(rb.gameObject.name + ": Trigger Exit");
-
+    {   
         if (drop.gameObject.tag == "Platform")
         {
             GoombaScript.terrainTrigger = drop;
