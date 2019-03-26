@@ -43,7 +43,6 @@ public class MainCameraScript : MonoBehaviour
     }
 
     float moveTS = 0f;
-    float outBoxMoveTS = 0f;
     public float moveCD;
 
     public float cameraSpeed;
@@ -76,11 +75,11 @@ public class MainCameraScript : MonoBehaviour
 
         //print("inbox: " + inBox);
         //print("TS: " + moveTS + " x: " + rb.position.x + " y: " + rb.position.y + " z: " + transform.position.z);
-        print("Top: " + topTrigger);
-        print("Right: " + rightTrigger);
-        print("Bottom: " + bottomTrigger);
-        print("Left: " + leftTrigger);
-        print("AxisX: " + Input.GetAxisRaw("CamHorizontal") + " AxisY: " + Input.GetAxisRaw("CamVertical"));
+        //print("Top: " + topTrigger);
+        //print("Right: " + rightTrigger);
+        //print("Bottom: " + bottomTrigger);
+        //print("Left: " + leftTrigger);
+        //print("AxisX: " + Input.GetAxisRaw("CamHorizontal") + " AxisY: " + Input.GetAxisRaw("CamVertical"));
         //print("ColliderPosistionX: " + col.transform.position.x + " ColliderPosistionY: " + col.transform.position.y);
         //print("CamPosistionX: " + transform.position.x + " CamPosistionY: " + transform.position.y);
         //print("PlayerPosistionX: " + playerRB.transform.position.x + " PlayerPosistionY: " + playerRB.transform.position.y);
