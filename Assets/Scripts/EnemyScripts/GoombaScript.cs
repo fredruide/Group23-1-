@@ -15,7 +15,7 @@ public class GoombaScript : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-        Physics2D.IgnoreLayerCollision(8, 8);
+        Physics2D.IgnoreLayerCollision(10, 10);
     }
 
     // Update is called once per frame
