@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private float timeBtwAttack;
+    public float timeBtwAttack;
     public float startTimeBtwAttack;
     public Transform attackPos;
     public LayerMask whatisEnemy;
@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     public int attackType;
     public float attackGracePeriod;
     public float startTimeBtwGrace;
+    public float bulletSpeed;
 
 
     void Update()
@@ -67,4 +68,9 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
+  
+    //private void shoot()
+    //{
+
+    //}
 }

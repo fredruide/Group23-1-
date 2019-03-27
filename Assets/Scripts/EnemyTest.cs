@@ -6,7 +6,7 @@ public class EnemyTest : MonoBehaviour
 {
     public int hp;
     public float speed;
-    private float dazedTime;
+    public float dazedTime;
     public float startDazedTime;
     public GameObject bloodEffect;
 
@@ -20,7 +20,7 @@ public class EnemyTest : MonoBehaviour
     {
         if(dazedTime <= 0)
         {
-            speed = 3;
+            speed = 1;
         }
         else
         {
