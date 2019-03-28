@@ -7,33 +7,6 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator ani;
-    /*
-    [HideInInspector]
-    Collider2D _leftTrigger;
-    public Collider2D leftTrigger { get { return _leftTrigger; } set { _leftTrigger = value; } }
-    [HideInInspector]
-    Collider2D _rightTrigger;
-    public Collider2D rightTrigger { get { return _rightTrigger; } set { _rightTrigger = value; } }
-    [HideInInspector]
-    Collider2D _bottomTrigger;
-    public Collider2D bottomTrigger
-    {
-        get { return _bottomTrigger; }
-        set
-        {
-            _bottomTrigger = value;
-            if (_bottomTrigger.gameObject.tag == "Ground")
-            {
-                grounded = true;
-            }
-            else
-            {
-                grounded = false;
-            }
-        }
-    }
-    //[HideInInspector]
-    //public Collider2D topTrigger { get; set; }*/
 
     bool grounded;
     public bool _grounded
@@ -41,11 +14,14 @@ public class PlayerScript : MonoBehaviour
         get { return grounded; }
         set { grounded = value; }
     }
-    bool hasBeenGrounded;
 
     #region IDEvariabler
     public float speed;
     public float jump;
+    #endregion
+    #region StatsVariabler
+    int health;
+    int maxHealth;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -98,4 +74,27 @@ public class PlayerScript : MonoBehaviour
             //print("Jump: " + rb.velocity.y);
         }
     }
+
+    #region StatManipulators
+    void TakeDamage(int dmg)
+    {
+        if (dmg >= health)
+            Die();
+        else
+            health -= dmg;
+    }
+
+    void Die()
+    {
+
+    }
+
+    void Heal(int heal)
+    {
+        if (heal + health > maxHealth)
+            health = maxHealth;
+        else
+            health += heal;
+    }
+    #endregion
 }
