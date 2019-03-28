@@ -15,11 +15,22 @@ public class PlayerScript : MonoBehaviour
         get { return grounded; }
         set { grounded = value; }
     }
+    bool directionFaced;
+    public bool _directionFaced
+    {
+        get { return directionFaced; }
+    }
 
     #region IDEvariabler
     public float speed;
     public float jump;
+    public float coyoteCD;
     #endregion
+    float coyoteTS;
+    public float _coyoteTS
+    {
+        set { coyoteTS = value + coyoteCD; }
+    }
     #region StatsVariabler
     int health;
     int maxHealth;
@@ -45,6 +56,8 @@ public class PlayerScript : MonoBehaviour
         HorizontalMovement();
         Jump();
 
+        GetComponentInChildren<SpriteRenderer>().flipX = true;
+
         //print("grounded: " + grounded);
         //print("hasBeen: " + hasBeenGrounded);
         //print("input: " + Input.GetButtonDown("Vertical"));
@@ -65,18 +78,46 @@ public class PlayerScript : MonoBehaviour
         else if (Input.GetAxisRaw("Horizontal") == 0)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+        } 
     }
+
+    bool hasJumped;
 
     void Jump()
     {
         //print(Input.GetButtonDown("Vertical"));
         if (grounded == true && Input.GetButtonDown("Vertical"))
         {
+            hasJumped = true;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
             //print("Jump: " + rb.velocity.y);
         }
+        else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time)
+        {
+            hasJumped = true;
+            rb.velocity = new Vector2(rb.velocity.x, jump);
+            //ani.SetBool("Jumping", true);
+            //print("Jump: " + rb.velocity.y);
+        }
+
+        if (grounded)
+            hasJumped = false;
+    }
+
+    bool hasDoubleJumped;
+
+    void DoubleJump()
+    {
+        if (!grounded && Input.GetButtonDown("Vertical") && !hasDoubleJumped && coyoteTS < Time.time)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.velocity = new Vector2(rb.velocity.x, jump);
+            hasDoubleJumped = true;
+        }
+
+        if (grounded)
+            hasDoubleJumped = false;
     }
 
     #region StatManipulators

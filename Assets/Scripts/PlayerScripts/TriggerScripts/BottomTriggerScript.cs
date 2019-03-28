@@ -45,6 +45,7 @@ public class BottomTriggerScript : MonoBehaviour
         if (collision.gameObject.tag == "Platform")
         {
             ps._grounded = false;
+            ps._coyoteTS = Time.time;
         }   
         //print("BottomScript Exit hit: " + collision.gameObject.tag);
     }
