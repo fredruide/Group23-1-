@@ -22,14 +22,23 @@ public class LeftTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //ps.leftTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._touchLeft = true;
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //ps.leftTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._touchLeft = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //ps.leftTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._touchLeft = false;
+        }
     }
 }

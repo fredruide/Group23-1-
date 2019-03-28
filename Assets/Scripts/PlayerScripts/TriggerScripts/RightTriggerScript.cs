@@ -22,14 +22,23 @@ public class RightTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //ps.rightTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._touchRight = true;
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //ps.rightTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._touchRight = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //ps.rightTrigger = collision;
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._touchRight = false;
+        }
     }
 }

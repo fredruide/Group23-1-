@@ -13,8 +13,29 @@ public class PlayerScript : MonoBehaviour
     public bool _grounded
     {
         get { return grounded; }
-        set { grounded = value; }
+        set
+        {
+            grounded = value;
+            if (value == true)
+            {
+                canJumped = true;
+                canDoubleJumped = true;
+            }
+        }
     }
+    bool touchRight;
+    public bool _touchRight
+    {
+        get { return touchRight; }
+        set { touchRight = value; }
+    }
+    bool touchLeft;
+    public bool _touchLeft
+    {
+        get { return touchLeft; }
+        set { touchLeft = value; }
+    }
+    //true = facing right : false = facing left
     bool directionFaced;
     public bool _directionFaced
     {
@@ -32,8 +53,8 @@ public class PlayerScript : MonoBehaviour
         set { coyoteTS = value + coyoteCD; }
     }
     #region StatsVariabler
-    int health;
-    int maxHealth;
+    public int health;
+    public int maxHealth;
     Vector2 respawnPosition;
     #endregion
     // Start is called before the first frame update
@@ -49,16 +70,17 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        DirectionFacing();
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
         //ani.SetBool("Grounded", grounded);
 
         HorizontalMovement();
         Jump();
-
-        GetComponentInChildren<SpriteRenderer>().flipX = true;
+        DoubleJump();
 
         //print("grounded: " + grounded);
+        //print("canJumped: " + canJumped);
         //print("hasBeen: " + hasBeenGrounded);
         //print("input: " + Input.GetButtonDown("Vertical"));
         //print("Player: " + rb.transform.position);
@@ -67,57 +89,66 @@ public class PlayerScript : MonoBehaviour
 
     void HorizontalMovement()
     {
-        if (grounded && Input.GetAxisRaw("Horizontal") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            if(!touchRight && Input.GetAxisRaw("Horizontal") > 0)
+                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            else
+                rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
+        /*else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
         {
-            rb.velocity = new Vector2(speed / 2 * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-        }
+            if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
+                rb.velocity = new Vector2(speed / 2 * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+                rb.velocity = new Vector2(speed / 2 * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            else
+                rb.velocity = new Vector2(0, rb.velocity.y);
+        }*/
         else if (Input.GetAxisRaw("Horizontal") == 0)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         } 
     }
 
-    bool hasJumped;
+    bool canJumped;
 
     void Jump()
     {
         //print(Input.GetButtonDown("Vertical"));
         if (grounded == true && Input.GetButtonDown("Vertical"))
         {
-            hasJumped = true;
+            canJumped = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
-            //print("Jump: " + rb.velocity.y);
+            print("Jump: " + rb.velocity.y);
+            print("grounded: " + grounded);
+            print("canJumped: " + canJumped);
         }
-        else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time)
+        else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJumped)
         {
-            hasJumped = true;
+            canJumped = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
-            //print("Jump: " + rb.velocity.y);
+            print("Jump Coyote: " + rb.velocity.y);
+            print("grounded: " + grounded);
+            print("canJumped: " + canJumped);
         }
-
-        if (grounded)
-            hasJumped = false;
     }
 
-    bool hasDoubleJumped;
+    bool canDoubleJumped;
 
     void DoubleJump()
     {
-        if (!grounded && Input.GetButtonDown("Vertical") && !hasDoubleJumped && coyoteTS < Time.time)
+        if (!grounded && Input.GetButtonDown("Vertical") && canDoubleJumped && canDoubleJumped)
         {
+            canDoubleJumped = false;
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity = new Vector2(rb.velocity.x, jump);
-            hasDoubleJumped = true;
+            rb.velocity = new Vector2(rb.velocity.x, jump);            
+            print("DoubleJump: " + rb.velocity.y);
         }
-
-        if (grounded)
-            hasDoubleJumped = false;
     }
 
     #region StatManipulators
@@ -145,6 +176,22 @@ public class PlayerScript : MonoBehaviour
     void SetRespawn(Vector2 newRespawn)
     {
         respawnPosition = newRespawn;
+    }
+    #endregion
+    #region HelperMethods
+    void DirectionFacing()
+    {
+        //check what direction player last faced
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            directionFaced = true;
+            sr.flipX = !directionFaced;
+        } 
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            directionFaced = false;
+            sr.flipX = !directionFaced;
+        }
     }
     #endregion
 }
