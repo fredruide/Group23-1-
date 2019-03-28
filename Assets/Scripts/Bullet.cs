@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
-    public int damage = 6;
-    public Rigidbody2D rb;
-    public GameObject impactEffect;
-
-    void Start()
+    public Transform firePoint;
+    public GameObject bullet;
+    void Update()
     {
-        rb.velocity = transform.right * speed;
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Fire();
+        }
     }
 
-    //void OnTriggerEnter2D(Collider2D hitInfo)
-    //{
-    //    EnemyTest enemy = hitInfo.GetComponent<EnemyTest>();
-    //    if (enemy != null)
-    //    {
-    //        EnemyTest.TakeDmg(damage);
-    //    }
-    //}
+    void Fire()
+    {
+        Instantiate(bullet, firePoint.position, firePoint.rotation);
+    }
 
 }

@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 5092152333447968813}
   - component: {fileID: 5092152333447968810}
   - component: {fileID: 5092152333447968811}
+  - component: {fileID: 5519352570422729719}
   - component: {fileID: 5092152333447968814}
   m_Layer: 0
   m_Name: Player
@@ -493,6 +494,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5519352570422729719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5092152333447968809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f69e44753f4c74ea72b93c490344ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 5092152332982488792}
+  bullet: {fileID: 5284784427024207470, guid: 33282cb285a40274793345faa0e39199, type: 3}
 --- !u!114 &5092152333447968814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f69d056e1734f94ea9c45a02ee36dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBtwAttack: 0
   startTimeBtwAttack: 0.2
   attackPos: {fileID: 5092152332982488792}
   whatisEnemy:
@@ -519,3 +535,4 @@ MonoBehaviour:
   attackType: 1
   attackGracePeriod: 0
   startTimeBtwGrace: 0.7
+  bulletSpeed: 0
