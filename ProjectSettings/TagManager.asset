@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Platform
   - Portal
+  - Platform
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -18,8 +20,9 @@ TagManager:
   - 
   - 
   - PostProcessing
+  - Player
+  - Enemy
   - Block
-  - 
   - 
   - 
   - 
