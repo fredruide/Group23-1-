@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator ani;
+    Camera mainCam;
 
     bool grounded;
     public bool _grounded
@@ -22,6 +23,7 @@ public class PlayerScript : MonoBehaviour
     #region StatsVariabler
     int health;
     int maxHealth;
+    Vector2 respawnPosition;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,8 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
+
+        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -86,7 +90,7 @@ public class PlayerScript : MonoBehaviour
 
     void Die()
     {
-
+        rb.transform.position = respawnPosition;
     }
 
     void Heal(int heal)
@@ -95,6 +99,11 @@ public class PlayerScript : MonoBehaviour
             health = maxHealth;
         else
             health += heal;
+    }
+
+    void SetRespawn(Vector2 newRespawn)
+    {
+        respawnPosition = newRespawn;
     }
     #endregion
 }
