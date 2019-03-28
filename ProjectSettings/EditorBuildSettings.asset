@@ -4,8 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Playground.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  m_Scenes: [{enabled: 1, path: Assets/Scenes/Playground.unity, guid: 99c9720ab356a0642a771bea13969a05},
+    {enabled: 1, path: Assets/Scenes/Grasslands.unity, guid: dd70061ac6135674ab58b0f374462642},
+    {enabled: 1, path: Assets/Scenes/CameraTest.unity, guid: a7647d18d9a59274e8c170c34898b04a},
+    {enabled: 1, path: Assets/Scenes/Playground.unity, guid: 99c9720ab356a0642a771bea13969a05}]
   m_configObjects: {}
