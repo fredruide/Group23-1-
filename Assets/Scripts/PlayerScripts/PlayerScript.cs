@@ -8,21 +8,20 @@ public class PlayerScript : MonoBehaviour
     SpriteRenderer sr;
     Animator ani;
 
-    [HideInInspector]
-    public Collider2D leftTrigger;
-    [HideInInspector]
-    public Collider2D rightTrigger;
-    [HideInInspector]
-    public Collider2D bottomTrigger;
-    [HideInInspector]
-    public Collider2D topTrigger;
-
     bool grounded;
-    bool hasBeenGrounded;
+    public bool _grounded
+    {
+        get { return grounded; }
+        set { grounded = value; }
+    }
 
     #region IDEvariabler
     public float speed;
     public float jump;
+    #endregion
+    #region StatsVariabler
+    int health;
+    int maxHealth;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -35,7 +34,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
+        //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
         //ani.SetBool("Grounded", grounded);
 
@@ -67,10 +66,35 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        if (grounded && Input.GetButtonDown("Vertical"))
+        //print(Input.GetButtonDown("Vertical"));
+        if (grounded == true && Input.GetButtonDown("Vertical"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
+            //print("Jump: " + rb.velocity.y);
         }
     }
+
+    #region StatManipulators
+    void TakeDamage(int dmg)
+    {
+        if (dmg >= health)
+            Die();
+        else
+            health -= dmg;
+    }
+
+    void Die()
+    {
+
+    }
+
+    void Heal(int heal)
+    {
+        if (heal + health > maxHealth)
+            health = maxHealth;
+        else
+            health += heal;
+    }
+    #endregion
 }
