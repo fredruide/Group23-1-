@@ -22,6 +22,10 @@ public class PlayerScript : MonoBehaviour
                 canDoubleJumped = true;
                 canMoveHori = true;
             }
+            else
+            {
+                canMoveHori = false;
+            }
         }
     }
     bool touchRight;
@@ -90,6 +94,7 @@ public class PlayerScript : MonoBehaviour
         DoubleJump();
         WallJump();
 
+        //print("Velocity: " + rb.velocity);
         //print("grounded: " + grounded);
         //print("canJumped: " + canJumped);
         //print("hasBeen: " + hasBeenGrounded);
@@ -113,8 +118,7 @@ public class PlayerScript : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-
-        if (Input.GetAxisRaw("Horizontal") != 0 && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
+        else if (Input.GetAxisRaw("Horizontal") != 0 && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
         {
             if ((Input.GetAxisRaw("Horizontal") > 0 && touchRight) || (Input.GetAxisRaw("Horizontal") < 0 && touchLeft))
             {
@@ -172,24 +176,25 @@ public class PlayerScript : MonoBehaviour
     public float stopMoveHoriCD;
     void WallJump()
     {
-        Vector2 wallJump;
         bool triggered = false;
 
         if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0)
         {
+            print("Velocity 1: " + rb.velocity);
             rb.velocity = Vector2.zero;
-            wallJump = new Vector2(wallJumpX * -1,wallJumpY);
-            rb.velocity = wallJump;
+            rb.velocity = new Vector2(wallJumpX * -1, wallJumpY);
             triggered = true;
             //print("WallJump touchRight");
+            print("Velocity 2: " + rb.velocity);
         }
         else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0)
         {
+            print("Velocity 1: " + rb.velocity);
             rb.velocity = Vector2.zero;
-            wallJump = new Vector2(wallJumpX, wallJumpY);
-            rb.velocity = wallJump;
+            rb.velocity = new Vector2(wallJumpX, wallJumpY);
             triggered = true;
             //print("WallJump touchLeft");
+            print("Velocity 2: " + rb.velocity);
         }
         /*if ((Input.GetAxisRaw("Vertical") > 0 && touchRight && Input.GetAxisRaw("Horizontal") > 0) || (Input.GetAxisRaw("Vertical") > 0 && touchLeft && Input.GetAxisRaw("Horizontal") < 0))
         {
