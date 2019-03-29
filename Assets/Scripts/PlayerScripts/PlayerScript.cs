@@ -58,8 +58,7 @@ public class PlayerScript : MonoBehaviour
         ani.SetFloat("IsMoving", test);
         if (grounded && Input.GetAxisRaw("Horizontal") != 0)
         {
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            
+            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);            
         }
         else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
         {
