@@ -54,6 +54,8 @@ public class PlayerScript : MonoBehaviour
 
     public float wallJumpX;
     public float wallJumpY;
+
+    public float wallSlideSpeed;
     #endregion
     float coyoteTS;
     public float _coyoteTS
@@ -107,6 +109,18 @@ public class PlayerScript : MonoBehaviour
             else
                 rb.velocity = new Vector2(0, rb.velocity.y);
         }
+        else if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        if (Input.GetAxisRaw("Horizontal") != 0 && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
+        {
+            if ((Input.GetAxisRaw("Horizontal") > 0 && touchRight) || (Input.GetAxisRaw("Horizontal") < 0 && touchLeft))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed * -1);
+            }
+        }
         //SLOW MOVMENT WHEN IN AIR
         /*else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
         {
@@ -117,10 +131,7 @@ public class PlayerScript : MonoBehaviour
             else
                 rb.velocity = new Vector2(0, rb.velocity.y);
         }*/
-        else if (Input.GetAxisRaw("Horizontal") == 0)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        } 
+
     }
 
     void Jump()
@@ -164,46 +175,48 @@ public class PlayerScript : MonoBehaviour
         Vector2 wallJump;
         bool triggered = false;
 
-        /*if (Input.GetAxisRaw("Vertical") > 0 && touchRight && Input.GetAxisRaw("Horizontal") > 0)
+        if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0)
         {
+            rb.velocity = Vector2.zero;
             wallJump = new Vector2(wallJumpX * -1,wallJumpY);
             rb.velocity = wallJump;
             triggered = true;
-            print("WallJump touchRight");
+            //print("WallJump touchRight");
         }
-        if (Input.GetAxisRaw("Vertical") > 0 && touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+        else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0)
         {
+            rb.velocity = Vector2.zero;
             wallJump = new Vector2(wallJumpX, wallJumpY);
             rb.velocity = wallJump;
             triggered = true;
-            print("WallJump touchLeft");
-        }*/
-        if ((Input.GetAxisRaw("Vertical") > 0 && touchRight && Input.GetAxisRaw("Horizontal") > 0) || (Input.GetAxisRaw("Vertical") > 0 && touchLeft && Input.GetAxisRaw("Horizontal") < 0))
+            //print("WallJump touchLeft");
+        }
+        /*if ((Input.GetAxisRaw("Vertical") > 0 && touchRight && Input.GetAxisRaw("Horizontal") > 0) || (Input.GetAxisRaw("Vertical") > 0 && touchLeft && Input.GetAxisRaw("Horizontal") < 0))
         {
             float input = Input.GetAxisRaw("Horizontal");
             rb.velocity = Vector2.zero;
             print(rb.velocity);
 
             //wallJump = new Vector2(wallJumpX * -1, wallJumpY);
-            wallJump = new Vector2(wallJumpX * Mathf.Round(input), rb.position.y + 5);
+            wallJump = new Vector2(wallJumpX * Mathf.Round(input), wallJumpY);
             //rb.velocity = Vector2.Lerp(rb.position, wallJump, 0.1f);
             rb.velocity = wallJump;
             triggered = true;
             print("WallJump touchRight");
-        }
+        }*/
 
 
         if (triggered)
         {
             canMoveHori = false;
             stopMoveHoriTS = Time.time + stopMoveHoriCD;
-            print("CanMoveHori trigger: " + canMoveHori);
+            //print("CanMoveHori trigger: " + canMoveHori);
         }
 
         if (stopMoveHoriTS <= Time.time)
         {
             canMoveHori = true;
-            print("CanMoveHori stopMove: " + canMoveHori);
+            //print("CanMoveHori stopMove: " + canMoveHori);
         }     
         
     }

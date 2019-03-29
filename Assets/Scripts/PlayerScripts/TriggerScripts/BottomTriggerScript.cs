@@ -35,7 +35,7 @@ public class BottomTriggerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Platform")
         {
-            //ps._grounded = true;
+            ps._grounded = true;
         }
         //print("BottomScript Stay hit: " + collision.gameObject.tag);
     }
