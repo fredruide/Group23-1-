@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
         {
-            rb.velocity = new Vector2(speed / 2 * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
         }
         else if (Input.GetAxisRaw("Horizontal") == 0)
         {
