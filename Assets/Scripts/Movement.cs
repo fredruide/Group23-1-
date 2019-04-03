@@ -13,6 +13,7 @@ public class Movement : PhysicsObject
 
     private bool jumpTrue = false;
     private bool direction = true;
+    public static bool canMove = true;
     
     public float maxSpeed = 7f;
     public float jumpTakeOffSpeed = 7f;
@@ -78,7 +79,7 @@ public class Movement : PhysicsObject
     {
         cd = cd - Time.smoothDeltaTime;
         dashTrue = detect.dashTrue;
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTrue)
+        if ((Input.GetKeyDown(KeyCode.LeftShift) && dashTrue) && canMove == true)
         {
             if (cd <= 0)
             {
@@ -122,7 +123,7 @@ public class Movement : PhysicsObject
     {
         jumpTrue = detect.JumpTest();
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && jumpTrue)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && jumpTrue && canMove)
         {
             animator.SetBool("isJumping", true);
             velocity.y = jumpTakeOffSpeed;
@@ -139,7 +140,7 @@ public class Movement : PhysicsObject
 
     private void walk()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && canMove == true)
         {
             transform.localScale = new Vector3(3.3575f, 3.564228f, 2f);
             targetVelocity.x = maxSpeed;
@@ -150,7 +151,7 @@ public class Movement : PhysicsObject
             targetVelocity.x = 0f;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && canMove == true)
         {
             transform.localScale = new Vector3(-3.3575f, 3.564228f, 2f);
             targetVelocity.x = maxSpeed * -1;

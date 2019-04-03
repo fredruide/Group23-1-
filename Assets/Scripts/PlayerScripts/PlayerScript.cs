@@ -7,6 +7,8 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator ani;
+    static public bool canMove;
+    
 
     [HideInInspector]
     Collider2D _leftTrigger;

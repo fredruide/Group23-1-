@@ -17,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
     public int attackType;
     public float attackGracePeriod;
     public float startTimeBtwGrace;
-    public float bulletSpeed;
 
 
     void Update()

@@ -20,7 +20,7 @@ public class EnemyTest : MonoBehaviour
     {
         if(dazedTime <= 0)
         {
-            speed = 1;
+            speed = 0.2f;
         }
         else
         {
