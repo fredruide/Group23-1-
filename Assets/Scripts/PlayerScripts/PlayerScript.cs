@@ -9,6 +9,9 @@ public class PlayerScript : MonoBehaviour
     Animator ani;
     Camera mainCam;
 
+    //this bool and field is for checking if bottom part of player
+    //is in contact with a object (checks on platform only right now)
+    //used in HorizontalMovement, Jump and DoubleJump methods.
     bool grounded;
     public bool _grounded
     {
@@ -28,12 +31,18 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+    //this bool and field is for checking if Right side of player
+    //is in contact with a object (checks on platform only right now)
+    //used in WallSlide, WallJump and HorizontalMovement methods
     bool touchRight;
     public bool _touchRight
     {
         get { return touchRight; }
         set { touchRight = value; }
     }
+    //this bool and field is for checking if Left side of player
+    //is in contact with a object (checks on platform only right now)
+    //used in WallSlide, WallJump and HorizontalMovement methods
     bool touchLeft;
     public bool _touchLeft
     {
@@ -41,11 +50,20 @@ public class PlayerScript : MonoBehaviour
         set { touchLeft = value; }
     }
     //true = facing right : false = facing left
+    //used to make sure player sprite is pointing the correct way (SpriteRender.FlipX)
     bool directionFaced;
     public bool _directionFaced
     {
         get { return directionFaced; }
     }
+    #region canVariabler
+    //the 3 can bools below are handlet in the _grounded field
+    //name should make it clear what they are inteanted to check on
+    bool canMoveHori;
+    bool canJumped;
+    bool canDoubleJumped;
+
+    //this bool and field is for checking if player can WallSlide
     bool canWallSlide;
     public bool _canWallSlide
     {
@@ -55,38 +73,49 @@ public class PlayerScript : MonoBehaviour
             canWallSlide = value;
         }
     }
-    #region canVariabler
-    bool canMoveHori;
-    bool canJumped;
-    bool canDoubleJumped;
     #endregion
     #region IDEvariabler
+    //the following variabler need to have a value assigned from a file later in the project.
+    //for now they get value from the unity IDE
+
+    //PLayer Horizontal movement speed
     public float speed;
+    //player jump hieght
     public float jump;
+    //lenght of coyote effect (how long after being not grounded player still can jump)
     public float coyoteCD;
-
+    //how far player will be pushed Horizontal when wall jumping
     public float wallJumpX;
+    //how far player will be pushed vertical when wall jumping
     public float wallJumpY;
-
+    //how fast player falls to the ground when wall sliding
     public float wallSlideSpeed;
     #endregion
+    //float used for coyote time length.
+    //is meant to have Time.time assigned to it when used.
     float coyoteTS;
     public float _coyoteTS
     {
         set { coyoteTS = value + coyoteCD; }
     }
     #region StatsVariabler
+    //player current health
     public int health;
+    //player max health
     public int maxHealth;
+    //player respawn posisiton
     Vector2 respawnPosition;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
+        //rb is used to manipulate player riged body
         rb = GetComponent<Rigidbody2D>();
+        //sr is used to manipulated player sprite and animations sprites
         sr = GetComponent<SpriteRenderer>();
+        //ani is used to manipulate and check on animation
         ani = GetComponent<Animator>();
-
+        //mainCam is used to check and manipulate the Main Camera in the scene
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
@@ -116,6 +145,25 @@ public class PlayerScript : MonoBehaviour
 
     void HorizontalMovement()
     {
+        //check is player is clicking a move horizontal button and is canMoveHori is true
+        //canMoveHori is set to false when grounded is set to false
+        if (Input.GetButton("Horizontal") && canMoveHori)
+        {
+            //checks if player is colliding with a object on the same side at they are moving
+            //if true then stop moving to prevent false sliding
+            //if player is not clicking a move Horizontal button then stop velocity horizontal (else statment)
+            if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
+                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            else
+                rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        else if (!Input.GetButton("Horizontal"))
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        /*
         if (Input.GetAxisRaw("Horizontal") != 0 && canMoveHori)
         {
             if(!touchRight && Input.GetAxisRaw("Horizontal") > 0)
@@ -129,6 +177,7 @@ public class PlayerScript : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
+        
         //SLOW MOVMENT WHEN IN AIR
         /*else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
         {
@@ -142,14 +191,28 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-
-    public float wallSlideCD;
-    float wallSlideTS;
-
     void WallSlide()
     {
-        if (canWallSlide)
+        //the 3 if statments could have been one long if statment
+        //checks if player is not grounded and if canWallSlide is true (canWallSlide is set to true when first coliding when a object)
+        if (canWallSlide && !grounded)
         {
+            //checks is player is clicking a move horizontal button and is thouching a object on there left or right side
+            // and is not trying to jump
+            if (Input.GetButton("Horizontal")  && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
+            {
+                //checks if the players horizontale movement direction is the same direction as  
+                // player is coliding with an object
+                if ((Input.GetAxisRaw("Horizontal") > 0 && touchRight) || (Input.GetAxisRaw("Horizontal") < 0 && touchLeft))
+                {
+                    //set players y velocity to the minus version of wallSlideSpeed 
+                    rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed * -1);
+                }
+            }
+        }
+        /*
+        if (canWallSlide && !grounded)
+        {            
             if (Input.GetAxisRaw("Horizontal") != 0 && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
             {
                 if ((Input.GetAxisRaw("Horizontal") > 0 && touchRight) || (Input.GetAxisRaw("Horizontal") < 0 && touchLeft))
@@ -158,11 +221,15 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     void Jump()
     {
         //print(Input.GetButtonDown("Vertical"));
+
+        //check is player is clicking vertical button and is grounded and canJump is true
+        //(canJump is set to true when grounded is first set to true)
         if (grounded == true && Input.GetButtonDown("Vertical") && canJumped)
         {
             canJumped = false;
@@ -172,6 +239,7 @@ public class PlayerScript : MonoBehaviour
             //print("grounded: " + grounded);
             //print("canJumped: " + canJumped);
         }
+        //if player can´t jump under normal conditions check if player can jump under coyote conditions
         else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJumped && canJumped)
         {
             canJumped = false;
@@ -185,42 +253,53 @@ public class PlayerScript : MonoBehaviour
 
     void DoubleJump()
     {
-        if (!grounded && Input.GetButtonDown("Vertical") && canDoubleJumped && canDoubleJumped)
+        //checks if player is not grounded, player can double jump and player is double jumping
+        if (!grounded && Input.GetButtonDown("Vertical") && canDoubleJumped)
         {
             canDoubleJumped = false;
+            //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity = new Vector2(rb.velocity.x, jump);            
             //print("DoubleJump: " + rb.velocity.y);
         }
     }
 
+    //floats used to check that secound wall jump is not triggerd befor first one is done
     float stopMoveHoriTS;
     public float stopMoveHoriCD;
     void WallJump()
     {
         bool triggered = false;
 
-        if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0)
+        //check if player is clicking the horizontale move button that matches the side 
+        //that the wall they are coliding with is on and that the player is trying to jump
+        //the if statment is for walljumping to the left
+        if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0 && !grounded)
         {
             canDoubleJumped = false;
             canJumped = false;
 
+            //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
+            //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX * -1, wallJumpY);
             triggered = true;
-            print("input vertical + touchRight + input Horizontal > 0");
-            print("Velocity: " + rb.velocity.y);
+            //print("input vertical + touchRight + input Horizontal > 0");
+            //print("Velocity: " + rb.velocity.y);
         }
-        else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+        //the else if statment is to walljump to the right
+        else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0 && !grounded)
         {
             canDoubleJumped = false;
             canJumped = false;
 
+            //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
+            //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX, wallJumpY);
             triggered = true;
-            print("input vertical + touchLeft + input Horizontal < 0");
-            print("Velocity: " + rb.velocity.y);
+            //print("input vertical + touchLeft + input Horizontal < 0");
+            //print("Velocity: " + rb.velocity.y);
         }
         /*if ((Input.GetAxisRaw("Vertical") > 0 && touchRight && Input.GetAxisRaw("Horizontal") > 0) || (Input.GetAxisRaw("Vertical") > 0 && touchLeft && Input.GetAxisRaw("Horizontal") < 0))
         {
@@ -236,14 +315,14 @@ public class PlayerScript : MonoBehaviour
             print("WallJump touchRight");
         }*/
 
-
+        //set time for next avalible wall jump if a wall jump was performed
         if (triggered)
         {
             canMoveHori = false;
             stopMoveHoriTS = Time.time + stopMoveHoriCD;
             //print("CanMoveHori trigger: " + canMoveHori);
         }
-
+        //if timer is below current time allow horizontal movement agien
         if (stopMoveHoriTS <= Time.time)
         {
             canMoveHori = true;
@@ -267,10 +346,9 @@ public class PlayerScript : MonoBehaviour
     #region StatManipulators
     void TakeDamage(int dmg)
     {
-        if (dmg >= health)
+        health -= dmg;
+        if (health <= 0)
             Die();
-        else
-            health -= dmg;
     }
 
     void Die()
