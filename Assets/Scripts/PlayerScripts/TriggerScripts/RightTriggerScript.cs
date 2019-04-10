@@ -26,6 +26,10 @@ public class RightTriggerScript : MonoBehaviour
         {
             ps._touchRight = true;
         }
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._canWallSlide = true;
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -33,12 +37,20 @@ public class RightTriggerScript : MonoBehaviour
         {
             ps._touchRight = true;
         }
+        if (Input.GetButtonDown("Vertical") && collision.gameObject.tag == "Platform")
+        {
+            ps._canWallSlide = false;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Platform")
         {
             ps._touchRight = false;
+        }
+        if (collision.gameObject.tag == "Platform")
+        {
+            ps._canWallSlide = false;
         }
     }
 }

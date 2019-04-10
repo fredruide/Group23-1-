@@ -46,6 +46,15 @@ public class PlayerScript : MonoBehaviour
     {
         get { return directionFaced; }
     }
+    bool canWallSlide;
+    public bool _canWallSlide
+    {
+        get { return canWallSlide; }
+        set
+        {
+            canWallSlide = value;
+        }
+    }
     #region canVariabler
     bool canMoveHori;
     bool canJumped;
@@ -136,13 +145,17 @@ public class PlayerScript : MonoBehaviour
 
     public float wallSlideCD;
     float wallSlideTS;
+
     void WallSlide()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0 && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
+        if (canWallSlide)
         {
-            if ((Input.GetAxisRaw("Horizontal") > 0 && touchRight) || (Input.GetAxisRaw("Horizontal") < 0 && touchLeft))
+            if (Input.GetAxisRaw("Horizontal") != 0 && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
             {
-                rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed * -1);
+                if ((Input.GetAxisRaw("Horizontal") > 0 && touchRight) || (Input.GetAxisRaw("Horizontal") < 0 && touchLeft))
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed * -1);
+                }
             }
         }
     }
