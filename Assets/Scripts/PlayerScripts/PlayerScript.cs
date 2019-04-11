@@ -21,8 +21,8 @@ public class PlayerScript : MonoBehaviour
             grounded = value;
             if (value == true)
             {
-                canJumped = true;
-                canDoubleJumped = true;
+                canJump = true;
+                canDoubleJump = true;
                 canMoveHori = true;
             }
             else
@@ -60,8 +60,8 @@ public class PlayerScript : MonoBehaviour
     //the 3 can bools below are handlet in the _grounded field
     //name should make it clear what they are inteanted to check on
     bool canMoveHori;
-    bool canJumped;
-    bool canDoubleJumped;
+    bool canJump;
+    bool canDoubleJump;
 
     //this bool and field is for checking if player can WallSlide
     bool canWallSlide;
@@ -84,6 +84,8 @@ public class PlayerScript : MonoBehaviour
     public float jump;
     //lenght of coyote effect (how long after being not grounded player still can jump)
     public float coyoteCD;
+    //used to pause horizontal movement when wall jumping
+    public float stopMoveHoriCD;
     //how far player will be pushed Horizontal when wall jumping
     public float wallJumpX;
     //how far player will be pushed vertical when wall jumping
@@ -91,6 +93,7 @@ public class PlayerScript : MonoBehaviour
     //how fast player falls to the ground when wall sliding
     public float wallSlideSpeed;
     #endregion
+    #region TimeStamp
     //float used for coyote time length.
     //is meant to have Time.time assigned to it when used.
     float coyoteTS;
@@ -98,6 +101,13 @@ public class PlayerScript : MonoBehaviour
     {
         set { coyoteTS = value + coyoteCD; }
     }
+    //floats used to check that secound wall jump is not triggerd befor first one is done
+    float stopMoveHoriTS;
+    private float _stopMoveHoriTS
+    {
+        set { stopMoveHoriTS = value + stopMoveHoriCD; }
+    }
+    #endregion
     #region StatsVariabler
     //player current health
     public int health;
@@ -120,8 +130,40 @@ public class PlayerScript : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        DirectionFacing();
+        //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
+
+        //ani.SetBool("Grounded", grounded);
+
+
+        HorizontalMovement();        
+        Jump();
+        DoubleJump();
+        WallJump();
+        WallSlide();
+
+        //print("Velocity: " + rb.velocity.y);
+        //print("grounded: " + grounded);
+        //print("canJump: " + canJump);
+        //print("hasBeen: " + hasBeenGrounded);
+        //print("input: " + Input.GetButtonDown("Vertical"));
+        //print("Player: " + rb.transform.position);
+        //print("Camera: " + GameObject.Find("Main Camera").transform.position);
+
+        //if (grounded)
+        //print("Grounded: " + grounded);
+        //if (!touchRight)
+        //print("TouchRight: " + touchRight);
+        //if (Input.GetButtonDown("Vertical"))
+        //print("input Vertical: " + Input.GetButtonDown("Vertical"));
+    }
+
+    // Update is called once per frame at a fixed framerate of 60 fps
     void FixedUpdate()
     {
+        /*
         DirectionFacing();
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
@@ -134,13 +176,22 @@ public class PlayerScript : MonoBehaviour
         DoubleJump();
         WallJump();
 
-        print("Velocity: " + rb.velocity.y);
+        //print("Velocity: " + rb.velocity.y);
         //print("grounded: " + grounded);
-        //print("canJumped: " + canJumped);
+        //print("canJump: " + canJump);
         //print("hasBeen: " + hasBeenGrounded);
         //print("input: " + Input.GetButtonDown("Vertical"));
         //print("Player: " + rb.transform.position);
         //print("Camera: " + GameObject.Find("Main Camera").transform.position);
+
+        //if (grounded)
+            //print("Grounded: " + grounded);
+        //if (!touchRight)
+            //print("TouchRight: " + touchRight);
+        if (Input.GetButtonDown("Vertical"))
+            print("input Vertical: " + Input.GetButtonDown("Vertical"));
+
+        */
     }
 
     void HorizontalMovement()
@@ -199,7 +250,7 @@ public class PlayerScript : MonoBehaviour
         {
             //checks is player is clicking a move horizontal button and is thouching a object on there left or right side
             // and is not trying to jump
-            if (Input.GetButton("Horizontal")  && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
+            if (Input.GetButton("Horizontal")  && (touchLeft || touchRight) && !Input.GetButton("Vertical"))
             {
                 //checks if the players horizontale movement direction is the same direction as  
                 // player is coliding with an object
@@ -230,33 +281,33 @@ public class PlayerScript : MonoBehaviour
 
         //check is player is clicking vertical button and is grounded and canJump is true
         //(canJump is set to true when grounded is first set to true)
-        if (grounded == true && Input.GetButtonDown("Vertical") && canJumped)
+        if (grounded == true && Input.GetButtonDown("Vertical") && canJump)
         {
-            canJumped = false;
+            canJump = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
             //print("Jump: " + rb.velocity.y);
             //print("grounded: " + grounded);
-            //print("canJumped: " + canJumped);
+            //print("canJump: " + canJump);
         }
         //if player can´t jump under normal conditions check if player can jump under coyote conditions
-        else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJumped && canJumped)
+        else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
         {
-            canJumped = false;
+            canJump = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             //ani.SetBool("Jumping", true);
             //print("Jump Coyote: " + rb.velocity.y);
             //print("grounded: " + grounded);
-            //print("canJumped: " + canJumped);
+            //print("canJump: " + canJump);
         }
     }
 
     void DoubleJump()
     {
         //checks if player is not grounded, player can double jump and player is double jumping
-        if (!grounded && Input.GetButtonDown("Vertical") && canDoubleJumped)
+        if (!grounded && Input.GetButtonDown("Vertical") && canDoubleJump)
         {
-            canDoubleJumped = false;
+            canDoubleJump = false;
             //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity = new Vector2(rb.velocity.x, jump);            
@@ -264,9 +315,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    //floats used to check that secound wall jump is not triggerd befor first one is done
-    float stopMoveHoriTS;
-    public float stopMoveHoriCD;
+
     void WallJump()
     {
         bool triggered = false;
@@ -276,9 +325,6 @@ public class PlayerScript : MonoBehaviour
         //the if statment is for walljumping to the left
         if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0 && !grounded)
         {
-            canDoubleJumped = false;
-            canJumped = false;
-
             //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
@@ -290,9 +336,6 @@ public class PlayerScript : MonoBehaviour
         //the else if statment is to walljump to the right
         else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0 && !grounded)
         {
-            canDoubleJumped = false;
-            canJumped = false;
-
             //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
@@ -319,7 +362,11 @@ public class PlayerScript : MonoBehaviour
         if (triggered)
         {
             canMoveHori = false;
-            stopMoveHoriTS = Time.time + stopMoveHoriCD;
+            canDoubleJump = false;
+            canJump = false;
+            canWallSlide = false;
+
+            _stopMoveHoriTS = Time.time;
             //print("CanMoveHori trigger: " + canMoveHori);
         }
         //if timer is below current time allow horizontal movement agien

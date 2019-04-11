@@ -37,9 +37,14 @@ public class RightTriggerScript : MonoBehaviour
         {
             ps._touchRight = true;
         }
+
         if (Input.GetButtonDown("Vertical") && collision.gameObject.tag == "Platform")
         {
             ps._canWallSlide = false;
+        }
+        else if (!Input.GetButtonDown("Vertical") && collision.gameObject.tag == "Platform")
+        {
+            ps._canWallSlide = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
