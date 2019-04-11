@@ -9,6 +9,9 @@ public class PlayerScript : MonoBehaviour
     Animator ani;
     Camera mainCam;
 
+    //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
+    // colliders attach to the player object
+
     //this bool and field is for checking if bottom part of player
     //is in contact with a object (checks on platform only right now)
     //used in HorizontalMovement, Jump and DoubleJump methods.
@@ -246,6 +249,7 @@ public class PlayerScript : MonoBehaviour
     {
         //the 3 if statments could have been one long if statment
         //checks if player is not grounded and if canWallSlide is true (canWallSlide is set to true when first coliding when a object)
+        //and set to false under WallJump method and in LeftTriggerScript and RightTriggerScript
         if (canWallSlide && !grounded)
         {
             //checks is player is clicking a move horizontal button and is thouching a object on there left or right side
