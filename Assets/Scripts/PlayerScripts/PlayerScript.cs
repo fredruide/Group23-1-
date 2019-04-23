@@ -386,18 +386,6 @@ public class PlayerScript : MonoBehaviour
         
     }
 
-    /*#region StatusManipulators
-    float stopHoriTimeTS;
-    void StopHorizontalMove(float time, bool startTimer)
-    {
-        if (startTimer)
-        {
-            stopHoriTimeTS = Time.time + time;
-            canMoveHori = false;
-        }
-    }
-    #endregion*/
-
     #region StatManipulators
     void TakeDamage(int dmg)
     {
