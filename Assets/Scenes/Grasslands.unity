@@ -18673,10 +18673,11 @@ GameObject:
   - component: {fileID: 1407814542}
   - component: {fileID: 1407814541}
   - component: {fileID: 1407814540}
-  - component: {fileID: 1407814539}
   - component: {fileID: 1407814538}
   - component: {fileID: 1407814537}
+  - component: {fileID: 1407814539}
   - component: {fileID: 1407814543}
+  - component: {fileID: 1407814544}
   m_Layer: 0
   m_Name: Bandit
   m_TagString: Enemy
@@ -18842,6 +18843,18 @@ MonoBehaviour:
     m_Bits: 512
   gridWorldSize: {x: 10, y: 10}
   cellRadius: 1
+--- !u!114 &1407814544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407814536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957d915cc9b93cc4b90ef92e5ba547aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1407982288
 GameObject:
   m_ObjectHideFlags: 0
