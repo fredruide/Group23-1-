@@ -2812,12 +2812,12 @@ PrefabInstance:
     - target: {fileID: 6749598865946629642, guid: 65acdd62ba84eae40b16f7727f14fa23,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.59
+      value: 44.11
       objectReference: {fileID: 0}
     - target: {fileID: 6749598865946629642, guid: 65acdd62ba84eae40b16f7727f14fa23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.45
+      value: -27.07
       objectReference: {fileID: 0}
     - target: {fileID: 6749598865946629642, guid: 65acdd62ba84eae40b16f7727f14fa23,
         type: 3}
@@ -3632,12 +3632,12 @@ PrefabInstance:
     - target: {fileID: 2708411742487165291, guid: 787ef471a92f5fd4291b7d653dc1440a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.716
+      value: 46.927
       objectReference: {fileID: 0}
     - target: {fileID: 2708411742487165291, guid: 787ef471a92f5fd4291b7d653dc1440a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -27.375
+      value: -26.26
       objectReference: {fileID: 0}
     - target: {fileID: 2708411742487165291, guid: 787ef471a92f5fd4291b7d653dc1440a,
         type: 3}
@@ -3684,6 +3684,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2708411742487165291, guid: 787ef471a92f5fd4291b7d653dc1440a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.38594052
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708411742487165291, guid: 787ef471a92f5fd4291b7d653dc1440a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2799802
+      objectReference: {fileID: 0}
     - target: {fileID: 2708411742487165288, guid: 787ef471a92f5fd4291b7d653dc1440a,
         type: 3}
       propertyPath: gridHerbalistX
@@ -3713,6 +3723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gridIronX
       value: 79.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708411742487165290, guid: 787ef471a92f5fd4291b7d653dc1440a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 787ef471a92f5fd4291b7d653dc1440a, type: 3}

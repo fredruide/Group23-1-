@@ -51,4 +51,11 @@ public class ResourceBuilding : MonoBehaviour
             }
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        
+
+
+    }
 }
