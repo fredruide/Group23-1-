@@ -220,12 +220,16 @@ public class PlayerScript : MonoBehaviour
         /*
         if (Input.GetAxisRaw("Horizontal") != 0 && canMoveHori)
         {
+<<<<<<< HEAD
             if(!touchRight && Input.GetAxisRaw("Horizontal") > 0)
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
             else
                 rb.velocity = new Vector2(0, rb.velocity.y);
+=======
+            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+>>>>>>> Jakob2
         }
         else if (Input.GetAxisRaw("Horizontal") == 0)
         {

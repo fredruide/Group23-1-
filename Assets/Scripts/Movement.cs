@@ -16,11 +16,11 @@ public class Movement : PhysicsObject
     
     public float maxSpeed = 7f;
     public float jumpTakeOffSpeed = 7f;
-
-    private float dashTimeCd;
-    public float dashTime = 2f;
-    private float cd;
+    
     public float dashCd = 2f;
+    public float dashTime = 2f;
+    private float dashTimeCd;
+    private float cd;    
     private bool dashTrue = true;
 
     public float dashSpeed = 40;
@@ -29,8 +29,6 @@ public class Movement : PhysicsObject
     //public float time = 2;
 
     private bool dashing;
-
-
 
     private void Start()
     {
