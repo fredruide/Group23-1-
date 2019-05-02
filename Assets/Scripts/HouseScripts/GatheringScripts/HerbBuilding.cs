@@ -1,0 +1,118 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
+public class HerbBuilding : MonoBehaviour
+{
+    private TextMesh Text;
+
+    private string key = "Test";
+
+    public float resourceCd = 2f;
+    private float resourceTimeCd;
+    private bool resourcePicked = true;
+
+    public int resourcePm = 10;
+    public int currentScore;
+    private int newScore;
+    private int loadedScore;
+
+    private int intSavedScoreID;
+    private int savedScore;
+    private string stringSavedScoreID;
+
+    //TODO At bruge information til smide tilbage i vores huse når at vi kan gemme dem og placere dem ordenligt
+
+    private void Awake()
+    {
+        LoadScore();
+        intSavedScoreID = gameObject.GetInstanceID();
+        stringSavedScoreID = intSavedScoreID.ToString();
+        Text = GetComponent<TextMesh>();
+
+        int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
+    }
+
+
+
+    private void Update()
+    {
+        resource();
+    }
+
+    private void resource()
+    {
+        if (PlayerPrefs.GetInt(key) == 1 && currentScore < 240)
+        {
+            resourceTimeCd = resourceTimeCd - Time.smoothDeltaTime;
+
+            if (resourcePicked)
+            {
+                currentScore = newScore + loadedScore;
+                //int.TryParse(currentScore, out currentScoreInt);            
+                newScore = currentScore + resourcePm;
+                Text.text = newScore.ToString() + " / 250";
+                resourcePicked = false;
+                //Debug.Log("et sekund");
+            }
+            else if (resourceTimeCd <= 0)
+            {
+                resourceTimeCd = resourceCd;
+                resourcePicked = true;
+            }
+        }
+    }
+
+    private void SaveScore()
+    {
+        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
+            BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
+
+            buildingInfo.currentHerbHolding = currentScore;
+
+            file.Close();
+        }
+        else
+        { 
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
+
+            BuildingInfo buildingInfo = new BuildingInfo();
+
+            buildingInfo.currentHerbHolding = currentScore;
+            
+            bf.Serialize(file, buildingInfo);
+            file.Close();
+        }
+    }
+
+    private void LoadScore()
+    {
+        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
+            BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
+
+            loadedScore = buildingInfo.currentHerbHolding;
+            print(newScore);
+            file.Close();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveScore();
+
+        //savedScore = newScore;
+        //PlayerPrefs.SetInt(stringSavedScoreID, savedScore);
+        //Debug.Log("Vi gemte " + savedScore + " i player prefs under " + stringSavedScoreID + " id'et");
+
+    }
+}

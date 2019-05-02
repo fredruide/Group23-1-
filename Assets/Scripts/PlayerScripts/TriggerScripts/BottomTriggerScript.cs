@@ -28,16 +28,18 @@ public class BottomTriggerScript : MonoBehaviour
         if (collision.gameObject.tag == "Platform")
         {
             ps._grounded = true;
+            //print("BottomScript Enter hit: " + collision.gameObject.tag);
         }
-        //print("BottomScript Enter hit: " + collision.gameObject.tag);
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform" )
         {
+            //print("BottomScript Stay hit: " + collision.gameObject.name);
             ps._grounded = true;
         }
-        //print("BottomScript Stay hit: " + collision.gameObject.tag);
+        
     }
     
     private void OnTriggerExit2D(Collider2D collision)
@@ -46,7 +48,8 @@ public class BottomTriggerScript : MonoBehaviour
         {
             ps._grounded = false;
             ps._coyoteTS = Time.time;
+            //print("BottomScript Exit hit: " + collision.gameObject.tag);
         }   
-        //print("BottomScript Exit hit: " + collision.gameObject.tag);
+        //
     }
 }
