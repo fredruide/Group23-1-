@@ -23,7 +23,8 @@ public class HouseNodes : MonoBehaviour
     public float gridIronX = 79.5f;
     public float gridIronY = 25.6f;
 
-    private bool Building = false;
+    private bool building = false;
+    private bool deleteBuilding = false;
 
     public TextManipulator TextManipulator;
 
@@ -58,18 +59,23 @@ public class HouseNodes : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            camera2.SetActive(true);
+            camera1.SetActive(false);
+
             //Debug.Log("Det triggerede mig");
             TextManipulator.TextUpdate("Du kan nu bygge en Herbalist, Stone eller Iron indsamler bygning");
-            Building = true;
+            building = true;
 
-            camera2.SetActive(true);
-            camera1.SetActive(false);            
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                deleteBuilding = true;
+            }            
         }        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Building = false;
+        building = false;
         TextManipulator.TextUpdate("");
 
         //Debug.Log(Building)
@@ -79,7 +85,7 @@ public class HouseNodes : MonoBehaviour
 
     private void BuildingSlots()
     {
-        if (Building)
+        if (building)
         {            
             if (Input.GetKeyDown(KeyCode.Alpha1) && !herbBuilt)
             {
@@ -131,7 +137,7 @@ public class HouseNodes : MonoBehaviour
             BuildingInfo buildingInfo = new BuildingInfo();
 
             buildingInfo.herbBuilt = herbBuilt;
-            print(buildingInfo.herbBuilt);
+            print(buildingInfo.herbBuilt + "" + herbBuilt);
             buildingInfo.stoneBuilt = stoneBuilt;
             print(buildingInfo.stoneBuilt);
             buildingInfo.ironBuilt = IronBuilt;
@@ -177,9 +183,15 @@ public class HouseNodes : MonoBehaviour
     }
 
     //TODO spillere skal kunne ødelægge huse og er nødvendig for at kunne fjerne data
-    private void PlayerDestroyHouses()
+    private void DeleteBuilding()
     {
-
+        if (deleteBuilding)
+        {
+            herbBuilt = false;
+            stoneBuilt = false;
+            IronBuilt = false;
+            SaveBuildings();
+        }
     }
 }
 

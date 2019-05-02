@@ -19,28 +19,29 @@ public class HerbBuilding : MonoBehaviour
     public int currentScore;
     private int newScore;
     private int loadedScore;
-
-    private int intSavedScoreID;
     private int savedScore;
-    private string stringSavedScoreID;
+
+    private bool peter;
+
+    //private int intSavedScoreID;
+    //private string stringSavedScoreID;
 
     //TODO At bruge information til smide tilbage i vores huse når at vi kan gemme dem og placere dem ordenligt
 
     private void Awake()
     {
         LoadScore();
-        intSavedScoreID = gameObject.GetInstanceID();
-        stringSavedScoreID = intSavedScoreID.ToString();
+        //intSavedScoreID = gameObject.GetInstanceID();
+        //stringSavedScoreID = intSavedScoreID.ToString();
         Text = GetComponent<TextMesh>();
 
-        int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
+        //int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
     }
-
-
 
     private void Update()
     {
         resource();
+        
     }
 
     private void resource()
@@ -68,24 +69,23 @@ public class HerbBuilding : MonoBehaviour
 
     private void SaveScore()
     {
-        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
+        if (File.Exists(Application.persistentDataPath + "/BuildingInfo1.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo1.dat", FileMode.Open);
             BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
 
-            buildingInfo.currentHerbHolding = currentScore;
-
+            buildingInfo.currentHerbHolding = newScore;
+            bf.Serialize(file, buildingInfo);
             file.Close();
         }
         else
         { 
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
-
+            FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo1.dat");
             BuildingInfo buildingInfo = new BuildingInfo();
 
-            buildingInfo.currentHerbHolding = currentScore;
+            buildingInfo.currentHerbHolding = newScore;
             
             bf.Serialize(file, buildingInfo);
             file.Close();
@@ -94,14 +94,14 @@ public class HerbBuilding : MonoBehaviour
 
     private void LoadScore()
     {
-        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
+        if (File.Exists(Application.persistentDataPath + "/BuildingInfo1.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo1.dat", FileMode.Open);
             BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
 
             loadedScore = buildingInfo.currentHerbHolding;
-            print(newScore);
+            print(loadedScore);
             file.Close();
         }
     }
@@ -115,4 +115,6 @@ public class HerbBuilding : MonoBehaviour
         //Debug.Log("Vi gemte " + savedScore + " i player prefs under " + stringSavedScoreID + " id'et");
 
     }
+
+
 }
