@@ -2,63 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 using System.IO;
 
 public class HouseSaving : MonoBehaviour
 {
-    private bool herbBuilt;
-    private int currentScore;
+    private HerbBuilding herbBuilding;
+    private HouseNodes houseNodes;
 
-    public void SaveHouses()
+    private void Start()
     {
+        //herbBuilding = GameObject.FindObjectOfType<HerbBuilding>();
         
-        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
-            BuildingInfo buildingInfo = new BuildingInfo();
-
-            buildingInfo.herbBuilt = herbBuilt;
-            buildingInfo.currentHerbHolding = currentScore;
-
-            bf.Serialize(file, buildingInfo);
-            file.Close();
-        }
-        else
-        {
-            FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
-        }
-        //FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
-        //BuildingInfo buildingInfo = new BuildingInfo();
-
-        //buildingInfo.herbBuilt = herbBuilt;
-        //buildingInfo.currentHerbHolding = currentScore;
-        //print(buildingInfo.herbBuilt + " " + currentScore);
-        //print(buildingInfo.herbBuilt + " " + buildingInfo.currentHerbHolding);
+               
+        /*
+        int peter;
+        BuildingInfo buildingInfo = new BuildingInfo();
+        peter = buildingInfo.funtion();
+        print(peter);
+        */
     }
-
-    public void LoadHouses()
+    
+    private void test()
     {
-        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
-            BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
+        int x;
+        bool y;
+        x = herbBuilding.newScore;
+        y = houseNodes.herbBuilt;
+        print(x + " " + y);
+    }
+   
+    private void xmlSave()
+    {
+        herbBuilding = GetComponent<HerbBuilding>();
+        houseNodes = GetComponent<HouseNodes>();
 
-            herbBuilt = buildingInfo.herbBuilt;
-            currentScore = buildingInfo.currentHerbHolding;
-            //print(buildingInfo.herbBuilt + " " + currentScore);
-            //print(buildingInfo.herbBuilt + " " + buildingInfo.currentHerbHolding);
-            
-            file.Close();
-        }
+        BuildingInfo buildingInfo = new BuildingInfo();
+        buildingInfo.herbBuilt = houseNodes.herbBuilt;
+        buildingInfo.currentHerbHolding = herbBuilding.newScore;
+
+        XmlSerializer serializer = new XmlSerializer(typeof(BuildingInfo));
+        StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/save.xml");
+        serializer.Serialize(writer.BaseStream, buildingInfo);
+        writer.Close();
     }
 
+   
+
+    public void xmlLoad()
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(BuildingInfo));
+        StreamReader reader = new StreamReader(Application.persistentDataPath + "/save.xml");
+        BuildingInfo buildingInfo = (BuildingInfo)serializer.Deserialize(reader.BaseStream);
+
+        print(buildingInfo.herbBuilt);
+    }
+
+    private void OnApplicationQuit()
+    {        
+        xmlSave(); 
+    }
 }
 
 [Serializable]
-class BuildingInfo
+public class BuildingInfo
 {
     public bool herbBuilt { get; set; }
     public int currentHerbHolding { get; set; }
@@ -67,4 +74,6 @@ class BuildingInfo
     public bool ironBuilt { get; set; }
     public int currentIronHolding { get; set; }
 }
+
+
 

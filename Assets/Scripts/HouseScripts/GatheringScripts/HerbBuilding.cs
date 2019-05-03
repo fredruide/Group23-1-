@@ -11,14 +11,14 @@ public class HerbBuilding : MonoBehaviour
 
     private string key = "Test";
 
+    public int newScore;
     public float resourceCd = 2f;
-    private float resourceTimeCd;
-    private bool resourcePicked = true;
-
     public int resourcePm = 10;
-    public int currentScore;
-    private int newScore;
-    private int loadedScore;
+
+    private float resourceTimeCd;
+    private bool resourcePicked = true;    
+    private int currentScore;
+    //private int loadedScore;
     private int savedScore;
 
     private bool peter;
@@ -52,7 +52,8 @@ public class HerbBuilding : MonoBehaviour
 
             if (resourcePicked)
             {
-                currentScore = newScore + loadedScore;
+
+                currentScore = newScore;
                 //int.TryParse(currentScore, out currentScoreInt);            
                 newScore = currentScore + resourcePm;
                 Text.text = newScore.ToString() + " / 250";
@@ -73,9 +74,10 @@ public class HerbBuilding : MonoBehaviour
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo1.dat", FileMode.Open);
-            BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
+            BuildingInfo buildingInfo = new BuildingInfo();
 
             buildingInfo.currentHerbHolding = newScore;
+            print(buildingInfo.currentHerbHolding);
             bf.Serialize(file, buildingInfo);
             file.Close();
         }
@@ -100,8 +102,8 @@ public class HerbBuilding : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo1.dat", FileMode.Open);
             BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
 
-            loadedScore = buildingInfo.currentHerbHolding;
-            print(loadedScore);
+            newScore = buildingInfo.currentHerbHolding;
+            //print(loadedScore);
             file.Close();
         }
     }
@@ -115,6 +117,4 @@ public class HerbBuilding : MonoBehaviour
         //Debug.Log("Vi gemte " + savedScore + " i player prefs under " + stringSavedScoreID + " id'et");
 
     }
-
-
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Xml.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -14,12 +15,12 @@ public class HouseNodes : MonoBehaviour
     public float gridHerbalistY = -25.6f;
     [SerializeField]
     private GameObject stone;
-    private bool stoneBuilt;
+    public bool stoneBuilt;
     public float gridStoneX = 65.5f;
     public float gridStoneY = 25.6f;
     [SerializeField]
     private GameObject iron;
-    private bool IronBuilt;
+    public bool IronBuilt;
     public float gridIronX = 79.5f;
     public float gridIronY = 25.6f;
 
@@ -37,7 +38,7 @@ public class HouseNodes : MonoBehaviour
     private void Awake()
     {
         //houseSaving = GameObject.FindObjectOfType<HouseSaving>();
-        LoadBuildings();        
+        //LoadBuildings();         
         BuildingsBuilt();
         camera1.SetActive(true);
         TextManipulator = GameObject.FindObjectOfType<TextManipulator>();
@@ -45,7 +46,7 @@ public class HouseNodes : MonoBehaviour
     
     private void OnApplicationQuit()
     {        
-        SaveBuildings();
+        //SaveBuildings();
     }
 
     // Update is called once per frame
@@ -193,6 +194,9 @@ public class HouseNodes : MonoBehaviour
             SaveBuildings();
         }
     }
+
+
+
 }
 
 
