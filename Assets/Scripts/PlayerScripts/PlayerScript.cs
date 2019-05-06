@@ -147,6 +147,8 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
 
+        print(Input.mousePosition);
+
         //print("Velocity: " + rb.velocity.y);
         //print("grounded: " + grounded);
         //print("canJump: " + canJump);
