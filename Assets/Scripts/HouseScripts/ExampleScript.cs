@@ -2,18 +2,23 @@
 
 public class ExampleScript : MonoBehaviour
 {
-    //// Find all the game objects and display their Instance IDs
-    //void Start()
-    //{
-        
-    //}
+    // Create 10 game objects, which will have random Instance IDs
+    void Awake()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject g = new GameObject("abc" + i.ToString("D3"));
+        }
+    }
 
-    //private float peter;
+    // Find all the game objects and display their Instance IDs
+    void Start()
+    {
+        Object[] allObjects = Object.FindObjectsOfType<GameObject>();
 
-    //void Update()
-    //{
-
-    //    peter += Time.deltaTime;
-    //    Debug.Log(peter);  
-    //}
+        foreach (GameObject go in allObjects)
+        {
+            Debug.Log(go + " is an active object " + go.GetInstanceID());
+        }
+    }
 }

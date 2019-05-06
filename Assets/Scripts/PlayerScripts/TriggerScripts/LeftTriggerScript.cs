@@ -30,6 +30,7 @@ public class LeftTriggerScript : MonoBehaviour
         {
             ps._canWallSlide = true;
         }
+        //print("lefttrigger =" + collision.gameObject.name);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
