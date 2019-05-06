@@ -11,7 +11,8 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        //rb.velocity = transform.right * speed;
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
     //void OnTriggerEnter2D(Collider2D hitInfo)

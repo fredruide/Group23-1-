@@ -147,7 +147,13 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
 
+<<<<<<< HEAD
+        print(Input.mousePosition);
+
         //print("Velocity: " + rb.velocity.y);
+=======
+        //print("Velocity: " + rb.velocity.y);SDW
+>>>>>>> 718eba11f1f114afe6b4533944c6d6d9d1a667b8
         //print("grounded: " + grounded);
         //print("canJump: " + canJump);
         //print("hasBeen: " + hasBeenGrounded);
@@ -385,18 +391,6 @@ public class PlayerScript : MonoBehaviour
         }     
         
     }
-
-    /*#region StatusManipulators
-    float stopHoriTimeTS;
-    void StopHorizontalMove(float time, bool startTimer)
-    {
-        if (startTimer)
-        {
-            stopHoriTimeTS = Time.time + time;
-            canMoveHori = false;
-        }
-    }
-    #endregion*/
 
     #region StatManipulators
     void TakeDamage(int dmg)

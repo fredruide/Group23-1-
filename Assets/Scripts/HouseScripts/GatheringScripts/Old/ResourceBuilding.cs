@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class ResourceBuilding : MonoBehaviour
 {
@@ -11,25 +14,38 @@ public class ResourceBuilding : MonoBehaviour
     public float resourceCd = 2f;
     private float resourceTimeCd;
     private bool resourcePicked = true;
-    //private bool herbTrue = true;
 
     public int resourcePm = 10;
     private string currentScore = "0";
     private int newScore;
-    //private int currentScoreInt;
 
-    private void Start()
+    private int intSavedScoreID;
+    private int savedScore;
+    private string stringSavedScoreID;
+
+    //TODO At bruge information til smide tilbage i vores huse når at vi kan gemme dem og placere dem ordenligt
+
+    private void Awake()
     {
-        Text = GetComponent<TextMesh>();
+        intSavedScoreID = gameObject.GetInstanceID();
+        stringSavedScoreID = intSavedScoreID.ToString();
+        Text = GetComponent<TextMesh>();        
+        
+        int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
+    }
+
+    private void OnDestroy()
+    {
+        
     }
 
     private void Update()
     {
-        HerbResource();
+        resource();
         //save();
     }
 
-    void HerbResource()
+    private void resource()
     {
         if (PlayerPrefs.GetInt(key) == 1 && int.Parse(currentScore) < 240)
         {
@@ -52,10 +68,21 @@ public class ResourceBuilding : MonoBehaviour
         }
     }
 
+    private void saveScore()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
+
+        BuildingInfo buildingInfo = new BuildingInfo();
+        
+        //buildingInfo.currentHerbHolding = 
+    }
+
     private void OnApplicationQuit()
     {
+        savedScore = newScore;
+        PlayerPrefs.SetInt(stringSavedScoreID, savedScore);
+        Debug.Log("Vi gemte " + savedScore + " i player prefs under " + stringSavedScoreID + " id'et");
         
-
-
     }
 }
