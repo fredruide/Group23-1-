@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
         set
         {
             grounded = value;
+            ani.SetBool("isGrounded", value);
             if (value == true)
             {
                 canJump = true;
@@ -77,6 +78,18 @@ public class PlayerScript : MonoBehaviour
         }
     }
     #endregion
+    #region isVariabler
+    bool isRunning;
+    public bool _isRunning
+    {
+        get { return isRunning; }
+    }
+    bool isAirborn;
+    public bool _isAirborn
+    {
+        get { return isAirborn; }
+    }
+    #endregion
     #region IDEvariabler
     //the following variabler need to have a value assigned from a file later in the project.
     //for now they get value from the unity IDE
@@ -130,12 +143,15 @@ public class PlayerScript : MonoBehaviour
         ani = GetComponent<Animator>();
         //mainCam is used to check and manipulate the Main Camera in the scene
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
+
     }
 
     // Update is called once per frame
     private void Update()
     {
         DirectionFacing();
+        IsRunning();
+
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
         //ani.SetBool("Grounded", grounded);
@@ -147,7 +163,6 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
 
-        //print(Input.mousePosition);
 
         //print("Velocity: " + rb.velocity.y);
         //print("Velocity: " + rb.velocity.y);SDW
@@ -217,24 +232,6 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else if (!Input.GetButton("Horizontal"))
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-        /*
-        if (Input.GetAxisRaw("Horizontal") != 0 && canMoveHori)
-        {
-<<<<<<< HEAD
-            if(!touchRight && Input.GetAxisRaw("Horizontal") > 0)
-                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
-                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            else
-                rb.velocity = new Vector2(0, rb.velocity.y);
-=======
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
->>>>>>> Jakob2
-        }
-        else if (Input.GetAxisRaw("Horizontal") == 0)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -422,12 +419,38 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             directionFaced = true;
-            sr.flipX = !directionFaced;
+            sr.flipX = directionFaced;
         } 
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             directionFaced = false;
-            sr.flipX = !directionFaced;
+            sr.flipX = directionFaced;
+        }
+    }
+    void IsRunning()
+    {
+        if (Input.GetButton("Horizontal") && canMoveHori && grounded)
+        {
+            isRunning = true;
+            ani.SetBool("isRunning", true);
+        }
+        else
+        {
+            isRunning = false;
+            ani.SetBool("isRunning", false);
+        }
+    }
+    void IsAirborn()
+    {
+        if (!grounded)
+        {
+            isAirborn = true;
+            ani.SetBool("isAirborn", true);
+        }
+        else
+        {
+            isAirborn = false;
+            ani.SetBool("isAirborn", false);
         }
     }
     #endregion

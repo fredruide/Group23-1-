@@ -51,6 +51,8 @@ public class MainCameraScript : MonoBehaviour
     public float moveCameraX;
     public float moveCameraY;
 
+    public float cameraSize;
+
     Vector3 velocity = Vector3.zero;
     Vector3 endPosistion;
     // Start is called before the first frame update
@@ -69,6 +71,7 @@ public class MainCameraScript : MonoBehaviour
         moveTS += Time.deltaTime;
 
         endPosistion = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 3);
+        
         //moveCameraStick = MoveCameraLimit();
 
         Move();
@@ -145,6 +148,7 @@ public class MainCameraScript : MonoBehaviour
 
         if (!inBox && !moveCameraStick)
         {
+            velocity = playerRB.velocity;
             rb.velocity = Vector2.zero;
             moveTS = 0f;
             rb.transform.position = Vector3.SmoothDamp(rb.transform.position, endPosistion, ref velocity, cameraSpeed);
