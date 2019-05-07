@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3317096392764780395}
   - component: {fileID: 3317096392764780392}
   - component: {fileID: 3317096392764780393}
-  - component: {fileID: 3473616285458892810}
+  - component: {fileID: 5625913198212728392}
   m_Layer: 0
-  m_Name: Resource
+  m_Name: ResourceHerb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4286762862
---- !u!114 &3473616285458892810
+--- !u!114 &5625913198212728392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3317096392764780396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb38c4cf98b58e74f8be95056056463d, type: 3}
+  m_Script: {fileID: 11500000, guid: 45b8ef81aae5fbf49b827f1d3fecb572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resourceCd: 2
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 3317096393102910897}
   - component: {fileID: 3317096393102910896}
   m_Layer: 0
-  m_Name: Stone
+  m_Name: Herbalist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 52422ada2db954026a3ae1f1ba6b4486, type: 3}
-  m_Color: {r: 0.31412423, g: 0.3679245, b: 0.31603807, a: 1}
+  m_Color: {r: 0.022027409, g: 0.9339623, b: 0.08716559, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -7,13 +7,15 @@ using System.IO;
 
 public class HouseSaving : MonoBehaviour
 {
-    private HerbBuilding herbBuilding;
-    private HouseNodes houseNodes;
+    public GameObject objHouseSaving;
+    public GameObject objHerbBuilding;
+    //private HerbBuilding scrHerbBuilding;
+    private HouseNodes scrHouseNodes;
 
     private void Start()
     {
         //herbBuilding = GameObject.FindObjectOfType<HerbBuilding>();
-        
+        xmlLoad();
                
         /*
         int peter;
@@ -23,23 +25,24 @@ public class HouseSaving : MonoBehaviour
         */
     }
     
-    private void test()
-    {
-        int x;
-        bool y;
-        x = herbBuilding.newScore;
-        y = houseNodes.herbBuilt;
-        print(x + " " + y);
-    }
+    //private void test()
+    //{
+    //    int x;
+    //    bool y;
+    //    x = scrHerbBuilding.newScore;
+    //    y = scrHouseNodes.herbBuilt;
+    //    print(x + " " + y);
+    //}
    
     private void xmlSave()
     {
-        herbBuilding = GetComponent<HerbBuilding>();
-        houseNodes = GetComponent<HouseNodes>();
+        scrHouseNodes = objHouseSaving.GetComponent<HouseNodes>();
+        GameObject g = GameObject.Find("ResourceHerb");
+        HerbBuilding scrHerbBuilding = g.GetComponent<HerbBuilding>();         
 
         BuildingInfo buildingInfo = new BuildingInfo();
-        buildingInfo.herbBuilt = houseNodes.herbBuilt;
-        buildingInfo.currentHerbHolding = herbBuilding.newScore;
+        buildingInfo.herbBuilt = scrHouseNodes.herbBuilt;
+        buildingInfo.currentHerbHolding = scrHerbBuilding.newScore;
 
         XmlSerializer serializer = new XmlSerializer(typeof(BuildingInfo));
         StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/save.xml");

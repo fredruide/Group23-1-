@@ -819,7 +819,7 @@ PrefabInstance:
     - target: {fileID: 6749598865946629642, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6749598865946629642, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
@@ -2877,6 +2877,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &628336423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1330270392, guid: 6a41dd893c85b4541aad781a5e120c5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2708411741495221286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1064372279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,6 +2912,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eac198b02aa6554bb709590a353ee32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objHouseSaving: {fileID: 628336423}
+  objHerbBuilding: {fileID: 3317096393102910898, guid: 7e392fc8c24097144af6ab03f55c00c7,
+    type: 3}
 --- !u!4 &1064372281
 Transform:
   m_ObjectHideFlags: 0
@@ -3777,7 +3786,7 @@ Transform:
   m_LocalScale: {x: 4.3337, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2708411741495221286
 PrefabInstance:
@@ -3842,5 +3851,15 @@ PrefabInstance:
       propertyPath: camera2
       value: 
       objectReference: {fileID: 2054255766}
+    - target: {fileID: 1330270393, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+      propertyPath: herbalist
+      value: 
+      objectReference: {fileID: 3317096393102910898, guid: 7e392fc8c24097144af6ab03f55c00c7,
+        type: 3}
+    - target: {fileID: 1330270393, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+      propertyPath: iron
+      value: 
+      objectReference: {fileID: 3317096393102910898, guid: 9e6a769b6fbc3bf45bddd357e35a39d3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}

@@ -5,7 +5,7 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class HerbBuildin : MonoBehaviour
+public class StoneBuilding : MonoBehaviour
 {
     private TextMesh Text;
 

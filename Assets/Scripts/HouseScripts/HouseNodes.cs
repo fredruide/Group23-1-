@@ -10,17 +10,17 @@ public class HouseNodes : MonoBehaviour
 {
     [SerializeField]
     private GameObject herbalist;
-    public bool herbBuilt;
+    public bool herbBuilt { get; set; }
     public float gridHerbalistX = 52.5f;
     public float gridHerbalistY = -25.6f;
     [SerializeField]
     private GameObject stone;
-    public bool stoneBuilt;
+    public bool stoneBuilt { get; set; }
     public float gridStoneX = 65.5f;
     public float gridStoneY = 25.6f;
     [SerializeField]
     private GameObject iron;
-    public bool IronBuilt;
+    public bool IronBuilt { get; set; }
     public float gridIronX = 79.5f;
     public float gridIronY = 25.6f;
 
