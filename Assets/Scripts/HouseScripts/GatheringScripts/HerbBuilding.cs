@@ -11,7 +11,7 @@ public class HerbBuilding : MonoBehaviour
 
     private string key = "Test";
 
-    public int newScore;
+    public int newScore { get; set; }
     public float resourceCd = 2f;
     public int resourcePm = 10;
 
@@ -21,8 +21,6 @@ public class HerbBuilding : MonoBehaviour
     //private int loadedScore;
     private int savedScore;
 
-    private bool peter;
-
     //private int intSavedScoreID;
     //private string stringSavedScoreID;
 
@@ -30,12 +28,18 @@ public class HerbBuilding : MonoBehaviour
 
     private void Awake()
     {
-        LoadScore();
+        //LoadScore();
+        Text = GetComponent<TextMesh>();
+        Text.text = newScore.ToString() + " / 250";
+        
         //intSavedScoreID = gameObject.GetInstanceID();
         //stringSavedScoreID = intSavedScoreID.ToString();
-        Text = GetComponent<TextMesh>();
-
         //int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()
@@ -46,11 +50,11 @@ public class HerbBuilding : MonoBehaviour
 
     private void resource()
     {
-        if (PlayerPrefs.GetInt(key) == 1 && currentScore < 240)
+        if (PlayerPrefs.GetInt(key) == 1 && currentScore < 240 && newScore < 240)
         {
             resourceTimeCd = resourceTimeCd - Time.smoothDeltaTime;
 
-            if (resourcePicked)
+            if (resourcePicked )
             {
 
                 currentScore = newScore;
@@ -110,7 +114,7 @@ public class HerbBuilding : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveScore();
+        //SaveScore();
 
         //savedScore = newScore;
         //PlayerPrefs.SetInt(stringSavedScoreID, savedScore);

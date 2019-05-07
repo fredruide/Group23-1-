@@ -147,7 +147,11 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
 
+<<<<<<< HEAD
         print(Input.mousePosition);
+=======
+        //print(Input.mousePosition);
+>>>>>>> 8b9604779556e60e4c99c9c1542f56b603e9cd53
 
         //print("Velocity: " + rb.velocity.y);
         //print("Velocity: " + rb.velocity.y);SDW

@@ -5,37 +5,39 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class HerbBuildin : MonoBehaviour
+public class StoneBuilding : MonoBehaviour
 {
     private TextMesh Text;
 
     private string key = "Test";
 
+    public int newScore { get; set; }
     public float resourceCd = 2f;
+    public int resourcePm = 10;
+
     private float resourceTimeCd;
     private bool resourcePicked = true;
-
-    public int resourcePm = 10;
-    private string currentScore = "0";
-    private int newScore;
-
-    private int intSavedScoreID;
+    private int currentScore;
+    //private int loadedScore;
     private int savedScore;
-    private string stringSavedScoreID;
+
+    //private int intSavedScoreID;
+    //private string stringSavedScoreID;
 
     //TODO At bruge information til smide tilbage i vores huse når at vi kan gemme dem og placere dem ordenligt
 
     private void Awake()
     {
-        loadScore();
-        intSavedScoreID = gameObject.GetInstanceID();
-        stringSavedScoreID = intSavedScoreID.ToString();
+        //LoadScore();
         Text = GetComponent<TextMesh>();
+        Text.text = newScore.ToString() + " / 250";
 
-        int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
+        //intSavedScoreID = gameObject.GetInstanceID();
+        //stringSavedScoreID = intSavedScoreID.ToString();
+        //int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
     }
 
-    private void OnDestroy()
+    private void Start()
     {
 
     }
@@ -43,20 +45,21 @@ public class HerbBuildin : MonoBehaviour
     private void Update()
     {
         resource();
-        //save();
+
     }
 
     private void resource()
     {
-        if (PlayerPrefs.GetInt(key) == 1 && int.Parse(currentScore) < 240)
+        if (PlayerPrefs.GetInt(key) == 1 && currentScore < 240 && newScore < 240)
         {
             resourceTimeCd = resourceTimeCd - Time.smoothDeltaTime;
 
             if (resourcePicked)
             {
-                currentScore = newScore.ToString();
+
+                currentScore = newScore;
                 //int.TryParse(currentScore, out currentScoreInt);            
-                newScore = int.Parse(currentScore) + resourcePm;
+                newScore = currentScore + resourcePm;
                 Text.text = newScore.ToString() + " / 250";
                 resourcePicked = false;
                 //Debug.Log("et sekund");
@@ -75,8 +78,8 @@ public class HerbBuildin : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
 
         BuildingInfo buildingInfo = new BuildingInfo();
-
-        buildingInfo.currentStoneHolding = int.Parse(currentScore);
+        // Virker ikke fordi at currentscore ikke er en ting længere
+        //buildingInfo.currentStoneHolding = int.Parse(currentScore);
         bf.Serialize(file, buildingInfo);
     }
 
@@ -87,8 +90,8 @@ public class HerbBuildin : MonoBehaviour
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
             BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
-
-            currentScore = buildingInfo.currentIronHolding.ToString();
+            // Virker ikke fordi at currentscore ikke er en ting længere
+            //currentScore = buildingInfo.currentIronHolding.ToString();
             file.Close();
         }
         
