@@ -100,11 +100,11 @@ public class HouseNodes : MonoBehaviour
                 Instantiate(stone, pos, Quaternion.identity);
                 stoneBuilt = true;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && !IronBuilt)
+            if (Input.GetKeyDown(KeyCode.Alpha3) && !ironBuilt)
             {
                 Vector3 pos = new Vector3(gridIronX, gridIronY);
                 Instantiate(iron, pos, Quaternion.identity);
-                IronBuilt = true;
+                ironBuilt = true;
             }
         }
 
@@ -122,7 +122,7 @@ public class HouseNodes : MonoBehaviour
             Vector3 pos = new Vector3(gridStoneX, gridStoneY);
             Instantiate(stone, pos, Quaternion.identity);
         }
-        if (IronBuilt)
+        if (ironBuilt)
         {
             Vector3 pos = new Vector3(gridIronX, gridIronY);
             Instantiate(iron, pos, Quaternion.identity);
@@ -141,7 +141,7 @@ public class HouseNodes : MonoBehaviour
             print(buildingInfo.herbBuilt + "" + herbBuilt);
             buildingInfo.stoneBuilt = stoneBuilt;
             print(buildingInfo.stoneBuilt);
-            buildingInfo.ironBuilt = IronBuilt;
+            buildingInfo.ironBuilt = ironBuilt;
             print(buildingInfo.ironBuilt);
 
             bf.Serialize(file, buildingInfo);
@@ -157,7 +157,7 @@ public class HouseNodes : MonoBehaviour
             print(buildingInfo.herbBuilt);
             buildingInfo.stoneBuilt = stoneBuilt;
             print(buildingInfo.stoneBuilt);
-            buildingInfo.ironBuilt = IronBuilt;
+            buildingInfo.ironBuilt = ironBuilt;
             print(buildingInfo.ironBuilt);
 
             bf.Serialize(file, buildingInfo);
@@ -177,7 +177,7 @@ public class HouseNodes : MonoBehaviour
             print(buildingInfo.herbBuilt);
             stoneBuilt = buildingInfo.stoneBuilt;
             print(buildingInfo.herbBuilt);
-            IronBuilt = buildingInfo.ironBuilt;
+            ironBuilt = buildingInfo.ironBuilt;
             print(buildingInfo.herbBuilt);
             file.Close();
         }
@@ -190,7 +190,7 @@ public class HouseNodes : MonoBehaviour
         {
             herbBuilt = false;
             stoneBuilt = false;
-            IronBuilt = false;
+            ironBuilt = false;
             SaveBuildings();
         }
     }

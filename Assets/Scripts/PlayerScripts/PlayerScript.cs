@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
         set
         {
             grounded = value;
+            ani.SetBool("isGrounded", value);
             if (value == true)
             {
                 canJump = true;
@@ -75,6 +76,18 @@ public class PlayerScript : MonoBehaviour
         {
             canWallSlide = value;
         }
+    }
+    #endregion
+    #region isVariabler
+    bool isRunning;
+    public bool _isRunning
+    {
+        get { return isRunning; }
+    }
+    bool isAirborn;
+    public bool _isAirborn
+    {
+        get { return isAirborn; }
     }
     #endregion
     #region IDEvariabler
@@ -136,6 +149,8 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         DirectionFacing();
+        IsRunning();
+
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
         //ani.SetBool("Grounded", grounded);
@@ -147,11 +162,6 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
 
-<<<<<<< HEAD
-        print(Input.mousePosition);
-=======
-        //print(Input.mousePosition);
->>>>>>> 8b9604779556e60e4c99c9c1542f56b603e9cd53
 
         //print("Velocity: " + rb.velocity.y);
         //print("Velocity: " + rb.velocity.y);SDW
@@ -426,12 +436,38 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             directionFaced = true;
-            sr.flipX = !directionFaced;
+            sr.flipX = directionFaced;
         } 
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             directionFaced = false;
-            sr.flipX = !directionFaced;
+            sr.flipX = directionFaced;
+        }
+    }
+    void IsRunning()
+    {
+        if (Input.GetButton("Horizontal") && canMoveHori && grounded)
+        {
+            isRunning = true;
+            ani.SetBool("isRunning", true);
+        }
+        else
+        {
+            isRunning = false;
+            ani.SetBool("isRunning", false);
+        }
+    }
+    void IsAirborn()
+    {
+        if (!grounded)
+        {
+            isAirborn = true;
+            ani.SetBool("isAirborn", true);
+        }
+        else
+        {
+            isAirborn = false;
+            ani.SetBool("isAirborn", false);
         }
     }
     #endregion
