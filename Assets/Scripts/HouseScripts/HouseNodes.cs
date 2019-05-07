@@ -9,7 +9,7 @@ using System.IO;
 public class HouseNodes : MonoBehaviour
 {
     [SerializeField]
-    private GameObject herbalist;
+    private GameObject herbalist;   
     public bool herbBuilt { get; set; }
     public float gridHerbalistX = 52.5f;
     public float gridHerbalistY = -25.6f;
@@ -18,11 +18,14 @@ public class HouseNodes : MonoBehaviour
     public bool stoneBuilt { get; set; }
     public float gridStoneX = 65.5f;
     public float gridStoneY = 25.6f;
+
     [SerializeField]
     private GameObject iron;
     public bool ironBuilt { get; set; }
     public float gridIronX = 79.5f;
     public float gridIronY = 25.6f;
+
+    private GameObject objHouseSaving;
 
     private bool building = false;
     private bool deleteBuilding = false;
@@ -52,8 +55,13 @@ public class HouseNodes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            DeleteBuilding();
+        }
         BuildingSlots();
-        
+        Debug.Log(building);
+        Debug.Log(herbBuilt);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -85,14 +93,16 @@ public class HouseNodes : MonoBehaviour
     }
 
     private void BuildingSlots()
-    {
+    {       
+        
         if (building)
         {            
             if (Input.GetKeyDown(KeyCode.Alpha1) && !herbBuilt)
             {
-                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY);
-                Instantiate(herbalist, pos, Quaternion.identity);
                 herbBuilt = true;
+                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY);
+                herbalist = Instantiate(herbalist, pos, Quaternion.identity);
+                
             }
             if (Input.GetKeyDown(KeyCode.Alpha2) && !stoneBuilt)
             {
@@ -100,17 +110,16 @@ public class HouseNodes : MonoBehaviour
                 Instantiate(stone, pos, Quaternion.identity);
                 stoneBuilt = true;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && !IronBuilt)
+            if (Input.GetKeyDown(KeyCode.Alpha3) && !ironBuilt)
             {
                 Vector3 pos = new Vector3(gridIronX, gridIronY);
                 Instantiate(iron, pos, Quaternion.identity);
-                IronBuilt = true;
+                ironBuilt = true;
             }
         }
-
     }
 
-    private void BuildingsBuilt()
+    public void BuildingsBuilt()
     {
         if (herbBuilt)
         {            
@@ -122,7 +131,7 @@ public class HouseNodes : MonoBehaviour
             Vector3 pos = new Vector3(gridStoneX, gridStoneY);
             Instantiate(stone, pos, Quaternion.identity);
         }
-        if (IronBuilt)
+        if (ironBuilt)
         {
             Vector3 pos = new Vector3(gridIronX, gridIronY);
             Instantiate(iron, pos, Quaternion.identity);
@@ -141,7 +150,7 @@ public class HouseNodes : MonoBehaviour
             print(buildingInfo.herbBuilt + "" + herbBuilt);
             buildingInfo.stoneBuilt = stoneBuilt;
             print(buildingInfo.stoneBuilt);
-            buildingInfo.ironBuilt = IronBuilt;
+            buildingInfo.ironBuilt = ironBuilt;
             print(buildingInfo.ironBuilt);
 
             bf.Serialize(file, buildingInfo);
@@ -157,7 +166,7 @@ public class HouseNodes : MonoBehaviour
             print(buildingInfo.herbBuilt);
             buildingInfo.stoneBuilt = stoneBuilt;
             print(buildingInfo.stoneBuilt);
-            buildingInfo.ironBuilt = IronBuilt;
+            buildingInfo.ironBuilt = ironBuilt;
             print(buildingInfo.ironBuilt);
 
             bf.Serialize(file, buildingInfo);
@@ -177,7 +186,7 @@ public class HouseNodes : MonoBehaviour
             print(buildingInfo.herbBuilt);
             stoneBuilt = buildingInfo.stoneBuilt;
             print(buildingInfo.herbBuilt);
-            IronBuilt = buildingInfo.ironBuilt;
+            ironBuilt = buildingInfo.ironBuilt;
             print(buildingInfo.herbBuilt);
             file.Close();
         }
@@ -186,16 +195,18 @@ public class HouseNodes : MonoBehaviour
     //TODO spillere skal kunne ødelægge huse og er nødvendig for at kunne fjerne data
     private void DeleteBuilding()
     {
-        if (deleteBuilding)
-        {
-            herbBuilt = false;
-            stoneBuilt = false;
-            IronBuilt = false;
-            SaveBuildings();
-        }
+        Destroy(gam);
+        //Destroy(iron);
+        //Destroy(stone);
+        herbBuilt = false;
+        ironBuilt = false;
+        stoneBuilt = false;
+        objHouseSaving = GameObject.Find("Saving");
+        HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
+        //scrHouseSaving.xmlSave();
     }
 
-
+   
 
 }
 
