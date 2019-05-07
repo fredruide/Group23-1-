@@ -143,6 +143,7 @@ public class PlayerScript : MonoBehaviour
         ani = GetComponent<Animator>();
         //mainCam is used to check and manipulate the Main Camera in the scene
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
+
     }
 
     // Update is called once per frame
@@ -231,24 +232,6 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else if (!Input.GetButton("Horizontal"))
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-        /*
-        if (Input.GetAxisRaw("Horizontal") != 0 && canMoveHori)
-        {
-<<<<<<< HEAD
-            if(!touchRight && Input.GetAxisRaw("Horizontal") > 0)
-                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
-                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            else
-                rb.velocity = new Vector2(0, rb.velocity.y);
-=======
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
->>>>>>> Jakob2
-        }
-        else if (Input.GetAxisRaw("Horizontal") == 0)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
