@@ -20,7 +20,7 @@ public class HouseNodes : MonoBehaviour
     public float gridStoneY = 25.6f;
     [SerializeField]
     private GameObject iron;
-    public bool IronBuilt { get; set; }
+    public bool ironBuilt { get; set; }
     public float gridIronX = 79.5f;
     public float gridIronY = 25.6f;
 

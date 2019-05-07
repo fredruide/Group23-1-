@@ -7,11 +7,13 @@ using System.IO;
 
 public class HouseSaving : MonoBehaviour
 {
-    public GameObject objHouseSaving;
-    public GameObject objHerbBuilding;
-    //private HerbBuilding scrHerbBuilding;
+    BuildingInfo buildingInfo = new BuildingInfo();
+    public GameObject objHouseNode;
     private HouseNodes scrHouseNodes;
-
+    GameObject objHerbBuilding = GameObject.Find("ResourceHerb");
+    GameObject objIronBuilding = GameObject.Find("ResourceIron");
+    GameObject objStoneBuilding = GameObject.Find("ResourceStone");        
+    
     private void Start()
     {
         //herbBuilding = GameObject.FindObjectOfType<HerbBuilding>();
@@ -23,40 +25,65 @@ public class HouseSaving : MonoBehaviour
         peter = buildingInfo.funtion();
         print(peter);
         */
-    }
+    }    
     
-    //private void test()
-    //{
-    //    int x;
-    //    bool y;
-    //    x = scrHerbBuilding.newScore;
-    //    y = scrHouseNodes.herbBuilt;
-    //    print(x + " " + y);
-    //}
-   
     private void xmlSave()
     {
-        scrHouseNodes = objHouseSaving.GetComponent<HouseNodes>();
-        GameObject g = GameObject.Find("ResourceHerb");
-        HerbBuilding scrHerbBuilding = g.GetComponent<HerbBuilding>();         
+        scrHouseNodes = objHouseNode.GetComponent<HouseNodes>();
+        ResourceBuildingCheck();
 
-        BuildingInfo buildingInfo = new BuildingInfo();
-        buildingInfo.herbBuilt = scrHouseNodes.herbBuilt;
-        buildingInfo.currentHerbHolding = scrHerbBuilding.newScore;
 
         XmlSerializer serializer = new XmlSerializer(typeof(BuildingInfo));
         StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/save.xml");
         serializer.Serialize(writer.BaseStream, buildingInfo);
         writer.Close();
     }
+    
+    private void ResourceBuildingCheck()
+    {        
+        if (null == GameObject.Find("ResourceHerb"))
+        {
+            buildingInfo.herbBuilt = false;
+            buildingInfo.currentHerbHolding = 0;
+        }
+        else
+        {
+            HerbBuilding scrHerbBuilding = objHerbBuilding.GetComponent<HerbBuilding>();
+            buildingInfo.herbBuilt = scrHouseNodes.herbBuilt;
+            buildingInfo.currentHerbHolding = scrHerbBuilding.newScore;
+        }
+        if (null == GameObject.Find("ResourceIron"))
+        {
+            buildingInfo.ironBuilt = false;
+            buildingInfo.currentIronHolding = 0;
+        }
+        else
+        {
+            IronBuilding scrIronBuilding = objIronBuilding.GetComponent<IronBuilding>();
+            buildingInfo.ironBuilt = scrHouseNodes.ironBuilt;
+            buildingInfo.currentIronHolding = scrIronBuilding.newScore;
+        }
 
-   
+        if (null == GameObject.Find("ResourceStone"))
+        {
+            buildingInfo.stoneBuilt = false;
+            buildingInfo.currentStoneHolding = 0;
+        }
+        else
+        {
+            HerbBuilding scrHerbBuilding = objHerbBuilding.GetComponent<HerbBuilding>();
+            buildingInfo.stoneBuilt = scrHouseNodes.stoneBuilt;
+            buildingInfo.currentStoneHolding = scrHerbBuilding.newScore;
+        }       
+    }    
 
     public void xmlLoad()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(BuildingInfo));
         StreamReader reader = new StreamReader(Application.persistentDataPath + "/save.xml");
         BuildingInfo buildingInfo = (BuildingInfo)serializer.Deserialize(reader.BaseStream);
+
+        
 
         print(buildingInfo.herbBuilt);
     }

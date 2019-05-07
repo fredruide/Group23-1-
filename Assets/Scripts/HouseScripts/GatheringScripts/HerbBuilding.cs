@@ -21,8 +21,6 @@ public class HerbBuilding : MonoBehaviour
     //private int loadedScore;
     private int savedScore;
 
-    private bool peter;
-
     //private int intSavedScoreID;
     //private string stringSavedScoreID;
 
