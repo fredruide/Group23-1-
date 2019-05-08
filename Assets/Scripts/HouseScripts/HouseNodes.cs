@@ -8,7 +8,7 @@ using System.IO;
 
 public class HouseNodes : MonoBehaviour
 {
-    #region Object placing and deletion
+    #region Object placing and deletion constructors
     [SerializeField]
     private GameObject herbalist;   
     public bool herbBuilt { get; set; }
@@ -30,15 +30,15 @@ public class HouseNodes : MonoBehaviour
     private bool building = false;
     private bool deleteBuilding = false;
     #endregion
-    #region UI
+    #region UI Constructors
     public TextManipulator TextManipulator;
 
-    public GameObject camera1;
-    public GameObject camera2;
+    public GameObject mainCamera1;
+    public GameObject overViewCamera;
 
     public GameObject UI;
-    public GameObject BuildButton;
-    public GameObject DeleteButton;
+    public GameObject buildButton;
+    public GameObject deleteButton;
     #endregion
 
     private void Awake()
@@ -49,8 +49,8 @@ public class HouseNodes : MonoBehaviour
 
     private void Start()
     {
-        camera1.SetActive(true);
-        camera2.SetActive(false);
+        mainCamera1.SetActive(true);
+        overViewCamera.SetActive(false);
         UI.SetActive(false);
     }
 
@@ -66,8 +66,8 @@ public class HouseNodes : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            camera2.SetActive(true);
-            camera1.SetActive(false);
+            overViewCamera.SetActive(true);
+            mainCamera1.SetActive(false);
 
             UI.SetActive(true);
 
@@ -85,8 +85,8 @@ public class HouseNodes : MonoBehaviour
         UI.SetActive(false);
 
         //Debug.Log(Building)
-        camera1.SetActive(true);
-        camera2.SetActive(false);
+        mainCamera1.SetActive(true);
+        overViewCamera.SetActive(false);
     }
 
     public void BuildingSlots()
@@ -188,14 +188,14 @@ public class HouseNodes : MonoBehaviour
         {
             if (deleteBuilding == true)
             {
-                BuildButton.SetActive(true);
-                DeleteButton.SetActive(false);
+                buildButton.SetActive(true);
+                deleteButton.SetActive(false);
                 deleteBuilding = false;
             }
             else if (deleteBuilding == false)
             {
-                BuildButton.SetActive(false);
-                DeleteButton.SetActive(true);
+                buildButton.SetActive(false);
+                deleteButton.SetActive(true);
                 deleteBuilding = true;
             }
         }

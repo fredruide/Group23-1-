@@ -964,6 +964,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8880408949538660265, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880408949538660265, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -27.17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1f78afea97c352488b9e7227668c469, type: 3}
 --- !u!1 &271466333
@@ -25343,13 +25353,13 @@ Tilemap:
     e33: 1
 --- !u!1 &628336423 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1330270392, guid: 6a41dd893c85b4541aad781a5e120c5b,
+  m_CorrespondingSourceObject: {fileID: 628336423, guid: f419fb5dc3b410b4db08641972479aef,
     type: 3}
   m_PrefabInstance: {fileID: 2708411741495221286}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &628336424 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
+  m_CorrespondingSourceObject: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef,
     type: 3}
   m_PrefabInstance: {fileID: 2708411741495221286}
   m_PrefabAsset: {fileID: 0}
@@ -27938,115 +27948,89 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1330270392, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336423, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_Name
       value: HouseNode
       objectReference: {fileID: 0}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: camera1
-      value: 
-      objectReference: {fileID: 307004498}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: camera2
-      value: 
-      objectReference: {fileID: 2054255766}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: gridStoneY
-      value: -25.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: gridIronY
-      value: -25.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 2105464721}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: BuildButton
-      value: 
-      objectReference: {fileID: 1376845084}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: DeleteButton
-      value: 
-      objectReference: {fileID: 227965131}
-    - target: {fileID: 977430786137167418, guid: 6a41dd893c85b4541aad781a5e120c5b,
-        type: 3}
-      propertyPath: TextManipulator
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.927
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalPosition.y
       value: -26.26
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalPosition.z
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 677400961, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1330270393, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: camera1
       value: 
       objectReference: {fileID: 307004498}
-    - target: {fileID: 1330270393, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: camera2
       value: 
       objectReference: {fileID: 2054255766}
-    - target: {fileID: 1330270393, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
-      propertyPath: herbalist
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: UI
       value: 
-      objectReference: {fileID: 3317096393102910898, guid: 7e392fc8c24097144af6ab03f55c00c7,
-        type: 3}
-    - target: {fileID: 1330270393, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
-      propertyPath: iron
+      objectReference: {fileID: 2105464721}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: BuildButton
       value: 
-      objectReference: {fileID: 3317096393102910898, guid: 9e6a769b6fbc3bf45bddd357e35a39d3,
-        type: 3}
-    - target: {fileID: 280532153, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1376845084}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: DeleteButton
+      value: 
+      objectReference: {fileID: 227965131}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: buildButton
+      value: 
+      objectReference: {fileID: 1376845084}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: mainCamera1
+      value: 
+      objectReference: {fileID: 307004498}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: overViewCamera
+      value: 
+      objectReference: {fileID: 2054255766}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: deleteButton
+      value: 
+      objectReference: {fileID: 227965131}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6a41dd893c85b4541aad781a5e120c5b, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
