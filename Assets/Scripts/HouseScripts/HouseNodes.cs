@@ -9,7 +9,7 @@ using System.IO;
 public class HouseNodes : MonoBehaviour
 {
     [SerializeField]
-    private GameObject herbalist;
+    private GameObject herbalist;   
     public bool herbBuilt { get; set; }
     public float gridHerbalistX = 52.5f;
     public float gridHerbalistY = -25.6f;
@@ -18,11 +18,14 @@ public class HouseNodes : MonoBehaviour
     public bool stoneBuilt { get; set; }
     public float gridStoneX = 65.5f;
     public float gridStoneY = 25.6f;
+
     [SerializeField]
     private GameObject iron;
     public bool ironBuilt { get; set; }
     public float gridIronX = 79.5f;
     public float gridIronY = 25.6f;
+
+    private GameObject objHouseSaving;
 
     private bool building = false;
     private bool deleteBuilding = false;
@@ -52,8 +55,13 @@ public class HouseNodes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            DeleteBuilding();
+        }
         BuildingSlots();
-        
+        Debug.Log(building);
+        Debug.Log(herbBuilt);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -85,14 +93,16 @@ public class HouseNodes : MonoBehaviour
     }
 
     private void BuildingSlots()
-    {
+    {       
+        
         if (building)
         {            
             if (Input.GetKeyDown(KeyCode.Alpha1) && !herbBuilt)
             {
-                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY);
-                Instantiate(herbalist, pos, Quaternion.identity);
                 herbBuilt = true;
+                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY);
+                herbalist = Instantiate(herbalist, pos, Quaternion.identity);
+                
             }
             if (Input.GetKeyDown(KeyCode.Alpha2) && !stoneBuilt)
             {
@@ -107,10 +117,9 @@ public class HouseNodes : MonoBehaviour
                 ironBuilt = true;
             }
         }
-
     }
 
-    private void BuildingsBuilt()
+    public void BuildingsBuilt()
     {
         if (herbBuilt)
         {            
@@ -186,6 +195,17 @@ public class HouseNodes : MonoBehaviour
     //TODO spillere skal kunne ødelægge huse og er nødvendig for at kunne fjerne data
     private void DeleteBuilding()
     {
+<<<<<<< HEAD
+        Destroy(gam);
+        //Destroy(iron);
+        //Destroy(stone);
+        herbBuilt = false;
+        ironBuilt = false;
+        stoneBuilt = false;
+        objHouseSaving = GameObject.Find("Saving");
+        HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
+        //scrHouseSaving.xmlSave();
+=======
         if (deleteBuilding)
         {
             herbBuilt = false;
@@ -193,9 +213,10 @@ public class HouseNodes : MonoBehaviour
             ironBuilt = false;
             SaveBuildings();
         }
+>>>>>>> cf0996bc8492558cda5f24cbf892e92e7dba4368
     }
 
-
+   
 
 }
 

@@ -2912,9 +2912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eac198b02aa6554bb709590a353ee32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objHouseSaving: {fileID: 628336423}
-  objHerbBuilding: {fileID: 3317096393102910898, guid: 7e392fc8c24097144af6ab03f55c00c7,
-    type: 3}
+  objHouseNode: {fileID: 628336423}
 --- !u!4 &1064372281
 Transform:
   m_ObjectHideFlags: 0

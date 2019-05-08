@@ -29,8 +29,7 @@ public class StoneBuilding : MonoBehaviour
     private void Awake()
     {
         //LoadScore();
-        Text = GetComponent<TextMesh>();
-        Text.text = newScore.ToString() + " / 250";
+        
 
         //intSavedScoreID = gameObject.GetInstanceID();
         //stringSavedScoreID = intSavedScoreID.ToString();
@@ -39,7 +38,8 @@ public class StoneBuilding : MonoBehaviour
 
     private void Start()
     {
-
+        Text = GetComponent<TextMesh>();
+        Text.text = newScore.ToString() + " / 250";
     }
 
     private void Update()
@@ -50,7 +50,7 @@ public class StoneBuilding : MonoBehaviour
 
     private void resource()
     {
-        if (PlayerPrefs.GetInt(key) == 1 && currentScore < 240 && newScore < 240)
+        if (PlayerPrefs.GetInt(key) == 1 && currentScore <= 240 && newScore <= 240)
         {
             resourceTimeCd = resourceTimeCd - Time.smoothDeltaTime;
 
