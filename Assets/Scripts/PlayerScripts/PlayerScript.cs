@@ -163,7 +163,7 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
 
-
+        //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
         //print("Velocity: " + rb.velocity.y);
         //print("Velocity: " + rb.velocity.y);SDW
         //print("grounded: " + grounded);
@@ -429,7 +429,8 @@ public class PlayerScript : MonoBehaviour
     }
     void IsRunning()
     {
-        if (Input.GetButton("Horizontal") && canMoveHori && grounded)
+        
+        if (Input.GetButton("Horizontal") && canMoveHori && grounded && rb.velocity.x != 0)
         {
             isRunning = true;
             ani.SetBool("isRunning", true);
