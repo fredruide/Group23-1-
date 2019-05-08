@@ -99,12 +99,9 @@ public class StoneBuilding : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        saveScore();
-
         //savedScore = newScore;
         //PlayerPrefs.SetInt(stringSavedScoreID, savedScore);
         //Debug.Log("Vi gemte " + savedScore + " i player prefs under " + stringSavedScoreID + " id'et");
-
     }
 }
 

@@ -115,9 +115,9 @@ GameObject:
   - component: {fileID: 677400961}
   - component: {fileID: 1330270395}
   - component: {fileID: 1330270394}
-  - component: {fileID: 1330270393}
+  - component: {fileID: 977430786137167418}
   m_Layer: 0
-  m_Name: HouseNode 1
+  m_Name: HouseNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15.36, y: 14.78}
   m_EdgeRadius: 0
---- !u!114 &1330270393
+--- !u!114 &977430786137167418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,16 +224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efeeb6f2d0293d0419187ea7d6632889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  herbalist: {fileID: 1285517317910894588, guid: 36055043a0aa9bb488c64bdd7b88f519,
+  herbalist: {fileID: 3317096393102910898, guid: 7e392fc8c24097144af6ab03f55c00c7,
     type: 3}
   gridHerbalistX: 52.5
   gridHerbalistY: -25.6
   stone: {fileID: 3317096393102910898, guid: ae28eea6a10e9464182ac84a5aa8a300, type: 3}
   gridStoneX: 65.5
-  gridStoneY: -25.6
-  iron: {fileID: 3078268218240342058, guid: 2911e40d6d63b9c45a451778bd86ab32, type: 3}
+  gridStoneY: 25.6
+  iron: {fileID: 3317096393102910898, guid: 9e6a769b6fbc3bf45bddd357e35a39d3, type: 3}
   gridIronX: 79.5
-  gridIronY: -25.6
+  gridIronY: 25.6
   TextManipulator: {fileID: 280532157}
   camera1: {fileID: 0}
   camera2: {fileID: 0}

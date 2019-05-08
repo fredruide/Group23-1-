@@ -8,6 +8,7 @@ using System.IO;
 
 public class HouseNodes : MonoBehaviour
 {
+    #region Object placing and deletion
     [SerializeField]
     private GameObject herbalist;   
     public bool herbBuilt { get; set; }
@@ -18,7 +19,6 @@ public class HouseNodes : MonoBehaviour
     public bool stoneBuilt { get; set; }
     public float gridStoneX = 65.5f;
     public float gridStoneY = 25.6f;
-
     [SerializeField]
     private GameObject iron;
     public bool ironBuilt { get; set; }
@@ -26,42 +26,40 @@ public class HouseNodes : MonoBehaviour
     public float gridIronY = 25.6f;
 
     private GameObject objHouseSaving;
-
+    
     private bool building = false;
     private bool deleteBuilding = false;
-
+    #endregion
+    #region UI
     public TextManipulator TextManipulator;
 
     public GameObject camera1;
     public GameObject camera2;
 
-    //AudioListener camera1AudioLis;
-    //AudioListener camera2AudioLis;
+    public GameObject UI;
+    public GameObject BuildButton;
+    public GameObject DeleteButton;
+    #endregion
 
     private void Awake()
-    {
-        //houseSaving = GameObject.FindObjectOfType<HouseSaving>();
-        //LoadBuildings();         
-        BuildingsBuilt();
-        camera1.SetActive(true);
+    {        
+        //BuildingsBuilt();
         TextManipulator = GameObject.FindObjectOfType<TextManipulator>();
     }
-    
-    private void OnApplicationQuit()
-    {        
-        //SaveBuildings();
+
+    private void Start()
+    {
+        camera1.SetActive(true);
+        camera2.SetActive(false);
+        UI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            DeleteBuilding();
-        }
-        BuildingSlots();
-        Debug.Log(building);
-        Debug.Log(herbBuilt);
+    {        
+        Debug.Log(deleteBuilding);
+        DeleteBuilding();
+        BuildingSlots();             
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -71,50 +69,134 @@ public class HouseNodes : MonoBehaviour
             camera2.SetActive(true);
             camera1.SetActive(false);
 
-            //Debug.Log("Det triggerede mig");
-            TextManipulator.TextUpdate("Du kan nu bygge en Herbalist, Stone eller Iron indsamler bygning");
-            building = true;
+            UI.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                deleteBuilding = true;
-            }            
+            //Debug.Log("Det triggerede mig");
+            //TextManipulator.TextUpdate("Du kan nu bygge en Herbalist, Stone eller Iron indsamler bygning" +
+            //    "\n");
+            building = true;
         }        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         building = false;
-        TextManipulator.TextUpdate("");
+        //TextManipulator.TextUpdate("");
+        UI.SetActive(false);
 
         //Debug.Log(Building)
         camera1.SetActive(true);
         camera2.SetActive(false);
     }
 
-    private void BuildingSlots()
-    {       
-        
+    public void BuildingSlots()
+    {               
         if (building)
         {            
-            if (Input.GetKeyDown(KeyCode.Alpha1) && !herbBuilt)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && !herbBuilt && !deleteBuilding)
             {
                 herbBuilt = true;
-                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY);
-                herbalist = Instantiate(herbalist, pos, Quaternion.identity);
-                
+                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, 9);
+                Instantiate(herbalist, pos, Quaternion.identity);                
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && !stoneBuilt)
+            if (Input.GetKeyDown(KeyCode.Alpha2) && !stoneBuilt && !deleteBuilding)
             {
-                Vector3 pos = new Vector3(gridStoneX, gridStoneY);
-                Instantiate(stone, pos, Quaternion.identity);
                 stoneBuilt = true;
+                Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
+                Instantiate(stone, pos, Quaternion.identity);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && !ironBuilt)
+            if (Input.GetKeyDown(KeyCode.Alpha3) && !ironBuilt && !deleteBuilding)
             {
-                Vector3 pos = new Vector3(gridIronX, gridIronY);
-                Instantiate(iron, pos, Quaternion.identity);
                 ironBuilt = true;
+                Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
+                Instantiate(iron, pos, Quaternion.identity);
+            }
+        }
+    }
+
+    public void BuildHerbBuilding()
+    {
+        if (building)
+        {
+            if (!herbBuilt && !deleteBuilding)
+            {
+                herbBuilt = true;
+                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, 9);
+                Instantiate(herbalist, pos, Quaternion.identity);
+            }
+        }
+    }
+    public void BuildIronBuilding()
+    {
+        if (building)
+        {
+            if (!stoneBuilt && !deleteBuilding)
+            {
+                stoneBuilt = true;
+                Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
+                Instantiate(stone, pos, Quaternion.identity);
+            }
+        }
+    }
+    public void BuildStoneBuilding()
+    {
+        if (building)
+        {
+            if (!ironBuilt && !deleteBuilding)
+            {
+                ironBuilt = true;
+                Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
+                Instantiate(iron, pos, Quaternion.identity);
+            }
+        }
+    }
+
+    public void DeleteHerbBuilding()
+    {
+        if (deleteBuilding)
+        {
+            if (null != GameObject.Find("Herbalist(Clone)"))
+            {
+                var herbDestroy = GameObject.Find("Herbalist(Clone)");
+                Destroy(herbDestroy);
+                herbBuilt = false;
+            }
+        }
+    }
+    public void DeleteIronBuilding()
+    {
+        if (null != GameObject.Find("Iron(Clone)"))
+        {
+            var ironDestroy = GameObject.Find("Iron(Clone)");
+            Destroy(ironDestroy);
+            ironBuilt = false;
+        }
+    }
+    public void DeleteStoneBuilding()
+    {
+        if (null != GameObject.Find("Stone(Clone)"))
+        {
+            var stoneDestroy = GameObject.Find("Stone(Clone)");
+            Destroy(stoneDestroy);
+            stoneBuilt = false;
+        }
+    }
+
+    public void DemolishBuildingActivateDeactivate()
+    {
+        if (building)
+        {
+            if (deleteBuilding == true)
+            {
+                BuildButton.SetActive(true);
+                DeleteButton.SetActive(false);
+                deleteBuilding = false;
+            }
+            else if (deleteBuilding == false)
+            {
+                BuildButton.SetActive(false);
+                DeleteButton.SetActive(true);
+                deleteBuilding = true;
             }
         }
     }
@@ -123,17 +205,17 @@ public class HouseNodes : MonoBehaviour
     {
         if (herbBuilt)
         {            
-            Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY);
+            Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, 9);
             Instantiate(herbalist, pos, Quaternion.identity);
         }
         if (stoneBuilt)
         {
-            Vector3 pos = new Vector3(gridStoneX, gridStoneY);
+            Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
             Instantiate(stone, pos, Quaternion.identity);
         }
         if (ironBuilt)
         {
-            Vector3 pos = new Vector3(gridIronX, gridIronY);
+            Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
             Instantiate(iron, pos, Quaternion.identity);
         }
     }
@@ -192,32 +274,45 @@ public class HouseNodes : MonoBehaviour
         }
     }
 
-    //TODO spillere skal kunne ødelægge huse og er nødvendig for at kunne fjerne data
+    //Funktion for at kunne individuelt fjerne bygninger
     private void DeleteBuilding()
     {
-<<<<<<< HEAD
-        Destroy(gam);
-        //Destroy(iron);
-        //Destroy(stone);
-        herbBuilt = false;
-        ironBuilt = false;
-        stoneBuilt = false;
-        objHouseSaving = GameObject.Find("Saving");
-        HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
-        //scrHouseSaving.xmlSave();
-=======
+        //Slet
         if (deleteBuilding)
         {
-            herbBuilt = false;
-            stoneBuilt = false;
-            ironBuilt = false;
-            SaveBuildings();
-        }
->>>>>>> cf0996bc8492558cda5f24cbf892e92e7dba4368
-    }
-
-   
-
+            //slet af bygninger og en funktion for hver bygning så spilleren kan vælge
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if (null != GameObject.Find("Herbalist(Clone)"))
+                {
+                    var herbDestroy = GameObject.Find("Herbalist(Clone)");
+                    Destroy(herbDestroy);
+                    herbBuilt = false;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (null != GameObject.Find("Stone(Clone)"))
+                {
+                    var stoneDestroy = GameObject.Find("Stone(Clone)");
+                    Destroy(stoneDestroy);
+                    stoneBuilt = false;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (null != GameObject.Find("Iron(Clone)"))
+                {
+                    var ironDestroy = GameObject.Find("Iron(Clone)");
+                    Destroy(ironDestroy);
+                    ironBuilt = false;
+                }
+            }
+        }            
+        objHouseSaving = GameObject.Find("Saving");
+        HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
+        scrHouseSaving.xmlSave();        
+    }   
 }
 
 

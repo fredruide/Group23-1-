@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Xml.Serialization;
+using System.Xml.Serialization; 
 using System.IO;
 
 public class HouseSaving : MonoBehaviour
@@ -13,34 +13,28 @@ public class HouseSaving : MonoBehaviour
     private GameObject objHerbBuilding;
     private GameObject objIronBuilding;
     private GameObject objStoneBuilding;
+
+    public GameObject UI;
     int x = 0;
 
     private void Start()
-    {
-        //herbBuilding = GameObject.FindObjectOfType<HerbBuilding>();
-        
+    {                
         xmlLoad();
-
-        /*
-        int peter;
-        BuildingInfo buildingInfo = new BuildingInfo();
-        peter = buildingInfo.funtion();
-        print(peter);
-        */
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            xmlLoad();
-        }
+        
     }
 
+    /*
+    Vi bruger xmlserializer til at omdanne vores information til et format som kan lægges i en XML fil,
+    Streamwriter til at skrive og læse dataen
+    Vi bruger et field kaldet Buildinginfo og den skal explicit være en [Serializablefield]
+    */
     public void xmlSave()
     {
-        ResourceBuildingCheck();
-
+        ResourceBuildingCheck();        
         XmlSerializer serializer = new XmlSerializer(typeof(BuildingInfo));
         StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/save.xml");
         serializer.Serialize(writer.BaseStream, buildingInfo);
@@ -82,7 +76,7 @@ public class HouseSaving : MonoBehaviour
             scrStoneBuilding.newScore = buildingInfo.currentStoneHolding;
         }
      
-        print(buildingInfo.herbBuilt);
+        //(buildingInfo.herbBuilt);
         reader.Close();
     }
 
