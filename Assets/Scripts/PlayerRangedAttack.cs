@@ -30,7 +30,7 @@ public class PlayerRangedAttack : MonoBehaviour
         }
         if (reloadTime <= 0)
         {
-            PlayerScript.canMoveTest = true;
+            PlayerScript.canMoveHori = true;
         }
 
     }
@@ -44,7 +44,7 @@ public class PlayerRangedAttack : MonoBehaviour
     {
         reloadTime = startReloadTime;
         ammo = 1;
-        PlayerScript.canMoveTest = false;
+        PlayerScript.canMoveHori = false;
         Debug.Log("Reloading");
     }
 }
