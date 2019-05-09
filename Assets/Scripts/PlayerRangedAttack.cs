@@ -9,7 +9,6 @@ public class PlayerRangedAttack : MonoBehaviour
     public int ammo;
     public float reloadTime;
     public float startReloadTime;
-    public float mousePosition;
     void Update()
     {
         if (reloadTime <= 0)

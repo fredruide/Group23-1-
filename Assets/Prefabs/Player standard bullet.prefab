@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 5284784427024207467}
   - component: {fileID: 5284784427024207464}
   - component: {fileID: 5284784427024207465}
+  - component: {fileID: 3937766065970688206}
   m_Layer: 0
-  m_Name: Bullet sprites fixed(for real now)_0
+  m_Name: Player standard bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   damage: 6
-  rb: {fileID: 0}
+  rb: {fileID: 3937766065970688206}
   impactEffect: {fileID: 0}
 --- !u!61 &5284784427024207465
 BoxCollider2D:
@@ -123,3 +124,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.687788, y: 0.24977022}
   m_EdgeRadius: 0
+--- !u!50 &3937766065970688206
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5284784427024207470}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
