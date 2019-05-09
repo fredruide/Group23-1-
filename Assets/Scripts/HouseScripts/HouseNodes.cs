@@ -8,6 +8,7 @@ using System.IO;
 
 public class HouseNodes : MonoBehaviour
 {
+    //Skrevet af Jakob Vestergaard med design hjælp fra Jonas
     #region Object placing and deletion constructors
     [SerializeField]
     private GameObject herbalist;   
@@ -130,11 +131,11 @@ public class HouseNodes : MonoBehaviour
     {
         if (building)
         {
-            if (!stoneBuilt && !deleteBuilding)
+            if (!ironBuilt && !deleteBuilding)
             {
-                stoneBuilt = true;
-                Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
-                Instantiate(stone, pos, Quaternion.identity);
+                ironBuilt = true;
+                Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
+                Instantiate(iron, pos, Quaternion.identity);
             }
         }
     }
@@ -142,11 +143,11 @@ public class HouseNodes : MonoBehaviour
     {
         if (building)
         {
-            if (!ironBuilt && !deleteBuilding)
+            if (!stoneBuilt && !deleteBuilding)
             {
-                ironBuilt = true;
-                Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
-                Instantiate(iron, pos, Quaternion.identity);
+                stoneBuilt = true;
+                Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
+                Instantiate(stone, pos, Quaternion.identity);
             }
         }
     }

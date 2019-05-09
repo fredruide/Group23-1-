@@ -1046,7 +1046,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mining
+  m_Text: 'Mining
+
+'
 --- !u!222 &271466336
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25401,11 +25403,11 @@ RectTransform:
   m_Children:
   - {fileID: 957889204}
   m_Father: {fileID: 1376845085}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -444, y: 101.3}
+  m_AnchoredPosition: {x: -444, y: 157.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &646679954
@@ -25776,7 +25778,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quarry
+  m_Text: 'Quarry
+
+'
 --- !u!222 &957889206
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26579,8 +26583,8 @@ RectTransform:
   m_Children:
   - {fileID: 455059785}
   - {fileID: 1185700620}
-  - {fileID: 1569850246}
   - {fileID: 646679953}
+  - {fileID: 1569850246}
   m_Father: {fileID: 2105464725}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26621,11 +26625,11 @@ RectTransform:
   m_Children:
   - {fileID: 271466334}
   m_Father: {fileID: 1376845085}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -444, y: 157.3}
+  m_AnchoredPosition: {x: -444, y: 101.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1569850247
@@ -27174,7 +27178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -444, y: 101.3}
+  m_AnchoredPosition: {x: -444, y: 157.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780484075
@@ -27616,7 +27620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -444, y: 157.3}
+  m_AnchoredPosition: {x: -444, y: 101.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066553257
@@ -27952,6 +27956,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: HouseNode
       objectReference: {fileID: 0}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: camera1
+      value: 
+      objectReference: {fileID: 307004498}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: camera2
+      value: 
+      objectReference: {fileID: 2054255766}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 2105464721}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: BuildButton
+      value: 
+      objectReference: {fileID: 1376845084}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: DeleteButton
+      value: 
+      objectReference: {fileID: 227965131}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: buildButton
+      value: 
+      objectReference: {fileID: 1376845084}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: mainCamera1
+      value: 
+      objectReference: {fileID: 307004498}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: overViewCamera
+      value: 
+      objectReference: {fileID: 2054255766}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: deleteButton
+      value: 
+      objectReference: {fileID: 227965131}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: gridStoneX
+      value: 65.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
+      propertyPath: gridIronX
+      value: 79.5
+      objectReference: {fileID: 0}
     - target: {fileID: 628336425, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.927
@@ -27996,41 +28044,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: camera1
-      value: 
-      objectReference: {fileID: 307004498}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: camera2
-      value: 
-      objectReference: {fileID: 2054255766}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 2105464721}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: BuildButton
-      value: 
-      objectReference: {fileID: 1376845084}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: DeleteButton
-      value: 
-      objectReference: {fileID: 227965131}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: buildButton
-      value: 
-      objectReference: {fileID: 1376845084}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: mainCamera1
-      value: 
-      objectReference: {fileID: 307004498}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: overViewCamera
-      value: 
-      objectReference: {fileID: 2054255766}
-    - target: {fileID: 628336424, guid: f419fb5dc3b410b4db08641972479aef, type: 3}
-      propertyPath: deleteButton
-      value: 
-      objectReference: {fileID: 227965131}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f419fb5dc3b410b4db08641972479aef, type: 3}

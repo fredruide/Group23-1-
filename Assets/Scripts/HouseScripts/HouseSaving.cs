@@ -7,6 +7,7 @@ using System.IO;
 
 public class HouseSaving : MonoBehaviour
 {
+    //Skrevet af Jakob Vestergaard
     BuildingInfo buildingInfo = new BuildingInfo();
     public GameObject objHouseNode;
     private HouseNodes scrHouseNodes;
