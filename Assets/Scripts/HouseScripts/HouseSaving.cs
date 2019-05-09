@@ -8,6 +8,14 @@ using System.IO;
 public class HouseSaving : MonoBehaviour
 {
     //Skrevet af Jakob Vestergaard
+    /*
+    Housesaving er done for nu, indtil at der tillægges flere bygninger
+    TODO
+    Nu mangler vi et system for at holde resourcer, 
+    tage resourcer fra bygninger, 
+    bruge resourcer når vi bygger,
+    og få nogle tilbage når vi sletter dem
+    */
     BuildingInfo buildingInfo = new BuildingInfo();
     public GameObject objHouseNode;
     private HouseNodes scrHouseNodes;
@@ -21,11 +29,6 @@ public class HouseSaving : MonoBehaviour
     private void Start()
     {                
         xmlLoad();
-    }
-
-    private void Update()
-    {
-        
     }
 
     /*
