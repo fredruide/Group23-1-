@@ -13,12 +13,12 @@ public class PlayerRangedAttack : MonoBehaviour
     {
         if (reloadTime <= 0)
         {
-            if ((Input.GetKeyDown(KeyCode.V) && ammo > 0) && reloadTime < 0)
+            if ((Input.GetButtonDown("Fire2") && ammo > 0) && reloadTime < 0)
             {
                 Fire();
                 ammo--;
             }
-            else if (Input.GetKeyDown(KeyCode.V) && ammo == 0)
+            else if (Input.GetButtonDown("Fire2") && ammo == 0)
             {
                 reload();
             }

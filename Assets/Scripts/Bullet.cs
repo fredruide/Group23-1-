@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
-    public int damage = 6;
+    public float speed;
     public Rigidbody2D rb;
-    public GameObject impactEffect;
-
     void Start()
     {
         rb.velocity = transform.right * speed;
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
-    //void OnTriggerEnter2D(Collider2D hitInfo)
-    //{
-    //    EnemyTest enemy = hitInfo.GetComponent<EnemyTest>();
-    //    if (enemy != null)
-    //    {
-    //        EnemyTest.TakeDmg(damage);
-    //    }
-    //}
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Platform")
+        {
+            Destroy(gameObject);
+        }
 
+    }
 }
