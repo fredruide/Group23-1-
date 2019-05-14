@@ -6,11 +6,22 @@ public class PlayerRangedAttack : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bullet;
+    Rigidbody2D rb;
+    PlayerScript ps;
     public int ammo;
     public float reloadTime;
     public float startReloadTime;
+    public static bool isNotReloading;
+
+    private void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        ps = GetComponent<PlayerScript>();
+    }
+
     void Update()
     {
+        Debug.Log(rb.velocity);
         if (reloadTime <= 0)
         {
             if ((Input.GetButtonDown("Fire2") && ammo > 0) && reloadTime < 0)
@@ -18,7 +29,7 @@ public class PlayerRangedAttack : MonoBehaviour
                 Fire();
                 ammo--;
             }
-            else if (Input.GetButtonDown("Fire2") && ammo == 0)
+            else if (Input.GetButtonDown("Fire2") && ammo == 0 && ps._grounded)
             {
                 reload();
             }
@@ -29,9 +40,8 @@ public class PlayerRangedAttack : MonoBehaviour
         }
         if (reloadTime <= 0)
         {
-            PlayerScript.canMoveHori = true;
-        }
-
+            isNotReloading = true;
+        }       
     }
 
     void Fire()
@@ -43,7 +53,8 @@ public class PlayerRangedAttack : MonoBehaviour
     {
         reloadTime = startReloadTime;
         ammo = 1;
-        PlayerScript.canMoveHori = false;
+        isNotReloading = false;
+        rb.velocity = new Vector2(0, rb.velocity.y);
         Debug.Log("Reloading");
     }
 }
