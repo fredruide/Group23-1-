@@ -5,73 +5,12 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class StoneBuilding : MonoBehaviour
+public class StoneBuilding : GatherScript
 {
-    private TextMesh Text;
-
-    private string key = "Test";
-
-    public int newScore { get; set; }
-    public float resourceCd = 2f;
-    public int resourcePm = 10;
-
-    private float resourceTimeCd;
-    private bool resourcePicked = true;
-    private int currentScore;
-    //private int loadedScore;
-    private int savedScore;
-
-    //private int intSavedScoreID;
-    //private string stringSavedScoreID;
-
-    //TODO At bruge information til smide tilbage i vores huse når at vi kan gemme dem og placere dem ordenligt
-
-    private void Awake()
-    {
-        //LoadScore();
-        
-
-        //intSavedScoreID = gameObject.GetInstanceID();
-        //stringSavedScoreID = intSavedScoreID.ToString();
-        //int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
-    }
-
-    private void Start()
-    {
-        Text = GetComponent<TextMesh>();
-        Text.text = newScore.ToString() + " / 250";
-    }
-
-    private void Update()
-    {
-        resource();
-
-    }
-
-    private void resource()
-    {
-        if (PlayerPrefs.GetInt(key) == 1 && currentScore <= 240 && newScore <= 240)
-        {
-            resourceTimeCd = resourceTimeCd - Time.smoothDeltaTime;
-
-            if (resourcePicked)
-            {
-
-                currentScore = newScore;
-                //int.TryParse(currentScore, out currentScoreInt);            
-                newScore = currentScore + resourcePm;
-                Text.text = newScore.ToString() + " / 250";
-                resourcePicked = false;
-                //Debug.Log("et sekund");
-            }
-            else if (resourceTimeCd <= 0)
-            {
-                resourceTimeCd = resourceCd;
-                resourcePicked = true;
-            }
-        }
-    }
-
+    /*
+    //Skrevet af Jakob Vestergaard
+    
+    //Gemt til hvis der kommer behøv for at gemme i en .dat fil
     private void saveScore()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -96,15 +35,6 @@ public class StoneBuilding : MonoBehaviour
         }
         
     }
-
-    private void OnApplicationQuit()
-    {
-        saveScore();
-
-        //savedScore = newScore;
-        //PlayerPrefs.SetInt(stringSavedScoreID, savedScore);
-        //Debug.Log("Vi gemte " + savedScore + " i player prefs under " + stringSavedScoreID + " id'et");
-
-    }
+    */
 }
 

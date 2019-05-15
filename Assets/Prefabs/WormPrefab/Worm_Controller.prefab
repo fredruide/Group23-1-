@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6599328942329007801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6599328942329007807}
+  - component: {fileID: 6599328942329007806}
+  m_Layer: 0
+  m_Name: Worm_Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6599328942329007807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599328942329007801}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 63.19272, y: -3.354409, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6599328942329007806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599328942329007801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c044e47eaf2a49b4e9efc7df31f1c598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wormHead: {fileID: 2844180413265034263, guid: ebe0c0d4d0492d8438704725f4cc659c,
+    type: 3}
+  wormPart1: {fileID: 3378543918952722400, guid: 949543eb8449a004b885ad44015834df,
+    type: 3}
+  wormPart2: {fileID: 0}
+  wormPart3: {fileID: 0}
+  wormPart4: {fileID: 0}
+  wormTail: {fileID: 818461689280456834, guid: 73b0726732892f541946f9e7541f7761, type: 3}
+  headPositionX: 97.66
+  part1PositionX: 114.91
+  tailPositionX: 129.78
+  wormPositionY: -11.88
+  hp: 400
+  horizontalSpeed: -20

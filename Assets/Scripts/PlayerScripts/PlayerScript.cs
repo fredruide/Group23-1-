@@ -63,6 +63,7 @@ public class PlayerScript : MonoBehaviour
     #region canVariabler
     //the 3 can bools below are handlet in the _grounded field
     //name should make it clear what they are inteanted to check on
+<<<<<<< HEAD
     bool canMoveHori; //Frederik {
     public bool _canMoveHori
     {
@@ -81,6 +82,11 @@ public class PlayerScript : MonoBehaviour
         get { return canDoubleJump; }
         set { canDoubleJump = value; }
     }
+=======
+    public static bool canMoveHori;
+    public static bool canJump;
+    bool canDoubleJump;
+>>>>>>> e2c6d49c4301ccd9265cebede8a0741e0924ec15
 
     //this bool and field is for checking if player can WallSlide
     bool canWallSlide; // Frederik {
@@ -262,7 +268,7 @@ public class PlayerScript : MonoBehaviour
     {
         //check is player is clicking a move horizontal button and is canMoveHori is true
         //canMoveHori is set to false when grounded is set to false
-        if (Input.GetButton("Horizontal") && canMoveHori)
+        if (Input.GetButton("Horizontal") && canMoveHori && PlayerRangedAttack.isNotReloading)
         {
             //checks if player is colliding with a object on the same side at they are moving
             //if true then stop moving to prevent false sliding
@@ -332,7 +338,7 @@ public class PlayerScript : MonoBehaviour
 
         //check is player is clicking vertical button and is grounded and canJump is true
         //(canJump is set to true when grounded is first set to true)
-        if (grounded == true && Input.GetButtonDown("Vertical") && canJump)
+        if (grounded == true && Input.GetButtonDown("Vertical") && canJump && PlayerRangedAttack.isNotReloading)
         {
             canJump = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);

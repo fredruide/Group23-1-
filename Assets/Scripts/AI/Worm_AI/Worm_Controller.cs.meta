@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c044e47eaf2a49b4e9efc7df31f1c598
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wormHead: {fileID: 2844180413265034263, guid: ebe0c0d4d0492d8438704725f4cc659c,
+      type: 3}
+  - wormPart1: {fileID: 3378543918952722400, guid: 949543eb8449a004b885ad44015834df,
+      type: 3}
+  - wormTail: {fileID: 818461689280456834, guid: 73b0726732892f541946f9e7541f7761,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
