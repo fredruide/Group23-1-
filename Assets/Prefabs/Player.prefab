@@ -199,7 +199,7 @@ MonoBehaviour:
   bullet: {fileID: 5284784427024207470, guid: 33282cb285a40274793345faa0e39199, type: 3}
   ammo: 1
   reloadTime: 0.1
-  startReloadTime: 4
+  startReloadTime: 1
 --- !u!114 &7678018168069720196
 MonoBehaviour:
   m_ObjectHideFlags: 0

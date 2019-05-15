@@ -56,6 +56,17 @@ public class HouseNodes : MonoBehaviour
     }
 
     // Update is called once per frame
+<<<<<<< HEAD
+=======
+    void Update()
+
+    {        
+        Debug.Log(deleteBuilding);
+        //DeleteBuilding();
+        BuildingSlots();             
+
+    }
+>>>>>>> 49adecab9a63e5d55066459eebcf7e25b77aaec0
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -214,6 +225,158 @@ public class HouseNodes : MonoBehaviour
             Instantiate(iron, pos, Quaternion.identity);
         }
     }
+<<<<<<< HEAD
+=======
+
+    //IKKE BRUGT LIGE PT Funktion til at kunne gemme i en .dat fil 
+    /*
+    private void SaveBuildings()
+    {
+        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
+            BuildingInfo buildingInfo = new BuildingInfo();
+
+            buildingInfo.herbBuilt = herbBuilt;
+            print(buildingInfo.herbBuilt + "" + herbBuilt);
+            buildingInfo.stoneBuilt = stoneBuilt;
+            print(buildingInfo.stoneBuilt);
+            buildingInfo.ironBuilt = ironBuilt;
+            print(buildingInfo.ironBuilt);
+
+            bf.Serialize(file, buildingInfo);
+            file.Close();
+        }
+        else // IF doesnt exist create new
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
+            BuildingInfo buildingInfo = new BuildingInfo();
+
+            buildingInfo.herbBuilt = herbBuilt;
+            print(buildingInfo.herbBuilt);
+            buildingInfo.stoneBuilt = stoneBuilt;
+            print(buildingInfo.stoneBuilt);
+            buildingInfo.ironBuilt = ironBuilt;
+            print(buildingInfo.ironBuilt);
+
+            bf.Serialize(file, buildingInfo);
+            file.Close();
+        }
+    }
+
+    private void LoadBuildings()
+    {
+        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
+            BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
+
+            herbBuilt = buildingInfo.herbBuilt;
+            print(buildingInfo.herbBuilt);
+            stoneBuilt = buildingInfo.stoneBuilt;
+            print(buildingInfo.herbBuilt);
+            ironBuilt = buildingInfo.ironBuilt;
+            print(buildingInfo.herbBuilt);
+            file.Close();
+        }
+    }
+<<<<<<< HEAD
+
+    ////TODO spillere skal kunne ødelægge huse og er nødvendig for at kunne fjerne data
+    //private void DeleteBuilding()
+    //{
+    //    Destroy(gam);
+    //    //Destroy(iron);
+    //    //Destroy(stone);
+    //    herbBuilt = false;
+    //    ironBuilt = false;
+    //    stoneBuilt = false;
+    //    objHouseSaving = GameObject.Find("Saving");
+    //    HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
+    //    //scrHouseSaving.xmlSave();
+    //    if (deleteBuilding)
+    //    {
+    //        herbBuilt = false;
+    //        stoneBuilt = false;
+    //        ironBuilt = false;
+    //        SaveBuildings();
+    //    }
+    //}
+
+   
+
+=======
+    */
+    //IKKE BRUGT LIGE PT Ikke brugbare funktion længere
+    /*
+    private void DeleteBuilding()
+    {
+<<<<<<< HEAD
+
+        //Destroy(gam);
+        //Destroy(iron);
+        //Destroy(stone);
+        herbBuilt = false;
+        ironBuilt = false;
+        stoneBuilt = false;
+        objHouseSaving = GameObject.Find("Saving");
+        HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
+        //scrHouseSaving.xmlSave();
+
+        if (deleteBuilding)
+        {
+            herbBuilt = false;
+            stoneBuilt = false;
+            ironBuilt = false;
+            SaveBuildings();
+        }
+    }
+
+   
+
+=======
+        //Slet
+        if (deleteBuilding)
+        {
+            //slet af bygninger og en funktion for hver bygning så spilleren kan vælge
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if (null != GameObject.Find("Herbalist(Clone)"))
+                {
+                    var herbDestroy = GameObject.Find("Herbalist(Clone)");
+                    Destroy(herbDestroy);
+                    herbBuilt = false;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (null != GameObject.Find("Stone(Clone)"))
+                {
+                    var stoneDestroy = GameObject.Find("Stone(Clone)");
+                    Destroy(stoneDestroy);
+                    stoneBuilt = false;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (null != GameObject.Find("Iron(Clone)"))
+                {
+                    var ironDestroy = GameObject.Find("Iron(Clone)");
+                    Destroy(ironDestroy);
+                    ironBuilt = false;
+                }
+            }
+        }            
+        objHouseSaving = GameObject.Find("Saving");
+        HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
+        scrHouseSaving.xmlSave();        
+    } 
+    */
+
+>>>>>>> 49adecab9a63e5d55066459eebcf7e25b77aaec0
 }
 
 
