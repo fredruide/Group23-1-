@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7678018168069720191}
   - component: {fileID: 7678018168069720192}
   - component: {fileID: 7678018168069720193}
+  - component: {fileID: 5802786584911571825}
   - component: {fileID: 7678018168069720194}
   - component: {fileID: 7678018168069720195}
   - component: {fileID: 7678018168069720196}
@@ -106,6 +107,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5802786584911571825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678018168069720197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f69d056e1734f94ea9c45a02ee36dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBtwAttack: 2
+  startTimeBtwAttack: 2
+  attackPos: {fileID: 7678018168377239856}
+  whatisEnemy:
+    serializedVersion: 2
+    m_Bits: 512
+  attackRange: 0.89
+  attackRange1: 0.89
+  attackRange2: 0.89
+  damage: 2
+  damage1: 2
+  damage2: 2
+  attackType: 1
+  attackGracePeriod: 2
+  startTimeBtwGrace: 2
+  bulletSpeed: 2
 --- !u!212 &7678018168069720194
 SpriteRenderer:
   m_ObjectHideFlags: 0

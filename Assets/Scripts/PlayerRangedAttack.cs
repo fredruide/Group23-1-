@@ -21,7 +21,6 @@ public class PlayerRangedAttack : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(rb.velocity);
         if (reloadTime <= 0)
         {
             if ((Input.GetButtonDown("Fire2") && ammo > 0) && reloadTime < 0)

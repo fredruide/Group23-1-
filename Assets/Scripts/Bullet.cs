@@ -6,15 +6,22 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
+    public int tf= 5;
     void Start()
     {
         rb.velocity = transform.right * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D HitInfo)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Platform")
+        if (HitInfo.gameObject.tag == "Enemy" || HitInfo.gameObject.tag == "Platform")
         {
+            EnemyTest Enemy = HitInfo.GetComponent<EnemyTest>();
+            if (Enemy != null)
+            {
+                Enemy.TakeDmg(tf);
+            }
+
             Destroy(gameObject);
         }
 
