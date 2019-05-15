@@ -57,21 +57,12 @@ public class HouseNodes : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-<<<<<<< HEAD
-    {
-        //if (Input.GetKeyDown(KeyCode.Delete))
-        //{
-        //    DeleteBuilding();
-        //}
-        BuildingSlots();
-        Debug.Log(building);
-        Debug.Log(herbBuilt);
-=======
+
     {        
         Debug.Log(deleteBuilding);
         //DeleteBuilding();
         BuildingSlots();             
->>>>>>> 2ed5a9271f940d8c61dbd7638f0c48333eac188a
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -379,8 +370,7 @@ public class HouseNodes : MonoBehaviour
         scrHouseSaving.xmlSave();        
     } 
     */
->>>>>>> 2ed5a9271f940d8c61dbd7638f0c48333eac188a
->>>>>>> e2c6d49c4301ccd9265cebede8a0741e0924ec15
+
 }
 
 
