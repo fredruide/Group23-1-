@@ -3,7 +3,16 @@ guid: efeeb6f2d0293d0419187ea7d6632889
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - herbalist: {instanceID: 0}
+  - stone: {instanceID: 0}
+  - iron: {instanceID: 0}
+  - TextManipulator: {instanceID: 0}
+  - mainCamera1: {instanceID: 0}
+  - overViewCamera: {instanceID: 0}
+  - UI: {instanceID: 0}
+  - buildButton: {instanceID: 0}
+  - deleteButton: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

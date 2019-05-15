@@ -143,6 +143,3 @@ public class BuildingInfo
     public bool ironBuilt { get; set; }
     public int currentIronHolding { get; set; }
 }
-
-
-

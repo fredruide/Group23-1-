@@ -59,7 +59,7 @@ public class HouseNodes : MonoBehaviour
     void Update()
     {        
         Debug.Log(deleteBuilding);
-        DeleteBuilding();
+        //DeleteBuilding();
         BuildingSlots();             
     }
 
@@ -221,6 +221,8 @@ public class HouseNodes : MonoBehaviour
         }
     }
 
+    //IKKE BRUGT LIGE PT Funktion til at kunne gemme i en .dat fil 
+    /*
     private void SaveBuildings()
     {
         if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
@@ -274,8 +276,9 @@ public class HouseNodes : MonoBehaviour
             file.Close();
         }
     }
-
-    //Funktion for at kunne individuelt fjerne bygninger
+    */
+    //IKKE BRUGT LIGE PT Ikke brugbare funktion længere
+    /*
     private void DeleteBuilding()
     {
         //Slet
@@ -313,7 +316,8 @@ public class HouseNodes : MonoBehaviour
         objHouseSaving = GameObject.Find("Saving");
         HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
         scrHouseSaving.xmlSave();        
-    }   
+    } 
+    */
 }
 
 
