@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    Rigidbody2D rb;
+    Rigidbody2D rb; // Frederik{
     SpriteRenderer sr;
     Animator ani;
-    Camera mainCam;
+    Camera mainCam; // } Frederik
 
     //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
     // colliders attach to the player object
@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     //this bool and field is for checking if bottom part of player
     //is in contact with a object (checks on platform only right now)
     //used in HorizontalMovement, Jump and DoubleJump methods.
-    bool grounded;
+    bool grounded; // Frederik{
     public bool _grounded
     {
         get { return grounded; }
@@ -34,41 +34,56 @@ public class PlayerScript : MonoBehaviour
                 canMoveHori = false;
             }
         }
-    }
+    } // } Frederik
     //this bool and field is for checking if Right side of player
     //is in contact with a object (checks on platform only right now)
     //used in WallSlide, WallJump and HorizontalMovement methods
-    bool touchRight;
+    bool touchRight; // Frederik {
     public bool _touchRight
     {
         get { return touchRight; }
         set { touchRight = value; }
-    }
+    } // } Frederik
     //this bool and field is for checking if Left side of player
     //is in contact with a object (checks on platform only right now)
     //used in WallSlide, WallJump and HorizontalMovement methods
-    bool touchLeft;
+    bool touchLeft; // Frederik {
     public bool _touchLeft
     {
         get { return touchLeft; }
         set { touchLeft = value; }
-    }
+    } // } Frederik
     //true = facing right : false = facing left
     //used to make sure player sprite is pointing the correct way (SpriteRender.FlipX)
-    bool directionFaced;
+    bool directionFaced; // Frederik {
     public bool _directionFaced
     {
         get { return directionFaced; }
-    }
+    } // } Frederik
     #region canVariabler
     //the 3 can bools below are handlet in the _grounded field
     //name should make it clear what they are inteanted to check on
-    bool canMoveHori;
+    bool canMoveHori; //Frederik {
+    public bool _canMoveHori
+    {
+        get { return canMoveHori; }
+        set { canMoveHori = value; }
+    }
     bool canJump;
-    bool canDoubleJump;
+    public bool _canJump
+    {
+        get { return canJump; }
+        set { canJump = value; }
+    }
+    bool canDoubleJump; // } Frederik
+    public bool _canDoubleJump
+    {
+        get { return canDoubleJump; }
+        set { canDoubleJump = value; }
+    }
 
     //this bool and field is for checking if player can WallSlide
-    bool canWallSlide;
+    bool canWallSlide; // Frederik {
     public bool _canWallSlide
     {
         get { return canWallSlide; }
@@ -76,10 +91,10 @@ public class PlayerScript : MonoBehaviour
         {
             canWallSlide = value;
         }
-    }
+    } // } Frederik 
     #endregion
     #region isVariabler
-    bool isRunning;
+    bool isRunning; // Frederik {
     public bool _isRunning
     {
         get { return isRunning; }
@@ -89,30 +104,39 @@ public class PlayerScript : MonoBehaviour
     {
         get { return isAirborn; }
     }
+    bool isInCombat;
+    public bool _isInCombat
+    {
+        get { return isInCombat; }
+    } // } Frederik
     #endregion
     #region IDEvariabler
     //the following variabler need to have a value assigned from a file later in the project.
     //for now they get value from the unity IDE
-
+    
     //PLayer Horizontal movement speed
-    public float speed;
+    public float speed; // Frederik {
     //player jump hieght
     public float jump;
     //lenght of coyote effect (how long after being not grounded player still can jump)
     public float coyoteCD;
     //used to pause horizontal movement when wall jumping
     public float stopMoveHoriCD;
+    //used to see how long player should stay in combat
+    [SerializeField]
+    public float isInCombatCD;
     //how far player will be pushed Horizontal when wall jumping
     public float wallJumpX;
     //how far player will be pushed vertical when wall jumping
     public float wallJumpY;
     //how fast player falls to the ground when wall sliding
-    public float wallSlideSpeed;
+    public float wallSlideSpeed; // } Frederik
+
     #endregion
     #region TimeStamp
     //float used for coyote time length.
     //is meant to have Time.time assigned to it when used.
-    float coyoteTS;
+    float coyoteTS; // Frederik
     public float _coyoteTS
     {
         set { coyoteTS = value + coyoteCD; }
@@ -123,46 +147,65 @@ public class PlayerScript : MonoBehaviour
     {
         set { stopMoveHoriTS = value + stopMoveHoriCD; }
     }
+    float isInCombatTS;
+    private float _isInCombatTS
+    {
+        set { isInCombatTS = value + isInCombatCD; }
+    } // } Frederik
     #endregion
     #region StatsVariabler
     //player current health
-    public int health;
+    public int health; // Frederik {
     //player max health
     public int maxHealth;
     //player respawn posisiton
-    Vector2 respawnPosition;
+    Vector2 respawnPosition; // } Frederik
+    #endregion
+    #region DanielVariabler
+    float timeBtwAttack;
+    public float startTimeBtwAttack;
+    public Transform attackPos;
+    public LayerMask whatisEnemy;
+    public float attackRange;
+    public float attackRange1;
+    public float attackRange2;
+    public int damage;
+    public int damage1;
+    public int damage2;
+    int attackType;
+    float attackGracePeriod;
+    public float startTimeBtwGrace;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
         //rb is used to manipulate player riged body
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); // Frederik {
         //sr is used to manipulated player sprite and animations sprites
         sr = GetComponent<SpriteRenderer>();
         //ani is used to manipulate and check on animation
         ani = GetComponent<Animator>();
         //mainCam is used to check and manipulate the Main Camera in the scene
-        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>(); // } Frederik
 
     }
-
     // Update is called once per frame
     private void Update()
     {
-        DirectionFacing();
+        DirectionFacing(); // Frederik {
         IsRunning();
-
-        //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
-
-        //ani.SetBool("Grounded", grounded);
+        IsInCombat();
 
 
         HorizontalMovement();        
         Jump();
         DoubleJump();
         WallJump();
-        WallSlide();
+        WallSlide(); // } Frederik
 
+        Attack(); // Daniel
+
+        //print("Attack: " + Input.GetButton("Fire1"));
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
         //print("Velocity: " + rb.velocity.y);
         //print("Velocity: " + rb.velocity.y);SDW
@@ -215,7 +258,7 @@ public class PlayerScript : MonoBehaviour
         */
     }
 
-    void HorizontalMovement()
+    void HorizontalMovement() // Frederik
     {
         //check is player is clicking a move horizontal button and is canMoveHori is true
         //canMoveHori is set to false when grounded is set to false
@@ -235,7 +278,7 @@ public class PlayerScript : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        
+
         //SLOW MOVMENT WHEN IN AIR
         /*else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
         {
@@ -249,7 +292,7 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    void WallSlide()
+    void WallSlide() // Frederik
     {
         //the 3 if statments could have been one long if statment
         //checks if player is not grounded and if canWallSlide is true (canWallSlide is set to true when first coliding when a object)
@@ -283,7 +326,7 @@ public class PlayerScript : MonoBehaviour
         */
     }
 
-    void Jump()
+    void Jump() // Frederik
     {
         //print(Input.GetButtonDown("Vertical"));
 
@@ -310,7 +353,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void DoubleJump()
+    void DoubleJump() // Frederik
     {
         //checks if player is not grounded, player can double jump and player is double jumping
         if (!grounded && Input.GetButtonDown("Vertical") && canDoubleJump)
@@ -324,7 +367,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    void WallJump()
+    void WallJump() // Frederik
     {
         bool triggered = false;
 
@@ -385,21 +428,56 @@ public class PlayerScript : MonoBehaviour
         }     
         
     }
-
+    void Attack() // Daniel
+    {
+        if (timeBtwAttack <= 0)
+        {
+            if (Input.GetButton("Fire1") && attackType == 1)
+            {
+                MeleeAttack(damage, attackRange);
+                print("Attack 1");
+            }
+            else if (Input.GetButton("Fire1") && attackType == 2)
+            {
+                MeleeAttack(damage1, attackRange1);
+                print("Attack 2");
+            }
+            else if (Input.GetButton("Fire1") && attackType == 3)
+            {
+                MeleeAttack(damage2, attackRange2);
+                print("Attack 3");
+            }
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
+        attackGracePeriod -= Time.deltaTime;
+        if (attackGracePeriod <= 0)
+        {
+            attackType = 1;
+        }
+    }
     #region StatManipulators
-    void TakeDamage(int dmg)
+    public void TakeDamage(int dmg) // Frederik
     {
         health -= dmg;
         if (health <= 0)
+        {
             Die();
+        }
+        else
+        {
+            _isInCombatTS = Time.time;
+        }
     }
 
-    void Die()
+    void Die() // Frederik
     {
         rb.transform.position = respawnPosition;
     }
 
-    void Heal(int heal)
+    void Heal(int heal) // Frederik
     {
         if (heal + health > maxHealth)
             health = maxHealth;
@@ -407,13 +485,13 @@ public class PlayerScript : MonoBehaviour
             health += heal;
     }
 
-    void SetRespawn(Vector2 newRespawn)
+    void SetRespawn(Vector2 newRespawn) // Frederik
     {
         respawnPosition = newRespawn;
     }
     #endregion
     #region HelperMethods
-    void DirectionFacing()
+    void DirectionFacing() // Frederik
     {
         //check what direction player last faced
         if (Input.GetAxisRaw("Horizontal") > 0)
@@ -427,9 +505,8 @@ public class PlayerScript : MonoBehaviour
             sr.flipX = directionFaced;
         }
     }
-    void IsRunning()
-    {
-        
+    void IsRunning() // Frederik
+    { 
         if (Input.GetButton("Horizontal") && canMoveHori && grounded && rb.velocity.x != 0)
         {
             isRunning = true;
@@ -441,7 +518,7 @@ public class PlayerScript : MonoBehaviour
             ani.SetBool("isRunning", false);
         }
     }
-    void IsAirborn()
+    void IsAirborn() // Frederik
     {
         if (!grounded)
         {
@@ -454,5 +531,33 @@ public class PlayerScript : MonoBehaviour
             ani.SetBool("isAirborn", false);
         }
     }
+    void IsInCombat() // Frederik
+    {
+        if (isInCombatTS <= Time.time)
+        {
+            isInCombat = false;
+            ani.SetBool("isInCombat", false);
+        }
+        else
+        {
+            isInCombat = true;
+            ani.SetBool("isInCombat", true);
+        }
+    }
+    private void MeleeAttack(int dmg, float range) // Daniel
+    {
+        attackGracePeriod = startTimeBtwGrace;
+        timeBtwAttack = startTimeBtwAttack;
+        Collider2D[]
+        enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+        }
+        attackType++;
+        _isInCombatTS = Time.time;
+        ani.SetBool("isAttacking", true);
+    }
     #endregion
 }
+

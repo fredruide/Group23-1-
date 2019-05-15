@@ -195,8 +195,8 @@ public class HouseNodes : MonoBehaviour
     //TODO spillere skal kunne ødelægge huse og er nødvendig for at kunne fjerne data
     private void DeleteBuilding()
     {
-<<<<<<< HEAD
-        Destroy(gam);
+
+        //Destroy(gam);
         //Destroy(iron);
         //Destroy(stone);
         herbBuilt = false;
@@ -205,7 +205,7 @@ public class HouseNodes : MonoBehaviour
         objHouseSaving = GameObject.Find("Saving");
         HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
         //scrHouseSaving.xmlSave();
-=======
+
         if (deleteBuilding)
         {
             herbBuilt = false;
@@ -213,7 +213,6 @@ public class HouseNodes : MonoBehaviour
             ironBuilt = false;
             SaveBuildings();
         }
->>>>>>> cf0996bc8492558cda5f24cbf892e92e7dba4368
     }
 
    
