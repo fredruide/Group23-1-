@@ -63,9 +63,33 @@ public class PlayerScript : MonoBehaviour
     #region canVariabler
     //the 3 can bools below are handlet in the _grounded field
     //name should make it clear what they are inteanted to check on
+<<<<<<< HEAD
     public static bool canMoveHori;
     public static bool canJump;
     bool canDoubleJump;
+=======
+
+    bool canMoveHori; //Frederik {
+    public bool _canMoveHori
+    {
+        get { return canMoveHori; }
+        set { canMoveHori = value; }
+    }
+    bool canJump;
+    public bool _canJump
+    {
+        get { return canJump; }
+        set { canJump = value; }
+    }
+    bool canDoubleJump; // } Frederik
+    public bool _canDoubleJump
+    {
+        get { return canDoubleJump; }
+        set { canDoubleJump = value; }
+    }
+
+
+>>>>>>> 4d82121e60fcc00bdbaae224d799a72272c8115b
 
     //this bool and field is for checking if player can WallSlide
     bool canWallSlide;
