@@ -180,6 +180,8 @@ public class PlayerScript : MonoBehaviour
         WallSlide();
         AttackChecker();
 
+        //print(Input.GetJoystickNames().Length);
+
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
         //print("Velocity: " + rb.velocity.y);
         //print("Velocity: " + rb.velocity.y);SDW
@@ -478,7 +480,7 @@ public class PlayerScript : MonoBehaviour
     public float timeBtwAttack;
     public float startTimeBtwAttack;
     public Transform attackPos;
-    LayerMask whatisEnemy = 9;
+    public LayerMask whatisEnemy = 11;
     public float attackRange;
     public float attackRange1;
     public float attackRange2;
@@ -493,7 +495,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (timeBtwAttack <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.C) && attackType == 1)
+            if (Input.GetButtonDown("Fire1") && attackType == 1)
             {
                 print("AttackType 1");
                 MeleeAttack(damage, attackRange);
@@ -526,8 +528,8 @@ public class PlayerScript : MonoBehaviour
         
         attackGracePeriod = startTimeBtwGrace;
         timeBtwAttack = startTimeBtwAttack;
-        Collider2D[]
-        enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy);
+        
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy);
         if (enemiesToDamage.Length != 0)
         {
             for (int i = 0; i < enemiesToDamage.Length; i++)
