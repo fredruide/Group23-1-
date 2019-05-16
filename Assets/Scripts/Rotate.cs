@@ -14,7 +14,7 @@ public class Rotate : MonoBehaviour
     void Update()
     {
         float rotZ;
-        if (Input.GetAxis("CamHorizontal") != 0 || Input.GetAxis("CamVertical") != 0)
+        if ((Input.GetAxis("CamHorizontal") != 0 || Input.GetAxis("CamVertical") != 0) && Input.GetJoystickNames().Length > 0)
         {
             rotationOffset = 0;
             rotZ = Mathf.Atan2(Input.GetAxis("CamVertical"), Input.GetAxis("CamHorizontal")) * Mathf.Rad2Deg;
