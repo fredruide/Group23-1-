@@ -55,17 +55,6 @@ public class HouseNodes : MonoBehaviour
         UI.SetActive(false);
     }
 
-<<<<<<< HEAD
-    // Update is called once per frame
-    void Update()
-    {        
-        //Debug.Log(deleteBuilding);
-        DeleteBuilding();
-        BuildingSlots();             
-    }
-
-=======
->>>>>>> f5710d153401688884723af219781cef2e87d534
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
