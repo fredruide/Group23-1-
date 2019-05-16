@@ -7,6 +7,24 @@ using System.IO;
 
 public class IronBuilding : GatherScript
 {
+    //Skrevet af Jonas C.
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            toCarryOver += newScore;
+            newScore = 0;
+            currentScore = 0;
+            Debug.Log(toCarryOver);
+            if (null != GameObject.Find("Material_Counter"))
+            {
+                objMaterial_Counter = GameObject.Find("Material_Counter");
+                scrMaterial_Counter = objMaterial_Counter.GetComponent<Material_Counter>();
+                scrMaterial_Counter.CheckForIron(toCarryOver);
+            }
+        }
+    }
     /*
     //Skrevet af Jakob Vestergaard
     //Gemt til hvis der kommer behøv for at gemme i en .dat fil

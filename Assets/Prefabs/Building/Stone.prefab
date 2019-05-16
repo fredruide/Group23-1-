@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3317096392764780392}
   - component: {fileID: 3317096392764780393}
   - component: {fileID: 3473616285458892810}
+  - component: {fileID: 2688186637979409477}
   m_Layer: 0
   m_Name: ResourceStone
   m_TagString: Untagged
@@ -106,6 +107,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceCd: 2
   resourcePm: 10
+  currentScore: 0
+  objMaterial_Counter: {fileID: 3762357868642212422, guid: cdbb404727ede2d40a279bef331302b2,
+    type: 3}
+  scrMaterial_Counter: {fileID: 0}
+--- !u!61 &2688186637979409477
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3317096392764780396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 9.69319, y: -20.654642}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20.203793, y: 26.800144}
+  m_EdgeRadius: 0
 --- !u!1 &3317096393102910898
 GameObject:
   m_ObjectHideFlags: 0

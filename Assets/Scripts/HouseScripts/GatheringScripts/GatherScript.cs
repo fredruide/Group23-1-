@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GatherScript : MonoBehaviour
@@ -7,26 +8,27 @@ public class GatherScript : MonoBehaviour
     //Skrevet af Jakob Vestergaard
     private TextMesh Text;
 
-    private string key = "Test";
-
     public int newScore { get; set; }
     public float resourceCd = 2f;
     public int resourcePm = 10;
+    public int toCarryOver { get; set; }
 
     private float resourceTimeCd;
     private bool resourcePicked = true;
-    private int currentScore;
+    public int currentScore;
     private int savedScore;
 
-    private void Awake()
-    {
-        //LoadScore();
+    public GameObject objMaterial_Counter;
+    public Material_Counter scrMaterial_Counter;
 
 
-        //intSavedScoreID = gameObject.GetInstanceID();
-        //stringSavedScoreID = intSavedScoreID.ToString();
-        //int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
-    }
+    //i Awake steppet
+    //LoadScore();    
+
+    //intSavedScoreID = gameObject.GetInstanceID();
+    //stringSavedScoreID = intSavedScoreID.ToString();
+    //int Player = PlayerPrefs.GetInt(stringSavedScoreID, savedScore);
+
 
     private void Start()
     {
@@ -35,20 +37,19 @@ public class GatherScript : MonoBehaviour
     }
 
     private void Update()
-    {
+    {  
+        Text.text = newScore.ToString() + " / 250";
         resource();
-
     }
 
     private void resource()
     {
-        if (PlayerPrefs.GetInt(key) == 1 && currentScore <= 240 && newScore <= 240)
+        if (currentScore <= 240 && newScore <= 240)
         {
             resourceTimeCd = resourceTimeCd - Time.smoothDeltaTime;
 
             if (resourcePicked)
             {
-
                 currentScore = newScore;
                 //int.TryParse(currentScore, out currentScoreInt);            
                 newScore = currentScore + resourcePm;
@@ -63,6 +64,20 @@ public class GatherScript : MonoBehaviour
             }
         }
     }
+    /*
+    #region Skrevet af Jonas C.
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            toCarryOver += newScore;
+            newScore = 0;
+            currentScore = 0;
+            
+        }
+    }
+    #endregion
+    */
 
     /* Gemt til hvis der kommer behøv for at gemme i en .dat fil
     private void saveScore()
