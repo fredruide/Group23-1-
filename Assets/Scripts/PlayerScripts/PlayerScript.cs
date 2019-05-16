@@ -178,6 +178,7 @@ public class PlayerScript : MonoBehaviour
         DoubleJump();
         WallJump();
         WallSlide();
+        AttackChecker();
 
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
         //print("Velocity: " + rb.velocity.y);
@@ -470,5 +471,73 @@ public class PlayerScript : MonoBehaviour
             ani.SetBool("isAirborn", false);
         }
     }
+    #endregion
+
+    #region Attack 
+    //Daniel lille bitte smule hjælp fra frederik{
+    public float timeBtwAttack;
+    public float startTimeBtwAttack;
+    public Transform attackPos;
+    LayerMask whatisEnemy = 9;
+    public float attackRange;
+    public float attackRange1;
+    public float attackRange2;
+    public int damage;
+    public int damage1;
+    public int damage2;
+    public int attackType = 1;
+    public float attackGracePeriod;
+    public float startTimeBtwGrace;
+
+    void AttackChecker()
+    {
+        if (timeBtwAttack <= 0)
+        {
+            if (Input.GetKeyDown(KeyCode.C) && attackType == 1)
+            {
+                print("AttackType 1");
+                MeleeAttack(damage, attackRange);
+                
+            }
+            else if (Input.GetButtonDown("Fire1") && attackType == 2)
+            {
+                MeleeAttack(damage1, attackRange1);
+                print("AttackType 2");
+            }
+            else if (Input.GetButtonDown("Fire1") && attackType == 3)
+            {
+                MeleeAttack(damage2, attackRange2);
+                print("AttackType 3");
+            }
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
+        attackGracePeriod -= Time.deltaTime;
+        if (attackGracePeriod <= 0)
+        {
+            attackType = 1;
+        }
+    }
+
+    private void MeleeAttack(int dmg, float range)
+    {
+        
+        attackGracePeriod = startTimeBtwGrace;
+        timeBtwAttack = startTimeBtwAttack;
+        Collider2D[]
+        enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy);
+        if (enemiesToDamage.Length != 0)
+        {
+            for (int i = 0; i < enemiesToDamage.Length; i++)
+            {
+                enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+            }
+        }
+        attackType++;
+        ani.SetBool("isAttacking", true);
+        print("Melee Attack");
+    } // }
     #endregion
 }
