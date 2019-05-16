@@ -24,17 +24,17 @@ public class PlayerAttack : MonoBehaviour
     {
         if(timeBtwAttack <= 0)
         {
-            if (Input.GetKeyDown("Fire1") && attackType == 1)
+            if (Input.GetKeyDown(KeyCode.C) && attackType == 1)
             {
                 attack(damage, attackRange);
                     
             }
-            else if (Input.GetKeyDown("Fire2") && attackType == 2)
+            else if (Input.GetKeyDown(KeyCode.C) && attackType == 2)
             {
                 attack(damage1, attackRange1);
                     
             }
-            else if (Input.GetKeyDown("Fire3") && attackType == 3)
+            else if (Input.GetKeyDown(KeyCode.C) && attackType == 3)
             {
                 attack(damage2, attackRange2);
             }

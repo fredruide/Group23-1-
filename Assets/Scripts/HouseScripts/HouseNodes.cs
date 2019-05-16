@@ -55,6 +55,7 @@ public class HouseNodes : MonoBehaviour
         UI.SetActive(false);
     }
 
+<<<<<<< HEAD
     // Update is called once per frame
     void Update()
     {        
@@ -63,6 +64,8 @@ public class HouseNodes : MonoBehaviour
         BuildingSlots();             
     }
 
+=======
+>>>>>>> f5710d153401688884723af219781cef2e87d534
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -220,100 +223,6 @@ public class HouseNodes : MonoBehaviour
             Instantiate(iron, pos, Quaternion.identity);
         }
     }
-
-    private void SaveBuildings()
-    {
-        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
-            BuildingInfo buildingInfo = new BuildingInfo();
-
-            buildingInfo.herbBuilt = herbBuilt;
-            print(buildingInfo.herbBuilt + "" + herbBuilt);
-            buildingInfo.stoneBuilt = stoneBuilt;
-            print(buildingInfo.stoneBuilt);
-            buildingInfo.ironBuilt = ironBuilt;
-            print(buildingInfo.ironBuilt);
-
-            bf.Serialize(file, buildingInfo);
-            file.Close();
-        }
-        else // IF doesnt exist create new
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(Application.persistentDataPath + "/BuildingInfo.dat");
-            BuildingInfo buildingInfo = new BuildingInfo();
-
-            buildingInfo.herbBuilt = herbBuilt;
-            print(buildingInfo.herbBuilt);
-            buildingInfo.stoneBuilt = stoneBuilt;
-            print(buildingInfo.stoneBuilt);
-            buildingInfo.ironBuilt = ironBuilt;
-            print(buildingInfo.ironBuilt);
-
-            bf.Serialize(file, buildingInfo);
-            file.Close();
-        }
-    }
-
-    private void LoadBuildings()
-    {
-        if (File.Exists(Application.persistentDataPath + "/BuildingInfo.dat"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/BuildingInfo.dat", FileMode.Open);
-            BuildingInfo buildingInfo = (BuildingInfo)bf.Deserialize(file);
-
-            herbBuilt = buildingInfo.herbBuilt;
-            print(buildingInfo.herbBuilt);
-            stoneBuilt = buildingInfo.stoneBuilt;
-            print(buildingInfo.herbBuilt);
-            ironBuilt = buildingInfo.ironBuilt;
-            print(buildingInfo.herbBuilt);
-            file.Close();
-        }
-    }
-
-    //Funktion for at kunne individuelt fjerne bygninger
-    private void DeleteBuilding()
-    {
-        //Slet
-        if (deleteBuilding)
-        {
-            //slet af bygninger og en funktion for hver bygning så spilleren kan vælge
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                if (null != GameObject.Find("Herbalist(Clone)"))
-                {
-                    var herbDestroy = GameObject.Find("Herbalist(Clone)");
-                    Destroy(herbDestroy);
-                    herbBuilt = false;
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                if (null != GameObject.Find("Stone(Clone)"))
-                {
-                    var stoneDestroy = GameObject.Find("Stone(Clone)");
-                    Destroy(stoneDestroy);
-                    stoneBuilt = false;
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                if (null != GameObject.Find("Iron(Clone)"))
-                {
-                    var ironDestroy = GameObject.Find("Iron(Clone)");
-                    Destroy(ironDestroy);
-                    ironBuilt = false;
-                }
-            }
-        }            
-        objHouseSaving = GameObject.Find("Saving");
-        HouseSaving scrHouseSaving = objHouseSaving.GetComponent<HouseSaving>();
-        scrHouseSaving.xmlSave();        
-    }   
 }
 
 

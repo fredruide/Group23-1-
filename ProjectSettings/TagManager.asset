@@ -12,6 +12,8 @@ TagManager:
   - Portal
   - Platform
   - Portal
+  - Worm
+  - Despawner
   layers:
   - Default
   - TransparentFX
@@ -26,9 +28,7 @@ TagManager:
   - Player
   - Enemy
   - Block
-  - 
-  - 
-  - 
+  - Worm
   - 
   - 
   - 
