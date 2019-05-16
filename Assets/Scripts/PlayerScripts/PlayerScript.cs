@@ -516,10 +516,13 @@ public class PlayerScript : MonoBehaviour
         {
             timeBtwAttack -= Time.deltaTime;
         }
-        attackGracePeriod -= Time.deltaTime;
         if (attackGracePeriod <= 0)
         {
             attackType = 1;
+        }
+        else
+        {
+            attackGracePeriod -= Time.deltaTime;
         }
     }
 
