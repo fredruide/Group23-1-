@@ -58,7 +58,7 @@ public class HouseNodes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        Debug.Log(deleteBuilding);
+        //Debug.Log(deleteBuilding);
         DeleteBuilding();
         BuildingSlots();             
     }
