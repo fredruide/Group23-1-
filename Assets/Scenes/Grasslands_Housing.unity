@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &54957962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7678018168069720190, guid: a1f78afea97c352488b9e7227668c469,
+    type: 3}
+  m_PrefabInstance: {fileID: 256943614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82110371
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +895,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7678018168069720197, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2434991987607579237, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: m_Name
@@ -988,7 +999,7 @@ PrefabInstance:
         type: 3}
       propertyPath: attackPos
       value: 
-      objectReference: {fileID: 435031558}
+      objectReference: {fileID: 54957962}
     - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: damage
@@ -1007,22 +1018,42 @@ PrefabInstance:
     - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: attackRange
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: attackRange1
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: attackRange2
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: startTimeBtwAttack
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: whatisEnemy.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678018169349815941, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678018169446703954, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678018169915478296, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8880408949538660265, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
@@ -1203,12 +1234,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349136785}
   m_CullTransparentMesh: 0
---- !u!4 &435031558 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7678018168377239856, guid: a1f78afea97c352488b9e7227668c469,
-    type: 3}
-  m_PrefabInstance: {fileID: 256943614}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &455059784
 GameObject:
   m_ObjectHideFlags: 0
@@ -25970,6 +25995,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testenemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088975896117404515, guid: 04b67704d278d464ca9eb2d7c71148ef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4019275039710321441, guid: 04b67704d278d464ca9eb2d7c71148ef,
         type: 3}

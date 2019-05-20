@@ -10,14 +10,17 @@ public class EnemyTest : MonoBehaviour
     public float startDazedTime;
     public GameObject bloodEffect;
 
-    //void Start()
-    //{
-    //    anim = GetComponent<Animator>();
-    //    anim.SetBool("isRunning", true);
-    //}
+    public int Damage;
+
+    void Start()
+    {
+        //anim = GetComponent<Animator>();
+        //anim.SetBool("isRunning", true);
+    }
 
     void Update()
     {
+
         if(dazedTime <= 0)
         {
             speed = 1;
@@ -35,7 +38,17 @@ public class EnemyTest : MonoBehaviour
 
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if(collision.gameObject.name == "Player")
+            //collision.gameObject.GetComponent<PlayerScript>().TakeDamage(Damage);
+    }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.name == "Player")
+            collision.gameObject.GetComponent<PlayerScript>().TakeDamage(Damage);
+    }
     public void TakeDmg(int dmg)
     {
         dazedTime = startDazedTime;

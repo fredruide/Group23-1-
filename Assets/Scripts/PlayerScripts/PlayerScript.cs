@@ -139,6 +139,17 @@ public class PlayerScript : MonoBehaviour
     {
         set { stopMoveHoriTS = value + stopMoveHoriCD; }
     }
+
+    public float invincFramesCD;
+    public float _invincFramesCD
+    {
+        set { invincFramesCD = value; }
+    }
+    float invincFramesTS;
+    public float _invincFramesTS
+    {
+        set { invincFramesTS = value + invincFramesCD; }
+    }
     #endregion
     #region StatsVariabler
     //player current health
@@ -147,6 +158,11 @@ public class PlayerScript : MonoBehaviour
     public int maxHealth;
     //player respawn posisiton
     Vector2 respawnPosition;
+    public Vector2 _respawnPosition
+    {
+        get { return respawnPosition; }
+        set { respawnPosition = value; }
+    }
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -167,6 +183,7 @@ public class PlayerScript : MonoBehaviour
     {
         DirectionFacing();
         IsRunning();
+        
 
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
@@ -180,6 +197,7 @@ public class PlayerScript : MonoBehaviour
         WallSlide();
         AttackChecker();
 
+        print("IsInvincible: " + IsInvincible());
         //print(Input.GetJoystickNames().Length);
 
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
@@ -244,11 +262,17 @@ public class PlayerScript : MonoBehaviour
             //if true then stop moving to prevent false sliding
             //if player is not clicking a move Horizontal button then stop velocity horizontal (else statment)
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
+            {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            }  
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+            {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            }
             else
+            {
                 rb.velocity = new Vector2(0, rb.velocity.y);
+            }    
         }
         else if (!Input.GetButton("Horizontal"))
         {
@@ -406,11 +430,34 @@ public class PlayerScript : MonoBehaviour
     }
 
     #region StatManipulators
-    void TakeDamage(int dmg)
+    public void TakeDamage(int dmg)
     {
-        health -= dmg;
+        if (IsInvincible() == false)
+        {
+            health -= dmg;
+            _invincFramesTS = Time.time;
+        }
+
         if (health <= 0)
+        {
             Die();
+        }
+    }
+    bool flashy = true;
+    bool IsInvincible()
+    {
+        if (Time.time <= invincFramesTS)
+        {
+            sr.enabled = flashy;
+            flashy = !flashy;
+
+            return true;
+        }
+        else
+        {            
+            sr.enabled = true;
+            return false;
+        }
     }
 
     void Die()
@@ -426,10 +473,6 @@ public class PlayerScript : MonoBehaviour
             health += heal;
     }
 
-    void SetRespawn(Vector2 newRespawn)
-    {
-        respawnPosition = newRespawn;
-    }
     #endregion
     #region HelperMethods
     void DirectionFacing()
