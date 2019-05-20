@@ -57,10 +57,13 @@ public class PlayerAttack : MonoBehaviour
         timeBtwAttack = startTimeBtwAttack;
         Collider2D []
         enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy);
-                for (int i = 0; i<enemiesToDamage.Length; i++)
-                    {
-                    enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
-}
+        if (enemiesToDamage != null)
+        {
+            for (int i = 0; i < enemiesToDamage.Length; i++)
+            {
+                enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+            }
+        }
         attackType++;
     }
     private void OnDrawGizmosSelected()
