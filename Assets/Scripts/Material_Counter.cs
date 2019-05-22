@@ -23,19 +23,19 @@ public class Material_Counter : MonoBehaviour
 
     public void CheckForHerb(int HerbCarryOver)
     {
-        playerHerbs = HerbCarryOver;
+        playerHerbs += HerbCarryOver;
         PrintToUI();
     }
     
     public void CheckForIron(int IronCarryOver)
     {
-        playerIron = IronCarryOver;
+        playerIron += IronCarryOver;
         PrintToUI();
     }
 
     public void CheckForStone(int StoneCarryOver)
     {        
-        playerStone = StoneCarryOver;
+        playerStone += StoneCarryOver;
         PrintToUI();
     }
     
