@@ -17,6 +17,7 @@ public class Drop_Template : MonoBehaviour
     public Rigidbody2D rigidBody;
     public float angleChangeSpeed;
     public float movementSpeed;
+
     private void Start()
     {
       
@@ -26,8 +27,8 @@ public class Drop_Template : MonoBehaviour
     {
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        angleChangeSpeed = 800f;
-        movementSpeed = 7f;
+        angleChangeSpeed = 500f;
+        movementSpeed = 8f;
 
 
         Vector2 direction = (Vector2)target.position - rigidBody.position;

@@ -13,12 +13,18 @@ public class Material_Counter : MonoBehaviour
     private int playerStone ;
     private int playerIron ;
     private int playerCrystals;
-    private Text UIText;
 
+    private int playerAmmo;
+    private int playerHPotion;
+
+    private Text UIText;
+    public Text UIText2;
     // Start is called before the first frame update
     void Start()
     {
         UIText = GetComponent<Text>();
+        PrintToUI();
+        PrintToUI2();
     }
 
     public void CheckForHerb(int HerbCarryOver)
@@ -38,11 +44,28 @@ public class Material_Counter : MonoBehaviour
         playerStone += StoneCarryOver;
         PrintToUI();
     }
-    
+
+    public void CheckForAmmo(int AmmoCarryOver)
+    {
+        playerAmmo += AmmoCarryOver;
+        PrintToUI2();
+    }
+
+    public void CheckForHPotion(int HPotionCarryOver)
+    {
+        playerHPotion += HPotionCarryOver;
+        PrintToUI2();
+    }
+
     public void PrintToUI()
     {
 
         UIText.text = "Herbs: " + playerHerbs + "	Wood: " + playerWood + "	Stone: " + playerStone + "	Metal: " + playerIron + " 	Crystal:" + playerCrystals;
+    }
+
+    public void PrintToUI2()
+    {
+        UIText2.text = "Ammo: " + playerAmmo + "   Potions: " + playerHPotion;
     }
     
 }
@@ -56,4 +79,8 @@ public class MatValues
     public int playerStone { get; set; }
     public int playerMetal { get; set; }
     public int playerCrystals { get; set; }
+
+
+    public int playerAmmo { get; set; }
+    public int playerHPotion { get; set; }
 }

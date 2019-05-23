@@ -139,6 +139,17 @@ public class PlayerScript : MonoBehaviour
     {
         set { stopMoveHoriTS = value + stopMoveHoriCD; }
     }
+
+    public float invincFramesCD;
+    public float _invincFramesCD
+    {
+        set { invincFramesCD = value; }
+    }
+    float invincFramesTS;
+    public float _invincFramesTS
+    {
+        set { invincFramesTS = value + invincFramesCD; }
+    }
     #endregion
     #region StatsVariabler
     //player current health
@@ -147,6 +158,11 @@ public class PlayerScript : MonoBehaviour
     public int maxHealth;
     //player respawn posisiton
     Vector2 respawnPosition;
+    public Vector2 _respawnPosition
+    {
+        get { return respawnPosition; }
+        set { respawnPosition = value; }
+    }
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -167,6 +183,7 @@ public class PlayerScript : MonoBehaviour
     {
         DirectionFacing();
         IsRunning();
+        
 
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
@@ -178,6 +195,10 @@ public class PlayerScript : MonoBehaviour
         DoubleJump();
         WallJump();
         WallSlide();
+        AttackChecker();
+
+        print("IsInvincible: " + IsInvincible());
+        //print(Input.GetJoystickNames().Length);
 
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
         //print("Velocity: " + rb.velocity.y);
@@ -241,11 +262,17 @@ public class PlayerScript : MonoBehaviour
             //if true then stop moving to prevent false sliding
             //if player is not clicking a move Horizontal button then stop velocity horizontal (else statment)
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
+            {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            }  
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+            {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            }
             else
+            {
                 rb.velocity = new Vector2(0, rb.velocity.y);
+            }    
         }
         else if (!Input.GetButton("Horizontal"))
         {
@@ -403,11 +430,34 @@ public class PlayerScript : MonoBehaviour
     }
 
     #region StatManipulators
-    void TakeDamage(int dmg)
+    public void TakeDamage(int dmg)
     {
-        health -= dmg;
+        if (IsInvincible() == false)
+        {
+            health -= dmg;
+            _invincFramesTS = Time.time;
+        }
+
         if (health <= 0)
+        {
             Die();
+        }
+    }
+    bool flashy = true;
+    bool IsInvincible()
+    {
+        if (Time.time <= invincFramesTS)
+        {
+            sr.enabled = flashy;
+            flashy = !flashy;
+
+            return true;
+        }
+        else
+        {            
+            sr.enabled = true;
+            return false;
+        }
     }
 
     void Die()
@@ -423,10 +473,6 @@ public class PlayerScript : MonoBehaviour
             health += heal;
     }
 
-    void SetRespawn(Vector2 newRespawn)
-    {
-        respawnPosition = newRespawn;
-    }
     #endregion
     #region HelperMethods
     void DirectionFacing()
@@ -470,5 +516,76 @@ public class PlayerScript : MonoBehaviour
             ani.SetBool("isAirborn", false);
         }
     }
+    #endregion
+
+    #region Attack 
+    //Daniel lille bitte smule hjælp fra frederik{
+    public float timeBtwAttack;
+    public float startTimeBtwAttack;
+    public Transform attackPos;
+    public LayerMask whatisEnemy = 11;
+    public float attackRange;
+    public float attackRange1;
+    public float attackRange2;
+    public int damage;
+    public int damage1;
+    public int damage2;
+    public int attackType = 1;
+    public float attackGracePeriod;
+    public float startTimeBtwGrace;
+
+    void AttackChecker()
+    {
+        if (timeBtwAttack <= 0)
+        {
+            if (Input.GetButtonDown("Fire1") && attackType == 1)
+            {
+                print("AttackType 1");
+                MeleeAttack(damage, attackRange);
+                
+            }
+            else if (Input.GetButtonDown("Fire1") && attackType == 2)
+            {
+                MeleeAttack(damage1, attackRange1);
+                print("AttackType 2");
+            }
+            else if (Input.GetButtonDown("Fire1") && attackType == 3)
+            {
+                MeleeAttack(damage2, attackRange2);
+                print("AttackType 3");
+            }
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
+        if (attackGracePeriod <= 0)
+        {
+            attackType = 1;
+        }
+        else
+        {
+            attackGracePeriod -= Time.deltaTime;
+        }
+    }
+
+    private void MeleeAttack(int dmg, float range)
+    {
+        
+        attackGracePeriod = startTimeBtwGrace;
+        timeBtwAttack = startTimeBtwAttack;
+        
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy);
+        if (enemiesToDamage.Length != 0)
+        {
+            for (int i = 0; i < enemiesToDamage.Length; i++)
+            {
+                enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+            }
+        }
+        attackType++;
+        ani.SetBool("isAttacking", true);
+        print("Melee Attack");
+    } // }
     #endregion
 }

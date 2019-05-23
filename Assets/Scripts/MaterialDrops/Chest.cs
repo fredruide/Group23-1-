@@ -15,48 +15,39 @@ public class Chest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if (collision.gameObject.tag== "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            int iH = UnityEngine.Random.Range(0, 10);
-            while (iH > 0)
-            {
-                Instantiate(Herb_Drop, Chest_Location.transform.position, Quaternion.identity);
-                iH--;
-                //Insert some wait function
-            }*/
+            StartCoroutine("Open_Chest");       
+        }
 
-            //Spawner mellem 0 og 10 herbs
-            for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
-            {
-                Instantiate(Herb_Drop, Chest_Location.transform.position, Quaternion.identity);
-            //Insert some wait function?
+
+    }
+
+    IEnumerator Open_Chest()
+    {
+        //Spawner mellem 0 og 10 stone
+        for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
+        {
+            Instantiate(Herb_Drop, Chest_Location.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
         }
 
         //Spawner mellem 0 og 10 stone
         for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
-            {
-                Instantiate(Stone_Drop, Chest_Location.transform.position, Quaternion.identity);
-            }
-
-            //Spawner mellem 0 og 10 metal
-            for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
-            {
-                Instantiate(Metal_Drop, Chest_Location.transform.position, Quaternion.identity);
-            }
-
-            Destroy(gameObject);
+        {
+            Instantiate(Stone_Drop, Chest_Location.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
         }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+        //Spawner mellem 0 og 10 metal
+        for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
+        {
+            Instantiate(Metal_Drop, Chest_Location.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(gameObject);
     }
 }
+
+
