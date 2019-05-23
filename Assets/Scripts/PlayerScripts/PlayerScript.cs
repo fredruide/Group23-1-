@@ -234,6 +234,14 @@ public class PlayerScript : MonoBehaviour
         */
     }
 
+    void RunSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Walk");
+    }
+    void AttackSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Attack1");
+    }
     void HorizontalMovement()
     {
         //check is player is clicking a move horizontal button and is canMoveHori is true
@@ -244,9 +252,13 @@ public class PlayerScript : MonoBehaviour
             //if true then stop moving to prevent false sliding
             //if player is not clicking a move Horizontal button then stop velocity horizontal (else statment)
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
+            {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            }
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
+            {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+            }
             else
                 rb.velocity = new Vector2(0, rb.velocity.y);
         }
