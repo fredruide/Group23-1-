@@ -13,7 +13,7 @@ public class StoneBuilding : GatherScript
     {
         if (collision.gameObject.tag == "Player")
         {
-            toCarryOver += newScore;
+            toCarryOver = newScore;
             newScore = 0;
             currentScore = 0;
             Debug.Log(toCarryOver);
