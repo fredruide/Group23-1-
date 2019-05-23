@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -88,6 +95,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -112,12 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &54957962 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7678018168069720190, guid: a1f78afea97c352488b9e7227668c469,
-    type: 3}
-  m_PrefabInstance: {fileID: 256943614}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82110371
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +902,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7678018168069720190, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -27.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678018168069720190, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34.96
+      objectReference: {fileID: 0}
     - target: {fileID: 2434991987607579237, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: m_Name
@@ -970,16 +982,6 @@ PrefabInstance:
       propertyPath: jump
       value: 8.92
       objectReference: {fileID: 0}
-    - target: {fileID: 7678018168069720190, guid: a1f78afea97c352488b9e7227668c469,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -27.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678018168069720190, guid: a1f78afea97c352488b9e7227668c469,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 34.96
-      objectReference: {fileID: 0}
     - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: attackGracePeriod
@@ -999,7 +1001,7 @@ PrefabInstance:
         type: 3}
       propertyPath: attackPos
       value: 
-      objectReference: {fileID: 54957962}
+      objectReference: {fileID: 0}
     - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: damage
@@ -1040,6 +1042,16 @@ PrefabInstance:
       propertyPath: whatisEnemy.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678018168069720196, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: invincFramesCD
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7678018169349815941, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: m_Layer
@@ -1069,6 +1081,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -27.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690880181847931803, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690880181847931803, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690880181847931776, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690880181847931776, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: invincFramesCD
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5802786584911571825, guid: a1f78afea97c352488b9e7227668c469, type: 3}
@@ -1296,17 +1328,20 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 1, b: 0.097765446, a: 1}
     m_HighlightedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 455059787}
@@ -1412,6 +1447,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!66 &503982951
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -1567,6 +1604,7 @@ CompositeCollider2D:
       - {x: 28.928574, y: -51.07143}
       - {x: 145.07143, y: -51.07143}
   m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005
 --- !u!50 &503982952
 Rigidbody2D:
   serializedVersion: 4
@@ -25630,17 +25668,20 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 1, b: 0.20616484, a: 1}
     m_HighlightedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 646679955}
@@ -25917,17 +25958,20 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 846767348}
@@ -26004,7 +26048,7 @@ PrefabInstance:
     - target: {fileID: 4019275039710321441, guid: 04b67704d278d464ca9eb2d7c71148ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.326294
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 4019275039710321441, guid: 04b67704d278d464ca9eb2d7c71148ef,
         type: 3}
@@ -26055,6 +26099,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318230868001129878, guid: 04b67704d278d464ca9eb2d7c71148ef,
+        type: 3}
+      propertyPath: Damage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04b67704d278d464ca9eb2d7c71148ef, type: 3}
@@ -26325,17 +26374,20 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 1, b: 0.20616484, a: 1}
     m_HighlightedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1185700622}
@@ -26441,6 +26493,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!66 &1243486726
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -26464,6 +26518,7 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005
 --- !u!50 &1243486727
 Rigidbody2D:
   serializedVersion: 4
@@ -27097,17 +27152,20 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 1, b: 0.20616484, a: 1}
     m_HighlightedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.514151, g: 1, b: 0.6073788, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1569850248}
@@ -27646,17 +27704,20 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1780484076}
@@ -27982,9 +28043,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -28088,17 +28150,20 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2066553258}
@@ -28217,17 +28282,20 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.5283019, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2068557812}
