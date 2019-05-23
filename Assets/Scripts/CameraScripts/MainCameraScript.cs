@@ -57,7 +57,7 @@ public class MainCameraScript : MonoBehaviour
     Vector3 endPosistion;
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         player = GameObject.Find("Player");
