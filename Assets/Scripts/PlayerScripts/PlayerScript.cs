@@ -252,14 +252,7 @@ public class PlayerScript : MonoBehaviour
         */
     }
 
-    void RunSound()
-    {
-        FindObjectOfType<AudioManager>().Play("Walk");
-    }
-    void AttackSound()
-    {
-        FindObjectOfType<AudioManager>().Play("Attack1");
-    }
+
     void HorizontalMovement()
     {
         //check is player is clicking a move horizontal button and is canMoveHori is true
@@ -272,11 +265,7 @@ public class PlayerScript : MonoBehaviour
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
             {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-<<<<<<< HEAD
             }
-=======
-            }  
->>>>>>> 657f542bc9f7ca38b7de6f58d0d9d7cc2ec6e81a
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
             {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
@@ -455,22 +444,6 @@ public class PlayerScript : MonoBehaviour
             Die();
         }
     }
-    bool flashy = true;
-    bool IsInvincible()
-    {
-        if (Time.time <= invincFramesTS)
-        {
-            sr.enabled = flashy;
-            flashy = !flashy;
-
-            return true;
-        }
-        else
-        {            
-            sr.enabled = true;
-            return false;
-        }
-    }
 
     void Die()
     {
@@ -526,6 +499,23 @@ public class PlayerScript : MonoBehaviour
         {
             isAirborn = false;
             ani.SetBool("isAirborn", false);
+        }
+    }
+
+    bool flashy = true;
+    bool IsInvincible()
+    {
+        if (Time.time <= invincFramesTS)
+        {
+            sr.enabled = flashy;
+            flashy = !flashy;
+
+            return true;
+        }
+        else
+        {
+            sr.enabled = true;
+            return false;
         }
     }
     #endregion
@@ -600,4 +590,16 @@ public class PlayerScript : MonoBehaviour
         print("Melee Attack");
     } // }
     #endregion
+    #region Sound
+    //Daniel
+    void RunSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Walk");
+    }
+    void AttackSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Attack1");
+    }
+    #endregion
+
 }
