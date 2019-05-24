@@ -341,6 +341,7 @@ public class PlayerScript : MonoBehaviour
             //print("Jump: " + rb.velocity.y);
             //print("grounded: " + grounded);
             //print("canJump: " + canJump);
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
         //if player can´t jump under normal conditions check if player can jump under coyote conditions
         else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
@@ -362,8 +363,9 @@ public class PlayerScript : MonoBehaviour
             canDoubleJump = false;
             //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity = new Vector2(rb.velocity.x, jump);            
+            rb.velocity = new Vector2(rb.velocity.x, jump);
             //print("DoubleJump: " + rb.velocity.y);
+            FindObjectOfType<AudioManager>().Play("DoubleJump");
         }
     }
 
