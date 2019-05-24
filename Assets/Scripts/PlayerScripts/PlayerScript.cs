@@ -105,6 +105,11 @@ public class PlayerScript : MonoBehaviour
     {
         get { return isAirborn; }
     }
+    bool isDisabled;
+    public bool _isDisabled
+    {
+        get { return isDisabled; }
+    }
     #endregion
     #region IDEvariabler
     //the following variabler need to have a value assigned from a file later in the project.
@@ -183,7 +188,8 @@ public class PlayerScript : MonoBehaviour
     {
         DirectionFacing();
         IsRunning();
-        
+        IsInvincible();
+        IsDisabled(isDisabled);
 
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
@@ -197,7 +203,7 @@ public class PlayerScript : MonoBehaviour
         WallSlide();
         AttackChecker();
 
-        print("IsInvincible: " + IsInvincible());
+        //print("IsInvincible: " + IsInvincible());
         //print(Input.GetJoystickNames().Length);
 
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
@@ -275,7 +281,7 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }    
         }
-        else if (!Input.GetButton("Horizontal"))
+        else if (!Input.GetButton("Horizontal") && canMoveHori)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -372,8 +378,6 @@ public class PlayerScript : MonoBehaviour
 
     void WallJump()
     {
-        bool triggered = false;
-
         //check if player is clicking the horizontale move button that matches the side 
         //that the wall they are coliding with is on and that the player is trying to jump
         //the if statment is for walljumping to the left
@@ -383,7 +387,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX * -1, wallJumpY);
-            triggered = true;
+            isDisabled = true;
             //print("input vertical + touchRight + input Horizontal > 0");
             //print("Velocity: " + rb.velocity.y);
         }
@@ -394,7 +398,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX, wallJumpY);
-            triggered = true;
+            isDisabled = true;
             //print("input vertical + touchLeft + input Horizontal < 0");
             //print("Velocity: " + rb.velocity.y);
         }
@@ -413,7 +417,13 @@ public class PlayerScript : MonoBehaviour
         }*/
 
         //set time for next avalible wall jump if a wall jump was performed
-        if (triggered)
+    
+    }
+
+    #region StateManipulators    
+    void IsDisabled(bool playerDisabled)
+    {
+        if (playerDisabled)
         {
             canMoveHori = false;
             canDoubleJump = false;
@@ -421,23 +431,53 @@ public class PlayerScript : MonoBehaviour
             canWallSlide = false;
 
             _stopMoveHoriTS = Time.time;
+            isDisabled = false;
             //print("CanMoveHori trigger: " + canMoveHori);
         }
         //if timer is below current time allow horizontal movement agien
         if (stopMoveHoriTS <= Time.time)
         {
             canMoveHori = true;
+
             //print("CanMoveHori stopMove: " + canMoveHori);
-        }     
-        
+        }
     }
 
-    #region StatManipulators
+    float knockbackX;
+    float knockbackY;
+    Vector3 enamyPosistion;
+
+    public void KnockbackSetter(float xForce, float yForce, Vector3 enamyPosistion)
+    {
+        knockbackX = xForce;
+        knockbackY = yForce;
+        this.enamyPosistion = enamyPosistion;
+    }
+
+    void KnockBack()
+    {
+        IsDisabled(true);
+
+        if (enamyPosistion.x > rb.transform.position.x)
+        {
+            knockbackX = -knockbackX;
+        }
+        if (enamyPosistion.y > rb.transform.position.y)
+        {
+            knockbackY = -knockbackY;
+        }
+        print("knockbackX: " + knockbackX + " knockbackY: " + knockbackY);
+        print("player velocity befor. X: " + rb.velocity.x + " Y: " + rb.velocity.y);
+        rb.velocity = new Vector2(knockbackX, knockbackY);
+        print("player velocity after. X: " + rb.velocity.x + " Y: " + rb.velocity.y);
+    }
+
     public void TakeDamage(int dmg)
     {
         if (IsInvincible() == false)
         {
             health -= dmg;
+            KnockBack();
             _invincFramesTS = Time.time;
         }
 
