@@ -7,7 +7,7 @@ using System.IO;
 using System;
 
 public class Material_Counter : MonoBehaviour
-{
+{//J.C.
     private int playerHerbs ;
     private int playerWood ;
     private int playerStone ;
@@ -47,14 +47,21 @@ public class Material_Counter : MonoBehaviour
 
     public void CheckForAmmo(int AmmoCarryOver)
     {
-        playerAmmo += AmmoCarryOver;
-        PrintToUI2();
+        if (playerAmmo < 10 || AmmoCarryOver == -1)
+        {
+            playerAmmo += AmmoCarryOver;
+            PrintToUI2();
+        }
     }
 
     public void CheckForHPotion(int HPotionCarryOver)
     {
-        playerHPotion += HPotionCarryOver;
-        PrintToUI2();
+        if (playerHPotion < 5 || HPotionCarryOver == -1)
+        {
+            playerHPotion += HPotionCarryOver;
+            PrintToUI2();
+        }
+
     }
 
     public void PrintToUI()
@@ -67,7 +74,17 @@ public class Material_Counter : MonoBehaviour
     {
         UIText2.text = "Ammo: " + playerAmmo + "   Potions: " + playerHPotion;
     }
-    
+
+    public int HPotionUsed()
+    {
+        return playerHPotion;
+    }
+
+    public int AmmoUsed()
+    {
+        return playerAmmo;
+    }
+
 }
 
 

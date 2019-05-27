@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class PlayerScript : MonoBehaviour
     SpriteRenderer sr;
     Animator ani;
     Camera mainCam;
+
+    public GameObject objHPotion_Counter;
+    public Material_Counter scrMC;
+
+    public GameObject objHP_Counter;
+    public Text HP_CounterText;
 
     //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
     // colliders attach to the player object
@@ -153,9 +160,9 @@ public class PlayerScript : MonoBehaviour
     #endregion
     #region StatsVariabler
     //player current health
-    public int health;
+    private int currentHealth = 5;
     //player max health
-    public int maxHealth;
+    private int maxHealth = 10;
     //player respawn posisiton
     Vector2 respawnPosition;
     public Vector2 _respawnPosition
@@ -167,7 +174,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb is used to manipulate player riged body
+        //rb is used to manipulate player rigid body
         rb = GetComponent<Rigidbody2D>();
         //sr is used to manipulated player sprite and animations sprites
         sr = GetComponent<SpriteRenderer>();
@@ -176,6 +183,20 @@ public class PlayerScript : MonoBehaviour
         //mainCam is used to check and manipulate the Main Camera in the scene
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
+
+        
+    }
+
+    private void Awake()
+    {//J.C.
+        objHPotion_Counter = GameObject.Find("Material_Counter");
+        scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
+
+        objHP_Counter = GameObject.Find("HP_Counter");
+        HP_CounterText = objHP_Counter.GetComponent<Text>();
+
+        //Set HP value on the UI
+        HP_CounterText.text = "HP: " + currentHealth;
     }
 
     // Update is called once per frame
@@ -196,6 +217,7 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
         AttackChecker();
+        UseHPotion();
 
         print("IsInvincible: " + IsInvincible());
         //print(Input.GetJoystickNames().Length);
@@ -434,11 +456,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (IsInvincible() == false)
         {
-            health -= dmg;
+            currentHealth -= dmg;
             _invincFramesTS = Time.time;
         }
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -465,12 +487,35 @@ public class PlayerScript : MonoBehaviour
         rb.transform.position = respawnPosition;
     }
 
+    void UseHPotion()
+    {//J.C.
+        if (Input.GetButtonDown("Heal") && scrMC.HPotionUsed() >= 1)
+        {
+            
+            Heal(1);
+            int usedPotion = -1;
+            scrMC.CheckForHPotion(usedPotion);
+        }
+    }
+
     void Heal(int heal)
     {
-        if (heal + health > maxHealth)
-            health = maxHealth;
+        if (heal + currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+            
         else
-            health += heal;
+        {
+            currentHealth += heal;
+        }
+
+        PrintHP(currentHealth);
+    }
+
+    void PrintHP (int printHP)
+    {//J.C.
+        HP_CounterText.text = "HP: " + printHP;
     }
 
     #endregion
