@@ -112,6 +112,11 @@ public class PlayerScript : MonoBehaviour
     {
         get { return isAirborn; }
     }
+    bool isDisabled;
+    public bool _isDisabled
+    {
+        get { return isDisabled; }
+    }
     #endregion
     #region IDEvariabler
     //the following variabler need to have a value assigned from a file later in the project.
@@ -204,7 +209,8 @@ public class PlayerScript : MonoBehaviour
     {
         DirectionFacing();
         IsRunning();
-        
+        IsInvincible();
+        IsDisabled(isDisabled);
 
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
@@ -219,7 +225,7 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
-        print("IsInvincible: " + IsInvincible());
+        //print("IsInvincible: " + IsInvincible());
         //print(Input.GetJoystickNames().Length);
 
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
@@ -274,6 +280,7 @@ public class PlayerScript : MonoBehaviour
         */
     }
 
+
     void HorizontalMovement()
     {
         //check is player is clicking a move horizontal button and is canMoveHori is true
@@ -286,7 +293,7 @@ public class PlayerScript : MonoBehaviour
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
             {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            }  
+            }
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
             {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
@@ -296,7 +303,7 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }    
         }
-        else if (!Input.GetButton("Horizontal"))
+        else if (!Input.GetButton("Horizontal") && canMoveHori)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -362,6 +369,7 @@ public class PlayerScript : MonoBehaviour
             //print("Jump: " + rb.velocity.y);
             //print("grounded: " + grounded);
             //print("canJump: " + canJump);
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
         //if player can´t jump under normal conditions check if player can jump under coyote conditions
         else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
@@ -383,16 +391,15 @@ public class PlayerScript : MonoBehaviour
             canDoubleJump = false;
             //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity = new Vector2(rb.velocity.x, jump);            
+            rb.velocity = new Vector2(rb.velocity.x, jump);
             //print("DoubleJump: " + rb.velocity.y);
+            FindObjectOfType<AudioManager>().Play("DoubleJump");
         }
     }
 
 
     void WallJump()
     {
-        bool triggered = false;
-
         //check if player is clicking the horizontale move button that matches the side 
         //that the wall they are coliding with is on and that the player is trying to jump
         //the if statment is for walljumping to the left
@@ -402,7 +409,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX * -1, wallJumpY);
-            triggered = true;
+            isDisabled = true;
             //print("input vertical + touchRight + input Horizontal > 0");
             //print("Velocity: " + rb.velocity.y);
         }
@@ -413,7 +420,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX, wallJumpY);
-            triggered = true;
+            isDisabled = true;
             //print("input vertical + touchLeft + input Horizontal < 0");
             //print("Velocity: " + rb.velocity.y);
         }
@@ -432,7 +439,13 @@ public class PlayerScript : MonoBehaviour
         }*/
 
         //set time for next avalible wall jump if a wall jump was performed
-        if (triggered)
+    
+    }
+
+    #region StateManipulators    
+    void IsDisabled(bool playerDisabled)
+    {
+        if (playerDisabled)
         {
             canMoveHori = false;
             canDoubleJump = false;
@@ -440,45 +453,63 @@ public class PlayerScript : MonoBehaviour
             canWallSlide = false;
 
             _stopMoveHoriTS = Time.time;
+            isDisabled = false;
             //print("CanMoveHori trigger: " + canMoveHori);
         }
         //if timer is below current time allow horizontal movement agien
         if (stopMoveHoriTS <= Time.time)
         {
             canMoveHori = true;
+
             //print("CanMoveHori stopMove: " + canMoveHori);
-        }     
-        
+        }
     }
 
-    #region StatManipulators
+    float knockbackX;
+    float knockbackY;
+    Vector3 enamyPosistion;
+
+    public void KnockbackSetter(float xForce, float yForce, Vector3 enamyPosistion)
+    {
+        knockbackX = xForce;
+        knockbackY = yForce;
+        this.enamyPosistion = enamyPosistion;
+    }
+
+    void KnockBack()
+    {
+        IsDisabled(true);
+
+        if (enamyPosistion.x > rb.transform.position.x)
+        {
+            knockbackX = -knockbackX;
+        }
+        if (enamyPosistion.y > rb.transform.position.y)
+        {
+            knockbackY = -knockbackY;
+        }
+        print("knockbackX: " + knockbackX + " knockbackY: " + knockbackY);
+        print("player velocity befor. X: " + rb.velocity.x + " Y: " + rb.velocity.y);
+        rb.velocity = new Vector2(knockbackX, knockbackY);
+        print("player velocity after. X: " + rb.velocity.x + " Y: " + rb.velocity.y);
+    }
+
     public void TakeDamage(int dmg)
     {
         if (IsInvincible() == false)
         {
+<<<<<<< HEAD
             currentHealth -= dmg;
+=======
+            health -= dmg;
+            KnockBack();
+>>>>>>> 3be4f422dcc9d8396d9dff6b13c08a0cd57f76f2
             _invincFramesTS = Time.time;
         }
 
         if (currentHealth <= 0)
         {
             Die();
-        }
-    }
-    bool flashy = true;
-    bool IsInvincible()
-    {
-        if (Time.time <= invincFramesTS)
-        {
-            sr.enabled = flashy;
-            flashy = !flashy;
-
-            return true;
-        }
-        else
-        {            
-            sr.enabled = true;
-            return false;
         }
     }
 
@@ -561,6 +592,23 @@ public class PlayerScript : MonoBehaviour
             ani.SetBool("isAirborn", false);
         }
     }
+
+    bool flashy = true;
+    bool IsInvincible()
+    {
+        if (Time.time <= invincFramesTS)
+        {
+            sr.enabled = flashy;
+            flashy = !flashy;
+
+            return true;
+        }
+        else
+        {
+            sr.enabled = true;
+            return false;
+        }
+    }
     #endregion
 
     #region Attack 
@@ -633,4 +681,16 @@ public class PlayerScript : MonoBehaviour
         print("Melee Attack");
     } // }
     #endregion
+    #region Sound
+    //Daniel
+    void RunSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Walk");
+    }
+    void AttackSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Attack1");
+    }
+    #endregion
+
 }

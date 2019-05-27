@@ -53,7 +53,7 @@ public class PlayerRangedAttack : MonoBehaviour
         {
             reloadTime -= Time.deltaTime;
         }
-        if (reloadTime <= 0)
+        if (reloadTime <=0+ 0)
         {
             isNotReloading = true;
         }       
@@ -62,6 +62,7 @@ public class PlayerRangedAttack : MonoBehaviour
     void Fire()
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
+        FindObjectOfType<AudioManager>().Play("Shoot");
     }
 
     void reload()
@@ -70,6 +71,7 @@ public class PlayerRangedAttack : MonoBehaviour
         ammoMagazine = 1;
         isNotReloading = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
+        FindObjectOfType<AudioManager>().Play("Reload");
         Debug.Log("Reloading");
     }
 }
