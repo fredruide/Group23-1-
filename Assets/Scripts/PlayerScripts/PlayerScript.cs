@@ -15,23 +15,28 @@ public class PlayerScript : MonoBehaviour
     //this bool and field is for checking if bottom part of player
     //is in contact with a object (checks on platform only right now)
     //used in HorizontalMovement, Jump and DoubleJump methods.
-    bool grounded;
-    public bool _grounded
+    bool isGrounded;
+    public bool _isGrounded
     {
-        get { return grounded; }
+        get { return isGrounded; }
         set
         {
-            grounded = value;
+            isGrounded = value;
             ani.SetBool("isGrounded", value);
             if (value == true)
             {
                 canJump = true;
                 canDoubleJump = true;
                 canMoveHori = true;
+                ani.SetBool("isJumping", false);
+                ani.SetBool("isAirborn", false);
+                ani.SetBool("isWallSliding", false);
             }
             else
             {
                 canMoveHori = false;
+                _isAirborn = true;
+                ani.SetBool("isAirborn", true);
             }
         }
     }
@@ -99,11 +104,45 @@ public class PlayerScript : MonoBehaviour
     public bool _isRunning
     {
         get { return isRunning; }
+        set
+        {
+            isRunning = value;
+            if (isRunning)
+                ani.SetBool("isRunning", true);
+            else
+                ani.SetBool("isRunning", false);
+        }
     }
     bool isAirborn;
     public bool _isAirborn
     {
         get { return isAirborn; }
+        set
+        {
+            isAirborn = value;
+            if (value == true)
+                ani.SetBool("isAirborn", true);
+            else
+                ani.SetBool("isAirborn", false);
+        }
+    }
+    bool isWallSliding;
+    public bool _isWallSliding
+    {
+        get { return isWallSliding; }
+        set
+        {
+            isWallSliding = value;
+            if(value == true)
+            {
+                ani.SetBool("isWallSliding", true);
+                ani.SetBool("isAirborn", false);
+            }
+            else
+            {
+                ani.SetBool("isWallSliding", false);
+            }
+        }
     }
     bool isDisabled;
     public bool _isDisabled
@@ -203,6 +242,9 @@ public class PlayerScript : MonoBehaviour
         WallSlide();
         AttackChecker();
 
+
+        print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));
+        print("isAirborn: " +_isAirborn + " ani.isAirborn: " + ani.GetBool("isAirborn"));
         //print("IsInvincible: " + IsInvincible());
         //print(Input.GetJoystickNames().Length);
 
@@ -302,9 +344,9 @@ public class PlayerScript : MonoBehaviour
     void WallSlide()
     {
         //the 3 if statments could have been one long if statment
-        //checks if player is not grounded and if canWallSlide is true (canWallSlide is set to true when first coliding when a object)
+        //checks if player is not grounded and if canWallSlide is true (canWallSlide is set to true when first coliding with an object)
         //and set to false under WallJump method and in LeftTriggerScript and RightTriggerScript
-        if (canWallSlide && !grounded)
+        if (canWallSlide && !isGrounded)
         {
             //checks is player is clicking a move horizontal button and is thouching a object on there left or right side
             // and is not trying to jump
@@ -316,59 +358,65 @@ public class PlayerScript : MonoBehaviour
                 {
                     //set players y velocity to the minus version of wallSlideSpeed 
                     rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed * -1);
+                    _isWallSliding = true;
                 }
-            }
-        }
-        /*
-        if (canWallSlide && !grounded)
-        {            
-            if (Input.GetAxisRaw("Horizontal") != 0 && (touchLeft || touchRight) && !Input.GetButtonDown("Vertical"))
-            {
-                if ((Input.GetAxisRaw("Horizontal") > 0 && touchRight) || (Input.GetAxisRaw("Horizontal") < 0 && touchLeft))
+                else
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed * -1);
+                    _isWallSliding = false;
                 }
             }
+            else
+            {
+                _isWallSliding = false;
+            }
         }
-        */
+        else
+        {
+            _isWallSliding = false;
+        }
     }
 
     void Jump()
     {
         //print(Input.GetButtonDown("Vertical"));
-
+        
         //check is player is clicking vertical button and is grounded and canJump is true
         //(canJump is set to true when grounded is first set to true)
-        if (grounded == true && Input.GetButtonDown("Vertical") && canJump && PlayerRangedAttack.isNotReloading)
+        if (isGrounded == true && Input.GetButtonDown("Vertical") && canJump && PlayerRangedAttack.isNotReloading)
         {
             canJump = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);
-            //ani.SetBool("Jumping", true);
+            ani.SetBool("isJumping", true);
             //print("Jump: " + rb.velocity.y);
             //print("grounded: " + grounded);
             //print("canJump: " + canJump);
         }
         //if player can´t jump under normal conditions check if player can jump under coyote conditions
-        else if (!grounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
+        else if (!isGrounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
         {
             canJump = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);
-            //ani.SetBool("Jumping", true);
+            ani.SetBool("isJumping", true);
             //print("Jump Coyote: " + rb.velocity.y);
             //print("grounded: " + grounded);
             //print("canJump: " + canJump);
+        }
+        else
+        {
+            ani.SetBool("isJumping", false);
         }
     }
 
     void DoubleJump()
     {
         //checks if player is not grounded, player can double jump and player is double jumping
-        if (!grounded && Input.GetButtonDown("Vertical") && canDoubleJump)
+        if (!isGrounded && Input.GetButtonDown("Vertical") && canDoubleJump)
         {
             canDoubleJump = false;
             //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity = new Vector2(rb.velocity.x, jump);            
+            rb.velocity = new Vector2(rb.velocity.x, jump);
+            ani.SetBool("isJumping", true);
             //print("DoubleJump: " + rb.velocity.y);
         }
     }
@@ -379,24 +427,26 @@ public class PlayerScript : MonoBehaviour
         //check if player is clicking the horizontale move button that matches the side 
         //that the wall they are coliding with is on and that the player is trying to jump
         //the if statment is for walljumping to the left
-        if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0 && !grounded)
+        if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0 && !isGrounded)
         {
             //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX * -1, wallJumpY);
             isDisabled = true;
+            _isGrounded = false;
             //print("input vertical + touchRight + input Horizontal > 0");
             //print("Velocity: " + rb.velocity.y);
         }
         //the else if statment is to walljump to the right
-        else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0 && !grounded)
+        else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0 && !isGrounded)
         {
             //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
             //set player velocity to wall jump x and y velocitys
             rb.velocity = new Vector2(wallJumpX, wallJumpY);
             isDisabled = true;
+            _isGrounded = false;
             //print("input vertical + touchLeft + input Horizontal < 0");
             //print("Velocity: " + rb.velocity.y);
         }
@@ -505,19 +555,19 @@ public class PlayerScript : MonoBehaviour
         //check what direction player last faced
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            directionFaced = true;
+            directionFaced = false;
             sr.flipX = directionFaced;
         } 
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            directionFaced = false;
+            directionFaced = true;
             sr.flipX = directionFaced;
         }
     }
     void IsRunning()
     {
         
-        if (Input.GetButton("Horizontal") && canMoveHori && grounded && rb.velocity.x != 0)
+        if (Input.GetButton("Horizontal") && canMoveHori && isGrounded && rb.velocity.x != 0)
         {
             isRunning = true;
             ani.SetBool("isRunning", true);
@@ -526,19 +576,6 @@ public class PlayerScript : MonoBehaviour
         {
             isRunning = false;
             ani.SetBool("isRunning", false);
-        }
-    }
-    void IsAirborn()
-    {
-        if (!grounded)
-        {
-            isAirborn = true;
-            ani.SetBool("isAirborn", true);
-        }
-        else
-        {
-            isAirborn = false;
-            ani.SetBool("isAirborn", false);
         }
     }
 
@@ -582,19 +619,21 @@ public class PlayerScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1") && attackType == 1)
             {
-                print("AttackType 1");
+                //print("AttackType 1");
                 MeleeAttack(damage, attackRange);
-                
+                ani.SetInteger("isAttacking1-3", 1);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 2)
             {
                 MeleeAttack(damage1, attackRange1);
-                print("AttackType 2");
+                //print("AttackType 2");
+                ani.SetInteger("isAttacking1-3", 2);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 3)
             {
                 MeleeAttack(damage2, attackRange2);
-                print("AttackType 3");
+                //print("AttackType 3");
+                ani.SetInteger("isAttacking1-3", 3);
             }
         }
         else
@@ -603,7 +642,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (attackGracePeriod <= 0)
         {
-            attackType = 1;
+            attackType = 1;            
         }
         else
         {
@@ -626,8 +665,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
         attackType++;
-        ani.SetBool("isAttacking", true);
-        print("Melee Attack");
+        //print("Melee Attack");
     } // }
     #endregion
     #region Sound

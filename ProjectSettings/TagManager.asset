@@ -15,6 +15,7 @@ TagManager:
   - Worm
   - Despawner
   - Material
+  - Wall
   layers:
   - Default
   - TransparentFX

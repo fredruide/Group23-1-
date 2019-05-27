@@ -28,7 +28,7 @@ public class PlayerRangedAttack : MonoBehaviour
                 Fire();
                 ammo--;
             }
-            else if (Input.GetButtonDown("Fire2") && ammo == 0 && ps._grounded)
+            else if (Input.GetButtonDown("Fire2") && ammo == 0 && ps._isGrounded)
             {
                 reload();
             }

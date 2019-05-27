@@ -21,7 +21,7 @@ public class p_At_Script : StateMachineBehaviour
         {
             if (clip.name == "Player_Attack")
                 if (clip.length <= stateInfo.length)
-                    player.GetComponent<Animator>().SetBool("isAttacking", false);
+                    player.GetComponent<Animator>().SetInteger("isAttacking1-3", 0);
         }
 
         //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Attack"))

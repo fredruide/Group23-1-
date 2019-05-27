@@ -27,7 +27,7 @@ public class BottomTriggerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Platform")
         {
-            ps._grounded = true;
+            ps._isGrounded = true;
             //print("BottomScript Enter hit: " + collision.gameObject.tag);
         }
         
@@ -37,7 +37,7 @@ public class BottomTriggerScript : MonoBehaviour
         if (collision.gameObject.tag == "Platform" )
         {
             //print("BottomScript Stay hit: " + collision.gameObject.name);
-            ps._grounded = true;
+            ps._isGrounded = true;
         }
         
     }
@@ -46,7 +46,7 @@ public class BottomTriggerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Platform")
         {
-            ps._grounded = false;
+            ps._isGrounded = false;
             ps._coyoteTS = Time.time;
             //print("BottomScript Exit hit: " + collision.gameObject.tag);
         }   

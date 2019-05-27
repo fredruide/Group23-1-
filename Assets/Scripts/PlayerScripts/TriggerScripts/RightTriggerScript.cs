@@ -22,40 +22,42 @@ public class RightTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
         {
             ps._touchRight = true;
         }
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
         {
             ps._canWallSlide = true;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
         {
             ps._touchRight = true;
         }
 
-        if (Input.GetButtonDown("Vertical") && collision.gameObject.tag == "Platform")
+        if (Input.GetButtonDown("Vertical") && collision.gameObject.tag == "Wall")
         {
             ps._canWallSlide = false;
+            ps._isWallSliding = false;
         }
-        else if (!Input.GetButtonDown("Vertical") && collision.gameObject.tag == "Platform")
+        else if (!Input.GetButtonDown("Vertical") && collision.gameObject.tag == "Wall")
         {
             ps._canWallSlide = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Platform")
         {
             ps._touchRight = false;
         }
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Wall")
         {
             ps._canWallSlide = false;
+            ps._isWallSliding = false;
         }
     }
 }
