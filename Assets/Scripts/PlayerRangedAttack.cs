@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerRangedAttack : MonoBehaviour
 {
@@ -8,29 +7,50 @@ public class PlayerRangedAttack : MonoBehaviour
     public GameObject bullet;
     Rigidbody2D rb;
     PlayerScript ps;
-    public int ammo;
+    public int ammoMagazine;
     public float reloadTime;
     public float startReloadTime;
     public static bool isNotReloading;
+    //J.C. {
+    public GameObject MCAmmo_Counter;
+    public Material_Counter scrMC;
 
+    public GameObject objAmmo_CounterText;
+    public Text Ammo_CounterText;
+    //      }
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         ps = GetComponent<PlayerScript>();
     }
 
+    private void Awake()
+    {//J.C.
+        MCAmmo_Counter = GameObject.Find("Material_Counter");
+        scrMC = MCAmmo_Counter.GetComponent<Material_Counter>();
+        //Update value on the UI
+        scrMC.PrintToUI2();
+        scrMC.AmmoUsed();
+    }
+
     void Update()
     {
         if (reloadTime <= 0)
         {
-            if ((Input.GetButtonDown("Fire2") && ammo > 0) && reloadTime < 0)
+            if ((Input.GetButtonDown("Fire2") && ammoMagazine > 0) && reloadTime < 0)
             {
                 Fire();
-                ammo--;
+                ammoMagazine--;
+                
             }
+<<<<<<< HEAD
             else if (Input.GetButtonDown("Fire2") && ammo == 0 && ps._isGrounded)
+=======
+            else if (Input.GetButtonDown("Fire2") && ammoMagazine == 0 && ps._grounded && scrMC.AmmoUsed() >= 1)
+>>>>>>> e464e321e71fc47174e55194eeee6a829118e362
             {
                 reload();
+                scrMC.CheckForAmmo(-1);
             }
         }
         else
@@ -52,7 +72,7 @@ public class PlayerRangedAttack : MonoBehaviour
     void reload()
     {
         reloadTime = startReloadTime;
-        ammo = 1;
+        ammoMagazine = 1;
         isNotReloading = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
         FindObjectOfType<AudioManager>().Play("Reload");

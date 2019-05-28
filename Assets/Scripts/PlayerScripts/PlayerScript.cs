@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class PlayerScript : MonoBehaviour
     SpriteRenderer sr;
     Animator ani;
     Camera mainCam;
+
+    public GameObject objHPotion_Counter;
+    public Material_Counter scrMC;
+
+    public GameObject objHP_Counter;
+    public Text HP_CounterText;
 
     //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
     // colliders attach to the player object
@@ -197,9 +204,9 @@ public class PlayerScript : MonoBehaviour
     #endregion
     #region StatsVariabler
     //player current health
-    public int health;
+    private int currentHealth = 5;
     //player max health
-    public int maxHealth;
+    private int maxHealth = 10;
     //player respawn posisiton
     Vector2 respawnPosition;
     public Vector2 _respawnPosition
@@ -211,7 +218,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb is used to manipulate player riged body
+        //rb is used to manipulate player rigid body
         rb = GetComponent<Rigidbody2D>();
         //sr is used to manipulated player sprite and animations sprites
         sr = GetComponent<SpriteRenderer>();
@@ -220,6 +227,20 @@ public class PlayerScript : MonoBehaviour
         //mainCam is used to check and manipulate the Main Camera in the scene
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
+
+        
+    }
+
+    private void Awake()
+    {//J.C.
+        objHPotion_Counter = GameObject.Find("Material_Counter");
+        scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
+
+        objHP_Counter = GameObject.Find("HP_Counter");
+        HP_CounterText = objHP_Counter.GetComponent<Text>();
+
+        //Set HP value on the UI
+        HP_CounterText.text = "HP: " + currentHealth;
     }
 
     // Update is called once per frame
@@ -241,6 +262,7 @@ public class PlayerScript : MonoBehaviour
         WallJump();
         WallSlide();
         AttackChecker();
+        UseHPotion();
 
 
         print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));
@@ -390,6 +412,7 @@ public class PlayerScript : MonoBehaviour
             //print("Jump: " + rb.velocity.y);
             //print("grounded: " + grounded);
             //print("canJump: " + canJump);
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
         //if player can´t jump under normal conditions check if player can jump under coyote conditions
         else if (!isGrounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
@@ -416,8 +439,12 @@ public class PlayerScript : MonoBehaviour
             //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity = new Vector2(rb.velocity.x, jump);
+<<<<<<< HEAD
             ani.SetBool("isJumping", true);
+=======
+>>>>>>> e464e321e71fc47174e55194eeee6a829118e362
             //print("DoubleJump: " + rb.velocity.y);
+            FindObjectOfType<AudioManager>().Play("DoubleJump");
         }
     }
 
@@ -524,12 +551,16 @@ public class PlayerScript : MonoBehaviour
     {
         if (IsInvincible() == false)
         {
+<<<<<<< HEAD
+            currentHealth -= dmg;
+=======
             health -= dmg;
             KnockBack();
+>>>>>>> 3be4f422dcc9d8396d9dff6b13c08a0cd57f76f2
             _invincFramesTS = Time.time;
         }
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -540,12 +571,35 @@ public class PlayerScript : MonoBehaviour
         rb.transform.position = respawnPosition;
     }
 
+    void UseHPotion()
+    {//J.C.
+        if (Input.GetButtonDown("Heal") && scrMC.HPotionUsed() >= 1)
+        {
+            
+            Heal(1);
+            int usedPotion = -1;
+            scrMC.CheckForHPotion(usedPotion);
+        }
+    }
+
     void Heal(int heal)
     {
-        if (heal + health > maxHealth)
-            health = maxHealth;
+        if (heal + currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+            
         else
-            health += heal;
+        {
+            currentHealth += heal;
+        }
+
+        PrintHP(currentHealth);
+    }
+
+    void PrintHP (int printHP)
+    {//J.C.
+        HP_CounterText.text = "HP: " + printHP;
     }
 
     #endregion
