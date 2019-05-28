@@ -27,13 +27,11 @@ public class BottomTriggerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Platform")
         {
-<<<<<<< HEAD
+
             ps._isGrounded = true;
-=======
-            ps._grounded = true;
-            Debug.Log("Landed");
+
+            //Debug.Log("Landed");
             FindObjectOfType<AudioManager>().Play("Land");
->>>>>>> e464e321e71fc47174e55194eeee6a829118e362
             //print("BottomScript Enter hit: " + collision.gameObject.tag);
         }
         

@@ -35,19 +35,19 @@ public class PlayerRangedAttack : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log("reloadTime: " + reloadTime);
         if (reloadTime <= 0)
         {
+            //Debug.Log("input Fire2: " + Input.GetButtonDown("Fire2") + " ammoMagazine: " + ammoMagazine + " reloadTime: " + reloadTime);
+            //Debug.Log("input Fire2: " + Input.GetButtonDown("Fire2") + " ammoMagazine: " + ammoMagazine + " ps.isGrounded: " + ps._isGrounded + " scrMC.AmmoUsed(): " + scrMC.AmmoUsed());
             if ((Input.GetButtonDown("Fire2") && ammoMagazine > 0) && reloadTime < 0)
-            {
+            {                
                 Fire();
                 ammoMagazine--;
                 
             }
-<<<<<<< HEAD
-            else if (Input.GetButtonDown("Fire2") && ammo == 0 && ps._isGrounded)
-=======
-            else if (Input.GetButtonDown("Fire2") && ammoMagazine == 0 && ps._grounded && scrMC.AmmoUsed() >= 1)
->>>>>>> e464e321e71fc47174e55194eeee6a829118e362
+            //else if (Input.GetButtonDown("Fire2") && ammo == 0 && ps._isGrounded)            
+            else if (Input.GetButtonDown("Fire2") && ammoMagazine == 0 && ps._isGrounded && scrMC.AmmoUsed() >= 1)
             {
                 reload();
                 scrMC.CheckForAmmo(-1);

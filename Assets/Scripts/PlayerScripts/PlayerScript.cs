@@ -246,6 +246,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
+
         DirectionFacing();
         IsRunning();
         IsInvincible();
@@ -264,9 +266,9 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
-
-        print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));
-        print("isAirborn: " +_isAirborn + " ani.isAirborn: " + ani.GetBool("isAirborn"));
+        //print(PlayerRangedAttack.isNotReloading);
+        //print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));
+        //print("isAirborn: " +_isAirborn + " ani.isAirborn: " + ani.GetBool("isAirborn"));
         //print("IsInvincible: " + IsInvincible());
         //print(Input.GetJoystickNames().Length);
 
@@ -641,6 +643,37 @@ public class PlayerScript : MonoBehaviour
         {
             sr.enabled = true;
             return false;
+        }
+    }
+    //Frederik
+    void WallSLideAnimationHandler()
+    {
+        if(ani.GetCurrentAnimatorStateInfo(0).IsName("Player_Wall_Slide"))
+        {
+            //Debug.Log("Success!");
+            //print("Success");
+            //print(this.gameObject.transform.childCount);
+
+            for (int i = 0; i < this.gameObject.transform.childCount -1; i++)
+            {
+                if (this.gameObject.transform.GetChild(i).name == "LeftWallSlideAni")
+                {
+                    GameObject Child = this.gameObject.transform.GetChild(i).gameObject;
+                    if (touchLeft)
+                    {
+                        Child.GetComponent<Animation>().Play("Player_Wall_Slide");
+                        break;
+                    }  
+                }
+                if (this.gameObject.transform.GetChild(i).name == "RightWallSlideAni")
+                {
+                    if (touchRight)
+                    {
+                        Child.GetComponent<Animation>().Play("Player_Wall_Slide");
+                        break;
+                    }
+                }
+            }
         }
     }
     #endregion
