@@ -439,11 +439,8 @@ public class PlayerScript : MonoBehaviour
             //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity = new Vector2(rb.velocity.x, jump);
-<<<<<<< HEAD
+
             ani.SetBool("isJumping", true);
-=======
->>>>>>> e464e321e71fc47174e55194eeee6a829118e362
-            //print("DoubleJump: " + rb.velocity.y);
             FindObjectOfType<AudioManager>().Play("DoubleJump");
         }
     }
@@ -551,12 +548,9 @@ public class PlayerScript : MonoBehaviour
     {
         if (IsInvincible() == false)
         {
-<<<<<<< HEAD
             currentHealth -= dmg;
-=======
-            health -= dmg;
+            currentHealth -= dmg;
             KnockBack();
->>>>>>> 3be4f422dcc9d8396d9dff6b13c08a0cd57f76f2
             _invincFramesTS = Time.time;
         }
 
