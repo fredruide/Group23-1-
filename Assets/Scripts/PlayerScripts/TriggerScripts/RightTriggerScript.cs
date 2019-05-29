@@ -58,6 +58,9 @@ public class RightTriggerScript : MonoBehaviour
         {
             ps._canWallSlide = false;
             ps._isWallSliding = false;
+
+            if (!ps._isGrounded)
+                ps._isGrounded = false;
         }
     }
 }

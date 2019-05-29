@@ -54,7 +54,10 @@ public class PlayerScript : MonoBehaviour
     public bool _touchRight
     {
         get { return touchRight; }
-        set { touchRight = value; }
+        set
+        {
+            touchRight = value;
+        }
     }
     //this bool and field is for checking if Left side of player
     //is in contact with a object (checks on platform only right now)
@@ -144,6 +147,7 @@ public class PlayerScript : MonoBehaviour
             {
                 ani.SetBool("isWallSliding", true);
                 ani.SetBool("isAirborn", false);
+                //WallSLideAnimationHandler();
             }
             else
             {
@@ -266,6 +270,7 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
+        //print("isWallSliding: " + isWallSliding);
         //print(PlayerRangedAttack.isNotReloading);
         //print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));
         //print("isAirborn: " +_isAirborn + " ani.isAirborn: " + ani.GetBool("isAirborn"));
@@ -275,7 +280,7 @@ public class PlayerScript : MonoBehaviour
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
         //print("Velocity: " + rb.velocity.y);
         //print("Velocity: " + rb.velocity.y);SDW
-        //print("grounded: " + grounded);
+        //print("isGrounded: " + isGrounded);
         //print("canJump: " + canJump);
         //print("hasBeen: " + hasBeenGrounded);
         //print("input: " + Input.GetButtonDown("Vertical"));
@@ -382,7 +387,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     //set players y velocity to the minus version of wallSlideSpeed 
                     rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed * -1);
-                    _isWallSliding = true;
+                    _isWallSliding = true;                    
                 }
                 else
                 {
@@ -653,24 +658,36 @@ public class PlayerScript : MonoBehaviour
             //Debug.Log("Success!");
             //print("Success");
             //print(this.gameObject.transform.childCount);
+            GameObject Child;
 
-            for (int i = 0; i < this.gameObject.transform.childCount -1; i++)
+            for (int i = 0; i < gameObject.transform.childCount -1; i++)
             {
-                if (this.gameObject.transform.GetChild(i).name == "LeftWallSlideAni")
+                if (gameObject.transform.GetChild(i).name == "LeftWallSlideAni")
                 {
-                    GameObject Child = this.gameObject.transform.GetChild(i).gameObject;
+                    Child = gameObject.transform.GetChild(i).gameObject;
                     if (touchLeft)
                     {
-                        Child.GetComponent<Animation>().Play("Player_Wall_Slide");
+                        Child.GetComponent<Animator>().enabled = true;
+                        Child.GetComponent<Animator>().Play("Player_Wall_Slide");
                         break;
-                    }  
+                    }
+                    else
+                    {
+                        Child.SetActive(false);
+                    }
                 }
-                if (this.gameObject.transform.GetChild(i).name == "RightWallSlideAni")
+                if (gameObject.transform.GetChild(i).name == "RightWallSlideAni")
                 {
+                    Child = gameObject.transform.GetChild(i).gameObject;
                     if (touchRight)
                     {
-                        Child.GetComponent<Animation>().Play("Player_Wall_Slide");
+                        Child.GetComponent<Animator>().enabled = true;
+                        Child.GetComponent<Animator>().Play("Player_Wall_Slide");
                         break;
+                    }
+                    else
+                    {
+                        Child.SetActive(false);
                     }
                 }
             }

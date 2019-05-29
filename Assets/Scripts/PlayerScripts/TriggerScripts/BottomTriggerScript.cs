@@ -48,7 +48,7 @@ public class BottomTriggerScript : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
         {
             ps._isGrounded = false;
             ps._coyoteTS = Time.time;

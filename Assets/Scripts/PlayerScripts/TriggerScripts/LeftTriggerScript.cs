@@ -59,6 +59,12 @@ public class LeftTriggerScript : MonoBehaviour
         {
             ps._canWallSlide = false;
             ps._isWallSliding = false;
+
+            //Dette er for at sætte proseccen af bools setter i animatoren igang som bliver startet når _isGrounded bliver sat til false
+            if (!ps._isGrounded)
+            {
+                ps._isGrounded = false;
+            }                
         }
     }
 }
