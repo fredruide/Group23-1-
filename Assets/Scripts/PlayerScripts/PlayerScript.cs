@@ -498,12 +498,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (IsInvincible() == false)
         {
-<<<<<<< HEAD
             currentHealth -= dmg;
-=======
-            health -= dmg;
             KnockBack();
->>>>>>> 3be4f422dcc9d8396d9dff6b13c08a0cd57f76f2
             _invincFramesTS = Time.time;
         }
 
