@@ -25,7 +25,7 @@ public class BottomTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Worm")
         {
             ps._grounded = true;
             //print("BottomScript Enter hit: " + collision.gameObject.tag);
@@ -34,7 +34,7 @@ public class BottomTriggerScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform" )
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Worm")
         {
             //print("BottomScript Stay hit: " + collision.gameObject.name);
             ps._grounded = true;
@@ -44,7 +44,7 @@ public class BottomTriggerScript : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Worm")
         {
             ps._grounded = false;
             ps._coyoteTS = Time.time;

@@ -8,11 +8,11 @@ using System;
 
 public class Material_Counter : MonoBehaviour
 {
-    private int playerHerbs ;
-    private int playerWood ;
-    private int playerStone ;
-    private int playerIron ;
-    private int playerCrystals;
+    public int playerHerbs;
+    public int playerWood;
+    public int playerStone;
+    public int playerIron;
+    public int playerCrystals;
 
     private int playerAmmo;
     private int playerHPotion;
@@ -23,13 +23,26 @@ public class Material_Counter : MonoBehaviour
     void Start()
     {
         UIText = GetComponent<Text>();
+
         PrintToUI();
         PrintToUI2();
     }
 
+    public void SaveValues()
+    {
+        MatValues matvalues = new MatValues();
+        matvalues.playerHerbs = playerHerbs + matvalues.playerHerbs;
+        matvalues.playerStone = playerStone + matvalues.playerStone;
+        matvalues.playerMetal = playerIron + matvalues.playerMetal;
+        matvalues.playerCrystals = playerCrystals + matvalues.playerCrystals;
+        matvalues.playerWood = playerWood + matvalues.playerWood;
+        matvalues.playerAmmo = playerAmmo + matvalues.playerAmmo;
+        matvalues.playerHPotion = playerHPotion + matvalues.playerHPotion;
+    }
+
     public void CheckForHerb(int HerbCarryOver)
     {
-        playerHerbs += HerbCarryOver;
+        playerHerbs += HerbCarryOver;        
         PrintToUI();
     }
     
@@ -59,7 +72,6 @@ public class Material_Counter : MonoBehaviour
 
     public void PrintToUI()
     {
-
         UIText.text = "Herbs: " + playerHerbs + "	Wood: " + playerWood + "	Stone: " + playerStone + "	Metal: " + playerIron + " 	Crystal:" + playerCrystals;
     }
 
@@ -79,8 +91,6 @@ public class MatValues
     public int playerStone { get; set; }
     public int playerMetal { get; set; }
     public int playerCrystals { get; set; }
-
-
     public int playerAmmo { get; set; }
     public int playerHPotion { get; set; }
 }

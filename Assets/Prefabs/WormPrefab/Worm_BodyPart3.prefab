@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9031363664556641613}
   - component: {fileID: 6150670906580886923}
+  - component: {fileID: 8945401351319496483}
   m_Layer: 0
-  m_Name: Worm_Body
+  m_Name: Damage_Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,6 +80,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &8945401351319496483
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78945756384373721}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 12.8, y: 7.2}
+    newSize: {x: 12.8, y: 7.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 12.8, y: 7.2}
+  m_EdgeRadius: 0
 --- !u!1 &3378543918952722400
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +214,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3378543918952722400}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 714d112e20a960c44b1076c0b35ab99f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

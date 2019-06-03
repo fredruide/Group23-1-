@@ -9,11 +9,7 @@ public class Worm_AI : MonoBehaviour
     private Worm_Controller scrWormController; 
     private Rigidbody2D rb2d;
     private Vector2 speed;
-    private CompositeCollider2D compCollid;
-    private BoxCollider2D collid;
-    public float test;
 
-    // Start is called before the first frame update
     void Start()
     {        
         rb2d = GetComponent<Rigidbody2D>();
@@ -26,20 +22,29 @@ public class Worm_AI : MonoBehaviour
         {
             objPlatforms = GameObject.Find("Tilemap_Platforms");
         }
-        //Physics2D.IgnoreLayerCollision(12, 13, true);
         Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), objPlatforms.GetComponent<CompositeCollider2D>());
     }
 
-    
-
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log(scrWormController.horizontalSpeed);
         speed.x = 4;
         
         rb2d.velocity = new Vector2(scrWormController.horizontalSpeed, 0);
-        //Debug.Log(rb2d.velocity);
-        //Debug.Log(collid.bounds.size);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.collider.gameObject.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.collider.gameObject.transform.SetParent(null);
+        }
     }
 }

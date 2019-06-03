@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     SpriteRenderer sr;
     Animator ani;
     Camera mainCam;
+    private int SpeedModifier = 0;
 
     //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
     // colliders attach to the player object
@@ -184,11 +185,9 @@ public class PlayerScript : MonoBehaviour
         DirectionFacing();
         IsRunning();
         
-
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
         //ani.SetBool("Grounded", grounded);
-
 
         HorizontalMovement();        
         Jump();
@@ -197,8 +196,14 @@ public class PlayerScript : MonoBehaviour
         WallSlide();
         AttackChecker();
 
-        print("IsInvincible: " + IsInvincible());
+        //print("IsInvincible: " + IsInvincible());
         //print(Input.GetJoystickNames().Length);
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Vector3 vect = new Vector3(50,-5,0);
+            transform.position = vect;
+        }
 
         //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
         //print("Velocity: " + rb.velocity.y);
@@ -248,7 +253,6 @@ public class PlayerScript : MonoBehaviour
             //print("TouchRight: " + touchRight);
         if (Input.GetButtonDown("Vertical"))
             print("input Vertical: " + Input.GetButtonDown("Vertical"));
-
         */
     }
 
@@ -262,6 +266,7 @@ public class PlayerScript : MonoBehaviour
             //checks if player is colliding with a object on the same side at they are moving
             //if true then stop moving to prevent false sliding
             //if player is not clicking a move Horizontal button then stop velocity horizontal (else statment)
+            speed += SpeedModifier;
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
             {
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);

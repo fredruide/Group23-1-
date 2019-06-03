@@ -41,6 +41,11 @@ public class HouseNodes : MonoBehaviour
     public GameObject buildButton;
     public GameObject deleteButton;
     #endregion
+    #region Resource Getters
+    private GameObject objMaterialCounter;
+    private Material_Counter scrMaterialCounter;
+    #endregion
+
 
     private void Awake()
     {        
@@ -53,6 +58,17 @@ public class HouseNodes : MonoBehaviour
         mainCamera1.SetActive(true);
         overViewCamera.SetActive(false);
         UI.SetActive(false);
+        if (null != GameObject.Find("Material_Counter"))
+        {
+            objMaterialCounter = GameObject.Find("Material_Counter");
+            scrMaterialCounter = objMaterialCounter.GetComponent<Material_Counter>();
+            
+        }
+    }
+
+    private void Update()
+    {
+        scrMaterialCounter.CheckForHerb(400);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
