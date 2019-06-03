@@ -15,7 +15,7 @@ public class Herb_Drop : Drop_Template
 
             toCarryOver = 10;
 
-            Debug.Log(toCarryOver);
+
             if (null != GameObject.Find("Material_Counter"))
             {
                 objMaterial_Counter = GameObject.Find("Material_Counter");
