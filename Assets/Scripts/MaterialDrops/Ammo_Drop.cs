@@ -11,7 +11,7 @@ public class Ammo_Drop : Drop_Template
 
             toCarryOver = 1;
 
-            Debug.Log(toCarryOver);
+
             if (null != GameObject.Find("Material_Counter"))
             {
                 objMaterial_Counter = GameObject.Find("Material_Counter");
