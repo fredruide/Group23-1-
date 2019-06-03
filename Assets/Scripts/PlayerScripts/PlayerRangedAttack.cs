@@ -7,7 +7,7 @@ public class PlayerRangedAttack : MonoBehaviour
     public GameObject bullet;
     Rigidbody2D rb;
     PlayerScript ps;
-    public int ammoMagazine;
+    private int ammoMagazine;
     public float reloadTime;
     public float startReloadTime;
     public static bool isNotReloading;
@@ -75,7 +75,6 @@ public class PlayerRangedAttack : MonoBehaviour
         ammoMagazine = 1;
         isNotReloading = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
-        FindObjectOfType<AudioManager>().Play("Reload");
-        Debug.Log("Reloading");
+        FindObjectOfType<AudioManager>().Play("Reload");       
     }
 }
