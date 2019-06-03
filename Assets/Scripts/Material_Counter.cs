@@ -7,12 +7,12 @@ using System.IO;
 using System;
 
 public class Material_Counter : MonoBehaviour
-{
-    public int playerHerbs;
-    public int playerWood;
-    public int playerStone;
-    public int playerIron;
-    public int playerCrystals;
+{//J.C.
+    private int playerHerbs ;
+    private int playerWood ;
+    private int playerStone ;
+    private int playerIron ;
+    private int playerCrystals;
 
     private int playerAmmo;
     private int playerHPotion;
@@ -23,26 +23,13 @@ public class Material_Counter : MonoBehaviour
     void Start()
     {
         UIText = GetComponent<Text>();
-
         PrintToUI();
         PrintToUI2();
     }
 
-    public void SaveValues()
-    {
-        MatValues matvalues = new MatValues();
-        matvalues.playerHerbs = playerHerbs + matvalues.playerHerbs;
-        matvalues.playerStone = playerStone + matvalues.playerStone;
-        matvalues.playerMetal = playerIron + matvalues.playerMetal;
-        matvalues.playerCrystals = playerCrystals + matvalues.playerCrystals;
-        matvalues.playerWood = playerWood + matvalues.playerWood;
-        matvalues.playerAmmo = playerAmmo + matvalues.playerAmmo;
-        matvalues.playerHPotion = playerHPotion + matvalues.playerHPotion;
-    }
-
     public void CheckForHerb(int HerbCarryOver)
     {
-        playerHerbs += HerbCarryOver;        
+        playerHerbs += HerbCarryOver;
         PrintToUI();
     }
     
@@ -60,18 +47,26 @@ public class Material_Counter : MonoBehaviour
 
     public void CheckForAmmo(int AmmoCarryOver)
     {
-        playerAmmo += AmmoCarryOver;
-        PrintToUI2();
+        if (playerAmmo < 10 || AmmoCarryOver == -1)
+        {
+            playerAmmo += AmmoCarryOver;
+            PrintToUI2();
+        }
     }
 
     public void CheckForHPotion(int HPotionCarryOver)
     {
-        playerHPotion += HPotionCarryOver;
-        PrintToUI2();
+        if (playerHPotion < 5 || HPotionCarryOver == -1)
+        {
+            playerHPotion += HPotionCarryOver;
+            PrintToUI2();
+        }
+
     }
 
     public void PrintToUI()
     {
+
         UIText.text = "Herbs: " + playerHerbs + "	Wood: " + playerWood + "	Stone: " + playerStone + "	Metal: " + playerIron + " 	Crystal:" + playerCrystals;
     }
 
@@ -79,7 +74,17 @@ public class Material_Counter : MonoBehaviour
     {
         UIText2.text = "Ammo: " + playerAmmo + "   Potions: " + playerHPotion;
     }
-    
+
+    public int HPotionUsed()
+    {
+        return playerHPotion;
+    }
+
+    public int AmmoUsed()
+    {
+        return playerAmmo;
+    }
+
 }
 
 
@@ -91,6 +96,8 @@ public class MatValues
     public int playerStone { get; set; }
     public int playerMetal { get; set; }
     public int playerCrystals { get; set; }
+
+
     public int playerAmmo { get; set; }
     public int playerHPotion { get; set; }
 }

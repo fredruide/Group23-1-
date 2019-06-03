@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-        foreach(Sound s in sounds)
+        foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip[0];
@@ -26,10 +26,10 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.enabled = s.enabled;
         }
-        Play("Music");
+        PlayLoop("Music");
     }
 
-    public void Play(string name)
+    public void Play(string name) // Kan kun blive spillet 1 gang selv med Loop bool true
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
@@ -40,5 +40,15 @@ public class AudioManager : MonoBehaviour
         int selection = UnityEngine.Random.Range(0, s.clip.Length);
         s.source.PlayOneShot(s.clip[selection]);
         // FindObjectOfType<AudioManager>().Play("NavnPåSound"); for at spille en sound i manageren
+    }
+    public void PlayLoop(string name) // Bruges til ting der skal loopes, og kun har 1 sound file i sig.
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Play();
     }
 }

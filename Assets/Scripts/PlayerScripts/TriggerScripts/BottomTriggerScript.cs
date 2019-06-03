@@ -25,28 +25,32 @@ public class BottomTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Worm")
+        if (collision.gameObject.tag == "Platform")
         {
-            ps._grounded = true;
+
+            ps._isGrounded = true;
+
+            //Debug.Log("Landed");
+            FindObjectOfType<AudioManager>().Play("Land");
             //print("BottomScript Enter hit: " + collision.gameObject.tag);
         }
         
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Worm")
+        if (collision.gameObject.tag == "Platform" )
         {
             //print("BottomScript Stay hit: " + collision.gameObject.name);
-            ps._grounded = true;
+            ps._isGrounded = true;
         }
         
     }
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Worm")
+        if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
         {
-            ps._grounded = false;
+            ps._isGrounded = false;
             ps._coyoteTS = Time.time;
             //print("BottomScript Exit hit: " + collision.gameObject.tag);
         }   

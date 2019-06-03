@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPotion_Drop : Drop_Template
-{
+{//J.C.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -11,7 +11,7 @@ public class HealthPotion_Drop : Drop_Template
 
             toCarryOver = 1;
 
-            Debug.Log(toCarryOver);
+
             if (null != GameObject.Find("Material_Counter"))
             {
                 objMaterial_Counter = GameObject.Find("Material_Counter");
