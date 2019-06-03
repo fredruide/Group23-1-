@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7092435715625275762
+--- !u!1 &58967523816908701
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7092435715625275760}
-  - component: {fileID: 7092435715625275761}
-  - component: {fileID: 7726432981952279726}
-  - component: {fileID: 3983785067520807825}
-  - component: {fileID: 6225987899501931684}
-  - component: {fileID: 8934483105359455289}
+  - component: {fileID: 58967523816908695}
+  - component: {fileID: 58967523816908694}
+  - component: {fileID: 58967523816908697}
+  - component: {fileID: 58967523816908696}
+  - component: {fileID: 58967523816908699}
+  - component: {fileID: 58967523816908698}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -21,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7092435715625275760
+--- !u!4 &58967523816908695
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092435715625275762}
+  m_GameObject: {fileID: 58967523816908701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.99671, y: 5.267505, z: 1.8730475}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,13 +35,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7092435715625275761
+--- !u!114 &58967523816908694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092435715625275762}
+  m_GameObject: {fileID: 58967523816908701}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52390baabe15dc94bb03a6d53c941125, type: 3}
@@ -50,19 +50,15 @@ MonoBehaviour:
   sounds:
   - name: Walk
     clip:
-    - {fileID: 8300000, guid: cc70536d9d7705b4d8959cf67b4f5dde, type: 3}
-    - {fileID: 8300000, guid: 9bb429eefd35123438215d8d8d82bf1b, type: 3}
-    - {fileID: 8300000, guid: 06f5c6e4ce1da4440add003defd75ff1, type: 3}
-    - {fileID: 8300000, guid: e8d5d33e86dfe3f4cb55499322448172, type: 3}
-    - {fileID: 8300000, guid: 14bdca35270ca4b4b9e5b90038a542da, type: 3}
-    - {fileID: 8300000, guid: ca6c082b54c7ab842a0903985b460c93, type: 3}
-    - {fileID: 8300000, guid: 2ac71064b284d204d92df08a4569a732, type: 3}
-    - {fileID: 8300000, guid: 5e522adf95db9854f9ef452a090762a5, type: 3}
-    volume: 0.12
+    - {fileID: 8300000, guid: c3d712b8b9383f54b94ea2aca41a0105, type: 3}
+    - {fileID: 8300000, guid: 8c2929383573baf4b9f37731f1f2adc9, type: 3}
+    - {fileID: 8300000, guid: 33197c5a98db2314dafc10b496842e41, type: 3}
+    - {fileID: 8300000, guid: 8e0a0e7e99989df4bac869ffde180e7a, type: 3}
+    volume: 0.2
     pitch: 1
     loop: 0
     enabled: 1
-    source: {fileID: 7726432981952279726}
+    source: {fileID: 58967523816908697}
   - name: Shoot
     clip:
     - {fileID: 8300000, guid: 498449bba24a28943b6b9f21f45c212c, type: 3}
@@ -70,7 +66,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     enabled: 1
-    source: {fileID: 3983785067520807825}
+    source: {fileID: 58967523816908696}
   - name: Reload
     clip:
     - {fileID: 8300000, guid: 159a599175dc70d4c909fce275ad885c, type: 3}
@@ -78,7 +74,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     enabled: 1
-    source: {fileID: 6225987899501931684}
+    source: {fileID: 58967523816908699}
   - name: Music
     clip:
     - {fileID: 8300000, guid: 4d722b0218128854699293fcc4fed3a8, type: 3}
@@ -86,14 +82,33 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     enabled: 1
-    source: {fileID: 8934483105359455289}
---- !u!82 &7726432981952279726
+    source: {fileID: 58967523816908698}
+  - name: Jump
+    clip:
+    - {fileID: 8300000, guid: 549e9edb0b692a04c825a7e8452f729d, type: 3}
+    - {fileID: 8300000, guid: ff8b3a12cfb8a3e44bda771d3a81e98c, type: 3}
+    - {fileID: 8300000, guid: 389261e81e350154da9e5dc8f6723a7c, type: 3}
+    - {fileID: 8300000, guid: ed0e8228d8b6935408cd6d57e12de65a, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    enabled: 1
+    source: {fileID: 58967523816908698}
+  - name: DoubleJump
+    clip:
+    - {fileID: 8300000, guid: de2c00669c03eb341a9675bdeb80fd7a, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    enabled: 1
+    source: {fileID: 58967523816908698}
+--- !u!82 &58967523816908697
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092435715625275762}
+  m_GameObject: {fileID: 58967523816908701}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -183,13 +198,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &3983785067520807825
+--- !u!82 &58967523816908696
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092435715625275762}
+  m_GameObject: {fileID: 58967523816908701}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -279,13 +294,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &6225987899501931684
+--- !u!82 &58967523816908699
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092435715625275762}
+  m_GameObject: {fileID: 58967523816908701}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -375,13 +390,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &8934483105359455289
+--- !u!82 &58967523816908698
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092435715625275762}
+  m_GameObject: {fileID: 58967523816908701}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
