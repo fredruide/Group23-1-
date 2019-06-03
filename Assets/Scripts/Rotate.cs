@@ -24,7 +24,10 @@ public class Rotate : MonoBehaviour
         else if (tmpMousePosition != Input.mousePosition)
         {
             Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 179752caa7f63d8b0e6ccbe3229efba35d6d30ef
             difference.Normalize();
             rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
