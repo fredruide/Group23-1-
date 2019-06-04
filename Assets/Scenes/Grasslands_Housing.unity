@@ -25738,8 +25738,8 @@ PrefabInstance:
       propertyPath: invincFramesCD
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: [{fileID: 5802786584911571825, guid: a1f78afea97c352488b9e7227668c469,
-        type: 3}]
+    m_RemovedComponents:
+    - {fileID: 5802786584911571825, guid: a1f78afea97c352488b9e7227668c469, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1f78afea97c352488b9e7227668c469, type: 3}
 --- !u!1 &271466333
 GameObject:
@@ -50743,7 +50743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1126336427
 Transform:
   m_ObjectHideFlags: 0
@@ -52013,7 +52013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1761797334
 Transform:
   m_ObjectHideFlags: 0
@@ -52839,7 +52839,7 @@ RectTransform:
   - {fileID: 1376845085}
   - {fileID: 227965132}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -52896,7 +52896,7 @@ PrefabInstance:
     - target: {fileID: 1249707841786732790, guid: 7cb3b7642bde41641927c59ffabca20a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1249707841786732790, guid: 7cb3b7642bde41641927c59ffabca20a,
         type: 3}

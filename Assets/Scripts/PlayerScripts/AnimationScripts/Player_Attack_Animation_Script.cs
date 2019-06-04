@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class p_At_Script : StateMachineBehaviour
+public class Player_Attack_Animation_Script : StateMachineBehaviour
 {
+
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -11,29 +13,24 @@ public class p_At_Script : StateMachineBehaviour
     //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        GameObject player = GameObject.Find("Player");
-
-        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-
-        foreach (var clip in clips)
-        {
-            if (clip.name == "Player_Attack")
-                if (clip.length <= stateInfo.length)
-                    player.GetComponent<Animator>().SetInteger("isAttacking1-3", 0);
-        }
-
-        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Attack"))
-          //  if (stateInfo.length >= )
-            //    player.GetComponent<Animator>().SetBool("isAttacking", false);
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    if (stateInfo.IsName("Player_Attack") || stateInfo.IsName("Player_Attack_2") || stateInfo.IsName("Player_Attack_3"))
+    //    {
+    //        Debug.Log("NormelizeTime: " + stateInfo.normalizedTime);
+    //        Debug.Log("Lenght: " + stateInfo.length);
+    //        
+    //    }
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //   
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (stateInfo.IsName("Player_Attack") || stateInfo.IsName("Player_Attack_2") || stateInfo.IsName("Player_Attack_3"))
+        {
+            animator.SetInteger("isAttacking1-3", 0);   
+        }
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
