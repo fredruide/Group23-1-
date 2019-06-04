@@ -66,7 +66,7 @@ public class PlayerRangedAttack : MonoBehaviour
     void Fire()
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
-        FindObjectOfType<AudioManager>().Play("Shoot");
+        //FindObjectOfType<AudioManager>().Play("Shoot");
     }
 
     void reload()
@@ -75,6 +75,6 @@ public class PlayerRangedAttack : MonoBehaviour
         ammoMagazine = 1;
         isNotReloading = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
-        FindObjectOfType<AudioManager>().Play("Reload");       
+        //FindObjectOfType<AudioManager>().Play("Reload");       
     }
 }
