@@ -208,7 +208,7 @@ public class PlayerScript : MonoBehaviour
     #endregion
     #region StatsVariabler
     //player current health
-    private int currentHealth = 5;
+    private int currentHealth = 6;
     //player max health
     private int maxHealth = 10;
     //player respawn posisiton
@@ -573,7 +573,7 @@ public class PlayerScript : MonoBehaviour
 
     void UseHPotion()
     {//J.C.
-        if (Input.GetButtonDown("Heal") && scrMC.HPotionUsed() >= 1)
+        if (Input.GetButtonDown("Heal") && scrMC.HPotionUsed() >= 1 && currentHealth < maxHealth)
         {
             
             Heal(1);
@@ -739,6 +739,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (attackGracePeriod <= 0)
         {
+            ani.SetInteger("isAttacking1-3", 0);
             attackType = 1;            
         }
         else
