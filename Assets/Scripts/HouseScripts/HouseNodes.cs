@@ -62,13 +62,7 @@ public class HouseNodes : MonoBehaviour
         {
             objMaterialCounter = GameObject.Find("Material_Counter");
             scrMaterialCounter = objMaterialCounter.GetComponent<Material_Counter>();
-            
         }
-    }
-
-    private void Update()
-    {
-        scrMaterialCounter.CheckForHerb(400);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
