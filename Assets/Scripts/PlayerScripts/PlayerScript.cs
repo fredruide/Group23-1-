@@ -270,6 +270,19 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
+        //print ani
+        if (Input.GetButton("Fire1"))
+        {
+            Debug.Log("isGrounded: " + ani.GetBool("isGrounded"));
+            Debug.Log("isInCombat: " + ani.GetBool("isInCombat"));
+            Debug.Log("isRunning: " + ani.GetBool("isRunning"));
+            Debug.Log("isJumping: " + ani.GetBool("isJumping"));
+            Debug.Log("isAirborn: " + ani.GetBool("isAirborn"));
+            Debug.Log("isWallSliding: " + ani.GetBool("isWallSliding"));
+            Debug.Log("isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
+        }
+
+        Debug.Log("out of if isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
         //print("isWallSliding: " + isWallSliding);
         //print(PlayerRangedAttack.isNotReloading);
         //print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));

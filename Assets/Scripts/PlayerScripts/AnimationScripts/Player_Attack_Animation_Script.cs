@@ -24,13 +24,13 @@ public class Player_Attack_Animation_Script : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    if (stateInfo.IsName("Player_Attack") || stateInfo.IsName("Player_Attack_2") || stateInfo.IsName("Player_Attack_3"))
-    //    {
-    //        animator.SetInteger("", 0);   
-    //    }
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (stateInfo.IsName("Player_Attack") || stateInfo.IsName("Player_Attack_2") || stateInfo.IsName("Player_Attack_3"))
+        {
+            animator.SetInteger("isAttacking1-3", 0);   
+        }
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
