@@ -756,7 +756,8 @@ public class PlayerScript : MonoBehaviour
         }
         if (attackGracePeriod <= 0)
         {
-            attackType = 1;            
+            attackType = 1;
+            ani.SetInteger("isAttacking1-3", 0);
         }
         else
         {
