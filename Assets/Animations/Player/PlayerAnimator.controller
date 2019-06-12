@@ -302,7 +302,7 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 3.9303555e-10
   m_HasExitTime: 0
-  m_HasFixedDuration: 1
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
@@ -369,7 +369,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.098456495
+  m_TransitionDuration: 0.3
   m_TransitionOffset: 0
   m_ExitTime: 0.000000004615403
   m_HasExitTime: 0
@@ -819,7 +819,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Air_Attack_1
-  m_Speed: 0.5
+  m_Speed: 0.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5861896840987863311}
@@ -1055,7 +1055,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.098551646
+  m_TransitionDuration: 0.3
   m_TransitionOffset: 0
   m_ExitTime: 0.0000000024372155
   m_HasExitTime: 0
@@ -1124,7 +1124,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.23506701
+  m_TransitionDuration: 0.7
   m_TransitionOffset: 0
   m_ExitTime: 5.701976e-10
   m_HasExitTime: 0
@@ -1634,7 +1634,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.0989119
+  m_TransitionDuration: 0.6
   m_TransitionOffset: 0
   m_ExitTime: 0
   m_HasExitTime: 0
@@ -1887,7 +1887,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.23373541
+  m_TransitionDuration: 0.7
   m_TransitionOffset: 0
   m_ExitTime: 0.0000000014903685
   m_HasExitTime: 0
@@ -2087,7 +2087,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.13148722
+  m_TransitionDuration: 0.7
   m_TransitionOffset: 0
   m_ExitTime: 0.000000004102455
   m_HasExitTime: 0
@@ -2264,7 +2264,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.13101162
+  m_TransitionDuration: 0.7
   m_TransitionOffset: 0
   m_ExitTime: 0.0000000013069127
   m_HasExitTime: 0
@@ -2304,7 +2304,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.09464338
+  m_TransitionDuration: 0.3
   m_TransitionOffset: 0
   m_ExitTime: 0.0000011465997
   m_HasExitTime: 0
@@ -2552,7 +2552,7 @@ AnimatorStateMachine:
     m_Position: {x: -430, y: -370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102867992276054130}
-    m_Position: {x: 880, y: -10, z: 0}
+    m_Position: {x: 890, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5768967988454371828}
     m_Position: {x: 960, y: 610, z: 0}
@@ -2579,7 +2579,7 @@ AnimatorStateMachine:
     m_Position: {x: 130, y: 1130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4111505530074434632}
-    m_Position: {x: 540, y: 1060, z: 0}
+    m_Position: {x: 550, y: 1060, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -6976720436233816907}
@@ -2655,7 +2655,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.13288423
+  m_TransitionDuration: 0.7
   m_TransitionOffset: 0
   m_ExitTime: 0
   m_HasExitTime: 0
@@ -3350,7 +3350,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Air_Attack_2
-  m_Speed: 0.5
+  m_Speed: 0.05
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1846941214870089247}
@@ -3816,9 +3816,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.23333274
-  m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_TransitionDuration: 2.7447915
+  m_TransitionOffset: 16.786732
+  m_ExitTime: 0.9592396
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -4355,7 +4355,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.09918283
+  m_TransitionDuration: 0.3
   m_TransitionOffset: 0
   m_ExitTime: 0
   m_HasExitTime: 0
