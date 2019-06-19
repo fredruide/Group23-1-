@@ -457,7 +457,7 @@ public class PlayerScript : MonoBehaviour
     void DoubleJump()
     {
         //checks if player is not grounded, player can double jump and player is double jumping
-        if (!isGrounded && Input.GetButtonDown("Vertical") && canDoubleJump)
+        if (!isGrounded && Input.GetButtonDown("Vertical") && canDoubleJump && coyoteTS < Time.time)
         {
             canDoubleJump = false;
             //set velocity in y to zero so double jump can´t be used to gain more velocity when normal jumping
@@ -497,23 +497,7 @@ public class PlayerScript : MonoBehaviour
             _isGrounded = false;
             //print("input vertical + touchLeft + input Horizontal < 0");
             //print("Velocity: " + rb.velocity.y);
-        }
-        /*if ((Input.GetAxisRaw("Vertical") > 0 && touchRight && Input.GetAxisRaw("Horizontal") > 0) || (Input.GetAxisRaw("Vertical") > 0 && touchLeft && Input.GetAxisRaw("Horizontal") < 0))
-        {
-            float input = Input.GetAxisRaw("Horizontal");
-            rb.velocity = Vector2.zero;
-            print(rb.velocity);
-
-            //wallJump = new Vector2(wallJumpX * -1, wallJumpY);
-            wallJump = new Vector2(wallJumpX * Mathf.Round(input), wallJumpY);
-            //rb.velocity = Vector2.Lerp(rb.position, wallJump, 0.1f);
-            rb.velocity = wallJump;
-            triggered = true;
-            print("WallJump touchRight");
-        }*/
-
-        //set time for next avalible wall jump if a wall jump was performed
-    
+        }    
     }
 
     #region StateManipulators    
