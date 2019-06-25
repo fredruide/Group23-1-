@@ -546,10 +546,7 @@ public class PlayerScript : MonoBehaviour
         {
             knockbackY = -knockbackY;
         }
-        print("knockbackX: " + knockbackX + " knockbackY: " + knockbackY);
-        print("player velocity befor. X: " + rb.velocity.x + " Y: " + rb.velocity.y);
-        rb.velocity = new Vector2(knockbackX, knockbackY);
-        print("player velocity after. X: " + rb.velocity.x + " Y: " + rb.velocity.y);
+        rb.velocity = new Vector2(knockbackX, knockbackY);        
     }
 
     public void TakeDamage(int dmg)
@@ -651,6 +648,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
     //Frederik
+    //Bruges ikke p.t
     void WallSLideAnimationHandler()
     {
         if(ani.GetCurrentAnimatorStateInfo(0).IsName("Player_Wall_Slide"))
