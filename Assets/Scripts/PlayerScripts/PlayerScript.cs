@@ -271,9 +271,9 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
-        print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        print("attackType: " + attackType);
-        print("");
+        //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
+        //print("attackType: " + attackType);
+        //print("");
 
         //print ani
         //if (Input.GetButton("Fire1"))
