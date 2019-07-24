@@ -12,12 +12,14 @@ public class Chest : MonoBehaviour
     public GameObject Herb_Drop;
     public GameObject Stone_Drop;
     public GameObject Metal_Drop;
+    public GameObject Wood_Drop;
+    public GameObject Crystal_Drop;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine("Open_Chest");       
+            StartCoroutine("Open_Chest");
         }
 
 
@@ -46,8 +48,21 @@ public class Chest : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
+        {
+            Instantiate(Wood_Drop, Chest_Location.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        for (int i = 0; i < UnityEngine.Random.Range(0, 1); i++)
+        {
+            Instantiate(Crystal_Drop, Chest_Location.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
         Destroy(gameObject);
     }
 }
+
 
 

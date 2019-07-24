@@ -31,7 +31,7 @@ public class BottomTriggerScript : MonoBehaviour
             ps._isGrounded = true;
 
             //Debug.Log("Landed");
-            FindObjectOfType<AudioManager>().Play("Land");
+            //FindObjectOfType<AudioManager>().Play("Land");
             //print("BottomScript Enter hit: " + collision.gameObject.tag);
         }
         

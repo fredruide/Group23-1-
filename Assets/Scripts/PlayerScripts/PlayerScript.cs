@@ -13,9 +13,6 @@ public class PlayerScript : MonoBehaviour
     public GameObject objHPotion_Counter;
     public Material_Counter scrMC;
 
-    public GameObject objHP_Counter;
-    public Text HP_CounterText;
-
     //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
     // colliders attach to the player object
 
@@ -211,6 +208,16 @@ public class PlayerScript : MonoBehaviour
     private int currentHealth = 6;
     //player max health
     private int maxHealth = 10;
+
+    public int _maxHealth
+    {
+        get { return maxHealth; }
+    }
+
+    public int _currentHealth
+    {
+        get { return currentHealth; }
+    }
     //player respawn posisiton
     Vector2 respawnPosition;
     public Vector2 _respawnPosition
@@ -239,12 +246,6 @@ public class PlayerScript : MonoBehaviour
     {//J.C.
         objHPotion_Counter = GameObject.Find("Material_Counter");
         scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
-
-        objHP_Counter = GameObject.Find("HP_Counter");
-        HP_CounterText = objHP_Counter.GetComponent<Text>();
-
-        //Set HP value on the UI
-        HP_CounterText.text = "HP: " + currentHealth;
     }
 
     // Update is called once per frame
@@ -419,7 +420,7 @@ public class PlayerScript : MonoBehaviour
             //print("Jump: " + rb.velocity.y);
             //print("grounded: " + grounded);
             //print("canJump: " + canJump);
-            FindObjectOfType<AudioManager>().Play("Jump");
+            //FindObjectOfType<AudioManager>().Play("Jump");
         }
         //if player can´t jump under normal conditions check if player can jump under coyote conditions
         else if (!isGrounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
@@ -448,7 +449,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jump);
 
             ani.SetBool("isJumping", true);
-            FindObjectOfType<AudioManager>().Play("DoubleJump");
+            //FindObjectOfType<AudioManager>().Play("DoubleJump");
         }
     }
 
@@ -593,13 +594,6 @@ public class PlayerScript : MonoBehaviour
         {
             currentHealth += heal;
         }
-
-        PrintHP(currentHealth);
-    }
-
-    void PrintHP (int printHP)
-    {//J.C.
-        HP_CounterText.text = "HP: " + printHP;
     }
 
     #endregion
@@ -770,11 +764,11 @@ public class PlayerScript : MonoBehaviour
     //Daniel
     void RunSound()
     {
-        FindObjectOfType<AudioManager>().Play("Walk");
+        //FindObjectOfType<AudioManager>().Play("Walk");
     }
     void AttackSound()
     {
-        FindObjectOfType<AudioManager>().Play("Attack1");
+        //FindObjectOfType<AudioManager>().Play("Attack1");
     }
     #endregion
 

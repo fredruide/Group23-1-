@@ -122,6 +122,10 @@ MonoBehaviour:
     type: 3}
   Metal_Drop: {fileID: 4536039474542457393, guid: dd5daed6b6aeb2e43b60dbc60f705f0c,
     type: 3}
+  Wood_Drop: {fileID: 4373205520161887380, guid: 5877d37238329a640b05ffd88f6be23d,
+    type: 3}
+  Crystal_Drop: {fileID: 2114367309443122231, guid: 9a73d36c9ebab9d429d17ffb48745e82,
+    type: 3}
 --- !u!61 &6472280369736261494
 BoxCollider2D:
   m_ObjectHideFlags: 0
