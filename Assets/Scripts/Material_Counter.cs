@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Xml.Serialization;
 using System.IO;
 using System;
+using TMPro;
 
 public class Material_Counter : MonoBehaviour
 {//J.C.
@@ -16,13 +17,13 @@ public class Material_Counter : MonoBehaviour
 
     private int playerAmmo;
     private int playerHPotion;
+    private TextMeshProUGUI Mats;
+    public TextMeshProUGUI Items;
 
-    private Text UIText;
-    public Text UIText2;
     // Start is called before the first frame update
     void Start()
     {
-        UIText = GetComponent<Text>();
+        Mats = GetComponent<TextMeshProUGUI>();
         PrintToUI();
         PrintToUI2();
     }
@@ -42,6 +43,18 @@ public class Material_Counter : MonoBehaviour
     public void CheckForStone(int StoneCarryOver)
     {        
         playerStone += StoneCarryOver;
+        PrintToUI();
+    }
+
+    public void CheckForCrystal(int CrystalCarryOver)
+    {
+        playerCrystals += CrystalCarryOver;
+        PrintToUI();
+    }
+
+    public void CheckForWood(int WoodCarryOver)
+    {
+        playerWood += WoodCarryOver;
         PrintToUI();
     }
 
@@ -67,12 +80,12 @@ public class Material_Counter : MonoBehaviour
     public void PrintToUI()
     {
 
-        UIText.text = "Herbs: " + playerHerbs + "	Wood: " + playerWood + "	Stone: " + playerStone + "	Metal: " + playerIron + " 	Crystal:" + playerCrystals;
+        Mats.text = "  <sprite=\"roguelikeitems\" index=170>: " + playerHerbs + "	  <sprite=\"roguelikeitems\" index=80>: " + playerWood + "     <sprite=\"rock\" index=0>: " + playerStone + "     <sprite=\"roguelikeitems\" index=67>: " + playerIron + "     <sprite=\"roguelikeitems\" index=45>: " + playerCrystals;
     }
 
     public void PrintToUI2()
     {
-        UIText2.text = "Ammo: " + playerAmmo + "   Potions: " + playerHPotion;
+        Items.text = "<sprite=\"SS2\" index=8>: " + playerAmmo + "  <sprite=\"roguelikeitems\" index=63>: " + playerHPotion;
     }
 
     public int HPotionUsed()

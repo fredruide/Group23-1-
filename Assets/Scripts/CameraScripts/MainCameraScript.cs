@@ -70,7 +70,7 @@ public class MainCameraScript : MonoBehaviour
     {
         moveTS += Time.deltaTime;
 
-        endPosistion = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 3);
+        endPosistion = new Vector3(player.transform.position.x, player.transform.position.y+5, player.transform.position.z - 3);
         
         //moveCameraStick = MoveCameraLimit();
 
@@ -131,7 +131,8 @@ public class MainCameraScript : MonoBehaviour
             moveTS = 0f;
         }
 
-        if (rb.position == playerRB.position)
+        //if (rb.position == playerRB.position)
+        if(new Vector2(rb.position.x, rb.position.y - 5) == playerRB.position)
         {
             moveTS = 0f;
         }
