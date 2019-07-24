@@ -564,7 +564,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         rb.transform.position = respawnPosition;
     }
