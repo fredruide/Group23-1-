@@ -18,10 +18,15 @@ public class PlayerRangedAttack : MonoBehaviour
     public GameObject objAmmo_CounterText;
     public Text Ammo_CounterText;
     //      }
+
+    // Frederik{
+    Animator ani;
+        //}
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         ps = GetComponent<PlayerScript>();
+        ani = GetComponent<Animator>();
     }
 
     private void Awake()
@@ -41,8 +46,9 @@ public class PlayerRangedAttack : MonoBehaviour
             //Debug.Log("input Fire2: " + Input.GetButtonDown("Fire2") + " ammoMagazine: " + ammoMagazine + " reloadTime: " + reloadTime);
             //Debug.Log("input Fire2: " + Input.GetButtonDown("Fire2") + " ammoMagazine: " + ammoMagazine + " ps.isGrounded: " + ps._isGrounded + " scrMC.AmmoUsed(): " + scrMC.AmmoUsed());
             if ((Input.GetButtonDown("Fire2") && ammoMagazine > 0) && reloadTime < 0)
-            {                
-                Fire();
+            {
+                ani.SetBool("IsRangedAttack", true);
+                //Fire();
                 ammoMagazine--;
                 
             }
@@ -63,7 +69,7 @@ public class PlayerRangedAttack : MonoBehaviour
         }       
     }
 
-    void Fire()
+    public void Fire()
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
         //FindObjectOfType<AudioManager>().Play("Shoot");
