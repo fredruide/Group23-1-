@@ -47,8 +47,8 @@ public class PlayerRangedAttack : MonoBehaviour
             //Debug.Log("input Fire2: " + Input.GetButtonDown("Fire2") + " ammoMagazine: " + ammoMagazine + " ps.isGrounded: " + ps._isGrounded + " scrMC.AmmoUsed(): " + scrMC.AmmoUsed());
             if ((Input.GetButtonDown("Fire2") && ammoMagazine > 0) && reloadTime < 0)
             {
-                ani.SetBool("IsRangedAttack", true);
-                //Fire();
+                ani.SetBool("isRangeAttack", true);
+                Fire();
                 ammoMagazine--;
                 
             }
