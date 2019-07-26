@@ -35,6 +35,7 @@ public class PlayerRangedAttack : MonoBehaviour
 
     void Update()
     {
+        print(isNotDrawing);
         if (Input.GetButtonDown("Fire2") && ps._isGrounded && drawTime <= 0)
         {
             Draw();
@@ -54,12 +55,13 @@ public class PlayerRangedAttack : MonoBehaviour
         if (drawTime <= 0 && buttonHeld == false)
         {
             isNotDrawing = true;
-            Fire();
+            GetComponent<PlayerScript>().StartAnimation();
+            //Fire();
         }
-        print("Held " + buttonHeld + " Drawing " + isNotDrawing);
+        //print("Held " + buttonHeld + " Drawing " + isNotDrawing);
 
     }
-    void Fire()
+    public void Fire()
     {
         Instantiate(arrow, firePoint.position, firePoint.rotation);
         scrMC.CheckForAmmo(-1);
@@ -68,6 +70,7 @@ public class PlayerRangedAttack : MonoBehaviour
 
     void Draw()
     {
+        GetComponent<Animator>().SetBool("isRangeAttack", true);
         drawTime = startDrawTime;
         isNotDrawing = false;
         rb.velocity = new Vector2(0, rb.velocity.y);

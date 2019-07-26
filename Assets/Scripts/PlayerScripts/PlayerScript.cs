@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator ani;
+    float aniSpeed;
+
     Camera mainCam;
 
     public GameObject objHPotion_Counter;
@@ -235,6 +237,7 @@ public class PlayerScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         //ani is used to manipulate and check on animation
         ani = GetComponent<Animator>();
+        aniSpeed = ani.speed;
         //mainCam is used to check and manipulate the Main Camera in the scene
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
@@ -640,6 +643,19 @@ public class PlayerScript : MonoBehaviour
             sr.enabled = true;
             return false;
         }
+    }
+
+    void StopAnimation()
+    {
+        if (!PlayerRangedAttack.isNotDrawing)
+        {
+            ani.speed = 0;
+            print("HEJ");
+        }            
+    }
+    public void StartAnimation()
+    {
+        ani.speed = aniSpeed;
     }
     //Frederik
     //Bruges ikke p.t
