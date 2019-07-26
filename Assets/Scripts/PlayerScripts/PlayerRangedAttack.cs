@@ -54,7 +54,6 @@ public class PlayerRangedAttack : MonoBehaviour
         if (drawTime <= 0 && buttonHeld == false)
         {
             isNotDrawing = true;
-            Fire();
         }
         print("Held " + buttonHeld + " Drawing " + isNotDrawing);
 
