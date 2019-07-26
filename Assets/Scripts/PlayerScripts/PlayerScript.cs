@@ -289,7 +289,7 @@ public class PlayerScript : MonoBehaviour
         //
         //Debug.Log("out of if isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
         //print("isWallSliding: " + isWallSliding);
-        //print(PlayerRangedAttack.isNotReloading);
+        //print(PlayerRangedAttack.isNotDrawing);
         //print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));
         //print("isAirborn: " +_isAirborn + " ani.isAirborn: " + ani.GetBool("isAirborn"));
         //print("IsInvincible: " + IsInvincible());
@@ -352,7 +352,7 @@ public class PlayerScript : MonoBehaviour
     {
         //check is player is clicking a move horizontal button and is canMoveHori is true
         //canMoveHori is set to false when grounded is set to false
-        if (Input.GetButton("Horizontal") && canMoveHori && PlayerRangedAttack.isNotReloading)
+        if (Input.GetButton("Horizontal") && canMoveHori && PlayerRangedAttack.isNotDrawing)
         {
             //checks if player is colliding with a object on the same side at they are moving
             //if true then stop moving to prevent false sliding
@@ -429,7 +429,7 @@ public class PlayerScript : MonoBehaviour
         
         //check is player is clicking vertical button and is grounded and canJump is true
         //(canJump is set to true when grounded is first set to true)
-        if (isGrounded == true && Input.GetButtonDown("Vertical") && canJump && PlayerRangedAttack.isNotReloading)
+        if (isGrounded == true && Input.GetButtonDown("Vertical") && canJump && PlayerRangedAttack.isNotDrawing)
         {
             canJump = false;
             rb.velocity = new Vector2(rb.velocity.x, jump);
