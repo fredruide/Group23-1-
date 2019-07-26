@@ -4,13 +4,13 @@ using UnityEngine.UI;
 public class PlayerRangedAttack : MonoBehaviour
 {
     public Transform firePoint;
-    public GameObject bullet;
+    public GameObject arrow;
     Rigidbody2D rb;
     PlayerScript ps;
-    private int ammoMagazine;
-    public float reloadTime;
-    public float startReloadTime;
-    public static bool isNotReloading;
+    public float drawTime;
+    public float startDrawTime;
+    public static bool isNotDrawing;
+    public static bool buttonHeld;
     //J.C. {
     public GameObject MCAmmo_Counter;
     public Material_Counter scrMC;
@@ -35,46 +35,68 @@ public class PlayerRangedAttack : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("reloadTime: " + reloadTime);
-        if (reloadTime <= 0)
+        if (Input.GetButtonDown("Fire2") && ps._isGrounded && drawTime <= 0)
         {
-            //Debug.Log("input Fire2: " + Input.GetButtonDown("Fire2") + " ammoMagazine: " + ammoMagazine + " reloadTime: " + reloadTime);
-            //Debug.Log("input Fire2: " + Input.GetButtonDown("Fire2") + " ammoMagazine: " + ammoMagazine + " ps.isGrounded: " + ps._isGrounded + " scrMC.AmmoUsed(): " + scrMC.AmmoUsed());
-            if ((Input.GetButtonDown("Fire2") && ammoMagazine > 0) && reloadTime < 0)
-            {                
-                Fire();
-                ammoMagazine--;
-                
-            }
-            //else if (Input.GetButtonDown("Fire2") && ammo == 0 && ps._isGrounded)            
-            else if (Input.GetButtonDown("Fire2") && ammoMagazine == 0 && ps._isGrounded && scrMC.AmmoUsed() >= 1)
-            {
-                reload();
-                scrMC.CheckForAmmo(-1);
-            }
+            Draw();
         }
         else
         {
-            reloadTime -= Time.deltaTime;
+            drawTime -= Time.deltaTime;
         }
-        if (reloadTime <=0+ 0)
+        if (Input.GetButton("Fire2") == true)
         {
-            isNotReloading = true;
-        }       
-    }
+            buttonHeld = true;
+        }
+        else
+        {
+            buttonHeld = false;
+        }
+        if (drawTime <= 0 && buttonHeld == false)
+        {
+            isNotDrawing = true;
+        }
+        print("Held " + buttonHeld + " Drawing " + isNotDrawing);
 
+    }
     void Fire()
     {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        Instantiate(arrow, firePoint.position, firePoint.rotation);
+        scrMC.CheckForAmmo(-1);
         //FindObjectOfType<AudioManager>().Play("Shoot");
     }
 
-    void reload()
+    void Draw()
     {
-        reloadTime = startReloadTime;
-        ammoMagazine = 1;
-        isNotReloading = false;
+        drawTime = startDrawTime;
+        isNotDrawing = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
-        //FindObjectOfType<AudioManager>().Play("Reload");       
+        //FindObjectOfType<AudioManager>().Play("Draw");
     }
+
+
+
+
+
+
+    //    if (drawTime <= 0)
+    //        {
+    //            if (Input.GetButtonDown("Fire2") && drawTime< 0)
+    //            {                
+    //                Fire();
+
+    //}           
+    //            else if (Input.GetButtonDown("Fire2") && ps._isGrounded && scrMC.AmmoUsed() >= 1)
+    //            {
+    //                reload();
+    //scrMC.CheckForAmmo(-1);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            drawTime -= Time.deltaTime;
+    //        }
+    //        if (drawTime <= 0 + 0)
+    //        {
+    //            isNotDrawing = true;
+    //        }       
 }
