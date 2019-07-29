@@ -6,6 +6,8 @@ public class Worm_AI : MonoBehaviour
 {
     public GameObject objWormController;
     public GameObject objPlatforms;
+    public GameObject player;
+
     private Worm_Controller scrWormController; 
     private Rigidbody2D rb2d;
     private Vector2 speed;
@@ -35,11 +37,26 @@ public class Worm_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(scrWormController.horizontalSpeed);
-        speed.x = 4;
+        speed.x = 6;
         
         rb2d.velocity = new Vector2(scrWormController.horizontalSpeed, 0);
-        //Debug.Log(rb2d.velocity);
-        //Debug.Log(collid.bounds.size);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject player = collision.gameObject;
+            player.transform.SetParent(gameObject.transform, true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject player = collision.gameObject;
+            player.transform.SetParent(null);
+        }
     }
 }

@@ -19,7 +19,6 @@ public class Worm_Controller : MonoBehaviour
     //flere kropsdele
     public float wormPositionY;
     #endregion
-    //public GameObject platforms;
     public int hp;
     public bool wormActionFinished;
     private int lengthDeteminer;
@@ -27,7 +26,6 @@ public class Worm_Controller : MonoBehaviour
     private int formDeteminer;
     private int formNoDuplicate;
     public float horizontalSpeed = -10f;
-    //public float speed;
     Vector3 pos;
 
     // Start is called before the first frame update
@@ -49,15 +47,7 @@ public class Worm_Controller : MonoBehaviour
         if (wormActionFinished)
         {
             WormGeneration();
-            wormActionFinished = false;
-            if (formDeteminer == 0)
-            {
-                WormForm_00();
-            }
-            if (formDeteminer == 1)
-            {
-                WormForm_01();
-            }
+            wormActionFinished = false;            
         }
     }    
 
@@ -105,16 +95,5 @@ public class Worm_Controller : MonoBehaviour
 
         pos = new Vector3(headPositionX + lengthAdder, wormPositionY, 4);
         Instantiate(wormTail, pos, Quaternion.identity);
-    }
-
-    public void WormForm_00()
-    {
-        
-    }
-
-
-    public void WormForm_01()
-    {
-        
     }
 }

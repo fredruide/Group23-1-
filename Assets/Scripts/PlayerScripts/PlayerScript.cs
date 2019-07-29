@@ -236,10 +236,7 @@ public class PlayerScript : MonoBehaviour
         //ani is used to manipulate and check on animation
         ani = GetComponent<Animator>();
         //mainCam is used to check and manipulate the Main Camera in the scene
-        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-
-        
+        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();    
     }
 
     private void Awake()
@@ -251,7 +248,6 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
 
         DirectionFacing();
         IsRunning();
@@ -359,6 +355,7 @@ public class PlayerScript : MonoBehaviour
             //if player is not clicking a move Horizontal button then stop velocity horizontal (else statment)
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
             {
+                print("p");
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
             }
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)

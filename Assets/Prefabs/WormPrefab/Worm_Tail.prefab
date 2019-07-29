@@ -99,6 +99,7 @@ MonoBehaviour:
   objWormController: {fileID: 6599328942329007801, guid: 1b378ca4a4a7a744f94d583e5b64290a,
     type: 3}
   objPlatforms: {fileID: 0}
+  player: {fileID: 3690880181847931779, guid: a1f78afea97c352488b9e7227668c469, type: 3}
   test: 0
 --- !u!61 &226528062834171553
 BoxCollider2D:
@@ -109,11 +110,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 818461689280456834}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 175301220da560646aefa8c41f9c1cdc, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028177738, y: 0.04800296}
+  m_Offset: {x: -0.009449244, y: 0.04800296}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -124,7 +125,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.743645, y: 7.103994}
+  m_Size: {x: 12.62981, y: 7.103994}
   m_EdgeRadius: 0
 --- !u!50 &1839683121515705907
 Rigidbody2D:
