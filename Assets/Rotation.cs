@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody2D rb2d;
+    private Vector2 vect2;
+
+    private void Start()
     {
-        
+        rb2d = GetComponent<Rigidbody2D>();
+        vect2.x = 4;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject player = collision.gameObject;
+            player.transform.SetParent(gameObject.transform);
+            rb2d.velocity = vect2;
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject player = collision.gameObject;
+            player.transform.SetParent(null);
+        }
+    }
+    //
+    //{
+    //collision.gameObject.transform.SetParent(transform.player, false);
+    //}
 }

@@ -100,6 +100,7 @@ MonoBehaviour:
   objWormController: {fileID: 6599328942329007801, guid: 1b378ca4a4a7a744f94d583e5b64290a,
     type: 3}
   objPlatforms: {fileID: 0}
+  player: {fileID: 3690880181847931779, guid: a1f78afea97c352488b9e7227668c469, type: 3}
 --- !u!61 &1007188228675221781
 BoxCollider2D:
   m_ObjectHideFlags: 0
