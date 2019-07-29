@@ -50,17 +50,8 @@ public class Worm_Controller : MonoBehaviour
         {
             WormGeneration();
             wormActionFinished = false;
-            if (formDeteminer == 0)
-            {
-                WormForm_00();
-            }
-            if (formDeteminer == 1)
-            {
-                WormForm_01();
-            }
         }
     }    
-
     public void WormGeneration()
     {
         lengthAdder = 14.6f;
@@ -105,16 +96,5 @@ public class Worm_Controller : MonoBehaviour
 
         pos = new Vector3(headPositionX + lengthAdder, wormPositionY, 4);
         Instantiate(wormTail, pos, Quaternion.identity);
-    }
-
-    public void WormForm_00()
-    {
-        
-    }
-
-
-    public void WormForm_01()
-    {
-        
     }
 }
