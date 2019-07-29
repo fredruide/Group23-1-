@@ -51,7 +51,8 @@ public class BottomTriggerScript : MonoBehaviour
         if (collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
         {
             ps._isGrounded = false;
-            ps._coyoteTS = Time.time;
+            if(Input.GetButtonDown("Vertical"))
+                ps._coyoteTS = Time.time;
             //print("BottomScript Exit hit: " + collision.gameObject.tag);
         }   
         //

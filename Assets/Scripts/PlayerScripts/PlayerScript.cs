@@ -650,7 +650,6 @@ public class PlayerScript : MonoBehaviour
         if (!PlayerRangedAttack.isNotDrawing)
         {
             ani.speed = 0;
-            print("HEJ");
         }            
     }
     public void StartAnimation()
