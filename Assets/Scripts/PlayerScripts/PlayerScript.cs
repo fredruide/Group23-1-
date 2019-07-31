@@ -567,6 +567,8 @@ public class PlayerScript : MonoBehaviour
 
     public void Die()
     {
+        scrMC.Death();
+
         rb.transform.position = respawnPosition;
     }
 

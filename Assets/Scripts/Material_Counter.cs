@@ -98,6 +98,16 @@ public class Material_Counter : MonoBehaviour
         return playerAmmo;
     }
 
+    public void Death()
+    {
+        playerCrystals = 0;
+        playerHerbs = 0;
+        playerIron = 0;
+        playerStone = 0;
+        playerWood = 0;
+        PrintToUI();
+    }
+
 }
 
 
