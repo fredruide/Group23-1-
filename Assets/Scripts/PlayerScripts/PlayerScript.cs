@@ -205,7 +205,7 @@ public class PlayerScript : MonoBehaviour
     #endregion
     #region StatsVariabler
     //player current health
-    private int currentHealth = 6;
+    private int currentHealth = 10;
     //player max health
     private int maxHealth = 10;
 

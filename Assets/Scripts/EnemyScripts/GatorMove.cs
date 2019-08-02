@@ -6,6 +6,8 @@ public class GatorMove : MonoBehaviour
 {
     GameObject playerObject;
 
+    
+
     public float Speed;
 
     public float playerRange;
@@ -22,12 +24,15 @@ public class GatorMove : MonoBehaviour
     void Start()
     {
         playerObject = GameObject.Find("Player");
+        
+
         playerLayer = LayerMask.GetMask("Player");
+
         Gator = GetComponent<Rigidbody2D>();
         GatorSprite = GetComponent<SpriteRenderer>();
 
-        Physics2D.IgnoreLayerCollision(10, 10);
-        Physics2D.IgnoreLayerCollision(9, 10);
+        //Physics2D.IgnoreLayerCollision(11, 11);
+        //Physics2D.IgnoreLayerCollision(10, 11);
     }
 
     // Update is called once per frame
@@ -41,7 +46,13 @@ public class GatorMove : MonoBehaviour
 
         if (PlayerInRange)
         {
-            Gator.velocity = new Vector3(velocity.x, velocity.y, velocity.z);
+            Speed = 5.0f;
+            Gator.velocity = new Vector2(velocity.x, velocity.y);
+        }
+
+        if (!PlayerInRange)
+        {
+            Gator.velocity = new Vector2(0, 0);
         }
 
         Animation();  

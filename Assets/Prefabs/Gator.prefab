@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 781217142259665851}
   - component: {fileID: 781217142259665848}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,8 @@ GameObject:
   m_Component:
   - component: {fileID: 781217142438006460}
   - component: {fileID: 781217142438006461}
-  m_Layer: 10
+  - component: {fileID: 2361271086789721882}
+  m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +104,19 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.05}
   serializedVersion: 2
-  m_Radius: 0.18
+  m_Radius: 0.9
+--- !u!114 &2361271086789721882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781217142438006463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4e783b35158234c8c1134f334b53a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &781217142593566776
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +130,7 @@ GameObject:
   - component: {fileID: 781217142593566775}
   - component: {fileID: 781217142593566770}
   - component: {fileID: 781217142593566777}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Gator
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -133,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 781217142593566776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.1, y: 7.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children:
   - {fileID: 781217142438006460}
   - {fileID: 781217142259665851}
@@ -219,7 +232,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 5.454
+  m_Mass: 1.3635
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -244,5 +257,5 @@ MonoBehaviour:
   playerRange: 20
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   PlayerInRange: 0
