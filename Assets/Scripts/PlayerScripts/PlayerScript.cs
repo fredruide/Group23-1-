@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
             if (value == true)
             {
                 canJump = true;
-                canDoubleJump = true;
+                //canDoubleJump = true;
                 canMoveHori = true;
                 ani.SetBool("isJumping", false);
                 ani.SetBool("isAirborn", false);
@@ -435,6 +435,7 @@ public class PlayerScript : MonoBehaviour
         if (isGrounded == true && Input.GetButtonDown("Vertical") && canJump && PlayerRangedAttack.isNotDrawing)
         {
             canJump = false;
+            canDoubleJump = true;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             ani.SetBool("isJumping", true);
             //print("Jump: " + rb.velocity.y);
@@ -446,6 +447,7 @@ public class PlayerScript : MonoBehaviour
         else if (!isGrounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
         {
             canJump = false;
+            canDoubleJump = true;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             ani.SetBool("isJumping", true);
             //print("Jump Coyote: " + rb.velocity.y);
