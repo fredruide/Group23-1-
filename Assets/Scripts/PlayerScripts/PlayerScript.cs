@@ -274,6 +274,8 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
+
+        
         //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
         //print("attackType: " + attackType);
         //print("");
@@ -741,6 +743,7 @@ public class PlayerScript : MonoBehaviour
                 MeleeAttack(damage2, attackRange2);
                 //print("AttackType 3");
                 ani.SetInteger("isAttacking1-3", 3);
+                //attackGracePeriod = 0;
             }
         }
         else

@@ -320,9 +320,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isAirborn
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 2
   - m_ConditionMode: 2
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
@@ -334,6 +331,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4111505530074434632}
@@ -719,9 +719,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 3
   - m_ConditionMode: 1
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
@@ -736,6 +733,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType3
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2899620627906508664}
@@ -827,9 +827,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 1
   - m_ConditionMode: 2
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
@@ -841,6 +838,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102094075782587190}
@@ -1518,9 +1518,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 3
   - m_ConditionMode: 2
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
@@ -1532,6 +1529,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType3
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2899620627906508664}
@@ -2003,9 +2003,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isAirborn
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 1
   - m_ConditionMode: 2
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
@@ -2017,6 +2014,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4131056724339981408}
@@ -2046,9 +2046,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 3
   - m_ConditionMode: 2
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
@@ -2060,6 +2057,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType3
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2899620627906508664}
@@ -2142,18 +2142,6 @@ AnimatorState:
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!114 &-1108767635509529740
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad979319bc5a0a4d8448646e8ed4cb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1032241430451035568
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2444,6 +2432,24 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: AttackType1
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: AttackType2
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: AttackType3
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -2630,9 +2636,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 3
   - m_ConditionMode: 2
     m_ConditionEvent: isJumping
     m_EventTreshold: 0
@@ -2641,6 +2644,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType3
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2899620627906508664}
@@ -2753,7 +2759,7 @@ AnimatorState:
   - {fileID: 9101996425682917618}
   - {fileID: 4747410897877190055}
   m_StateMachineBehaviours:
-  - {fileID: -1032241430451035568}
+  - {fileID: 2644013406498688010}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -3065,9 +3071,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 2
   - m_ConditionMode: 1
     m_ConditionEvent: isAirborn
     m_EventTreshold: 0
@@ -3082,6 +3085,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4111505530074434632}
@@ -3337,6 +3343,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &2644013406498688010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9062503d65f150b428819cfab28642d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &2682608012048976834
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3348,9 +3366,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isAirborn
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 1
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4131056724339981408}
   m_Solo: 0
@@ -3790,9 +3808,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 1
   - m_ConditionMode: 2
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
@@ -3807,6 +3822,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102094075782587190}
@@ -3942,9 +3960,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 2
   - m_ConditionMode: 2
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
@@ -3956,6 +3971,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5768967988454371828}
@@ -4182,9 +4200,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 2
   - m_ConditionMode: 2
     m_ConditionEvent: isJumping
     m_EventTreshold: 0
@@ -4193,6 +4208,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5768967988454371828}
@@ -4259,9 +4277,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 2
   - m_ConditionMode: 2
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
@@ -4273,6 +4288,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5768967988454371828}
@@ -4302,9 +4320,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 1
   - m_ConditionMode: 2
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
@@ -4316,6 +4331,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102094075782587190}
@@ -4708,9 +4726,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 1
   - m_ConditionMode: 2
     m_ConditionEvent: isJumping
     m_EventTreshold: 0
@@ -4719,6 +4734,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isWallSliding
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102094075782587190}
@@ -4745,9 +4763,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: isAttacking1-3
-    m_EventTreshold: 2
   - m_ConditionMode: 2
     m_ConditionEvent: isInCombat
     m_EventTreshold: 0
@@ -4762,6 +4777,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isRunning
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackType2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5768967988454371828}

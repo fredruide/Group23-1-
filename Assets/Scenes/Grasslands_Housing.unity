@@ -25955,6 +25955,16 @@ PrefabInstance:
       propertyPath: invincFramesCD
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3690880181847931776, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: startTimeBtwAttack
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690880181847931776, guid: a1f78afea97c352488b9e7227668c469,
+        type: 3}
+      propertyPath: startTimeBtwGrace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3690880180469520410, guid: a1f78afea97c352488b9e7227668c469,
         type: 3}
       propertyPath: m_Layer
