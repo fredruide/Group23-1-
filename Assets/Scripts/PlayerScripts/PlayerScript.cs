@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    SpriteRenderer sr;
+    public SpriteRenderer sr;
     Animator ani;
     float aniSpeed;
 
@@ -122,7 +122,10 @@ public class PlayerScript : MonoBehaviour
                 ani.SetBool("isRunning", false);
         }
     }
+    //bool to se and set player as being Airborn
     bool isAirborn;
+    // a field to handle the animator for when "isAirborn" is true or false
+    //always set this field when anipulating isAirborn unless animator is to be skiped
     public bool _isAirborn
     {
         get { return isAirborn; }
@@ -135,7 +138,10 @@ public class PlayerScript : MonoBehaviour
                 ani.SetBool("isAirborn", false);
         }
     }
+    //to see if player is wall sliding
     bool isWallSliding;
+    // a field to handle the animator for when "isWallSliding" is true or false
+    //always set this field when anipulating isWallSliding unless animator is to be skiped
     public bool _isWallSliding
     {
         get { return isWallSliding; }
@@ -605,16 +611,20 @@ public class PlayerScript : MonoBehaviour
     #region HelperMethods
     void DirectionFacing()
     {
-        //check what direction player last faced
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        print(PlayerRangedAttack.isNotDrawing);
+        if (PlayerRangedAttack.isNotDrawing)
         {
-            directionFaced = false;
-            sr.flipX = directionFaced;
-        } 
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            directionFaced = true;
-            sr.flipX = directionFaced;
+            //check what direction player last faced
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                directionFaced = false;
+                sr.flipX = directionFaced;
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                directionFaced = true;
+                sr.flipX = directionFaced;
+            }
         }
     }
     void IsRunning()
@@ -730,20 +740,23 @@ public class PlayerScript : MonoBehaviour
             {
                 //print("AttackType 1");
                 MeleeAttack(damage, attackRange);
-                ani.SetInteger("isAttacking1-3", 1);
+                //ani.SetInteger("isAttacking1-3", 1);
+                ani.SetBool("AttackType1", true);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 2)
             {
                 MeleeAttack(damage1, attackRange1);
                 //print("AttackType 2");
-                ani.SetInteger("isAttacking1-3", 2);
+                //ani.SetInteger("isAttacking1-3", 2);
+                ani.SetBool("AttackType2", true);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 3)
             {
                 MeleeAttack(damage2, attackRange2);
                 //print("AttackType 3");
-                ani.SetInteger("isAttacking1-3", 3);
-                //attackGracePeriod = 0;
+                //ani.SetInteger("isAttacking1-3", 3);
+                attackGracePeriod = 0;
+                ani.SetBool("AttackType3",true);
             }
         }
         else
@@ -753,7 +766,10 @@ public class PlayerScript : MonoBehaviour
         if (attackGracePeriod <= 0)
         {
             attackType = 1;
-            ani.SetInteger("isAttacking1-3", 0);
+            //ani.SetBool("AttackType1", false);
+            //ani.SetBool("AttackType2", false);
+            //ani.SetBool("AttackType3", false);
+            //ani.SetInteger("isAttacking1-3", 0);
         }
         else
         {

@@ -7,9 +7,12 @@ public class Rotate : MonoBehaviour
 
     public int rotationOffset = 90;
     private Vector3 tmpMousePosition;
+    private PlayerScript playerScript;
+
     void Start()
     {
         tmpMousePosition = Input.mousePosition;
+        playerScript = GetComponentInParent<PlayerScript>();
     }
     void Update()
     {
@@ -29,9 +32,5 @@ public class Rotate : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
             tmpMousePosition = Input.mousePosition;
         }
-        
-       
-
-
     }
 }
