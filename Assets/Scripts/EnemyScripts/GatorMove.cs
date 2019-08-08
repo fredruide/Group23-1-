@@ -44,7 +44,7 @@ public class GatorMove : MonoBehaviour
             Gator.velocity = new Vector3(velocity.x, velocity.y, velocity.z);
         }
 
-        Animation();  
+        Animation();
     }
 
     private void OnDrawGizmosSelected()

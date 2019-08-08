@@ -689,37 +689,37 @@ public class PlayerScript : MonoBehaviour
 
     #region Attack 
     //Daniel lille bitte smule hjælp fra frederik{
-    public float timeBtwAttack;
-    public float startTimeBtwAttack;
-    public Transform attackPos;
-    public LayerMask whatisEnemy = 11;
-    public float attackRange;
-    public float attackRange1;
-    public float attackRange2;
-    public int damage;
-    public int damage1;
-    public int damage2;
-    public int attackType = 1;
-    public float attackGracePeriod;
-    public float startTimeBtwGrace;
+    public float timeBtwAttack; //Countdown fra startTimeBtwAttack til 0
+    public float startTimeBtwAttack; //Sætter initial counter TimeBtwAttack (Bruges til cooldown af attacks så knappen ikke kan blive spammet med 1ms imellem tryk)
+    public Transform attackPos; //Et child object af player som bestemmer hvor der bliver attacked fra
+    public LayerMask whatisEnemy = 11; //Checker efter Enemy Layer
+    public float attackRange; //Range på det første attack i chain
+    public float attackRange1; //Range på det andet attack i chain
+    public float attackRange2; //Range på det tredje attack i chain
+    public int damage; //Attack damage på det første attack i chain
+    public int damage1; //Attack damage på det andet attack i chain
+    public int damage2; //Attack damage på det tredje attack i chain
+    public int attackType = 1; //Bestemmer hvad for et attack der bliver det næste i chain
+    public float attackGracePeriod; //Countdown fra startTimeBtwGrace til 0
+    public float startTimeBtwGrace; //Sætter initial counter til attackGracePeriod (Bruges til at resette attacktype til 1 hvis der ikke bliver angrebet i et stykke tid)
 
     void AttackChecker()
     {
         if (timeBtwAttack <= 0)
         {
-            if (Input.GetButtonDown("Fire1") && attackType == 1)
+            if (Input.GetButtonDown("Fire1") && attackType == 1) //Første angreb i chain
             {
                 //print("AttackType 1");
                 MeleeAttack(damage, attackRange);
                 ani.SetInteger("isAttacking1-3", 1);
             }
-            else if (Input.GetButtonDown("Fire1") && attackType == 2)
+            else if (Input.GetButtonDown("Fire1") && attackType == 2) //andet angreb i chain
             {
                 MeleeAttack(damage1, attackRange1);
                 //print("AttackType 2");
                 ani.SetInteger("isAttacking1-3", 2);
             }
-            else if (Input.GetButtonDown("Fire1") && attackType == 3)
+            else if (Input.GetButtonDown("Fire1") && attackType == 3) //tredje angreb i chain
             {
                 MeleeAttack(damage2, attackRange2);
                 //print("AttackType 3");
@@ -730,7 +730,7 @@ public class PlayerScript : MonoBehaviour
         {
             timeBtwAttack -= Time.deltaTime;
         }
-        if (attackGracePeriod <= 0)
+        if (attackGracePeriod <= 0) //Sætter attack type tilbage til 1 når grace perioden rammer 0
         {
             attackType = 1;
             ani.SetInteger("isAttacking1-3", 0);
@@ -744,10 +744,10 @@ public class PlayerScript : MonoBehaviour
     private void MeleeAttack(int dmg, float range)
     {
         
-        attackGracePeriod = startTimeBtwGrace;
-        timeBtwAttack = startTimeBtwAttack;
+        attackGracePeriod = startTimeBtwGrace; //Resetter graceperiod til valuen af startTimeBtwGrace
+        timeBtwAttack = startTimeBtwAttack; //Resetter Cooldown til valuen af StarTimeBtwAttack
         
-        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy);
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, range, whatisEnemy); //Checker efter enemies og putter dem i et array (EnemiesToDamage)
         if (enemiesToDamage.Length != 0)
         {
             for (int i = 0; i < enemiesToDamage.Length; i++)

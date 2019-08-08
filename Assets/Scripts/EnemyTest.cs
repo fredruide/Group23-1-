@@ -8,9 +8,7 @@ public class EnemyTest : MonoBehaviour
     public float speed;
     public float dazedTime;
     public float startDazedTime;
-    public GameObject bloodEffect;
     PlayerScript playerC;
-
     Rigidbody2D rb;
 
     public int Damage;

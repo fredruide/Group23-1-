@@ -408,10 +408,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3690880182274711934}
-  bullet: {fileID: 5284784427024207470, guid: 33282cb285a40274793345faa0e39199, type: 3}
-  ammo: 1
-  reloadTime: 0.1
-  startReloadTime: 1
+  arrow: {fileID: 0}
+  drawTime: 0
+  startDrawTime: 0
+  MCAmmo_Counter: {fileID: 0}
+  scrMC: {fileID: 0}
+  objAmmo_CounterText: {fileID: 0}
+  Ammo_CounterText: {fileID: 0}
 --- !u!114 &3690880181847931776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ca052f1eada1449b9589e2d49b7258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objHPotion_Counter: {fileID: 0}
+  scrMC: {fileID: 0}
   speed: 7
   jump: 7
   coyoteCD: 1
@@ -431,8 +436,7 @@ MonoBehaviour:
   wallJumpX: 3
   wallJumpY: 7
   wallSlideSpeed: 0.5
-  health: 0
-  maxHealth: 0
+  invincFramesCD: 0
   timeBtwAttack: 0.5
   startTimeBtwAttack: 0.5
   attackPos: {fileID: 3690880181271075391}
