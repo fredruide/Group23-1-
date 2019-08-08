@@ -15,37 +15,10 @@ public class PlayerScript : MonoBehaviour
     public GameObject objHPotion_Counter;
     public Material_Counter scrMC;
 
-    //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
+    //_isGrounded _touchLeft and _touchRight is set by the Bottom, left and right 
     // colliders attach to the player object
 
-    //this bool and field is for checking if bottom part of player
-    //is in contact with a object (checks on platform only right now)
-    //used in HorizontalMovement, Jump and DoubleJump methods.
-    bool isGrounded;
-    public bool _isGrounded
-    {
-        get { return isGrounded; }
-        set
-        {
-            isGrounded = value;
-            ani.SetBool("isGrounded", value);
-            if (value == true)
-            {
-                canJump = true;
-                //canDoubleJump = true;
-                canMoveHori = true;
-                ani.SetBool("isJumping", false);
-                ani.SetBool("isAirborn", false);
-                ani.SetBool("isWallSliding", false);
-            }
-            else
-            {
-                canMoveHori = false;
-                _isAirborn = true;
-                ani.SetBool("isAirborn", true);
-            }
-        }
-    }
+    
     //this bool and field is for checking if Right side of player
     //is in contact with a object (checks on platform only right now)
     //used in WallSlide, WallJump and HorizontalMovement methods
@@ -109,6 +82,35 @@ public class PlayerScript : MonoBehaviour
     }
     #endregion
     #region isVariabler
+    //this bool and field is for checking if bottom part of player
+    //is in contact with a object (checks on platform only right now)
+    //used in HorizontalMovement, Jump and DoubleJump methods.
+    bool isGrounded;
+    public bool _isGrounded
+    {
+        get { return isGrounded; }
+        set
+        {
+            isGrounded = value;
+            ani.SetBool("isGrounded", value);
+            if (value == true)
+            {
+                canJump = true;
+                //canDoubleJump = true;
+                canMoveHori = true;
+                ani.SetBool("isJumping", false);
+                ani.SetBool("isAirborn", false);
+                ani.SetBool("isWallSliding", false);
+            }
+            else
+            {
+                canMoveHori = false;
+                _isAirborn = true;
+                ani.SetBool("isAirborn", true);
+            }
+        }
+    }
+
     bool isRunning;
     public bool _isRunning
     {
@@ -629,8 +631,19 @@ public class PlayerScript : MonoBehaviour
     }
     void IsRunning()
     {
-        
+        /*
         if (Input.GetButton("Horizontal") && canMoveHori && isGrounded && rb.velocity.x != 0)
+        {
+            isRunning = true;
+            ani.SetBool("isRunning", true);
+        }
+        else
+        {
+            isRunning = false;
+            ani.SetBool("isRunning", false);
+        }
+        */
+        if (Input.GetButton("Horizontal") && canMoveHori && isGrounded)
         {
             isRunning = true;
             ani.SetBool("isRunning", true);
