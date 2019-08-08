@@ -46,6 +46,7 @@ public class HouseNodes : MonoBehaviour
     {        
         //BuildingsBuilt();
         TextManipulator = GameObject.FindObjectOfType<TextManipulator>();
+        mainCamera1 = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     private void Start()

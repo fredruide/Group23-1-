@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator ani;
-    Camera mainCam;
+    //Camera mainCam; Bruges ikke
 
     public GameObject objHPotion_Counter;
     public Material_Counter scrMC;
@@ -236,23 +236,22 @@ public class PlayerScript : MonoBehaviour
         //ani is used to manipulate and check on animation
         ani = GetComponent<Animator>();
         //mainCam is used to check and manipulate the Main Camera in the scene
-        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-
-        
+        //mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();  Bruges ikke  
     }
+
+    float alive;
 
     private void Awake()
     {//J.C.
         objHPotion_Counter = GameObject.Find("Material_Counter");
         scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
+
+        alive = 0f;
     }
 
     // Update is called once per frame
     private void Update()
     {
-
-
         DirectionFacing();
         IsRunning();
         IsInvincible();
@@ -262,7 +261,6 @@ public class PlayerScript : MonoBehaviour
 
         //ani.SetBool("Grounded", grounded);
 
-
         HorizontalMovement();        
         Jump();
         DoubleJump();
@@ -271,9 +269,9 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
-        print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        print("attackType: " + attackType);
-        print("");
+        //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
+        //print("attackType: " + attackType);
+        //print("");
 
         //print ani
         //if (Input.GetButton("Fire1"))
@@ -346,7 +344,6 @@ public class PlayerScript : MonoBehaviour
 
         */
     }
-
 
     void HorizontalMovement()
     {
