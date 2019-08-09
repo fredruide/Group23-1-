@@ -8,6 +8,7 @@ public class Player_Ranged_Attack_Animation : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GameObject.Find("Player").GetComponent<PlayerRangedAttack>().Fire();
+        Debug.Log(GameObject.Find("Player").transform.position.x);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

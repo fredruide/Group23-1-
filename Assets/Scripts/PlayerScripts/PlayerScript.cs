@@ -250,14 +250,12 @@ public class PlayerScript : MonoBehaviour
         //mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();  Bruges ikke  
     }
 
-    float alive;
-
     private void Awake()
     {//J.C.
         objHPotion_Counter = GameObject.Find("Material_Counter");
         scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
 
-        alive = 0f;
+        ani.
     }
 
     // Update is called once per frame
