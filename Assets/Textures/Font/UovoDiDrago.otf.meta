@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: c4a37923bc523ce4595e33167065088e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Uovo Di Drago
+  fontNames:
+  - Uovo Di Drago
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5e15ad96c7c01e84fbce37678b775a56, type: 3}
+  - {fileID: 12800000, guid: 3a6463bbbba00854792ff353edc6863e, type: 3}
+  - {fileID: 12800000, guid: 52eff62d0784ed340bfc181281704b22, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

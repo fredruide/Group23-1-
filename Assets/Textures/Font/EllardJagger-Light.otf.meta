@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: e487885d474209c40a63f401b48b4960
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ellard Jagger
+  fontNames:
+  - Ellard Jagger
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0ddec5a02d3272f4fa24b057e496423c, type: 3}
+  - {fileID: 12800000, guid: 943ca606b11c6fc46843bac003e415e7, type: 3}
+  - {fileID: 12800000, guid: 2bcef4f86566ebc4998c71d4f93b7563, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

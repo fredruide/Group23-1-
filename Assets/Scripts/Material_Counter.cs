@@ -9,19 +9,19 @@ using TMPro;
 
 public class Material_Counter : MonoBehaviour
 {//J.C.
-    private int playerHerbs ;
-    private int playerWood ;
-    private int playerStone ;
-    private int playerIron ;
-    private int playerCrystals;
-
-    private int playerAmmo;
-    private int playerHPotion;
+    public int playerHerbs ;
+    public int playerWood ;
+    public int playerStone ;
+    public int playerIron ;
+    public int playerCrystals;
+    
+    public int playerAmmo;
+    public int playerHPotion;
     private TextMeshProUGUI Mats;
     public TextMeshProUGUI Items;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Mats = GetComponent<TextMeshProUGUI>();
         PrintToUI();
@@ -79,7 +79,6 @@ public class Material_Counter : MonoBehaviour
 
     public void PrintToUI()
     {
-
         Mats.text = "  <sprite=\"roguelikeitems\" index=170>: " + playerHerbs + "	  <sprite=\"roguelikeitems\" index=80>: " + playerWood + "     <sprite=\"rock\" index=0>: " + playerStone + "     <sprite=\"roguelikeitems\" index=67>: " + playerIron + "     <sprite=\"roguelikeitems\" index=45>: " + playerCrystals;
     }
 
@@ -96,6 +95,16 @@ public class Material_Counter : MonoBehaviour
     public int AmmoUsed()
     {
         return playerAmmo;
+    }
+
+    public void Death()
+    {
+        playerCrystals = 0;
+        playerHerbs = 0;
+        playerIron = 0;
+        playerStone = 0;
+        playerWood = 0;
+        PrintToUI();
     }
 
 }

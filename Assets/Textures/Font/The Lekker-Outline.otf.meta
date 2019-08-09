@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ed1fa90afc3f62f4e9b234e8de48df07
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: The Lekker
+  fontNames:
+  - The Lekker
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e9c22b9b94d053c4187ead563bbb871e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

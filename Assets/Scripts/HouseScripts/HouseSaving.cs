@@ -30,7 +30,6 @@ public class HouseSaving : MonoBehaviour
     {                
         xmlLoad();
     }
-
     /*
     Vi bruger xmlserializer til at omdanne vores information til et format som kan lægges i en XML fil,
     Streamwriter til at skrive og læse dataen

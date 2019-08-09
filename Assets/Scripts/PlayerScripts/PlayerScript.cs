@@ -247,23 +247,22 @@ public class PlayerScript : MonoBehaviour
         ani = GetComponent<Animator>();
         aniSpeed = ani.speed;
         //mainCam is used to check and manipulate the Main Camera in the scene
-        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-
-        
+        //mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();  Bruges ikke  
     }
+
+    float alive;
 
     private void Awake()
     {//J.C.
         objHPotion_Counter = GameObject.Find("Material_Counter");
         scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
+
+        alive = 0f;
     }
 
     // Update is called once per frame
     private void Update()
     {
-
-
         DirectionFacing();
         IsRunning();
         IsInvincible();
@@ -273,7 +272,6 @@ public class PlayerScript : MonoBehaviour
 
         //ani.SetBool("Grounded", grounded);
 
-
         HorizontalMovement();        
         Jump();
         DoubleJump();
@@ -282,6 +280,9 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
+        //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
+        //print("attackType: " + attackType);
+        //print("");
 
         
         //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
@@ -359,7 +360,6 @@ public class PlayerScript : MonoBehaviour
 
         */
     }
-
 
     void HorizontalMovement()
     {
@@ -582,6 +582,8 @@ public class PlayerScript : MonoBehaviour
 
     public void Die()
     {
+        scrMC.Death();
+
         rb.transform.position = respawnPosition;
     }
 

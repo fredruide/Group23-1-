@@ -26,8 +26,8 @@ public class GatorMove : MonoBehaviour
         Gator = GetComponent<Rigidbody2D>();
         GatorSprite = GetComponent<SpriteRenderer>();
 
-        Physics2D.IgnoreLayerCollision(10, 10);
-        Physics2D.IgnoreLayerCollision(9, 10);
+        Physics2D.IgnoreLayerCollision(11, 11);
+        Physics2D.IgnoreLayerCollision(10, 11);
     }
 
     // Update is called once per frame
