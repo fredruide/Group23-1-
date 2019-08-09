@@ -90,19 +90,19 @@ public class HouseNodes : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1) && !herbBuilt && !deleteBuilding)
             {
                 herbBuilt = true;
-                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, 9);
+                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, -10.2f);
                 Instantiate(herbalist, pos, Quaternion.identity);                
             }
             if (Input.GetKeyDown(KeyCode.Alpha2) && !stoneBuilt && !deleteBuilding)
             {
                 stoneBuilt = true;
-                Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
+                Vector3 pos = new Vector3(gridStoneX, gridStoneY, -10.2f);
                 Instantiate(stone, pos, Quaternion.identity);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3) && !ironBuilt && !deleteBuilding)
             {
                 ironBuilt = true;
-                Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
+                Vector3 pos = new Vector3(gridIronX, gridIronY, -10.2f);
                 Instantiate(iron, pos, Quaternion.identity);
             }
         }
@@ -115,7 +115,7 @@ public class HouseNodes : MonoBehaviour
             if (!herbBuilt && !deleteBuilding)
             {
                 herbBuilt = true;
-                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, 9);
+                Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, -10.2f);
                 Instantiate(herbalist, pos, Quaternion.identity);
             }
         }
@@ -127,7 +127,7 @@ public class HouseNodes : MonoBehaviour
             if (!ironBuilt && !deleteBuilding)
             {
                 ironBuilt = true;
-                Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
+                Vector3 pos = new Vector3(gridIronX, gridIronY, -10.2f);
                 Instantiate(iron, pos, Quaternion.identity);
             }
         }
@@ -139,7 +139,7 @@ public class HouseNodes : MonoBehaviour
             if (!stoneBuilt && !deleteBuilding)
             {
                 stoneBuilt = true;
-                Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
+                Vector3 pos = new Vector3(gridStoneX, gridStoneY, -10.2f);
                 Instantiate(stone, pos, Quaternion.identity);
             }
         }
@@ -199,17 +199,17 @@ public class HouseNodes : MonoBehaviour
     {
         if (herbBuilt)
         {            
-            Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, 9);
+            Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, -10.2f);
             Instantiate(herbalist, pos, Quaternion.identity);
         }
         if (stoneBuilt)
         {
-            Vector3 pos = new Vector3(gridStoneX, gridStoneY, 9);
+            Vector3 pos = new Vector3(gridStoneX, gridStoneY, -10.2f);
             Instantiate(stone, pos, Quaternion.identity);
         }
         if (ironBuilt)
         {
-            Vector3 pos = new Vector3(gridIronX, gridIronY, 9);
+            Vector3 pos = new Vector3(gridIronX, gridIronY, -10.2f);
             Instantiate(iron, pos, Quaternion.identity);
         }
     }

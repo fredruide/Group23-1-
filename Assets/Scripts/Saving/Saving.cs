@@ -41,19 +41,6 @@ public class Saving : MonoBehaviour
             serializer.Serialize(writer.BaseStream, allsaving);
         }
     }
-    //MÅSKE SLETTES
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Alpha6))
-    //    {
-    //        load();
-    //    }
-
-    //    if (Input.GetKeyDown(KeyCode.Alpha5))
-    //    {
-    //        Save();
-    //    }
-    //}
 
     public void Save(float x, float y, float z)
     {
