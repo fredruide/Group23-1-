@@ -9,7 +9,7 @@ public class DamageToEnemy : MonoBehaviour
 
     public float knockbackX;
     public float knockbackY;
-    public Vector3 playerPosition;
+    public Vector2 playerPosition;
 
     public GameObject playerObject;
     private PlayerScript scrPlayer;
@@ -45,7 +45,7 @@ public class DamageToEnemy : MonoBehaviour
         }
     }
 
-    public void KnockbackSetter(float xForce, float yForce, Vector3 playerPosition)
+    public void KnockbackSetter(float xForce, float yForce, Vector2 playerPosition)
     {
         Debug.Log("test8");
         knockbackX = xForce;
