@@ -6,44 +6,19 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    SpriteRenderer sr;
+    public SpriteRenderer sr;
     Animator ani;
+    float aniSpeed;
+
     Camera mainCam;
 
     public GameObject objHPotion_Counter;
     public Material_Counter scrMC;
 
-    //_grounded _touchLeft and _touchRight is set by the Bottom, left and right 
+    //_isGrounded _touchLeft and _touchRight is set by the Bottom, left and right 
     // colliders attach to the player object
 
-    //this bool and field is for checking if bottom part of player
-    //is in contact with a object (checks on platform only right now)
-    //used in HorizontalMovement, Jump and DoubleJump methods.
-    bool isGrounded;
-    public bool _isGrounded
-    {
-        get { return isGrounded; }
-        set
-        {
-            isGrounded = value;
-            ani.SetBool("isGrounded", value);
-            if (value == true)
-            {
-                canJump = true;
-                canDoubleJump = true;
-                canMoveHori = true;
-                ani.SetBool("isJumping", false);
-                ani.SetBool("isAirborn", false);
-                ani.SetBool("isWallSliding", false);
-            }
-            else
-            {
-                canMoveHori = false;
-                _isAirborn = true;
-                ani.SetBool("isAirborn", true);
-            }
-        }
-    }
+    
     //this bool and field is for checking if Right side of player
     //is in contact with a object (checks on platform only right now)
     //used in WallSlide, WallJump and HorizontalMovement methods
@@ -107,6 +82,35 @@ public class PlayerScript : MonoBehaviour
     }
     #endregion
     #region isVariabler
+    //this bool and field is for checking if bottom part of player
+    //is in contact with a object (checks on platform only right now)
+    //used in HorizontalMovement, Jump and DoubleJump methods.
+    bool isGrounded;
+    public bool _isGrounded
+    {
+        get { return isGrounded; }
+        set
+        {
+            isGrounded = value;
+            ani.SetBool("isGrounded", value);
+            if (value == true)
+            {
+                canJump = true;
+                //canDoubleJump = true;
+                canMoveHori = true;
+                ani.SetBool("isJumping", false);
+                ani.SetBool("isAirborn", false);
+                ani.SetBool("isWallSliding", false);
+            }
+            else
+            {
+                canMoveHori = false;
+                _isAirborn = true;
+                ani.SetBool("isAirborn", true);
+            }
+        }
+    }
+
     bool isRunning;
     public bool _isRunning
     {
@@ -120,7 +124,10 @@ public class PlayerScript : MonoBehaviour
                 ani.SetBool("isRunning", false);
         }
     }
+    //bool to se and set player as being Airborn
     bool isAirborn;
+    // a field to handle the animator for when "isAirborn" is true or false
+    //always set this field when anipulating isAirborn unless animator is to be skiped
     public bool _isAirborn
     {
         get { return isAirborn; }
@@ -133,7 +140,10 @@ public class PlayerScript : MonoBehaviour
                 ani.SetBool("isAirborn", false);
         }
     }
+    //to see if player is wall sliding
     bool isWallSliding;
+    // a field to handle the animator for when "isWallSliding" is true or false
+    //always set this field when anipulating isWallSliding unless animator is to be skiped
     public bool _isWallSliding
     {
         get { return isWallSliding; }
@@ -235,6 +245,7 @@ public class PlayerScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         //ani is used to manipulate and check on animation
         ani = GetComponent<Animator>();
+        aniSpeed = ani.speed;
         //mainCam is used to check and manipulate the Main Camera in the scene
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
@@ -271,9 +282,11 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
-        print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        print("attackType: " + attackType);
-        print("");
+
+        
+        //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
+        //print("attackType: " + attackType);
+        //print("");
 
         //print ani
         //if (Input.GetButton("Fire1"))
@@ -432,6 +445,7 @@ public class PlayerScript : MonoBehaviour
         if (isGrounded == true && Input.GetButtonDown("Vertical") && canJump && PlayerRangedAttack.isNotDrawing)
         {
             canJump = false;
+            canDoubleJump = true;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             ani.SetBool("isJumping", true);
             //print("Jump: " + rb.velocity.y);
@@ -443,6 +457,7 @@ public class PlayerScript : MonoBehaviour
         else if (!isGrounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
         {
             canJump = false;
+            canDoubleJump = true;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             ani.SetBool("isJumping", true);
             //print("Jump Coyote: " + rb.velocity.y);
@@ -598,22 +613,37 @@ public class PlayerScript : MonoBehaviour
     #region HelperMethods
     void DirectionFacing()
     {
-        //check what direction player last faced
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        print(PlayerRangedAttack.isNotDrawing);
+        if (PlayerRangedAttack.isNotDrawing)
         {
-            directionFaced = false;
-            sr.flipX = directionFaced;
-        } 
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            directionFaced = true;
-            sr.flipX = directionFaced;
+            //check what direction player last faced
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                directionFaced = false;
+                sr.flipX = directionFaced;
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                directionFaced = true;
+                sr.flipX = directionFaced;
+            }
         }
     }
     void IsRunning()
     {
-        
+        /*
         if (Input.GetButton("Horizontal") && canMoveHori && isGrounded && rb.velocity.x != 0)
+        {
+            isRunning = true;
+            ani.SetBool("isRunning", true);
+        }
+        else
+        {
+            isRunning = false;
+            ani.SetBool("isRunning", false);
+        }
+        */
+        if (Input.GetButton("Horizontal") && canMoveHori && isGrounded)
         {
             isRunning = true;
             ani.SetBool("isRunning", true);
@@ -640,6 +670,18 @@ public class PlayerScript : MonoBehaviour
             sr.enabled = true;
             return false;
         }
+    }
+
+    void StopAnimation()
+    {
+        if (!PlayerRangedAttack.isNotDrawing)
+        {
+            ani.speed = 0;
+        }            
+    }
+    public void StartAnimation()
+    {
+        ani.speed = aniSpeed;
     }
     //Frederik
     //Bruges ikke p.t
@@ -711,19 +753,23 @@ public class PlayerScript : MonoBehaviour
             {
                 //print("AttackType 1");
                 MeleeAttack(damage, attackRange);
-                ani.SetInteger("isAttacking1-3", 1);
+                //ani.SetInteger("isAttacking1-3", 1);
+                ani.SetBool("AttackType1", true);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 2) //andet angreb i chain
             {
                 MeleeAttack(damage1, attackRange1);
                 //print("AttackType 2");
-                ani.SetInteger("isAttacking1-3", 2);
+                //ani.SetInteger("isAttacking1-3", 2);
+                ani.SetBool("AttackType2", true);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 3) //tredje angreb i chain
             {
                 MeleeAttack(damage2, attackRange2);
                 //print("AttackType 3");
-                ani.SetInteger("isAttacking1-3", 3);
+                //ani.SetInteger("isAttacking1-3", 3);
+                attackGracePeriod = 0;
+                ani.SetBool("AttackType3",true);
             }
         }
         else
@@ -733,7 +779,10 @@ public class PlayerScript : MonoBehaviour
         if (attackGracePeriod <= 0) //Sætter attack type tilbage til 1 når grace perioden rammer 0
         {
             attackType = 1;
-            ani.SetInteger("isAttacking1-3", 0);
+            //ani.SetBool("AttackType1", false);
+            //ani.SetBool("AttackType2", false);
+            //ani.SetBool("AttackType3", false);
+            //ani.SetInteger("isAttacking1-3", 0);
         }
         else
         {

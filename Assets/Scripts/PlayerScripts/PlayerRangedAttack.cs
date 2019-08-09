@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerRangedAttack : MonoBehaviour
 {
+    
     public Transform firePoint;
     public GameObject arrow;
     Rigidbody2D rb;
@@ -35,6 +36,13 @@ public class PlayerRangedAttack : MonoBehaviour
 
     void Update()
     {
+        if (!isNotDrawing)
+        {
+            SpriteFliper();
+        }
+        
+
+        //print(isNotDrawing);
         if (Input.GetButtonDown("Fire2") && ps._isGrounded && drawTime <= 0)
         {
             Draw();
@@ -54,11 +62,13 @@ public class PlayerRangedAttack : MonoBehaviour
         if (drawTime <= 0 && buttonHeld == false)
         {
             isNotDrawing = true;
+            GetComponent<PlayerScript>().StartAnimation();
+            //Fire();
         }
-        print("Held " + buttonHeld + " Drawing " + isNotDrawing);
+        //print("Held " + buttonHeld + " Drawing " + isNotDrawing);
 
     }
-    void Fire()
+    public void Fire()
     {
         Instantiate(arrow, firePoint.position, firePoint.rotation);
         scrMC.CheckForAmmo(-1);
@@ -67,6 +77,7 @@ public class PlayerRangedAttack : MonoBehaviour
 
     void Draw()
     {
+        GetComponent<Animator>().SetBool("isRangeAttack", true);
         drawTime = startDrawTime;
         isNotDrawing = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
@@ -74,7 +85,20 @@ public class PlayerRangedAttack : MonoBehaviour
     }
 
 
-
+    void SpriteFliper()
+    {
+        //Jonas og Frederik
+        if (firePoint.transform.rotation.eulerAngles.z > 90 && firePoint.transform.rotation.eulerAngles.z < 270)
+        {
+            ps.sr.flipX = true;
+            Debug.Log("flip true");
+        }
+        else if (firePoint.transform.rotation.eulerAngles.z <= 90 || firePoint.transform.rotation.eulerAngles.z >= 270)
+        {
+            ps.sr.flipX = false;
+            Debug.Log("flip false");
+        }
+    }
 
 
 

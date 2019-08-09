@@ -2,33 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Attack_Animation_Script : StateMachineBehaviour
+public class Player_Ranged_Attack_Animation : StateMachineBehaviour
 {
-
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        GameObject.Find("Player").GetComponent<PlayerRangedAttack>().Fire();
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    if (stateInfo.IsName("Player_Attack") || stateInfo.IsName("Player_Attack_2") || stateInfo.IsName("Player_Attack_3"))
-    //    {
-    //        Debug.Log("NormelizeTime: " + stateInfo.normalizedTime);
-    //        Debug.Log("Lenght: " + stateInfo.length);
-    //        
-    //    }
+    //    
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        animator.SetInteger("isAttacking1-3", 0);   
-        
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
