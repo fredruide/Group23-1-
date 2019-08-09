@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GatorMove : MonoBehaviour
+public class GatorMove : DamageToEnemy
 {
-    GameObject playerObject;
-
-    
-
     public float Speed;
 
     public float playerRange;
@@ -16,19 +12,16 @@ public class GatorMove : MonoBehaviour
 
     public bool PlayerInRange;
 
-    Rigidbody2D Gator;
-
     SpriteRenderer GatorSprite;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        playerObject = GameObject.Find("Player");
-        
 
         playerLayer = LayerMask.GetMask("Player");
+        playerObject = GameObject.Find("Player");
+        rb = GetComponent<Rigidbody2D>();
 
-        Gator = GetComponent<Rigidbody2D>();
         GatorSprite = GetComponent<SpriteRenderer>();
 
         //Physics2D.IgnoreLayerCollision(11, 11);
@@ -36,23 +29,36 @@ public class GatorMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        Vector3 direction = playerObject.transform.position - transform.position;
-        direction.Normalize();
-        Vector3 velocity = direction * Speed;
-
-        PlayerInRange = Physics2D.OverlapCircle(transform.position, playerRange, playerLayer);
-
-        if (PlayerInRange)
+        Debug.Log("Timestamp:" + timeStamp);
+        if (timeStamp <= Time.time)
         {
-            Speed = 5.0f;
-            Gator.velocity = new Vector2(velocity.x, velocity.y);
+            Debug.Log("test7");
+            isStunned = false;
         }
 
-        if (!PlayerInRange)
+        if (Input.GetKeyDown(KeyCode.PageUp))
         {
-            Gator.velocity = new Vector2(0, 0);
+            Debug.Log("test1");
+            TakeDamage(1);
+        }
+
+        Vector3 direction = playerObject.transform.position - rb.transform.position;
+        direction.Normalize();
+        Vector3 velocity = direction * Speed;
+        
+        PlayerInRange = Physics2D.OverlapCircle(rb.transform.position, playerRange, playerLayer);
+
+        if (PlayerInRange && isStunned == false)
+        {
+            Speed = 5.0f;
+            velocity = new Vector2(velocity.x, velocity.y);
+        }
+
+        if (!PlayerInRange && isStunned == false)
+        {
+            velocity = new Vector2(0, 0);
         }
 
         Animation();  
@@ -66,12 +72,12 @@ public class GatorMove : MonoBehaviour
     public void Animation()
     {
        
-        if (Gator.position.x > playerObject.transform.position.x)
+        if (rb.position.x > playerObject.transform.position.x)
         {
             GatorSprite.flipX = false;
         }
 
-        if (Gator.position.x < playerObject.transform.position.x)
+        if (rb.position.x < playerObject.transform.position.x)
         {
             GatorSprite.flipX = true;
         }

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+    public bool isKB;
+
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator ani;
@@ -27,21 +29,26 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = value;
             ani.SetBool("isGrounded", value);
-            if (value == true)
+            if (isKB == false)
             {
-                canJump = true;
-                canDoubleJump = true;
-                canMoveHori = true;
-                ani.SetBool("isJumping", false);
-                ani.SetBool("isAirborn", false);
-                ani.SetBool("isWallSliding", false);
+                if (value == true)
+                {
+                    canJump = true;
+                    canDoubleJump = true;
+                    canMoveHori = true;
+                    ani.SetBool("isJumping", false);
+                    ani.SetBool("isAirborn", false);
+                    ani.SetBool("isWallSliding", false);
+                }
+
+                else
+                {
+                    canMoveHori = false;
+                    _isAirborn = true;
+                    ani.SetBool("isAirborn", true);
+                }
             }
-            else
-            {
-                canMoveHori = false;
-                _isAirborn = true;
-                ani.SetBool("isAirborn", true);
-            }
+            
         }
     }
     //this bool and field is for checking if Right side of player
@@ -271,10 +278,6 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
-        print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        print("attackType: " + attackType);
-        print("");
-
         //print ani
         //if (Input.GetButton("Fire1"))
         //{
@@ -368,9 +371,9 @@ public class PlayerScript : MonoBehaviour
             else
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
-            }    
+            }
         }
-        else if (!Input.GetButton("Horizontal") && canMoveHori)
+        else if (!Input.GetButton("Horizontal") && canMoveHori && isKB == false)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -518,36 +521,61 @@ public class PlayerScript : MonoBehaviour
         //if timer is below current time allow horizontal movement agien
         if (stopMoveHoriTS <= Time.time)
         {
+
             canMoveHori = true;
+            isKB = false;
 
             //print("CanMoveHori stopMove: " + canMoveHori);
         }
     }
 
+    void IsDisabled(bool playerDisabled, float timer)
+    {
+        isKB = true;
+        stopMoveHoriCD = timer;
+
+        if (playerDisabled)
+        {
+            canMoveHori = false;
+            canDoubleJump = false;
+            canJump = false;
+            canWallSlide = false;
+
+            _stopMoveHoriTS = Time.time;
+            isDisabled = false;
+            //print("CanMoveHori trigger: " + canMoveHori);
+        }
+
+    }
+
     float knockbackX;
     float knockbackY;
-    Vector3 enamyPosistion;
+    Vector3 enemyPosition;
 
-    public void KnockbackSetter(float xForce, float yForce, Vector3 enamyPosistion)
+    public void KnockbackSetter(float xForce, float yForce, Vector3 enemyPosition)
     {
         knockbackX = xForce;
         knockbackY = yForce;
-        this.enamyPosistion = enamyPosistion;
+        this.enemyPosition = enemyPosition;
     }
 
     void KnockBack()
     {
-        IsDisabled(true);
-
-        if (enamyPosistion.x > rb.transform.position.x)
+        
+        IsDisabled(true, 0.6f);
+        
+        if (enemyPosition.x >= rb.transform.position.x)
         {
-            knockbackX = -knockbackX;
+            knockbackX = knockbackX * -1;
         }
-        if (enamyPosistion.y > rb.transform.position.y)
+        /*
+        if (enemyPosition.y > rb.transform.position.y)
         {
             knockbackY = -knockbackY;
         }
-        rb.velocity = new Vector2(knockbackX, knockbackY);        
+        */
+        rb.velocity = new Vector2(knockbackX, knockbackY);
+        
     }
 
     public void TakeDamage(int dmg)

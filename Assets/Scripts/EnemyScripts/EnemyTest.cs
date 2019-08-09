@@ -53,6 +53,7 @@ public class EnemyTest : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
+
             playerC.KnockbackSetter(100,100,rb.position);
             playerC.TakeDamage(Damage);            
         }            

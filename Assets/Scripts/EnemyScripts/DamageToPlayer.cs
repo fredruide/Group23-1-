@@ -18,8 +18,11 @@ public class DamageToPlayer : MonoBehaviour
                 scrPlayer = objPlayer.GetComponent<PlayerScript>();
                 hasSeenPlayer = true;
             }
+            scrPlayer._canMoveHori = false;
+
+            scrPlayer.KnockbackSetter(4, 4, transform.position);
+            scrPlayer.TakeDamage(0);
             
-            scrPlayer.TakeDamage(2);
         }
     }
 
