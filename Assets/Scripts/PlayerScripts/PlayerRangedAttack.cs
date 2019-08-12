@@ -91,12 +91,12 @@ public class PlayerRangedAttack : MonoBehaviour
         if (firePoint.transform.rotation.eulerAngles.z > 90 && firePoint.transform.rotation.eulerAngles.z < 270)
         {
             ps.sr.flipX = true;
-            Debug.Log("flip true");
+
         }
         else if (firePoint.transform.rotation.eulerAngles.z <= 90 || firePoint.transform.rotation.eulerAngles.z >= 270)
         {
             ps.sr.flipX = false;
-            Debug.Log("flip false");
+
         }
     }
 

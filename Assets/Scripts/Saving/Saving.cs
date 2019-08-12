@@ -90,7 +90,7 @@ public class Saving : MonoBehaviour
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(loading);
+
         if (loading)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(AllSaving));

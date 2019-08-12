@@ -615,7 +615,7 @@ public class PlayerScript : MonoBehaviour
     #region HelperMethods
     void DirectionFacing()
     {
-        print(PlayerRangedAttack.isNotDrawing);
+ 
         if (PlayerRangedAttack.isNotDrawing)
         {
             //check what direction player last faced
@@ -803,7 +803,7 @@ public class PlayerScript : MonoBehaviour
         {
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+                //enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
             }
         }
         attackType++;

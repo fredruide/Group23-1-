@@ -20,7 +20,7 @@ public class DamageToPlayer : MonoBehaviour
             }
             scrPlayer._canMoveHori = false;
 
-            scrPlayer.KnockbackSetter(4, 4, transform.position);
+            scrPlayer.KnockbackSetter(4, 10, transform.position);
             scrPlayer.TakeDamage(0);
             
         }
