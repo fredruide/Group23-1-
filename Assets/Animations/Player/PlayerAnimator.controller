@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9219659190195979476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baf737e68024cb2418ded28529df418d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1101 &-9048869236060463440
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -868,18 +856,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-5965929435878303781
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9062503d65f150b428819cfab28642d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1101 &-5787612296957187361
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -1096,18 +1072,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-4145230089691014573
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ea8edfd23248147a1d1117fcf9a573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1102 &-4131056724339981408
 AnimatorState:
   serializedVersion: 5
@@ -2795,7 +2759,7 @@ AnimatorState:
   - {fileID: 9101996425682917618}
   - {fileID: 4747410897877190055}
   m_StateMachineBehaviours:
-  - {fileID: -5965929435878303781}
+  - {fileID: 2644013406498688010}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -3464,7 +3428,7 @@ AnimatorState:
   - {fileID: -7364941702369094025}
   - {fileID: -2454888259640665362}
   m_StateMachineBehaviours:
-  - {fileID: -4145230089691014573}
+  - {fileID: -615013138012116219}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -4144,7 +4108,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -6131416533703479941}
   m_StateMachineBehaviours:
-  - {fileID: 6939912450371898800}
+  - {fileID: -7150069648256635685}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -4414,7 +4378,7 @@ AnimatorState:
   - {fileID: -791728896137014228}
   - {fileID: -3980673747183872322}
   m_StateMachineBehaviours:
-  - {fileID: 6623586499628026672}
+  - {fileID: -8514797555646165158}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -4520,18 +4484,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!114 &6623586499628026672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f0e1fa5facae654aaf56caa4a857d83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1101 &6658879569891080925
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4572,18 +4524,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &6939912450371898800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8acea77fd6816f943933397a1e12de04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1102 &7090217571083649039
 AnimatorState:
   serializedVersion: 5
@@ -4603,7 +4543,7 @@ AnimatorState:
   - {fileID: 4827939159496283356}
   - {fileID: -7584229997046996508}
   m_StateMachineBehaviours:
-  - {fileID: -9219659190195979476}
+  - {fileID: 9210130124770414994}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

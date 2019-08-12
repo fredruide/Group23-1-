@@ -20,11 +20,10 @@ public class GatorMove : DamageToEnemy
 
         playerLayer = LayerMask.GetMask("Player");
         playerObject = GameObject.Find("Player");
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         GatorSprite = GetComponent<SpriteRenderer>();
 
-        
         //Physics2D.IgnoreLayerCollision(11, 11);
         //Physics2D.IgnoreLayerCollision(10, 11);
     }
@@ -32,7 +31,7 @@ public class GatorMove : DamageToEnemy
     // Update is called once per frame
     public void Update()
     {
-        Debug.Log("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII" + playerObject.transform.position);
+        Debug.Log("Timestamp:" + timeStamp);
         if (timeStamp <= Time.time)
         {
             Debug.Log("test7");
@@ -45,21 +44,21 @@ public class GatorMove : DamageToEnemy
             TakeDamage(1);
         }
 
-        Vector2 direction = playerObject.transform.position - rb.transform.position;
+        Vector3 direction = playerObject.transform.position - rb.transform.position;
         direction.Normalize();
-        Vector2 velocity = direction * Speed;
+        Vector3 velocity = direction * Speed;
         
         PlayerInRange = Physics2D.OverlapCircle(rb.transform.position, playerRange, playerLayer);
 
         if (PlayerInRange && isStunned == false)
         {
             Speed = 5.0f;
-            rb.velocity = new Vector2(velocity.x, velocity.y);
+            velocity = new Vector2(velocity.x, velocity.y);
         }
 
         if (!PlayerInRange && isStunned == false)
         {
-            rb.velocity = new Vector2(0, 0);
+            velocity = new Vector2(0, 0);
         }
 
         Animation();  
