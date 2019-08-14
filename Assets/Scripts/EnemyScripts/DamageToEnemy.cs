@@ -74,7 +74,7 @@ public class DamageToEnemy : MonoBehaviour
         HP -= dmg;
         KnockbackSetter(4, 4, playerObject.transform.position);
         KnockBack();
-
+        
         if (HP <= 0)
         {
             Debug.Log("test12");
