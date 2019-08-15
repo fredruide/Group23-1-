@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - Ground
   - Platform
-  - Portal
   - Platform
   - Portal
   - Platform
@@ -16,6 +15,7 @@ TagManager:
   - Despawner
   - Material
   - Wall
+  - Patrolmarkers
   layers:
   - Default
   - TransparentFX
