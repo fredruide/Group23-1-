@@ -82,6 +82,8 @@ public class PlayerScript : MonoBehaviour
     }
     #endregion
     #region isVariabler
+    public bool isKB;
+
     //this bool and field is for checking if bottom part of player
     //is in contact with a object (checks on platform only right now)
     //used in HorizontalMovement, Jump and DoubleJump methods.
@@ -93,21 +95,26 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = value;
             ani.SetBool("isGrounded", value);
-            if (value == true)
+            if (isKB == false)
             {
-                canJump = true;
-                //canDoubleJump = true;
-                canMoveHori = true;
-                ani.SetBool("isJumping", false);
-                ani.SetBool("isAirborn", false);
-                ani.SetBool("isWallSliding", false);
+                if (value == true)
+                {
+                    canJump = true;
+                    canDoubleJump = true;
+                    canMoveHori = true;
+                    ani.SetBool("isJumping", false);
+                    ani.SetBool("isAirborn", false);
+                    ani.SetBool("isWallSliding", false);
+                }
+
+                else
+                {
+                    canMoveHori = false;
+                    _isAirborn = true;
+                    ani.SetBool("isAirborn", true);
+                }
             }
-            else
-            {
-                canMoveHori = false;
-                _isAirborn = true;
-                ani.SetBool("isAirborn", true);
-            }
+
         }
     }
 
@@ -383,7 +390,7 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }    
         }
-        else if (!Input.GetButton("Horizontal") && canMoveHori)
+        else if (!Input.GetButton("Horizontal") && canMoveHori && isKB == false)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -533,35 +540,60 @@ public class PlayerScript : MonoBehaviour
         //if timer is below current time allow horizontal movement agien
         if (stopMoveHoriTS <= Time.time)
         {
+
             canMoveHori = true;
+            isKB = false;
 
             //print("CanMoveHori stopMove: " + canMoveHori);
         }
     }
 
+    void IsDisabled(bool playerDisabled, float timer)
+    {
+        isKB = true;
+        stopMoveHoriCD = timer;
+
+        if (playerDisabled)
+        {
+            canMoveHori = false;
+            canDoubleJump = false;
+            canJump = false;
+            canWallSlide = false;
+
+            _stopMoveHoriTS = Time.time;
+            isDisabled = false;
+            //print("CanMoveHori trigger: " + canMoveHori);
+        }
+
+    }
+
     float knockbackX;
     float knockbackY;
-    Vector3 enamyPosistion;
+    Vector2 enemyPosition;
 
-    public void KnockbackSetter(float xForce, float yForce, Vector3 enamyPosistion)
+    public void KnockbackSetter(float xForce, float yForce, Vector2 enemyPosition)
     {
         knockbackX = xForce;
         knockbackY = yForce;
-        this.enamyPosistion = enamyPosistion;
+        this.enemyPosition = enemyPosition;
     }
 
     void KnockBack()
     {
-        IsDisabled(true);
+        IsDisabled(true, 0.6f);
 
-        if (enamyPosistion.x > rb.transform.position.x)
+        if (enemyPosition.x > rb.transform.position.x)
         {
             knockbackX = -knockbackX;
         }
-        if (enamyPosistion.y > rb.transform.position.y)
+
+        /*
+        if (enemyPosition.y > rb.transform.position.y)
         {
             knockbackY = -knockbackY;
         }
+        */
+
         rb.velocity = new Vector2(knockbackX, knockbackY);        
     }
 

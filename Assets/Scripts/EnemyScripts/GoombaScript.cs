@@ -2,47 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoombaScript : MonoBehaviour
+public class GoombaScript : DamageToEnemy
 {
-    public Collider2D terrainTrigger;
-    public Collider2D oldTerrainTrigger;
-    Rigidbody2D rb2d;
     Animator ani;
 
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-        Physics2D.IgnoreLayerCollision(10, 10);
+        MobRb = this.GetComponent<Rigidbody2D>();
+        faceDirection();
     }
 
     // Update is called once per frame
     void Update()
-    {        
-        VerticalMovement();
-        oldTerrainTrigger = terrainTrigger;
+    {
+        if (timeStamp <= Time.time)
+        {
+            isStunned = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.PageUp))
+        {
+            TakeDamage(1);
+        }
+
+        if (isStunned == false)
+        {
+            MobRb.velocity = new Vector2(speed, MobRb.velocity.y);
+        }
+        
     }
 
-    public void VerticalMovement()
+    public void rotate()
     {
-        if (oldTerrainTrigger != terrainTrigger && (terrainTrigger.gameObject.tag == "Wall" || terrainTrigger.gameObject.tag == "Platform"))
-        {
-            speed = speed * -1;
-        }
-      
-        rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+        speed = speed * -1.0f;
+    }
 
+    public void faceDirection()
+    {
         if (speed > 0)
-        {
-           
-            transform.localScale = new Vector3(-4.82f, 5f, 1f);
+        {     
+            transform.localScale = new Vector3(-2f, 2f, 1f);
         }
 
         if (speed < 0)
         {
-            transform.localScale = new Vector3(4.82f, 5f, 1f);
+            transform.localScale = new Vector3(2f, 2f, 1f);
         }
     }
 }

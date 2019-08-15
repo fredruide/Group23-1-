@@ -20,7 +20,7 @@ public class GatorMove : DamageToEnemy
 
         playerLayer = LayerMask.GetMask("Player");
         playerObject = GameObject.Find("Player");
-        rb = this.GetComponent<Rigidbody2D>();
+        MobRb = this.GetComponent<Rigidbody2D>();
 
         GatorSprite = GetComponent<SpriteRenderer>();
 
@@ -32,34 +32,31 @@ public class GatorMove : DamageToEnemy
     // Update is called once per frame
     public void Update()
     {
-        Debug.Log("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII" + playerObject.transform.position);
         if (timeStamp <= Time.time)
         {
-            Debug.Log("test7");
             isStunned = false;
         }
 
         if (Input.GetKeyDown(KeyCode.PageUp))
         {
-            Debug.Log("test1");
             TakeDamage(1);
         }
 
-        Vector2 direction = playerObject.transform.position - rb.transform.position;
+        Vector2 direction = playerObject.transform.position - MobRb.transform.position;
         direction.Normalize();
         Vector2 velocity = direction * Speed;
         
-        PlayerInRange = Physics2D.OverlapCircle(rb.transform.position, playerRange, playerLayer);
+        PlayerInRange = Physics2D.OverlapCircle(MobRb.transform.position, playerRange, playerLayer);
 
         if (PlayerInRange && isStunned == false)
         {
             Speed = 5.0f;
-            rb.velocity = new Vector2(velocity.x, velocity.y);
+            MobRb.velocity = new Vector2(velocity.x, velocity.y);
         }
 
         if (!PlayerInRange && isStunned == false)
         {
-            rb.velocity = new Vector2(0, 0);
+            MobRb.velocity = new Vector2(0, 0);
         }
 
         Animation();  
@@ -73,12 +70,12 @@ public class GatorMove : DamageToEnemy
     public void Animation()
     {
        
-        if (rb.position.x > playerObject.transform.position.x)
+        if (MobRb.position.x > playerObject.transform.position.x)
         {
             GatorSprite.flipX = false;
         }
 
-        if (rb.position.x < playerObject.transform.position.x)
+        if (MobRb.position.x < playerObject.transform.position.x)
         {
             GatorSprite.flipX = true;
         }

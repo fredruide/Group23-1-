@@ -102,9 +102,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: -0.18}
   serializedVersion: 2
-  m_Radius: 0.9
+  m_Radius: 0.8
 --- !u!114 &2361271086789721882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +253,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658ff27c1b67038488be82aa20f4d1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 2
+  rb: {fileID: 0}
+  knockbackX: 0
+  knockbackY: 0
+  playerPosition: {x: 0, y: 0}
+  playerObject: {fileID: 0}
+  hasSeenPlayer: 0
+  timeStamp: 0
+  isStunned: 0
   Speed: 5
   playerRange: 20
   playerLayer:
