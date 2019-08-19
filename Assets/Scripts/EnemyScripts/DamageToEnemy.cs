@@ -27,6 +27,10 @@ public class DamageToEnemy : MonoBehaviour
     public GameObject Wood_Drop;
     public GameObject Crystal_Drop;
 
+    private GameObject objScoreCounter;
+    private ScoreCounter scrScoreCounter;
+
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("test3");
@@ -86,8 +90,13 @@ public class DamageToEnemy : MonoBehaviour
 
         if (HP < 1)
         {
+            objScoreCounter = GameObject.Find("ScoreCounter");
+            scrScoreCounter = objScoreCounter.GetComponent<ScoreCounter>();
+
             Debug.Log("test12");
             Die();
+
+            scrScoreCounter.AddScore(20);
         }
     }
 
@@ -96,6 +105,7 @@ public class DamageToEnemy : MonoBehaviour
         StartCoroutine("IELootDrop");
         //Implement lootdrop
         //Create death animation
+        Destroy(gameObject);
 
     }
 
@@ -134,6 +144,6 @@ public class DamageToEnemy : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        Destroy(gameObject);
+        
     }
 }

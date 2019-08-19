@@ -29,7 +29,7 @@ public class HouseNodes : MonoBehaviour
     private GameObject objHouseSaving;
     
     private bool building = false;
-    private bool deleteBuilding = false;
+    public bool deleteBuilding = false;
     #endregion
     #region UI Constructors
     public TextManipulator TextManipulator;
@@ -83,6 +83,7 @@ public class HouseNodes : MonoBehaviour
         overViewCamera.SetActive(false);
     }
 
+    /*
     public void BuildingSlots()
     {               
         if (building)
@@ -107,6 +108,7 @@ public class HouseNodes : MonoBehaviour
             }
         }
     }
+    */
 
     public void BuildHerbBuilding()
     {
@@ -212,6 +214,12 @@ public class HouseNodes : MonoBehaviour
             Vector3 pos = new Vector3(gridIronX, gridIronY, -10.2f);
             Instantiate(iron, pos, Quaternion.identity);
         }
+    }
+
+    private void OnDisable()
+    {
+        deleteBuilding = false;
+        
     }
 }
 
