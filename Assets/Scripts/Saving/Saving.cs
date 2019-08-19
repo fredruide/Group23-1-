@@ -16,7 +16,6 @@ public class Saving : MonoBehaviour
     private GameObject objMaterialUI;
     private Material_Counter scrMaterial_UI;
     public GameObject player;
-    public GameObject fullPlayer;
     public GameObject playerUI;
     public Vector3 position;
 
