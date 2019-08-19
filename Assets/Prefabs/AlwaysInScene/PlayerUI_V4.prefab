@@ -1236,6 +1236,7 @@ GameObject:
   - component: {fileID: 6522286210915366390}
   - component: {fileID: 6522286210915366391}
   - component: {fileID: 1637443622291075391}
+  - component: {fileID: 239355485}
   m_Layer: 5
   m_Name: PlayerUI_V4
   m_TagString: Untagged
@@ -1341,6 +1342,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objPauseMenu: {fileID: 7021860319419284823}
+--- !u!114 &239355485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522286210915366384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ed12ff46aacae4081c53c7d6b8cdc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6522286210941312899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,6 +2273,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41767b804c039254aaa730935e32f2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHerbs: 0
+  playerWood: 0
+  playerStone: 0
+  playerIron: 0
+  playerCrystals: 0
+  playerAmmo: 0
+  playerHPotion: 0
   Items: {fileID: 6522286212674093055}
 --- !u!1 &6522286212349889439
 GameObject:

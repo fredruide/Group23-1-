@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonfireNumber: 0
-  player: {fileID: 0}
-  fullPlayer: {fileID: 2690666915424061949, guid: 2705da9d0dbd4e142af592c37c3006ee,
+  player: {fileID: 3690880181847931779, guid: a1f78afea97c352488b9e7227668c469, type: 3}
+  fullPlayer: {fileID: 0}
+  playerUI: {fileID: 6522286210915366384, guid: e7a6d073f9e9df94ab61bf36eeb33051,
     type: 3}
   position: {x: 0, y: 0, z: 0}

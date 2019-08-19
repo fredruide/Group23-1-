@@ -16,7 +16,7 @@ public class EnemyTest : MonoBehaviour
     public int Damage;
 
     void Start()
-    {
+    {        
         playerC = GameObject.Find("Player").GetComponent<PlayerScript>();
         rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
@@ -53,7 +53,6 @@ public class EnemyTest : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
-
             playerC.KnockbackSetter(100,100,rb.position);
             playerC.TakeDamage(Damage);            
         }            

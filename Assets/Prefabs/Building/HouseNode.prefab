@@ -114,8 +114,8 @@ GameObject:
   m_Component:
   - component: {fileID: 628336425}
   - component: {fileID: 628336427}
-  - component: {fileID: 628336426}
   - component: {fileID: 628336424}
+  - component: {fileID: 1711172502733419390}
   m_Layer: 0
   m_Name: HouseNode
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 628336423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 46.927, y: -26.26, z: 9}
-  m_LocalScale: {x: 0.2799802, y: 0.38594052, z: 1}
+  m_LocalScale: {x: 10.12741, y: 12.293309, z: 1}
   m_Children:
   - {fileID: 325904731}
   m_Father: {fileID: 0}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0849e499618361343acaca268f62e845, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ff2b8be62358d1458dedf39e3c3d5e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,32 +186,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &628336426
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628336423}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.36, y: 14.78}
-    newSize: {x: 15.36, y: 14.78}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15.36, y: 14.78}
-  m_EdgeRadius: 0
 --- !u!114 &628336424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,9 +208,37 @@ MonoBehaviour:
   iron: {fileID: 3317096393102910898, guid: 9e6a769b6fbc3bf45bddd357e35a39d3, type: 3}
   gridIronX: 79.5
   gridIronY: -25.6
+  deleteBuilding: 0
   TextManipulator: {fileID: 0}
-  camera1: {fileID: 0}
-  camera2: {fileID: 0}
+  mainCamera1: {fileID: 0}
+  overViewCamera: {fileID: 0}
+  Material_CounterScr: {fileID: 0}
   UI: {fileID: 0}
-  BuildButton: {fileID: 0}
-  DeleteButton: {fileID: 0}
+  buildButton: {fileID: 0}
+  deleteButton: {fileID: 0}
+--- !u!61 &1711172502733419390
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628336423}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 15.36, y: 14.78}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
