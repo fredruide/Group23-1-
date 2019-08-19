@@ -7,38 +7,51 @@ using System.Xml.Serialization;
 using System.IO;
 public class Saving : MonoBehaviour
 {
-    public static Saving Instance;
+    private Animator fadeAni;
+    public static Saving instance;
     public int bonfireNumber;
-    private bool loading;
+    private static bool loading;
+    private static bool newgame1;
     private GameObject objPlayer;
     private GameObject objMaterialUI;
     private Material_Counter scrMaterial_UI;
     public GameObject player;
     public GameObject fullPlayer;
+    public GameObject playerUI;
     public Vector3 position;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            Instance = this;
+            instance = this;
         }
-        else if (Instance != this)
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
+        
     }
 
     void Start()
-    {               
-        Debug.Log(Application.persistentDataPath);
+    {
+        //Debug.Log(Application.persistentDataPath);
+        newgame1 = false;
         if (File.Exists(Application.persistentDataPath + "/CharacterSave.xml") == false)
         {
             AllSaving allsaving = new AllSaving();
             XmlSerializer serializer = new XmlSerializer(typeof(AllSaving));
             StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/CharacterSave.xml");
             serializer.Serialize(writer.BaseStream, allsaving);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            load();
         }
     }
 
@@ -67,15 +80,23 @@ public class Saving : MonoBehaviour
 
     public void load()
     {
+        loading = true;
+
         XmlSerializer serializer = new XmlSerializer(typeof(AllSaving));
         StreamReader reader = new StreamReader(Application.persistentDataPath + "/CharacterSave.xml");
-        AllSaving allSaving = (AllSaving)serializer.Deserialize(reader.BaseStream);
-
-        loading = true;        
-        SceneManager.LoadScene(allSaving.sceneBuildIndexToLoad);
-
+        AllSaving allSaving = (AllSaving)serializer.Deserialize(reader.BaseStream);       
+        SceneManager.LoadScene(allSaving.sceneBuildIndexToLoad);        
         // KIG HER https://answers.unity.com/questions/1174255/since-onlevelwasloaded-is-deprecated-in-540b15-wha.html
         
+    }
+
+
+    public void newgame()
+    {
+        newgame1 = true;
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1;
+        load();
     }
 
     private void OnEnable()
@@ -90,7 +111,6 @@ public class Saving : MonoBehaviour
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-
         if (loading)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(AllSaving));
@@ -99,12 +119,25 @@ public class Saving : MonoBehaviour
 
             position = new Vector3(allSaving.bonfirePositionX, allSaving.bonfirePositionY, allSaving.bonfirePositionZ);
 
-            fullPlayer.SetActive(true);
+            //fullPlayer.SetActive(true);
             while (player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player");
             }
-            Debug.Log(position);
+            player.SetActive(true);
+            playerUI.SetActive(true);
+
+            if (newgame1)
+            {
+                position = new Vector3(-44.83f, 5.09f, 3f);
+                newgame1 = false;
+            }
+            else
+            {
+                position = new Vector3(allSaving.bonfirePositionX, allSaving.bonfirePositionY, allSaving.bonfirePositionZ);
+            }
+
+            //Debug.Log(position);
             player.transform.position = position;
             objMaterialUI = GameObject.Find("Material_Counter");
             objPlayer = GameObject.Find("Player");
@@ -119,15 +152,15 @@ public class Saving : MonoBehaviour
             scrMaterial_UI.CheckForHPotion(allSaving.playerHPotion);
             loading = false;
         }
+        while (fadeAni == null)
+        {
+            fadeAni = GameObject.FindGameObjectWithTag("Portal").GetComponent<Animator>();
+        }        
+        fadeAni.SetBool("FadeOut", false);
         Debug.Log("Level loaded");
         Debug.Log(scene.name);
         Debug.Log(mode);
     }
-
-    //private void OnLevelWasLoaded(int level)
-    //{
-        
-    //}
 }
 
 
