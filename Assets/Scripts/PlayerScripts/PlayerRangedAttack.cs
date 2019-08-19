@@ -47,7 +47,7 @@ public class PlayerRangedAttack : MonoBehaviour
         
 
         //print(isNotDrawing);
-        if (Input.GetButtonDown("Fire2") && ps._isGrounded && drawTime <= 0)
+        if (Input.GetButtonDown("Fire2") && ps._isGrounded && drawTime <= 0 && scrMC.AmmoUsed() >= 1)
         {
             Draw();
         }
