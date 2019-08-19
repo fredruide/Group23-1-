@@ -20,10 +20,20 @@ public class Material_Counter : MonoBehaviour
     private TextMeshProUGUI Mats;
     public TextMeshProUGUI Items;
 
+    private GameObject objScoreCounter;
+    private ScoreCounter scrScoreCounter;
+
+    private HouseNodes houseNodes;
+    private bool DeleteMode = false;
+
     // Start is called before the first frame update
     void Awake()
     {
         Mats = GetComponent<TextMeshProUGUI>();
+
+        objScoreCounter = GameObject.Find("ScoreCounter");
+        scrScoreCounter = objScoreCounter.GetComponent<ScoreCounter>();
+        houseNodes = GameObject.Find("HouseNode").GetComponent<HouseNodes>();
         PrintToUI();
         PrintToUI2();
     }
@@ -32,30 +42,65 @@ public class Material_Counter : MonoBehaviour
     {
         playerHerbs += HerbCarryOver;
         PrintToUI();
+
+        DeleteMode = houseNodes.deleteBuilding;
+        if (HerbCarryOver > 0 && DeleteMode == false)
+        {
+            scrScoreCounter.AddScore(HerbCarryOver);
+            DeleteMode = false;
+        }
     }
     
     public void CheckForIron(int IronCarryOver)
     {
         playerIron += IronCarryOver;
         PrintToUI();
+
+        DeleteMode = houseNodes.deleteBuilding;
+        if (IronCarryOver > 0 && DeleteMode == false)
+        {
+            scrScoreCounter.AddScore(IronCarryOver);
+            DeleteMode = false;
+        }
     }
 
     public void CheckForStone(int StoneCarryOver)
     {        
         playerStone += StoneCarryOver;
         PrintToUI();
+
+        DeleteMode = houseNodes.deleteBuilding;
+        if (StoneCarryOver > 0 && DeleteMode == false)
+        {
+            scrScoreCounter.AddScore(StoneCarryOver);
+            DeleteMode = false;
+        }
     }
 
     public void CheckForCrystal(int CrystalCarryOver)
     {
         playerCrystals += CrystalCarryOver;
         PrintToUI();
+
+        DeleteMode = houseNodes.deleteBuilding;
+        if (CrystalCarryOver > 0 && DeleteMode == false)
+        {
+            scrScoreCounter.AddScore(CrystalCarryOver * 10);
+            DeleteMode = false;
+        }
     }
 
     public void CheckForWood(int WoodCarryOver)
     {
         playerWood += WoodCarryOver;
         PrintToUI();
+
+        DeleteMode = houseNodes.deleteBuilding;
+        if (WoodCarryOver > 0 && DeleteMode == false)
+        {
+            scrScoreCounter.AddScore(WoodCarryOver);
+            DeleteMode = false;
+        }
     }
 
     public void CheckForAmmo(int AmmoCarryOver)

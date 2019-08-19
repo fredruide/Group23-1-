@@ -8,17 +8,24 @@ public class DamageToMob : MonoBehaviour
     public float speed;
     public float dazedTime;
     public float startDazedTime;
-    public GameObject bloodEffect;
-    PlayerScript playerC;
-
-    Rigidbody2D rb;
-
     public int Damage;
+
+    public GameObject bloodEffect;
+    PlayerScript scrPlayer;
+
+    Rigidbody2D MobRb;
+
+    public GameObject Chest_Location;
+    public GameObject Herb_Drop;
+    public GameObject Stone_Drop;
+    public GameObject Metal_Drop;
+    public GameObject Wood_Drop;
+    public GameObject Crystal_Drop;
 
     void Start()
     {
-        playerC = GameObject.Find("Player").GetComponent<PlayerScript>();
-        rb = GetComponent<Rigidbody2D>();
+        scrPlayer = GameObject.Find("Player").GetComponent<PlayerScript>();
+        MobRb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
         //anim.SetBool("isRunning", true);
     }
@@ -36,9 +43,10 @@ public class DamageToMob : MonoBehaviour
             dazedTime -= Time.deltaTime;
         }
 
-        if (hp <= 0)
+        if (hp < 1)
         {
-            Destroy(gameObject);
+            StartCoroutine("IELootDrop");
+                        
         }
 
         transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -53,8 +61,8 @@ public class DamageToMob : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            playerC.KnockbackSetter(100, 100, rb.position);
-            playerC.TakeDamage(Damage);
+            scrPlayer.KnockbackSetter(100, 100, MobRb.position);
+            scrPlayer.TakeDamage(Damage);
         }
     }
     public void TakeDmg(int dmg)
@@ -62,5 +70,43 @@ public class DamageToMob : MonoBehaviour
         dazedTime = startDazedTime;
         hp -= dmg;
         Debug.Log("Damage taken " + dmg);
+    }
+
+    IEnumerator IELootDrop()
+    {
+        //Spawner mellem 0 og 10 stone
+        for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
+        {
+            Instantiate(Herb_Drop, MobRb.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        //Spawner mellem 0 og 10 stone
+        for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
+        {
+            Instantiate(Stone_Drop, MobRb.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        //Spawner mellem 0 og 10 metal
+        for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
+        {
+            Instantiate(Metal_Drop, MobRb.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        for (int i = 0; i < UnityEngine.Random.Range(0, 10); i++)
+        {
+            Instantiate(Wood_Drop, MobRb.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        for (int i = 0; i < UnityEngine.Random.Range(0, 1); i++)
+        {
+            Instantiate(Crystal_Drop, MobRb.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        Destroy(gameObject);
     }
 }
