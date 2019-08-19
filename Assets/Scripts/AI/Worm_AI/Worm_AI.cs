@@ -26,7 +26,7 @@ public class Worm_AI : MonoBehaviour
         {
             objPlatforms = GameObject.Find("Tilemap_Platforms");
         }
-        //Physics2D.IgnoreLayerCollision(12, 13, true);
+        //Physics2D.IgnoreLayerCollision(11, 12, false);
         Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), objPlatforms.GetComponent<CompositeCollider2D>());
     }
 

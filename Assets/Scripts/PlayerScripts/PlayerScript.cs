@@ -583,9 +583,10 @@ public class PlayerScript : MonoBehaviour
 
     public void Die()
     {
+        ani.SetBool("Dead", true);
         scrMC.Death();
 
-        rb.transform.position = respawnPosition;
+        
     }
 
     void UseHPotion()
@@ -616,7 +617,7 @@ public class PlayerScript : MonoBehaviour
     #region HelperMethods
     void DirectionFacing()
     {
-        print(PlayerRangedAttack.isNotDrawing);
+        //print(PlayerRangedAttack.isNotDrawing);
         if (PlayerRangedAttack.isNotDrawing)
         {
             //check what direction player last faced
@@ -738,6 +739,7 @@ public class PlayerScript : MonoBehaviour
     public float startTimeBtwAttack; //Sætter initial counter TimeBtwAttack (Bruges til cooldown af attacks så knappen ikke kan blive spammet med 1ms imellem tryk)
     public Transform attackPos; //Et child object af player som bestemmer hvor der bliver attacked fra
     public LayerMask whatisEnemy = 11; //Checker efter Enemy Layer
+    public LayerMask whatIsWorm = 12;
     public float attackRange; //Range på det første attack i chain
     public float attackRange1; //Range på det andet attack i chain
     public float attackRange2; //Range på det tredje attack i chain
@@ -804,8 +806,15 @@ public class PlayerScript : MonoBehaviour
         {
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
-            }
+                if (enemiesToDamage[i].GetComponent<EnemyTest>() == null)
+                {
+                    enemiesToDamage[i].GetComponent<Worm_DamageTaken>().TakeDmg(dmg);
+                }
+                else
+                {
+                    enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+                }
+            }            
         }
         attackType++;
         //print("Melee Attack");

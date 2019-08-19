@@ -60,9 +60,9 @@ public class PlayerAttack : MonoBehaviour
         if (enemiesToDamage != null)
         {
             for (int i = 0; i < enemiesToDamage.Length; i++)
-            {
+            {               
                 enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
-            }
+            }            
         }
         attackType++;
     }

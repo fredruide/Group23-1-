@@ -170,9 +170,10 @@ GameObject:
   - component: {fileID: 886803565249628748}
   - component: {fileID: 875687173318002831}
   - component: {fileID: 872169053760828180}
-  m_Layer: 0
+  - component: {fileID: 8222609954980178615}
+  m_Layer: 11
   m_Name: Worm_Body
-  m_TagString: Untagged
+  m_TagString: Worm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,3 +266,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.8, y: 7.2}
   m_EdgeRadius: 0
+--- !u!114 &8222609954980178615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164185422677658990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9a474831da76c40a8b4dee1a50031d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
