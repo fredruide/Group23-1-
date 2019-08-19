@@ -267,6 +267,8 @@ public class PlayerScript : MonoBehaviour
         IsRunning();
         IsInvincible();
         IsDisabled(isDisabled);
+        Debug.Log(Input.GetAxis("Horizontal"));
+        Debug.Log(Input.GetAxisRaw("Horizontal"));
 
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
@@ -365,7 +367,7 @@ public class PlayerScript : MonoBehaviour
     {
         //check is player is clicking a move horizontal button and is canMoveHori is true
         //canMoveHori is set to false when grounded is set to false
-        if (Input.GetButton("Horizontal") && canMoveHori && PlayerRangedAttack.isNotDrawing)
+        if (Input.GetAxis("Horizontal") != 0 && canMoveHori && PlayerRangedAttack.isNotDrawing)
         {
             //checks if player is colliding with a object on the same side at they are moving
             //if true then stop moving to prevent false sliding
@@ -383,7 +385,7 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }    
         }
-        else if (!Input.GetButton("Horizontal") && canMoveHori)
+        else if (Input.GetAxis("Horizontal") == 0 && canMoveHori)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -410,7 +412,7 @@ public class PlayerScript : MonoBehaviour
         {
             //checks is player is clicking a move horizontal button and is thouching a object on there left or right side
             // and is not trying to jump
-            if (Input.GetButton("Horizontal")  && (touchLeft || touchRight) && !Input.GetButton("Vertical"))
+            if (Input.GetAxis("Horizontal") != 0  && (touchLeft || touchRight) && !Input.GetButton("Vertical"))
             {
                 //checks if the players horizontale movement direction is the same direction as  
                 // player is coliding with an object
@@ -645,7 +647,7 @@ public class PlayerScript : MonoBehaviour
             ani.SetBool("isRunning", false);
         }
         */
-        if (Input.GetButton("Horizontal") && canMoveHori && isGrounded)
+        if (Input.GetAxis("Horizontal") != 0 && canMoveHori && isGrounded)
         {
             isRunning = true;
             ani.SetBool("isRunning", true);
