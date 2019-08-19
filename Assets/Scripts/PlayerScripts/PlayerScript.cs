@@ -245,6 +245,7 @@ public class PlayerScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         //ani is used to manipulate and check on animation
         ani = GetComponent<Animator>();
+
         aniSpeed = ani.speed;
         //mainCam is used to check and manipulate the Main Camera in the scene
         //mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();  Bruges ikke  
@@ -255,7 +256,7 @@ public class PlayerScript : MonoBehaviour
         objHPotion_Counter = GameObject.Find("Material_Counter");
         scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
 
-        ani.
+        
     }
 
     // Update is called once per frame

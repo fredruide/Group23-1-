@@ -18,11 +18,15 @@ public class PlayerRangedAttack : MonoBehaviour
 
     public GameObject objAmmo_CounterText;
     public Text Ammo_CounterText;
+
+    public GameObject test2;
     //      }
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         ps = GetComponent<PlayerScript>();
+
+        var test = test2;
     }
 
     private void Awake()
