@@ -6,7 +6,7 @@ public class RotateMino : MonoBehaviour
 {
 
 
-    public Transform target;
+    public GameObject target;
     public float range;
     // Start is called before the first frame update
     void Start()
@@ -17,13 +17,14 @@ public class RotateMino : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         if (distanceToTarget < range)
         {
-            Vector3 targetDir = target.position - transform.position;
+            Vector3 targetDir = target.transform.position - transform.position;
             float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 180);
+            
         }
     }
 

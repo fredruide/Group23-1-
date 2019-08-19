@@ -18,11 +18,15 @@ public class PlayerRangedAttack : MonoBehaviour
 
     public GameObject objAmmo_CounterText;
     public Text Ammo_CounterText;
+
+    public GameObject test2;
     //      }
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         ps = GetComponent<PlayerScript>();
+
+        var test = test2;
     }
 
     private void Awake()
@@ -43,7 +47,7 @@ public class PlayerRangedAttack : MonoBehaviour
         
 
         //print(isNotDrawing);
-        if (Input.GetButtonDown("Fire2") && ps._isGrounded && drawTime <= 0)
+        if (Input.GetButtonDown("Fire2") && ps._isGrounded && drawTime <= 0 && scrMC.AmmoUsed() >= 1)
         {
             Draw();
         }
