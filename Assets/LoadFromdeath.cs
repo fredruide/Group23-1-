@@ -19,13 +19,15 @@ public class LoadFromdeath : StateMachineBehaviour
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {        
+    {
+        Saving saving = GameObject.Find("Saving").GetComponent<Saving>();
         while (GameObject.Find("Saving").GetComponent<Saving>() == null)
         {
-            Saving saving = GameObject.Find("Saving").GetComponent<Saving>();
+            saving = GameObject.Find("Saving").GetComponent<Saving>();            
         }
-        //Saving saving = GameObject.Find("Saving").GetComponent<Saving>();
         saving.load();
+        //Saving saving = GameObject.Find("Saving").GetComponent<Saving>();
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
