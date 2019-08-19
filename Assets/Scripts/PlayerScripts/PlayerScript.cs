@@ -258,14 +258,12 @@ public class PlayerScript : MonoBehaviour
         //mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();  Bruges ikke  
     }
 
-    float alive;
-
     private void Awake()
     {//J.C.
         objHPotion_Counter = GameObject.Find("Material_Counter");
         scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
 
-        alive = 0f;
+        
     }
 
     // Update is called once per frame
@@ -275,6 +273,8 @@ public class PlayerScript : MonoBehaviour
         IsRunning();
         IsInvincible();
         IsDisabled(isDisabled);
+        Debug.Log(Input.GetAxis("Horizontal"));
+        Debug.Log(Input.GetAxisRaw("Horizontal"));
 
         //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
@@ -391,7 +391,7 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }    
         }
-        else if (Input.GetAxis("Horizontal") == 0 && canMoveHori && isKB == false)
+        else if (!Input.GetButton("Horizontal") && canMoveHori)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -649,7 +649,7 @@ public class PlayerScript : MonoBehaviour
     #region HelperMethods
     void DirectionFacing()
     {
- 
+        print(PlayerRangedAttack.isNotDrawing);
         if (PlayerRangedAttack.isNotDrawing)
         {
             //check what direction player last faced
@@ -771,6 +771,7 @@ public class PlayerScript : MonoBehaviour
     public float startTimeBtwAttack; //Sætter initial counter TimeBtwAttack (Bruges til cooldown af attacks så knappen ikke kan blive spammet med 1ms imellem tryk)
     public Transform attackPos; //Et child object af player som bestemmer hvor der bliver attacked fra
     public LayerMask whatisEnemy = 11; //Checker efter Enemy Layer
+    public LayerMask whatIsWorm = 12;
     public float attackRange; //Range på det første attack i chain
     public float attackRange1; //Range på det andet attack i chain
     public float attackRange2; //Range på det tredje attack i chain
@@ -837,15 +838,8 @@ public class PlayerScript : MonoBehaviour
         {
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                if (enemiesToDamage[i].GetComponent<EnemyTest>() == null)
-                {
-                    enemiesToDamage[i].GetComponent<Worm_DamageTaken>().TakeDmg(dmg);
-                }
-                else
-                {
-                    enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
-                }
-            }            
+                enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+            }
         }
         attackType++;
         //print("Melee Attack");
