@@ -33,7 +33,8 @@ public class Material_Counter : MonoBehaviour
 
         objScoreCounter = GameObject.Find("ScoreCounter");
         scrScoreCounter = objScoreCounter.GetComponent<ScoreCounter>();
-        houseNodes = GameObject.Find("HouseNode").GetComponent<HouseNodes>();
+        if(GameObject.Find("HouseNode").GetComponent<HouseNodes>() != null)
+            houseNodes = GameObject.Find("HouseNode").GetComponent<HouseNodes>();
         PrintToUI();
         PrintToUI2();
     }

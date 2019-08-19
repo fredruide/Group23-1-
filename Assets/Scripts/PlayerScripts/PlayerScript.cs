@@ -258,14 +258,12 @@ public class PlayerScript : MonoBehaviour
         //mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();  Bruges ikke  
     }
 
-    float alive;
-
     private void Awake()
     {//J.C.
         objHPotion_Counter = GameObject.Find("Material_Counter");
         scrMC = objHPotion_Counter.GetComponent<Material_Counter>();
 
-        alive = 0f;
+        
     }
 
     // Update is called once per frame
@@ -275,12 +273,6 @@ public class PlayerScript : MonoBehaviour
         IsRunning();
         IsInvincible();
         IsDisabled(isDisabled);
-        Debug.Log(Input.GetAxis("Horizontal"));
-        Debug.Log(Input.GetAxisRaw("Horizontal"));
-
-        //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
-
-        //ani.SetBool("Grounded", grounded);
 
         HorizontalMovement();        
         Jump();
@@ -289,86 +281,12 @@ public class PlayerScript : MonoBehaviour
         WallSlide();
         AttackChecker();
         UseHPotion();
-
-        //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        //print("attackType: " + attackType);
-        //print("");
-
-        
-        //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        //print("attackType: " + attackType);
-        //print("");
-
-        //print ani
-        //if (Input.GetButton("Fire1"))
-        //{
-        //    Debug.Log("isGrounded: " + ani.GetBool("isGrounded"));
-        //    Debug.Log("isInCombat: " + ani.GetBool("isInCombat"));
-        //    Debug.Log("isRunning: " + ani.GetBool("isRunning"));
-        //    Debug.Log("isJumping: " + ani.GetBool("isJumping"));
-        //    Debug.Log("isAirborn: " + ani.GetBool("isAirborn"));
-        //    Debug.Log("isWallSliding: " + ani.GetBool("isWallSliding"));
-        //    Debug.Log("isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        //}
-        //
-        //Debug.Log("out of if isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        //print("isWallSliding: " + isWallSliding);
-        //print(PlayerRangedAttack.isNotDrawing);
-        //print("isWallSlide: " + _isWallSliding + " ani.isWallSlide: " + ani.GetBool("isWallSliding"));
-        //print("isAirborn: " +_isAirborn + " ani.isAirborn: " + ani.GetBool("isAirborn"));
-        //print("IsInvincible: " + IsInvincible());
-        //print(Input.GetJoystickNames().Length);
-
-        //print(Input.GetAxis("Horizontal") + " " + Input.GetButton("Horizontal"));
-        //print("Velocity: " + rb.velocity.y);
-        //print("Velocity: " + rb.velocity.y);SDW
-        //print("isGrounded: " + isGrounded);
-        //print("canJump: " + canJump);
-        //print("hasBeen: " + hasBeenGrounded);
-        //print("input: " + Input.GetButtonDown("Vertical"));
-        //print("Player: " + rb.transform.position);
-        //print("Camera: " + GameObject.Find("Main Camera").transform.position);
-
-        //if (grounded)
-        //print("Grounded: " + grounded);
-        //if (!touchRight)
-        //print("TouchRight: " + touchRight);
-        //if (Input.GetButtonDown("Vertical"))
-        //print("input Vertical: " + Input.GetButtonDown("Vertical"));
     }
 
     // Update is called once per frame at a fixed framerate of 60 fps
     void FixedUpdate()
     {
-        /*
-        DirectionFacing();
-        //grounded = true ? bottomTrigger.gameObject.tag == "Ground" : false;
 
-        //ani.SetBool("Grounded", grounded);
-       
-
-        HorizontalMovement();
-        WallSlide();
-        Jump();
-        DoubleJump();
-        WallJump();
-
-        //print("Velocity: " + rb.velocity.y);
-        //print("grounded: " + grounded);
-        //print("canJump: " + canJump);
-        //print("hasBeen: " + hasBeenGrounded);
-        //print("input: " + Input.GetButtonDown("Vertical"));
-        //print("Player: " + rb.transform.position);
-        //print("Camera: " + GameObject.Find("Main Camera").transform.position);
-
-        //if (grounded)
-            //print("Grounded: " + grounded);
-        //if (!touchRight)
-            //print("TouchRight: " + touchRight);
-        if (Input.GetButtonDown("Vertical"))
-            print("input Vertical: " + Input.GetButtonDown("Vertical"));
-
-        */
     }
 
     void HorizontalMovement()
@@ -397,18 +315,6 @@ public class PlayerScript : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        
-        //SLOW MOVMENT WHEN IN AIR
-        /*else if (!grounded && Input.GetAxisRaw("Horizontal") != 0)
-        {
-            if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
-                rb.velocity = new Vector2(speed / 2 * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
-                rb.velocity = new Vector2(speed / 2 * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-            else
-                rb.velocity = new Vector2(0, rb.velocity.y);
-        }*/
-
     }
 
     void WallSlide()
@@ -458,21 +364,13 @@ public class PlayerScript : MonoBehaviour
             canDoubleJump = true;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             ani.SetBool("isJumping", true);
-            //print("Jump: " + rb.velocity.y);
-            //print("grounded: " + grounded);
-            //print("canJump: " + canJump);
-            //FindObjectOfType<AudioManager>().Play("Jump");
         }
-        //if player can´t jump under normal conditions check if player can jump under coyote conditions
         else if (!isGrounded && Input.GetButtonDown("Vertical") && coyoteTS >= Time.time && canJump)
         {
             canJump = false;
             canDoubleJump = true;
             rb.velocity = new Vector2(rb.velocity.x, jump);
             ani.SetBool("isJumping", true);
-            //print("Jump Coyote: " + rb.velocity.y);
-            //print("grounded: " + grounded);
-            //print("canJump: " + canJump);
         }
         else
         {
@@ -491,7 +389,6 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jump);
 
             ani.SetBool("isJumping", true);
-            //FindObjectOfType<AudioManager>().Play("DoubleJump");
         }
     }
 
@@ -509,8 +406,6 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(wallJumpX * -1, wallJumpY);
             isDisabled = true;
             _isGrounded = false;
-            //print("input vertical + touchRight + input Horizontal > 0");
-            //print("Velocity: " + rb.velocity.y);
         }
         //the else if statment is to walljump to the right
         else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0 && !isGrounded)
@@ -521,8 +416,6 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(wallJumpX, wallJumpY);
             isDisabled = true;
             _isGrounded = false;
-            //print("input vertical + touchLeft + input Horizontal < 0");
-            //print("Velocity: " + rb.velocity.y);
         }    
     }
 
@@ -538,7 +431,6 @@ public class PlayerScript : MonoBehaviour
 
             _stopMoveHoriTS = Time.time;
             isDisabled = false;
-            //print("CanMoveHori trigger: " + canMoveHori);
         }
         //if timer is below current time allow horizontal movement agien
         if (stopMoveHoriTS <= Time.time)
@@ -546,8 +438,6 @@ public class PlayerScript : MonoBehaviour
 
             canMoveHori = true;
             isKB = false;
-
-            //print("CanMoveHori stopMove: " + canMoveHori);
         }
     }
 
@@ -565,7 +455,6 @@ public class PlayerScript : MonoBehaviour
 
             _stopMoveHoriTS = Time.time;
             isDisabled = false;
-            //print("CanMoveHori trigger: " + canMoveHori);
         }
 
     }
@@ -589,14 +478,6 @@ public class PlayerScript : MonoBehaviour
         {
             knockbackX = -knockbackX;
         }
-
-        /*
-        if (enemyPosition.y > rb.transform.position.y)
-        {
-            knockbackY = -knockbackY;
-        }
-        */
-
         rb.velocity = new Vector2(knockbackX, knockbackY);        
     }
 
@@ -617,10 +498,9 @@ public class PlayerScript : MonoBehaviour
 
     public void Die()
     {
-        ani.SetBool("Dead", true);
         scrMC.Death();
 
-        
+        rb.transform.position = respawnPosition;
     }
 
     void UseHPotion()
@@ -669,18 +549,6 @@ public class PlayerScript : MonoBehaviour
     }
     void IsRunning()
     {
-        /*
-        if (Input.GetButton("Horizontal") && canMoveHori && isGrounded && rb.velocity.x != 0)
-        {
-            isRunning = true;
-            ani.SetBool("isRunning", true);
-        }
-        else
-        {
-            isRunning = false;
-            ani.SetBool("isRunning", false);
-        }
-        */
         if (Input.GetAxis("Horizontal") != 0 && canMoveHori && isGrounded)
         {
             isRunning = true;
@@ -727,9 +595,6 @@ public class PlayerScript : MonoBehaviour
     {
         if(ani.GetCurrentAnimatorStateInfo(0).IsName("Player_Wall_Slide"))
         {
-            //Debug.Log("Success!");
-            //print("Success");
-            //print(this.gameObject.transform.childCount);
             GameObject Child;
 
             for (int i = 0; i < gameObject.transform.childCount -1; i++)
@@ -789,23 +654,17 @@ public class PlayerScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1") && attackType == 1) //Første angreb i chain
             {
-                //print("AttackType 1");
                 MeleeAttack(damage, attackRange);
-                //ani.SetInteger("isAttacking1-3", 1);
                 ani.SetBool("AttackType1", true);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 2) //andet angreb i chain
             {
                 MeleeAttack(damage1, attackRange1);
-                //print("AttackType 2");
-                //ani.SetInteger("isAttacking1-3", 2);
                 ani.SetBool("AttackType2", true);
             }
             else if (Input.GetButtonDown("Fire1") && attackType == 3) //tredje angreb i chain
             {
                 MeleeAttack(damage2, attackRange2);
-                //print("AttackType 3");
-                //ani.SetInteger("isAttacking1-3", 3);
                 attackGracePeriod = 0;
                 ani.SetBool("AttackType3",true);
             }
@@ -817,10 +676,6 @@ public class PlayerScript : MonoBehaviour
         if (attackGracePeriod <= 0) //Sætter attack type tilbage til 1 når grace perioden rammer 0
         {
             attackType = 1;
-            //ani.SetBool("AttackType1", false);
-            //ani.SetBool("AttackType2", false);
-            //ani.SetBool("AttackType3", false);
-            //ani.SetInteger("isAttacking1-3", 0);
         }
         else
         {
@@ -847,17 +702,16 @@ public class PlayerScript : MonoBehaviour
                 {
                     enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
                 }
-            }            
+            }
         }
         attackType++;
-        //print("Melee Attack");
-    } // }
+    }
     #endregion
     #region Sound
     //Daniel
     void RunSound()
     {
-        //FindObjectOfType<AudioManager>().Play("Walk");
+        FindObjectOfType<AudioManager>().Play("Walk");
     }
     void AttackSound()
     {

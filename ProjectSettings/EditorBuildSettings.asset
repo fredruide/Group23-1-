@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Grasslands_Housing.unity
     guid: 9463283149769804a9a3140cdb58e09a
   - enabled: 1
-    path: Assets/Scenes/Grasslands_Housing.unity
-    guid: 9463283149769804a9a3140cdb58e09a
-  - enabled: 1
     path: Assets/Scenes/Grasslands_01.unity
     guid: 7fbad984fe3197446a798349809a97e5
   m_configObjects: {}
