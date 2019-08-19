@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 2
-  rb: {fileID: 0}
+  MobRb: {fileID: 0}
   knockbackX: 0
   knockbackY: 0
   playerPosition: {x: 0, y: 0}
@@ -262,6 +262,16 @@ MonoBehaviour:
   hasSeenPlayer: 0
   timeStamp: 0
   isStunned: 0
+  Herb_Drop: {fileID: 4238481674042155558, guid: 8a8de4b279026c644b66fbc1f865271a,
+    type: 3}
+  Stone_Drop: {fileID: 8743641330326259238, guid: b3d9cdc08d2e6124684e994c0a58e4c5,
+    type: 3}
+  Metal_Drop: {fileID: 4536039474542457393, guid: dd5daed6b6aeb2e43b60dbc60f705f0c,
+    type: 3}
+  Wood_Drop: {fileID: 4373205520161887380, guid: 5877d37238329a640b05ffd88f6be23d,
+    type: 3}
+  Crystal_Drop: {fileID: 2114367309443122231, guid: 9a73d36c9ebab9d429d17ffb48745e82,
+    type: 3}
   Speed: 5
   playerRange: 20
   playerLayer:

@@ -105,7 +105,7 @@ public class DamageToEnemy : MonoBehaviour
         StartCoroutine("IELootDrop");
         //Implement lootdrop
         //Create death animation
-        Destroy(gameObject);
+        
 
     }
 
@@ -143,7 +143,7 @@ public class DamageToEnemy : MonoBehaviour
             Instantiate(Crystal_Drop, MobRb.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
         }
+        Destroy(gameObject);
 
-        
     }
 }

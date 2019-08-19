@@ -11,6 +11,7 @@ public class GoombaScript : DamageToEnemy
     void Start()
     {
         ani = GetComponent<Animator>();
+        playerObject = GameObject.Find("Player");
         MobRb = this.GetComponent<Rigidbody2D>();
         faceDirection();
     }
@@ -23,7 +24,7 @@ public class GoombaScript : DamageToEnemy
             isStunned = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.PageUp))
+        if (Input.GetKeyDown(KeyCode.PageDown))
         {
             TakeDamage(1);
         }
