@@ -40,6 +40,7 @@ public class Worm_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Die();
         //Debug.Log(horizontalSpeed);
         formDeteminer = Random.Range(0, 2);
         //if (hp <= hp * 0.5)
@@ -105,5 +106,14 @@ public class Worm_Controller : MonoBehaviour
 
         pos = new Vector3(headPositionX + lengthAdder, wormPositionY, 4);
         Instantiate(wormTail, pos, Quaternion.identity);
+    }
+
+    public void Die()
+    {
+        if (hp <= 0)
+        {
+            gameObject.SetActive(false);
+            //lav Death animation
+        }
     }
 }

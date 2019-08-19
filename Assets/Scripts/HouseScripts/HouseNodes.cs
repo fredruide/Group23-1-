@@ -29,13 +29,15 @@ public class HouseNodes : MonoBehaviour
     private GameObject objHouseSaving;
     
     private bool building = false;
-    private bool deleteBuilding = false;
+    public bool deleteBuilding = false;
     #endregion
     #region UI Constructors
     public TextManipulator TextManipulator;
 
     public GameObject mainCamera1;
     public GameObject overViewCamera;
+
+    public Material_Counter Material_CounterScr;
 
     public GameObject UI;
     public GameObject buildButton;
@@ -47,6 +49,7 @@ public class HouseNodes : MonoBehaviour
         //BuildingsBuilt();
         TextManipulator = GameObject.FindObjectOfType<TextManipulator>();
         mainCamera1 = GameObject.FindGameObjectWithTag("MainCamera");
+        Material_CounterScr = GameObject.Find("Material_Counter").GetComponent<Material_Counter>();
     }
 
     private void Start()
@@ -112,9 +115,10 @@ public class HouseNodes : MonoBehaviour
     {
         if (building)
         {
-            if (!herbBuilt && !deleteBuilding)
+            if (!herbBuilt && !deleteBuilding && Material_CounterScr.playerHerbs > 50)
             {
                 herbBuilt = true;
+                Material_CounterScr.CheckForHerb(-50);
                 Vector3 pos = new Vector3(gridHerbalistX, gridHerbalistY, -10.2f);
                 Instantiate(herbalist, pos, Quaternion.identity);
             }
@@ -124,9 +128,10 @@ public class HouseNodes : MonoBehaviour
     {
         if (building)
         {
-            if (!ironBuilt && !deleteBuilding)
+            if (!ironBuilt && !deleteBuilding && Material_CounterScr.playerIron > 50)
             {
                 ironBuilt = true;
+                Material_CounterScr.CheckForIron(-50);
                 Vector3 pos = new Vector3(gridIronX, gridIronY, -10.2f);
                 Instantiate(iron, pos, Quaternion.identity);
             }
@@ -136,9 +141,10 @@ public class HouseNodes : MonoBehaviour
     {
         if (building)
         {
-            if (!stoneBuilt && !deleteBuilding)
+            if (!stoneBuilt && !deleteBuilding && Material_CounterScr.playerStone > 50)
             {
                 stoneBuilt = true;
+                Material_CounterScr.CheckForStone(-50);
                 Vector3 pos = new Vector3(gridStoneX, gridStoneY, -10.2f);
                 Instantiate(stone, pos, Quaternion.identity);
             }
@@ -153,6 +159,7 @@ public class HouseNodes : MonoBehaviour
             {
                 var herbDestroy = GameObject.Find("Herbalist(Clone)");
                 Destroy(herbDestroy);
+                Material_CounterScr.CheckForHerb(25);
                 herbBuilt = false;
             }
         }
@@ -163,6 +170,7 @@ public class HouseNodes : MonoBehaviour
         {
             var ironDestroy = GameObject.Find("Iron(Clone)");
             Destroy(ironDestroy);
+            Material_CounterScr.CheckForIron(25);
             ironBuilt = false;
         }
     }
@@ -172,6 +180,7 @@ public class HouseNodes : MonoBehaviour
         {
             var stoneDestroy = GameObject.Find("Stone(Clone)");
             Destroy(stoneDestroy);
+            Material_CounterScr.CheckForStone(25);
             stoneBuilt = false;
         }
     }
@@ -214,6 +223,3 @@ public class HouseNodes : MonoBehaviour
         }
     }
 }
-
-
-

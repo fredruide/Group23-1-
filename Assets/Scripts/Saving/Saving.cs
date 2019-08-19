@@ -152,7 +152,10 @@ public class Saving : MonoBehaviour
             scrMaterial_UI.CheckForHPotion(allSaving.playerHPotion);
             loading = false;
         }
-        fadeAni = GameObject.FindGameObjectWithTag("Portal").GetComponent<Animator>();
+        while (fadeAni == null)
+        {
+            fadeAni = GameObject.FindGameObjectWithTag("Portal").GetComponent<Animator>();
+        }        
         fadeAni.SetBool("FadeOut", false);
         Debug.Log("Level loaded");
         Debug.Log(scene.name);

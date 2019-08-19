@@ -56,4 +56,5 @@ MonoBehaviour:
   tailPositionX: 129.78
   wormPositionY: -11.88
   hp: 400
+  wormActionFinished: 0
   horizontalSpeed: -20

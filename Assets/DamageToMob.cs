@@ -58,7 +58,7 @@ public class DamageToMob : MonoBehaviour
         }
     }
     public void TakeDmg(int dmg)
-    {
+    {       
         dazedTime = startDazedTime;
         hp -= dmg;
         Debug.Log("Damage taken " + dmg);
