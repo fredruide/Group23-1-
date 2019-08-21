@@ -549,7 +549,7 @@ public class PlayerScript : MonoBehaviour
     }
     void IsRunning()
     {
-        if (Input.GetAxis("Horizontal") != 0 && canMoveHori && isGrounded)
+        if (Input.GetAxisRaw("Horizontal") != 0 && canMoveHori && isGrounded)
         {
             isRunning = true;
             ani.SetBool("isRunning", true);

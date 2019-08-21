@@ -36,10 +36,8 @@ public class DamageToEnemy : MonoBehaviour
         Debug.Log("test3");
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("test4");
             if (hasSeenPlayer == false)
             {
-                Debug.Log("test5");
                 playerObject = GameObject.Find("Player");
                 scrPlayer = playerObject.GetComponent<PlayerScript>();
                 hasSeenPlayer = true;
@@ -52,7 +50,6 @@ public class DamageToEnemy : MonoBehaviour
     {
         if (MovementDisabled)
         {
-            Debug.Log("test6");
             timeStamp = Time.time + timer;
             isStunned = true;
         }
@@ -60,7 +57,6 @@ public class DamageToEnemy : MonoBehaviour
 
     public void KnockbackSetter(float xForce, float yForce, Vector2 playerPosition)
     {
-        Debug.Log("test8");
         knockbackX = xForce;
         knockbackY = yForce;
         playerObject.transform.position = playerPosition;
@@ -68,12 +64,10 @@ public class DamageToEnemy : MonoBehaviour
 
     public void KnockBack()
     {
-        Debug.Log("test9");
         IsDisabled(true, 0.6f);
 
         if (playerObject.transform.position.x >= MobRb.transform.position.x)
         {
-            Debug.Log("test10");
             knockbackX = knockbackX * -1;
         }
 
@@ -83,7 +77,6 @@ public class DamageToEnemy : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        Debug.Log("test11");
         HP -= dmg;
         KnockbackSetter(4, 4, playerObject.transform.position);
         KnockBack();
@@ -93,7 +86,6 @@ public class DamageToEnemy : MonoBehaviour
             objScoreCounter = GameObject.Find("ScoreCounter");
             scrScoreCounter = objScoreCounter.GetComponent<ScoreCounter>();
 
-            Debug.Log("test12");
             Die();
 
             scrScoreCounter.AddScore(20);
