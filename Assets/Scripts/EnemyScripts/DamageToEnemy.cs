@@ -33,7 +33,6 @@ public class DamageToEnemy : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("test3");
         if (collision.gameObject.tag == "Player")
         {
             if (hasSeenPlayer == false)

@@ -582,9 +582,11 @@ MonoBehaviour:
   attackRange: 3
   attackRange1: 3
   attackRange2: 3
+  airAttackRange: 0
   damage: 2
   damage1: 2
   damage2: 2
+  airDamage: 0
   attackType: 1
   attackGracePeriod: 0
   startTimeBtwGrace: 1.5
@@ -769,16 +771,6 @@ PrefabInstance:
         type: 3}
       propertyPath: orthographic size
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989380225566478682, guid: 9a5a02c9a3ff45142b14e4c03852da5c,
-        type: 3}
-      propertyPath: near clip plane
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989380225566478682, guid: 9a5a02c9a3ff45142b14e4c03852da5c,
-        type: 3}
-      propertyPath: far clip plane
-      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5a02c9a3ff45142b14e4c03852da5c, type: 3}

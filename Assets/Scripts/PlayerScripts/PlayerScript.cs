@@ -641,16 +641,18 @@ public class PlayerScript : MonoBehaviour
     public float attackRange; //Range på det første attack i chain
     public float attackRange1; //Range på det andet attack i chain
     public float attackRange2; //Range på det tredje attack i chain
+    public float airAttackRange; //Range på Attack vis man er i luften
     public int damage; //Attack damage på det første attack i chain
     public int damage1; //Attack damage på det andet attack i chain
     public int damage2; //Attack damage på det tredje attack i chain
+    public int airDamage; //Attack damage vis man er i luften
     public int attackType = 1; //Bestemmer hvad for et attack der bliver det næste i chain
     public float attackGracePeriod; //Countdown fra startTimeBtwGrace til 0
     public float startTimeBtwGrace; //Sætter initial counter til attackGracePeriod (Bruges til at resette attacktype til 1 hvis der ikke bliver angrebet i et stykke tid)
 
     void AttackChecker()
     {
-        if (timeBtwAttack <= 0)
+        if (timeBtwAttack <= 0 && isGrounded)
         {
             if (Input.GetButtonDown("Fire1") && attackType == 1) //Første angreb i chain
             {
@@ -667,6 +669,14 @@ public class PlayerScript : MonoBehaviour
                 MeleeAttack(damage2, attackRange2);
                 attackGracePeriod = 0;
                 ani.SetBool("AttackType3",true);
+            }
+        }
+        else if (timeBtwAttack <= 0 && !isGrounded)
+        {
+            if (Input.GetButton("Fire1")) //AirAttack
+            {
+                MeleeAttack(airDamage, airAttackRange);
+                ani.SetBool("AirAttack", true);
             }
         }
         else
