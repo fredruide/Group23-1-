@@ -398,7 +398,26 @@ public class PlayerScript : MonoBehaviour
         //check if player is clicking the horizontale move button that matches the side 
         //that the wall they are coliding with is on and that the player is trying to jump
         //the if statment is for walljumping to the left
-        if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0 && !isGrounded)
+        //if (Input.GetButtonDown("Vertical") && touchRight && Input.GetAxisRaw("Horizontal") > 0 && !isGrounded)
+        //{
+        //    //set player velocity to zero in x and y 
+        //    rb.velocity = Vector2.zero;
+        //    //set player velocity to wall jump x and y velocitys
+        //    rb.velocity = new Vector2(wallJumpX * -1, wallJumpY);
+        //    isDisabled = true;
+        //    _isGrounded = false;
+        //}
+        ////the else if statment is to walljump to the right
+        //else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0 && !isGrounded)
+        //{
+        //    //set player velocity to zero in x and y 
+        //    rb.velocity = Vector2.zero;
+        //    //set player velocity to wall jump x and y velocitys
+        //    rb.velocity = new Vector2(wallJumpX, wallJumpY);
+        //    isDisabled = true;
+        //    _isGrounded = false;
+        //}   
+        if (Input.GetButtonDown("Vertical") && touchRight && !isGrounded)
         {
             //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
@@ -408,7 +427,7 @@ public class PlayerScript : MonoBehaviour
             _isGrounded = false;
         }
         //the else if statment is to walljump to the right
-        else if (Input.GetButtonDown("Vertical") && touchLeft && Input.GetAxisRaw("Horizontal") < 0 && !isGrounded)
+        else if (Input.GetButtonDown("Vertical") && touchLeft && !isGrounded)
         {
             //set player velocity to zero in x and y 
             rb.velocity = Vector2.zero;
@@ -416,7 +435,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(wallJumpX, wallJumpY);
             isDisabled = true;
             _isGrounded = false;
-        }    
+        }
     }
 
     #region StateManipulators    
