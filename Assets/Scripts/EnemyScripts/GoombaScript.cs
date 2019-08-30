@@ -24,10 +24,10 @@ public class GoombaScript : DamageToEnemy
             isStunned = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.PageDown))
-        {
-            TakeDamage(1);
-        }
+        //if (Input.GetKeyDown(KeyCode.PageDown))
+        //{
+        //    TakeDamage(1);
+        //}
 
         if (isStunned == false)
         {
