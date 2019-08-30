@@ -543,7 +543,7 @@ MonoBehaviour:
   firePoint: {fileID: 3690880182274711934}
   arrow: {fileID: 5284784427024207470, guid: 33282cb285a40274793345faa0e39199, type: 3}
   drawTime: 0
-  startDrawTime: 0
+  startDrawTime: 1.2
   MCAmmo_Counter: {fileID: 0}
   scrMC: {fileID: 0}
   objAmmo_CounterText: {fileID: 0}
@@ -710,17 +710,17 @@ PrefabInstance:
     - target: {fileID: 3989380225566478685, guid: 9a5a02c9a3ff45142b14e4c03852da5c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3989380225566478685, guid: 9a5a02c9a3ff45142b14e4c03852da5c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.339
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3989380225566478685, guid: 9a5a02c9a3ff45142b14e4c03852da5c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.67
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3989380225566478685, guid: 9a5a02c9a3ff45142b14e4c03852da5c,
         type: 3}
@@ -769,8 +769,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989380225566478682, guid: 9a5a02c9a3ff45142b14e4c03852da5c,
         type: 3}
-      propertyPath: orthographic size
-      value: 10
+      propertyPath: near clip plane
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5a02c9a3ff45142b14e4c03852da5c, type: 3}
