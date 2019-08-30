@@ -58,7 +58,7 @@ public class DamageToEnemy : MonoBehaviour
     {
         knockbackX = xForce;
         knockbackY = yForce;
-        playerObject.transform.position = playerPosition;
+        //playerObject.transform.position = playerPosition;
     }
 
     public void KnockBack()

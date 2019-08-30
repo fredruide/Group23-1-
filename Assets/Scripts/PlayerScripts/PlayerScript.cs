@@ -186,7 +186,9 @@ public class PlayerScript : MonoBehaviour
     //lenght of coyote effect (how long after being not grounded player still can jump)
     public float coyoteCD;
     //used to pause horizontal movement when wall jumping
-    public float stopMoveHoriCD;
+    float stopMoveHoriCD;
+    //to revert "stopMoveHoriCD" back to its original state after Knockback effect
+    public float trueStopMoveHoriCD;
     //how far player will be pushed Horizontal when wall jumping
     public float wallJumpX;
     //how far player will be pushed vertical when wall jumping
@@ -246,6 +248,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stopMoveHoriCD = trueStopMoveHoriCD;
         //rb is used to manipulate player rigid body
         rb = GetComponent<Rigidbody2D>();
         //sr is used to manipulated player sprite and animations sprites
@@ -454,8 +457,8 @@ public class PlayerScript : MonoBehaviour
         //if timer is below current time allow horizontal movement agien
         if (stopMoveHoriTS <= Time.time)
         {
-
             canMoveHori = true;
+            stopMoveHoriCD = trueStopMoveHoriCD;
             isKB = false;
         }
     }
@@ -723,13 +726,25 @@ public class PlayerScript : MonoBehaviour
         {
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                if (enemiesToDamage[i].GetComponent<EnemyTest>() == null)
+                //if (enemiesToDamage[i].GetComponent<EnemyTest>() == null)
+                //{
+                //    enemiesToDamage[i].GetComponent<Worm_DamageTaken>().TakeDmg(dmg);
+                //}
+                //else
+                //{
+                //    enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
+                //}
+                if (enemiesToDamage[i].GetComponent<GatorMove>() != null)
+                {
+                    enemiesToDamage[i].GetComponent<GatorMove>().TakeDamage(dmg);
+                }
+                else if (enemiesToDamage[i].GetComponent<GoombaScript>() != null)
+                {
+                    enemiesToDamage[i].GetComponent<GoombaScript>().TakeDamage(dmg);
+                }
+                else if (enemiesToDamage[i].GetComponent<Worm_DamageTaken>() != null)
                 {
                     enemiesToDamage[i].GetComponent<Worm_DamageTaken>().TakeDmg(dmg);
-                }
-                else
-                {
-                    enemiesToDamage[i].GetComponent<EnemyTest>().TakeDmg(dmg);
                 }
             }
         }
