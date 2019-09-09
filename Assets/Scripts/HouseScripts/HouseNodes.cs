@@ -58,7 +58,7 @@ public class HouseNodes : MonoBehaviour
         mainCamera1.SetActive(true);
         overViewCamera.SetActive(false);
         UI.SetActive(false);
-        if (null != GameObject.Find("Material_Counter"))
+        if (GameObject.Find("Material_Counter") != null)
         {
             objMaterialCounter = GameObject.Find("Material_Counter");
             scrMaterialCounter = objMaterialCounter.GetComponent<Material_Counter>();

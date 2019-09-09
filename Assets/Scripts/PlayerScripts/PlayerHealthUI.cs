@@ -22,7 +22,8 @@ public class PlayerHealthUI : MonoBehaviour
     {
         objPlayer = GameObject.Find("Player");
         scrPlayer = objPlayer.GetComponent<PlayerScript>();
-}
+
+    }
     // Update is called once per frame
     void Update()
     {

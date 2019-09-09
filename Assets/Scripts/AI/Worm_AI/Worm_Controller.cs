@@ -47,11 +47,7 @@ public class Worm_Controller : MonoBehaviour
         if (wormActionFinished)
         {
             WormGeneration();
-<<<<<<< HEAD
             wormActionFinished = false;
-=======
-            wormActionFinished = false;            
->>>>>>> abfac4f5c5947a32c31fb96248dd40bc0327d912
         }
     }    
     public void WormGeneration()

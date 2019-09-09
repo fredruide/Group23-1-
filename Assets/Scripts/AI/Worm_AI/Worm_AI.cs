@@ -29,12 +29,7 @@ public class Worm_AI : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
-        speed.x = 4;
-=======
-        speed.x = 6;
->>>>>>> abfac4f5c5947a32c31fb96248dd40bc0327d912
-        
+        speed.x = 4;        
         rb2d.velocity = new Vector2(scrWormController.horizontalSpeed, 0);
     }
 
@@ -42,12 +37,8 @@ public class Worm_AI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-<<<<<<< HEAD
-            collision.collider.gameObject.transform.SetParent(transform);
-=======
             GameObject player = collision.gameObject;
             player.transform.SetParent(gameObject.transform, true);
->>>>>>> abfac4f5c5947a32c31fb96248dd40bc0327d912
         }
     }
 
@@ -55,12 +46,8 @@ public class Worm_AI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-<<<<<<< HEAD
-            collision.collider.gameObject.transform.SetParent(null);
-=======
             GameObject player = collision.gameObject;
             player.transform.SetParent(null);
->>>>>>> abfac4f5c5947a32c31fb96248dd40bc0327d912
         }
     }
 }

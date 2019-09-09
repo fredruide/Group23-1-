@@ -9,14 +9,14 @@ using TMPro;
 
 public class Material_Counter : MonoBehaviour
 {//J.C.
-    private int playerHerbs ;
-    private int playerWood ;
-    private int playerStone ;
-    private int playerIron ;
-    private int playerCrystals;
+    public int playerHerbs;
+    public int playerWood;
+    public int playerStone;
+    public int playerIron;
+    public int playerCrystals;
+    public int playerAmmo;
+    public int playerHPotion;
 
-    private int playerAmmo;
-    private int playerHPotion;
     private TextMeshProUGUI Mats;
     public TextMeshProUGUI Items;
 
@@ -79,7 +79,6 @@ public class Material_Counter : MonoBehaviour
 
     public void PrintToUI()
     {
-
         Mats.text = "  <sprite=\"roguelikeitems\" index=170>: " + playerHerbs + "	  <sprite=\"roguelikeitems\" index=80>: " + playerWood + "     <sprite=\"rock\" index=0>: " + playerStone + "     <sprite=\"roguelikeitems\" index=67>: " + playerIron + "     <sprite=\"roguelikeitems\" index=45>: " + playerCrystals;
     }
 

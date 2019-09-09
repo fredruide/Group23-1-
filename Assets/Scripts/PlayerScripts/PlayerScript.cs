@@ -267,9 +267,9 @@ public class PlayerScript : MonoBehaviour
         AttackChecker();
         UseHPotion();
 
-        print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
-        print("attackType: " + attackType);
-        print("");
+        //print("ani isAttacking1-3: " + ani.GetInteger("isAttacking1-3"));
+        //print("attackType: " + attackType);
+        //print("");
 
         //print ani
         //if (Input.GetButton("Fire1"))
@@ -355,7 +355,6 @@ public class PlayerScript : MonoBehaviour
             //if player is not clicking a move Horizontal button then stop velocity horizontal (else statment)
             if (!touchRight && Input.GetAxisRaw("Horizontal") > 0)
             {
-                print("p");
                 rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
             }
             else if (!touchLeft && Input.GetAxisRaw("Horizontal") < 0)
