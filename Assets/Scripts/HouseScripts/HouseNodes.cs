@@ -83,7 +83,7 @@ public class HouseNodes : MonoBehaviour
         overViewCamera.SetActive(false);
     }
 
-    /*
+    /* TESTING
     public void BuildingSlots()
     {               
         if (building)
